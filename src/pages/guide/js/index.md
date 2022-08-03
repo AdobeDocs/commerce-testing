@@ -103,7 +103,7 @@ which tests a JS module:
 
 [`<magento_root_dir>/app/code/Magento/Ui/view/base/web/js/grid/columns/actions.js`]
 
-in its static representations generated in [Step 6] previously:
+in its static representations generated in Step 6 previously:
 
 `<magento_root_dir>/pub/static/<area>/<theme>/<localisation>/Magento_Ui/js/columns/actions.js`.
 
@@ -312,9 +312,6 @@ npm install
 [Install Node.js]: https://nodejs.org/en/
 
 [Learn more about testing with Jasmine.]: https://jasmine.github.io/edge/introduction.html
-
-<!-- Internal -->
-[Step 6]: #prepare-step6
 
 <!-- Abbreviations -->
 

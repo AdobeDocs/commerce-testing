@@ -120,7 +120,7 @@ Do not rely on and do not modify an application state from within a fixture, bec
 
 <!-- Link definitions -->
 
-[magentoAppIsolation]: magento-app-isolation.html
+[magentoAppIsolation]: ../annotations/magento-app-isolation.md
 [`dev/tests/integration/testsuite/Magento/Cms/_files/pages.php`]: https://github.com/magento/magento2/blob/2.4/dev/tests/integration/testsuite/Magento/Cms/_files/pages.php
 [`dev/tests/integration/testsuite/Magento/Cms/Block/PageTest.php`]: https://github.com/magento/magento2/blob/2.4/dev/tests/integration/testsuite/Magento/Cms/Block/PageTest.php
 [`dev/tests/integration/testsuite/Magento/Cms/Controller/PageTest.php`]: https://github.com/magento/magento2/blob/2.4/dev/tests/integration/testsuite/Magento/Cms/Controller/PageTest.php
