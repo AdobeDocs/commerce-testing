@@ -6,7 +6,7 @@ functional_areas:
   - test
 ---
 
-Magento uses a custom [Grunt] task named `spec` to run Jasmine tests. The task collects the tests from `<magento_root_dir>dev/tests/js/jasmine/tests` and can be run for all tests, a theme, or a single test.
+Commerce uses a custom [Grunt] task named `spec` to run Jasmine tests. The task collects the tests from `<magento_root_dir>dev/tests/js/jasmine/tests` and can be run for all tests, a theme, or a single test.
 
 ## Prepare environment
 
@@ -24,8 +24,7 @@ Magento uses a custom [Grunt] task named `spec` to run Jasmine tests. The task c
 npm install
 ```
 
-**Step 6.** In `<magento_root_dir>`, generate static view files in Magento that are going to be tested
-{:#prepare-step6}
+**Step 6.** In `<magento_root_dir>`, generate static view files that are going to be tested
 
 ```bash
 bin/magento setup:static-content:deploy -f
@@ -43,7 +42,7 @@ If the command fails with the error message:
 /var/www/html/magento2ce/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs: error while loading shared libraries: libfontconfig.so.1: cannot open shared object file: No such file or directory
 ```
 
-Install [fontconfig library]:<br/>
+Install [fontconfig library]:
 
 *  CentOS:
 
@@ -64,7 +63,7 @@ Learn more in [Deploy static view files].
 
 ## Run tests
 
-`Gruntfile.js` contains the test run task, so you can run **all tests** using the following command in the Magento root directory:
+`Gruntfile.js` contains the test run task, so you can run **all tests** using the following command in the application root directory:
 
 ```bash
 grunt spec:<THEME>
@@ -94,7 +93,7 @@ or for the frontend area:
 grunt spec:luma --file="/path/to/the/test.js"
 ```
 
-## Write a test {#write-test}
+## Write a test
 
 All tests are distributed through modules stored in `<magento_root_dir>/dev/tests/js/jasmine/tests`. Let's see how to write a test using an example of an existing test:
 
@@ -249,7 +248,7 @@ The array of the tests can be edited in the `_SpecRunner.html` file to include o
 
 ## Known issues and solutions
 
-### Error: Cannot find module '&lt;module&gt;' {#cannot-find-module-error}
+### Error: Cannot find module '&lt;module&gt;'
 
 #### Issue:
 
@@ -271,7 +270,7 @@ Warning: Task "spec" not found. Use --force to continue.
 1. Delete the `node_modules` directory.
 1. Run `npm install` in your terminal.
 
-### Warning: Cannot read property 'pid' of undefined {#cannot-read-property-pid-warning}
+### Warning: Cannot read property 'pid' of undefined
 
 #### Issue:
 

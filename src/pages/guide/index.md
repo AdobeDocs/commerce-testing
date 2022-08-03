@@ -5,16 +5,16 @@ description:
 
 # Application Testing Guide
 
-Magento actively leverages various testing strategies to ensure product and code quality.
+The Commerce framework actively leverages various testing strategies to ensure product and code quality.
 
-Product quality matters to the end-users working with the Magento storefront, admin panel, web APIs and CLI.
-Product quality tests verify that the user gets expected results while interacting with the Magento system.
+Product quality matters to the end-users working with the storefront, admin panel, web APIs and CLI.
+Product quality tests verify that the user gets expected results while interacting with the system.
 
-Code quality is important to developers working with Magento codebase including:
+Code quality is important to developers working with the codebase including:
 
 -  System integrators
 -  Extension developers
--  Magento core team
+-  Adobe core team
 -  Community contributors
 
 Code quality matters for:
@@ -23,17 +23,17 @@ Code quality matters for:
   Good extensibility allows for:
    -  Customizations and extensions using modularity of the platform.
    -  Evolution of the platform with new releases.
--  Maintainability - It should be straightforward for developers to work within the Magento system.
+-  Maintainability - It should be straightforward for developers to work within the system.
   It can be improved with:
    -  Complexity management - Reduce the learning curve and risk of adding new bugs.
    -  Automatic bug detection - Reduces total cost of ownership.
    -  Coding standards - Ensures consistency and readability.
 
-Automated tests are required by [Magento definition of done][] for any code changes.
+Automated tests are required by [definition of done][] for any code changes.
 
 ## Product Quality Tests
 
--  [Magento Functional Testing Framework][] - Tests the storefront and admin panel UI.
+-  [Functional Testing Framework][] - Tests the storefront and admin panel UI.
 -  [Web API Functional][] - Tests the REST, SOAP, and GraphQL areas.
 -  [Integration][] - Ensures that all the parts work together seamlessly.
 -  Performance - Tracks changes in CPU, Memory and other metrics. Executed nightly for develop branches. Custom builds can be configured using [performance toolkit][].
@@ -51,13 +51,13 @@ Automated tests are required by [Magento definition of done][] for any code chan
    -  Legacy code - Prevents usage of the legacy functionality.
 -  Unit - Used for testing of isolated algorithms or discreet pieces of code.
 -  Extensibility - Ensures the system is extensible as designed. Extensibility tests can be written using [Integration][], [JavaScript][] and [Web API Functional][] testing frameworks.
--  Backward-compatibility - Enforces [Magento backward compatibility policy][] at all levels including source code, database, message queue,  and web API.
+-  Backward-compatibility - Enforces [backward compatibility policy][] at all levels including source code, database, message queue,  and web API.
 
 ## Functional
 
-Functional tests are mainly used for system tests at a very high level by remote controlling a browser. Magento is treated as a black box, and tests happen from a user perspective.
+Functional tests are mainly used for system tests at a very high level by remote controlling a browser. The application is treated as a black box, and tests happen from a user perspective.
 
-The [Magento Functional Testing Framework][] (MFTF) is the main way to do functional testing. It uses XML files to run browser testing.
+The [Functional Testing Framework][] (MFTF) is the main way to do functional testing. It uses XML files to run browser testing.
 
 The [Functional Testing Framework][] (FTF) was the original framework used for testing Magento. It used PHP scripts to run browser testing.
 This framework is no longer supported and FTF tests were [ported over][] to MFTF.
@@ -65,19 +65,19 @@ Until the porting to MFTF is finished, the FTF can still be run to ensure comple
 
 ## API Functional
 
-The Web [API](https://glossary.magento.com/api) testing framework enables you to test the Magento [Web API](https://glossary.magento.com/web-api) from the client application point of view.
+The Web [API](https://glossary.magento.com/api) testing framework enables you to test the [Web API](https://glossary.magento.com/web-api) from the client application point of view.
 
 For more information, see the [Web API functional testing][].
 
 ## Integration
 
-Integration tests run Magento [PHP](https://glossary.magento.com/php) code in varying degrees of isolation. They tend to be a lot more low-level then functional tests. Because they do not utilize a browser to execute the tests, they can be a lot more granular in what they test. They also tend to run a lot quicker then functional tests.
+Integration tests run [PHP](https://glossary.magento.com/php) code in varying degrees of isolation. They tend to be a lot more low-level then functional tests. Because they do not utilize a browser to execute the tests, they can be a lot more granular in what they test. They also tend to run a lot quicker then functional tests.
 
 For more information, see [Running Integration Tests][].
 
 ## JavaScript
 
-Much of the functionality in Magento 2 is provided with the help of sophisticated [JavaScript](https://glossary.magento.com/javascript). JavaScript tests ensure the [frontend](https://glossary.magento.com/frontend) portion of Magento functions as expected.
+Much of the functionality is provided with the help of sophisticated [JavaScript](https://glossary.magento.com/javascript). JavaScript tests ensure the [frontend](https://glossary.magento.com/frontend) portion of functions as expected.
 
 For more information, please see the [Extension Developer Guide on JavaScript Tests][].
 
@@ -90,7 +90,7 @@ See the [`magento dev:tests:run`][] documentation for more information, using th
 
 ### PHPStan
 
-[PHPStan][] is a static analysis tool for PHP. Magento integrates PHPStan by default.
+[PHPStan][] is a static analysis tool for PHP. The application integrates PHPStan by default.
 It is available for developers to use in their own work, located at `Magento\Test\Php\LiveCodeTest::testPhpStan()`.
 
 It is run on changed `*.php` files using rule strictness [level 1][] and detects issues such as:
@@ -191,7 +191,7 @@ excludes_analyse:
 
 Unit tests are used to check a single unit of PHP code in isolation. They are usually written during development using [test-driven development][] (TDD).
 
-Because they do not require the full Magento application stack to be initialized, they run an order of magnitude faster then integration tests.
+Because they do not require the full application stack to be initialized, they run an order of magnitude faster then integration tests.
 
 For more information, see [Running Unit Tests][].
 
@@ -238,16 +238,16 @@ MFTF tests are kept within its respective Module folder:
 ```
 
 <!-- Link Definitions -->
-[Magento definition of done]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/definition-of-done/
+[definition of done]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/definition-of-done/
 [Web API Functional]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing.html
 [Integration]: integration/index.md
 [performance toolkit]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/generate-data.html
 [JavaScript]: js/index.md
 [PhpCs]: https://developer.adobe.com/commerce/php/coding-standards/php/
 [PhpMd]: https://phpmd.org/
-[Magento backward compatibility policy]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/backward-compatibility-policy/
+[backward compatibility policy]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/backward-compatibility-policy/
 [Functional Testing Framework]: https://github.com/magento/mtf
-[Magento Functional Testing Framework]: https://devdocs.magento.com/mftf/docs/introduction.html
+[Functional Testing Framework]: https://devdocs.magento.com/mftf/docs/introduction.html
 [Web API functional testing]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing.html
 [Running Integration Tests]: integration/index.md
 [Extension Developer Guide on JavaScript Tests]: js/index.md

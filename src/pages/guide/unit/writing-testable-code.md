@@ -24,7 +24,7 @@ The fewer dependencies a class has and the more obvious they are, the easier it 
 
 We strongly recommend you do *not*:
 
-*  Use `new` to instantiate new objects, because that removes the flexibility the Magento dependency configuration offers.
+*  Use `new` to instantiate new objects, because that removes the flexibility the dependency configuration offers.
 *  Use the `ObjectManager` directly in production code.
 
 There always is a better alternative, usually a [generated] `Factory` class, or a [`Locator`][Locator] class of sorts.

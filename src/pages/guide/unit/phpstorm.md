@@ -39,7 +39,7 @@ After configuring the interpreter, the next step is to set up the PHPStorm prefe
 ![PhpStorm PHPUnit preference panel](../../_images/guide/phpstorm_phpunit_preferences_dialogue.png)
 
 1. Click the **Use Composer autoloader** option.
-1. Select the `vendor/autoload.php` file in your Magento 2 installation.
+1. Select the `vendor/autoload.php` file in your Commerce installation.
 1. Optionally select the `dev/tests/unit/phpunit.xml.dist` file as the **Default configuration file**. Doing this step makes creating temporary run configurations more convenient.
 
 Please refer to the PhpStorm documentation for further information on [Configure a test framework in a project](https://www.jetbrains.com/help/phpstorm/php-test-frameworks.html#configure_php_test_framework_in_a_project).

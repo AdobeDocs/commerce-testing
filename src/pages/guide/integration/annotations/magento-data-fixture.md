@@ -72,7 +72,7 @@ To declare the fixture, use one of the following conventions:
 
 The ITF includes the declared PHP script to your test and executes it during the test run.
 
-The following example demonstrates a simple implementation of a Cms module page test from the Magento codebase.
+The following example demonstrates a simple implementation of a Cms module page test from the codebase.
 
 Data fixture to test a Cms module page: [`dev/tests/integration/testsuite/Magento/Cms/_files/pages.php`][].
 

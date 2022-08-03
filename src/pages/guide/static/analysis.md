@@ -12,9 +12,10 @@ This topic provides steps to set up most static analyzers that are used in our b
 
 ## Before you begin
 
-If you have not already, verify that `node` and `npm` are installed. Then, in the Magento root directory, run `npm install`.  After installation, ensure there is a `node_modules` directory in the root of your project before proceeding.
+If you have not already, verify that `node` and `npm` are installed. Then, in the application root directory, run `npm install`.  After installation, ensure there is a `node_modules` directory in the root of your project before proceeding.
 
-{:bs-callout-info}
+<InlineAlert variant="info" />
+
 For all of the static configuration installations below involving the PHPStorm Preferences dialog, make sure you are clicking the "Apply" button before clicking "OK" to close the Preferences dialog.
 
 ## Javascript Code Style check
@@ -34,7 +35,7 @@ The ESLint rules are set up in `magento-coding-standard`, which is installed on 
 1. Click **Manual ESLint configuration**.
 1. Fill in the adjacent input fields with the path to your node binary (the result of outputting `which node` in your terminal).
 1. Enter the path to your ESLint package: `[magento_root]/node_modules/eslint`
-1. Click **Configuration File** and in the adjacent input field enter the path to the ESLint file Magento uses, which is located in `vendor/magento/magento-coding-standard/eslint/.eslintrc-magento`.
+1. Click **Configuration File** and in the adjacent input field enter the path to the ESLint file the application uses, which is located in `vendor/magento/magento-coding-standard/eslint/.eslintrc-magento`.
 
 See the image below for example configuration:
 
@@ -67,7 +68,7 @@ To verify it works, add the following PHP snippet: `$base = basename($_SERVER['S
 1. Click the `...` button to bring up another configuration modal.
 1. Enter the PHP Mess Detector path: `[magento_root]/vendor/phpmd/phpmd/src/bin/phpmd`
 1. Go to PHPStorm preferences > Editor > Inspections and in the adjacent window go to  > PHP > Quality Tools > PHP Mess Detector validation.
-1. Under custom rulesets, add the path to the PHPMD ruleset Magento uses: `[magento_root]/dev/tests/static/testsuite/Magento/Test/Php/_files/phpmd/ruleset.xml`
+1. Under custom rulesets, add the path to the PHPMD ruleset the application uses: `[magento_root]/dev/tests/static/testsuite/Magento/Test/Php/_files/phpmd/ruleset.xml`
 
 See the image below for example configuration:
 

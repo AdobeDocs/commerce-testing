@@ -8,7 +8,7 @@ functional_areas:
   - test
 ---
 
-Executing the Magento 2 unit tests is straight forward.
+Executing the unit tests is straight forward.
 They can be executed in several different ways.
 
 ### Command Line Interface (CLI)

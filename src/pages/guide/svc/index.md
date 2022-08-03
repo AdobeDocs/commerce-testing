@@ -6,7 +6,7 @@ functional_areas:
   - test
 ---
 
-Executing the Magento 2 Semantic Version Checker is a simple process, but it requires an external tool.
+Executing the Semantic Version Checker is a simple process, but it requires an external tool.
 
 ### Running Semantic Version Checker on local changes
 
@@ -24,7 +24,7 @@ To run the Semantic Version Checker on local changes:
    cd magento-semver && composer install
    ```
 
-1. To run the Semantic Version Checker, we need one folder with the feature changes and another folder with mainline code (without changes), so you may need to clone the Magento repository to a separate folder to perform the comparison.
+1. To run the Semantic Version Checker, we need one folder with the feature changes and another folder with mainline code (without changes), so you may need to clone the GitHub repository to a separate folder to perform the comparison.
 
 1. Navigate the `magento-semver` folder and run the Semantic Version Checker compare command:
 

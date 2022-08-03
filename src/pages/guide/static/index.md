@@ -6,11 +6,11 @@ functional_areas:
   - test
 ---
 
-Executing Magento 2 static tests is straightforward. They can be executed in several ways.
+Executing static tests is straightforward. They can be executed in several ways.
 
 ### Running static tests on all files
 
-To run static tests on all files, navigate to the Magento base directory and execute the following command:
+To run static tests on all files, navigate to the application root directory and execute the following command:
 
 ```bash
 bin/magento dev:test:run static
@@ -20,7 +20,7 @@ bin/magento dev:test:run static
 
 To run the static tests on a subset of files, create a new testsuite for phpunit:
 
-1. From the Magento base directory navigate to `dev/tests/static/testsuite/Magento/Test`
+1. From the application root directory navigate to `dev/tests/static/testsuite/Magento/Test`
 
 1. Create a copy of the `Php` folder on the same directory and rename it to `Local`
 
@@ -46,7 +46,7 @@ To run the static tests on a subset of files, create a new testsuite for phpunit
     </testsuites>
    ```
 
-1. Navigate to the Magento base directory and run:
+1. Navigate to the application root directory and run:
 
    ```bash
    ./vendor/bin/phpunit --testsuite="Local Test Suite" -c dev/tests/static/phpunit.xml

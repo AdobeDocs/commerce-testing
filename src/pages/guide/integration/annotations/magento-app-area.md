@@ -61,7 +61,7 @@ class ClassToTest extends \PHPUnit\Framework\TestCase
 ## Test annotation
 
 A test annotation is used to configure the environment in scope of the specified application area for the test.
-Magento is reinitialized in the corresponding scope each time you specify a different area.
+Commerce is reinitialized in the corresponding scope each time you specify a different area.
 
 Example:
 
