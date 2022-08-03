@@ -1,7 +1,9 @@
 ---
-group: testing
-title: Data fixture annotation
+title: Data Fixture Annotation | Commerce Testing
+description: 
 ---
+
+# Data fixture annotation
 
 A data fixture is a PHP script that sets data you want to reuse in your test.
 The script can be defined in a separate file or as a local test case method.
@@ -92,7 +94,7 @@ The basic rules for fixture annotation at different levels are:
 -  `@magentoDataFixture` for a particular test, signals the framework to revert the fixtures declared on a test case level and applies the fixtures declared at a test method level instead.
   When the test is complete, the ITF reverts the applied fixtures.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 The integration testing framework interacts with a database to revert the applied fixtures.
 

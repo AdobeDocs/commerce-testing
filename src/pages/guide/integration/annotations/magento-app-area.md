@@ -1,7 +1,9 @@
 ---
-group: testing
-title: Application Area Annotation in the Integration Testing Framework
+title: Application Area Annotation | Commerce Testing
+description: 
 ---
+
+# Application area annotation
 
 Configure a test environment in scope of the particular [application area][] with the `@magentoAppArea` annotation.
 
@@ -23,7 +25,7 @@ Configure a test environment in scope of the particular [application area][] wit
 
 A test case annotation enables the specified application area for all tests in the test case.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 Test annotations override test case annotations.
 

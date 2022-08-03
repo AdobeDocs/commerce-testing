@@ -1,6 +1,6 @@
 ---
-group: testing
-title: Running Unit Tests in the CLI
+title: Command Line | Commerce Testing
+description: 
 contributor_name: Vinai Kopp
 contributor_link: https://vinaikopp.com/
 functional_areas:
@@ -8,7 +8,9 @@ functional_areas:
   - test
 ---
 
-### Running all unit tests
+# Command line
+
+## Run all unit tests
 
 To run all tests, navigate to the application root directory and execute the following command:
 
@@ -16,7 +18,7 @@ To run all tests, navigate to the application root directory and execute the fol
 ./vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist
 ```
 
-### Running only a subset of the unit tests
+## Run only a subset of the unit tests
 
 To run only tests within a specific directory branch, all you have to do is to specify the directory branch after the command.
 
@@ -26,7 +28,7 @@ The following example tells PHPUnit to look for any file ending with `Test.php` 
 ./vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist app/code/Example/Module/Test/Unit
 ```
 
-#### Explanation
+## Explanation
 
 The `phpunit` executable is installed by `composer` and linked into the directory `vendor/bin`.
 
@@ -36,9 +38,9 @@ If custom configuration settings are required (more on that later), the file `de
 
 PHPUnit has many additional command line options. Please refer to the [PHPUnit documentation](https://phpunit.de/manual/4.1/en/textui.html#textui.clioptions) for more information (currently Commerce uses PHPUnit version 4.1.0, 2.2.x uses PHPUnit version 6.x).
 
-### Solutions to common problems
+## Solutions to common problems
 
-#### Permission Denied
+### Permission Denied
 
 One possible reason for this to happen might be if you are trying to execute PHPUnit inside a Virtual Box VM with shared folders that don't allow modifying permissions.
 
@@ -48,7 +50,7 @@ Whatever the reason, if you encounter the `permission denied: vendor/bin/phpunit
 php -f vendor/bin/phpunit -- -c dev/tests/unit/phpunit.xml.dist
 ```
 
-#### Use the correct PHP interpreter
+### Use the correct PHP interpreter
 
 On many development systems, you might have more one PHP version installed. You must know the correct PHP interpreter to use for testing; that is, use the same version of PHP to run the unit tests you use to run Magento.
 
@@ -68,7 +70,7 @@ You can either fix your `$PATH` (please refer to your system documentation on ho
 /usr/local/Cellar/php56/5.6.19/bin/php -f vendor/bin/phpunit -- -c dev/tests/unit/phpunit.xml.dist
 ```
 
-#### Memory Limit
+### Memory Limit
 
 If you encounter an error similar to `Fatal error: Allowed memory size of 67108864 bytes exhausted`, follow these steps to resolve it.
 

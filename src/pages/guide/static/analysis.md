@@ -1,12 +1,9 @@
 ---
-group: testing
-title: Setting up static analysis
-functional_areas:
-  - Testing
-  - test
+title: Static Analysis | Commerce Testing
+description: 
 ---
 
-## Introduction
+# Static analysis
 
 This topic provides steps to set up most static analyzers that are used in our build pipeline to work in your local PHPStorm environment. This guide is written specifically for those using PHPStorm on MacOS.
 
@@ -14,19 +11,19 @@ This topic provides steps to set up most static analyzers that are used in our b
 
 If you have not already, verify that `node` and `npm` are installed. Then, in the application root directory, run `npm install`.  After installation, ensure there is a `node_modules` directory in the root of your project before proceeding.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 For all of the static configuration installations below involving the PHPStorm Preferences dialog, make sure you are clicking the "Apply" button before clicking "OK" to close the Preferences dialog.
 
 ## Javascript Code Style check
 
-<InlineAlert variant="warning" />
+<InlineAlert variant="warning" slots="text" />
 
 [JSCS package has been deprecated](https://www.npmjs.com/package/jscs) and [merged with ESLint](https://eslint.org/blog/2016/04/welcoming-jscs-to-eslint).
 
 ### ESLint
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 Javascript code analysis is done through [ESLint](https://developer.adobe.com/commerce/php/coding-standards/js/#eslint-code-analysis).
 The ESLint rules are set up in `magento-coding-standard`, which is installed on Magento2 via `composer` since it's a development dependency.

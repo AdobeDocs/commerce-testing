@@ -1,14 +1,14 @@
 ---
-group: testing
-title: Running Integration Tests
+title: Integration Testing | Commerce Testing
+description: 
 contributor_name: Vinai Kopp
 contributor_link: https://vinaikopp.com/
-functional_areas:
-  - Testing
-  - test
 ---
 
+# Integration testing
+
 Integration tests require the Commerce runtime environment, so they need a little preparation before they can be executed.
+
 After preparing the system, you can execute tests using the command line interface or within an IDE like PhpStorm.
 
 ## Set up the integration test framework
@@ -45,7 +45,7 @@ Prerequisites for the test environment include the following:
 
 By default, for every integration test run, the test framework installs a fresh test database.
 
-<InlineAlert variant="warning" />
+<InlineAlert variant="warning" slots="text" />
 
 Do not use the same database as the real Commerce instance. Any data, such as products, customers, orders, and everything else, will be lost!
 
@@ -94,7 +94,7 @@ return [
 ];
 ```
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 Leave all the settings that do not start with `db-` and `amqp-` at their default values.
 
@@ -124,7 +124,7 @@ Note that the file above is only for configuration files required by all integra
 new configuration values for particular tests to perform their function, use the
 [@magentoConfigFixture](annotations/magento-config-fixture.md) annotation instead.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 You can change the locations and names of both files used by the Integration Test Framework that were described
 above using the PHPUnit configuration file.

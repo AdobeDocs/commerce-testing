@@ -1,11 +1,13 @@
 ---
-group: testing
-title: Using PHP built-in attributes
+title: PHP built-in attributes | Commerce Testing
+description: 
 ---
+
+# PHP built-in attributes
 
 [PHP built-in attributes][] help to declare context in your code. Attributes can be used alone or together with Annotations to help to declare context in your code.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 PHP built-in attributes are currently available to Magento Open Source contributors only. They will be released for general use with Magento Open Source 2.4.5.
 [PHPUnit annotations][] are still available for use with Magento Open Source.
@@ -42,7 +44,7 @@ The application-specific annotations for integration tests are applied in the fo
 
 This order is necessary to meet the requirement of setting up the store-scoped configuration values for fixture stores (stores that are created by data fixtures).
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 [PHP built-in attributes][] are only available with PHP8 and above.
 

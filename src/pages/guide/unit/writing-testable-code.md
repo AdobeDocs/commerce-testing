@@ -1,12 +1,11 @@
 ---
-group: testing
-title: Writing Testable Code
+title: Writing Testable Code | Commerce Testing
+description: 
 contributor_name: Vinai Kopp
 contributor_link: https://vinaikopp.com/
-functional_areas:
-  - Testing
-  - test
 ---
+
+# Writing testable code
 
 This topic does not aim to be a replacement for existing documentation about testing, but rather tries to highlight some thoughts on the subject. Although the truth of anything depends somewhat on the context, this topic attempts to provide information that is applicable in *most* situations.
 
@@ -29,7 +28,7 @@ We strongly recommend you do *not*:
 
 There always is a better alternative, usually a [generated] `Factory` class, or a [`Locator`][Locator] class of sorts.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 This rule applies only to production code. When writing [integration tests][integration-tests], this is not true. In fact, the object manager is recommended for integration tests.
 

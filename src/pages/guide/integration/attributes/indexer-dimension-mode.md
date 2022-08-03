@@ -1,7 +1,9 @@
 ---
-group: testing
-title: Indexer dimension mode
+title: Indexer dimension mode | Commerce Testing
+description: 
 ---
+
+# Indexer dimension mode
 
 ## Overview
 

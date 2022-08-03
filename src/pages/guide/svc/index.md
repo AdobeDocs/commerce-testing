@@ -1,14 +1,13 @@
 ---
-group: testing
-title: Running Semantic Version Checker
-functional_areas:
-  - Testing
-  - test
+title: Semantic Version Checker | Commerce Testing
+description: 
 ---
+
+# Semantic Version Checker
 
 Executing the Semantic Version Checker is a simple process, but it requires an external tool.
 
-### Running Semantic Version Checker on local changes
+## Run on local changes
 
 To run the Semantic Version Checker on local changes:
 

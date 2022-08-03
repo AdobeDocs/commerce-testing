@@ -1,7 +1,9 @@
 ---
-group: testing
-title: Configuration fixture attribute
+title: Configuration fixture attribute | Commerce Testing
+description: 
 ---
+
+# Configuration fixture attribute
 
 To set configuration values for individual tests and revert them after the test execution, use the `Config` attribute.
 

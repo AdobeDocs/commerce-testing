@@ -1,14 +1,13 @@
 ---
-group: testing
-title: Running Static Tests
-functional_areas:
-  - Testing
-  - test
+title: Static Tests | Commerce Testing
+description: 
 ---
+
+# Static tests
 
 Executing static tests is straightforward. They can be executed in several ways.
 
-### Running static tests on all files
+## Run on all files
 
 To run static tests on all files, navigate to the application root directory and execute the following command:
 
@@ -16,7 +15,7 @@ To run static tests on all files, navigate to the application root directory and
 bin/magento dev:test:run static
 ```
 
-### Running PHP static tests on a subset of files
+## Run on a subset of files
 
 To run the static tests on a subset of files, create a new testsuite for phpunit:
 

@@ -1,14 +1,16 @@
 ---
-group: testing
-title: Application isolation annotation
+title: Application Isolation Annotation | Commerce Testing
+description: 
 ---
+
+# Application isolaltion annotation
 
 An application state can be changed during test execution.
 Such changes can cause a false test failure.
 The integration testing framework keeps the tests isolated and provides optimal performance by default.
 Isolation is managed using the `@magentoAppIsolation` annotation.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 Test execution order can vary depending on a PHPUnit version.
 
@@ -28,7 +30,7 @@ The application and related objects are reinitialized after each test case execu
 This behavior helps to isolate application objects in different test cases.
 The test case isolation is mandatory and cannot be disabled.
 
-<InlineAlert variant="warning" />
+<InlineAlert variant="warning" slots="text" />
 
 Do not share and do not rely on sharing the application objects between test cases.
 
@@ -51,7 +53,7 @@ public function testGetAddressById()
 }
 ```
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 In most cases, controller tests depend on the application state and require reinitialization in each test.
 Thus, the test cases inherited from the `\Magento\TestFramework\TestCase\AbstractController` behave as if `@magentoAppIsolation` is enabled for each test.
@@ -72,6 +74,6 @@ You can use non-isolated tests unless they do not modify or utilize the same app
 -  same attributes of an application object.
 -  same paths in a current configuration or current scope (for example "store").
 
-<InlineAlert variant="success" />
+<InlineAlert variant="success" slots="text" />
 
 Set up application isolation if any application objects were intentionally modified within the test case.

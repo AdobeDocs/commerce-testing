@@ -13,7 +13,7 @@ module.exports = [
           pages: [
             {
               title: "@depends",
-              path: "/guide/integration/annotations/depends/",
+              path: "/guide/integration/annotations/magento-depends/",
             },
             {
               title: "@magentoAppArea",

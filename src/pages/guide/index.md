@@ -1,14 +1,11 @@
 ---
-title: Application Testing Guide | Commerce Testing
-description:
+title: Application Testing Guide Introduction | Commerce Testing
+description: 
 ---
 
-# Application Testing Guide
+# Application Testing Guide introduction
 
-The Commerce framework actively leverages various testing strategies to ensure product and code quality.
-
-Product quality matters to the end-users working with the storefront, admin panel, web APIs and CLI.
-Product quality tests verify that the user gets expected results while interacting with the system.
+The Commerce framework actively leverages various testing strategies to ensure product and code quality. Product quality matters to the end-users working with the storefront, admin panel, web APIs and CLI. Product quality tests verify that the user gets expected results while interacting with the system.
 
 Code quality is important to developers working with the codebase including:
 
@@ -19,12 +16,10 @@ Code quality is important to developers working with the codebase including:
 
 Code quality matters for:
 
--  Extensibility - It should be straightforward to extend or modify existing behavior.
-  Good extensibility allows for:
+-  Extensibility - It should be straightforward to extend or modify existing behavior. Good extensibility allows for:
    -  Customizations and extensions using modularity of the platform.
    -  Evolution of the platform with new releases.
--  Maintainability - It should be straightforward for developers to work within the system.
-  It can be improved with:
+-  Maintainability - It should be straightforward for developers to work within the system. It can be improved with:
    -  Complexity management - Reduce the learning curve and risk of adding new bugs.
    -  Automatic bug detection - Reduces total cost of ownership.
    -  Coding standards - Ensures consistency and readability.

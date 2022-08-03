@@ -1,7 +1,9 @@
 ---
-group: testing
-title: Application Area attribute
+title: Application Area Attribute | Commerce Testing
+description: 
 ---
+
+# Application area attribute
 
 Configure a test environment in scope of the particular [application area][] with the `AppArea` annotation.
 
@@ -35,7 +37,7 @@ Configure a test environment in scope of the particular [application area][] wit
 
 A test class attribute enables the specified application area for all tests in the test class.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 Test class attributes override test method attributes.
 

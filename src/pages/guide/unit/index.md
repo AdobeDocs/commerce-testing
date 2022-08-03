@@ -1,23 +1,22 @@
 ---
-group: testing
-title: Running Unit Tests
+title: PHP Unit Testing | Commerce Testing
+description: 
 contributor_name: Vinai Kopp
 contributor_link: https://vinaikopp.com/
-functional_areas:
-  - Testing
-  - test
 ---
+
+# PHP unit testing
 
 Executing the unit tests is straight forward.
 They can be executed in several different ways.
 
-### Command Line Interface (CLI)
+## Command Line Interface (CLI)
 
 This option is useful for running the tests during Continuous Integration or on remote servers, or if no IDE with PHPUnit support is available. It only requires a minimum amount of setup.
 
 Please refer to [Running Unit Tests in the CLI](command-line.md) for further information.
 
-### PhpStorm IDE
+## PhpStorm IDE
 
 Running the tests inside an IDE like PhpStorm IDE is convenient for developers, since it allows for easier navigation in the code and debugging.
 

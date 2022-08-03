@@ -1,12 +1,11 @@
 ---
-group: testing
-title: Running Unit Tests in PhpStorm
+title:  Unit Tests in PhpStorm | Commerce Testing
+description: 
 contributor_name: Vinai Kopp
 contributor_link: https://vinaikopp.com/
-functional_areas:
-  - Testing
-  - test
 ---
+
+# Unit tests in PhpStorm
 
 Running tests in PhpStorm requires following steps to setup the system.
 
@@ -14,7 +13,7 @@ Running tests in PhpStorm requires following steps to setup the system.
 1. Configuring PHPUnit
 1. Creating a run configuration
 
-### Configuring the PHP interpreter
+## Configuring the PHP interpreter
 
 In the PhpStorm preferences, select the PHP interpreter PhpStorm should use to run tests with.
 
@@ -32,7 +31,7 @@ It is also possible to [configure a remote PHP interpreter](https://www.jetbrain
 
 Please be aware that the details on configuring the PHP interpreter might vary between PhpStorm versions.
 
-### Configuring PHPUnit
+## Configuring PHPUnit
 
 After configuring the interpreter, the next step is to set up the PHPStorm preferences for how to execute PHPUnit.
 
@@ -44,7 +43,7 @@ After configuring the interpreter, the next step is to set up the PHPStorm prefe
 
 Please refer to the PhpStorm documentation for further information on [Configure a test framework in a project](https://www.jetbrains.com/help/phpstorm/php-test-frameworks.html#configure_php_test_framework_in_a_project).
 
-### Creating a run configuration
+## Creating a run configuration
 
 The final step is to create a *run configuration* to execute the desired tests.
 
@@ -57,7 +56,7 @@ All start by creating a new run configuration. To do so, follow these steps:
 
 Depending on what tests should be included in the run configuration, the next steps differ.
 
-#### Running all tests
+### Run all tests
 
 1. Give the run configuration a descriptive name; for example **All Unit Tests**
 1. Test Scope: select the **Defined in the configuration file** radio button
@@ -67,7 +66,7 @@ Depending on what tests should be included in the run configuration, the next st
 
 ![All Unit Tests run configuration](../../_images/guide/phpstorm_run_config_all_unit_tests.png)
 
-#### Running the tests of one module
+### Run the tests of one module
 
 1. Give the run configuration a descriptive name; for example, **Example_Module Unit Tests**
 1. Test Scope: select the **Directory** option
@@ -76,7 +75,7 @@ Depending on what tests should be included in the run configuration, the next st
 
 ![Module Unit Tests run configuration](../../_images/guide/phpstorm_run_config_module_unit_tests.png)
 
-#### Running the tests in a class
+### Run the tests in a class
 
 1. Give the run configuration a descriptive name like the name of the test class; for example, **FrontControllerPluginTest**.
 1. Test Scope: select the **Class** option.
@@ -90,7 +89,7 @@ A more convenient way to create a run configuration for a test class is to open 
 
 Note that the test class has to inherit from `\PHPUnit_Framework_TestCase` for PhpStorm to display that option.
 
-### Executing the run configuration
+### Execute the run configuration
 
 First select the run configuration to execute in the run configuration drop-down menu above the main editor window, then click the **Play** icon beside it.
 

@@ -1,14 +1,12 @@
 ---
-group: testing
-title: Data fixture attribute
-redirect_from: 
-  - /guides/v2.4/test/integration/annotations/magento-data-fixture-data-provider.html
-  - /guides/v2.4/test/integration/parameterized_data_fixture.html
+title: Data fixture attribute | Commerce Testing
+description: 
 ---
 
-## Overview
+# Data fixture attribute
 
 Data fixture attributes apply fixtures that implement `Magento\TestFramework\Fixture\DataFixtureInterface` or `Magento\TestFramework\Fixture\RevertibleDataFixtureInterface`.
+
 It takes two more optional parameters alongside the fixture class name.
 The second parameter is the data that is used to customize the fixture and the third parameter is the alias (ID) of the fixture that is used to retrieve the data returned by the fixture and also as a reference in other fixture parameters.
 
@@ -90,7 +88,7 @@ The basic rules for fixture attributes at different levels are:
 -  `DataFixture` for a particular test signals the framework to revert the fixtures declared on a test case level and applies the fixtures declared at a test method level instead.
    When the test is complete, the ITF reverts the applied fixtures.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 The integration testing framework interacts with a database to revert the applied fixtures.
 
@@ -185,11 +183,9 @@ class PriceTest extends \PHPUnit\Framework\TestCase
 ### Fixture rollback
 
 A fixture that contains database transactions only are reverted automatically.
-Otherwise, when a fixture creates files or performs any actions other than a database transaction, provide the corresponding rollback logic,
-in the `revert` method of the revertible data fixture.
-Rollbacks are run after reverting all the fixtures related to database transactions.
+Otherwise, when a fixture creates files or performs any actions other than a database transaction, provide the corresponding rollback logic, in the `revert` method of the revertible data fixture. Rollbacks are run after reverting all the fixtures related to database transactions.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 See the [`Magento\Catalog\Test\Fixture\Product`][] fixture for an example.
 

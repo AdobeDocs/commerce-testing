@@ -1,14 +1,16 @@
 ---
-group: testing
-title: Application isolation attribute
+title: Application isolation attribute | Commerce Testing
+description: 
 ---
+
+# Application isolation attribute
 
 An application state can be changed during test execution.
 Such changes can cause a false test failure.
 The integration testing framework keeps the tests isolated and provides optimal performance by default.
 Isolation is managed using the `AppIsolation` attribute.
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 Test execution order can vary depending on a PHPUnit version.
 
@@ -31,7 +33,7 @@ The application and related objects are reinitialized after each test class exec
 This behavior helps to isolate application objects in different test classes.
 The test class isolation is mandatory and cannot be disabled.
 
-<InlineAlert variant="warning" />
+<InlineAlert variant="warning" slots="text" />
 
 Do not share and do not rely on sharing the application objects between test methods.
 
@@ -54,7 +56,7 @@ public function testGetAddressById()
 }
 ```
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 In most cases, controller tests depend on the application state and require reinitialization in each test method.
 Thus, the test classes inherited from the `\Magento\TestFramework\TestCase\AbstractController` behave as if `AppIsolation` is enabled for each test method.
@@ -75,6 +77,6 @@ You can use non-isolated tests unless they do not modify or utilize the same app
 -  Same attributes of an application object.
 -  Same paths in a current configuration or current scope (for example "store").
 
-<InlineAlert variant="success" />
+<InlineAlert variant="success" slots="text" />
 
 Set up application isolation if any application objects were intentionally modified within the test class.

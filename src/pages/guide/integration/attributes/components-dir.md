@@ -1,10 +1,11 @@
 ---
-group: testing
-title: Component registration attribute
+title: Component registration attribute | Commerce Testing
+description: 
 ---
 
-When your test design requires you to register fixture components and unregister them after the test execution, use the `ComponentsDir` attribute.
-It enables you to register all the components at a specified directory recursively.
+# Component registration attribute
+
+When your test design requires you to register fixture components and unregister them after the test execution, use the `ComponentsDir` attribute. It enables you to register all the components at a specified directory recursively.
 
 ## Format
 
@@ -25,8 +26,7 @@ It enables you to register all the components at a specified directory recursive
 
 ## Test method attribute
 
-`ComponentsDir` attribute for a test method configures the test to run with registered components located in a specified directory.
-If the parent test case also declares a `ComponentsDir`, both attributes are merged.
+`ComponentsDir` attribute for a test method configures the test to run with registered components located in a specified directory. If the parent test case also declares a `ComponentsDir`, both attributes are merged.
 
 ## Example
 
@@ -58,8 +58,7 @@ class BarTest extends \PHPUnit\Framework\TestCase
 }
 ```
 
-Each path declared in an attribute must contain a registration file in the specified directory or its subdirectories.
-For example, the `MagentoFooTest_MyModule` component at `ComponentsDir('Magento/Foo/_files/code/Magento')` can be registered in `Magento/Foo/_files/code/Magento/MyModule/registration.php`:
+Each path declared in an attribute must contain a registration file in the specified directory or its subdirectories. For example, the `MagentoFooTest_MyModule` component at `ComponentsDir('Magento/Foo/_files/code/Magento')` can be registered in `Magento/Foo/_files/code/Magento/MyModule/registration.php`:
 
 ```php?start_inline=1
 
@@ -72,7 +71,7 @@ use Magento\Framework\Component\ComponentRegistrar;
 );
 ```
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
 A theme must be registered in the database.
 Each time you register a theme, reset the entire application.

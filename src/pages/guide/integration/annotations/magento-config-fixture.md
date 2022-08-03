@@ -1,7 +1,9 @@
 ---
-group: testing
-title: Configuration fixture annotation
+title: Configuration Fixture Annotation | Commerce Testing
+description: 
 ---
+
+# Configuration fixture annotation
 
 To set configuration values for individual tests and revert them after the test execution, use the `@magentoConfigFixture` annotation.
 

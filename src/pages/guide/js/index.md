@@ -1,10 +1,9 @@
 ---
-group: testing
-title: JavaScript unit testing with Jasmine
-functional_areas:
-  - Testing
-  - test
+title: JavaScript Unit Testing with Jasmine | Commerce Testing
+description: 
 ---
+
+# JavaScript unit testing with Jasmine
 
 Commerce uses a custom [Grunt] task named `spec` to run Jasmine tests. The task collects the tests from `<magento_root_dir>dev/tests/js/jasmine/tests` and can be run for all tests, a theme, or a single test.
 
@@ -32,8 +31,6 @@ bin/magento setup:static-content:deploy -f
 
 Note that normally you don't have permissions to `<magento_root_dir>/app/code/`, in fact the generated static view file is being tested.
 
-<InlineAlert variant="success" slots="header, text1, text2" />
-
 For CentOS and Ubuntu users:
 
 If the command fails with the error message:
@@ -55,9 +52,6 @@ Install [fontconfig library]:
    ```bash
    apt-get install fontconfig
    ```
-
-"
-%}
 
 Learn more in [Deploy static view files].
 

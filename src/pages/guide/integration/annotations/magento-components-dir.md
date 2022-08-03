@@ -1,7 +1,9 @@
 ---
-group: testing
-title: Component registration annotation
+title: Component Registration Annotation | Commerce Testing
+description: 
 ---
+
+# Component registration annotation
 
 When your test design requires to register fixture components and unregister them after the test execution, use the `@magentoComponentsDir` annotation.
 It enables you to register all the components at a specified directory recursively.
@@ -71,11 +73,9 @@ use Magento\Framework\Component\ComponentRegistrar;
 );
 ```
 
-<InlineAlert variant="info" />
+<InlineAlert variant="info" slots="text" />
 
-A theme must be registered in the database.
-Each time you register a theme, reset the entire application.
-Use the [`@magentoDbIsolation`][] annotation to keep the database integrity safe.
+A theme must be registered in the database. Each time you register a theme, reset the entire application. Use the [`@magentoDbIsolation`][] annotation to keep the database integrity safe.
 
 <!-- Link definitions -->
 
