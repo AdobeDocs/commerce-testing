@@ -94,4 +94,4 @@ class BarTest extends \PHPUnit\Framework\TestCase
 
 <!-- Link definitions -->
 
-[cache type]: {{page.baseurl}}/config-guide/cli/config-cli-subcommands-cache.html#config-cli-subcommands-cache-clean-over
+[cache type]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/manage-cache.html

@@ -99,7 +99,7 @@ return [
 Leave all the settings that do not start with `db-` and `amqp-` at their default values.
 
 You can include additional setup options—available to the `setup:install` command—in the test configuration file. A
-complete list of options is available [here]({{ page.baseurl }}/install-gde/install/cli/install-cli.html).
+complete list of options is available [here](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli.html).
 
 If your project requires custom entries in the `core_config_data` table, such as the introduction of new 3rd party services
 that affect your application on a basic level or configuration for logic that would prevent access if not configured
@@ -122,7 +122,7 @@ return [
 
 Note that the file above is only for configuration files required by all integration tests. If you need to introduce
 new configuration values for particular tests to perform their function, use the
-[@magentoConfigFixture]({{ page.baseurl }}/test/integration/annotations/magento-config-fixture.html) annotation instead.
+[@magentoConfigFixture](annotations/magento-config-fixture.md) annotation instead.
 
 <InlineAlert variant="info" />
 
@@ -353,7 +353,7 @@ Then, configure the integration test to use the configuration file.
 
 The only difference in the run configuration is that the integration test `phpunit.xml.dist` or `phpunit.xml` configuration file from the `dev/tests/integration` directory must be selected.
 
-![Integration Test Class run configuration]({{ site.baseurl }}/common/images/phpstorm_run_config_class_integration_tests.png){:width="600px"}
+![Integration Test Class run configuration](../../_images/guide/phpstorm_run_config_class_integration_tests.png)
 
 ## Integration tests file structure
 
@@ -374,6 +374,6 @@ This folder contains the following sub-folders and files:
 
 [setup]: #setup
 [cli run]: #cli-run
-[phpstorm run]: {{ page.baseurl }}/test/unit/unit_test_execution_phpstorm.html
+[phpstorm run]: ../unit/phpstorm.md
 [PHPUnit documentation]: https://phpunit.readthedocs.io/en/9.1/index.html
 [RabbitMQ Management Plugin]: https://www.rabbitmq.com/management.html

@@ -298,11 +298,11 @@ npm install
 <!-- LINK DEFINITIONS -->
 
 <!-- External -->
-[`<magento_root_dir>/app/code/Magento/Ui/view/base/web/js/grid/columns/actions.js`]: {{ site.mage2bloburl }}/{{ page.guide_version }}/app/code/Magento/Ui/view/base/web/js/grid/columns/actions.js
+[`<magento_root_dir>/app/code/Magento/Ui/view/base/web/js/grid/columns/actions.js`]: https://github.com/magento/magento2/blob/2.4/app/code/Magento/Ui/view/base/web/js/grid/columns/actions.js
 
-[`app/code/Magento/Ui/base/js/grid/columns/actions.test.js`]: {{ site.mage2bloburl }}/{{ page.guide_version }}/dev/tests/js/jasmine/tests/app/code/Magento/Ui/base/js/grid/columns/actions.test.js
+[`app/code/Magento/Ui/base/js/grid/columns/actions.test.js`]: https://github.com/magento/magento2/blob/2.4/dev/tests/js/jasmine/tests/app/code/Magento/Ui/base/js/grid/columns/actions.test.js
 
-[Deploy static view files]: {{ page.baseurl }}/config-guide/cli/config-cli-subcommands-static-view.html
+[Deploy static view files]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/static-view/static-view-file-deployment.html
 
 [fontconfig library]: https://www.freedesktop.org/wiki/Software/fontconfig/
 

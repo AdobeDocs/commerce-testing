@@ -200,4 +200,4 @@ Do not rely on and do not modify an application state from within a fixture. The
 <!-- Link definitions -->
 
 [magentoAppIsolation]: magento-app-isolation.html
-[`Magento\Catalog\Test\Fixture\Product`]: {{ site.mage2bloburl }}/{{ page.guide_version }}-develop/app/code/Magento/Catalog/Test/Fixture/Product.php
+[`Magento\Catalog\Test\Fixture\Product`]: https://github.com/magento/magento2/blob/2.4-develop/app/code/Magento/Catalog/Test/Fixture/Product.php

@@ -238,25 +238,24 @@ MFTF tests are kept within its respective Module folder:
 ```
 
 <!-- Link Definitions -->
-[Magento definition of done]: {{ site.baseurl }}/contributor-guide/contributing_dod.html
-[Functional]: {{ site.baseurl }}/mftf/docs/introduction.html
+[Magento definition of done]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/definition-of-done/
 [Web API Functional]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing.html
-[Integration]: {{ page.baseurl }}/test/integration/integration_test_execution.html
-[performance toolkit]: {{ page.baseurl }}/config-guide/cli/config-cli-subcommands-perf-data.html
-[JavaScript]: {{ page.baseurl }}/test/js/jasmine.html
-[PhpCs]: {{ page.baseurl }}/coding-standards/code-standard-php.html
+[Integration]: integration/index.md
+[performance toolkit]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/generate-data.html
+[JavaScript]: js/index.md
+[PhpCs]: https://developer.adobe.com/commerce/php/coding-standards/php/
 [PhpMd]: https://phpmd.org/
-[Magento backward compatibility policy]: {{ site.baseurl }}/contributor-guide/backward-compatible-development/
+[Magento backward compatibility policy]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/backward-compatibility-policy/
 [Functional Testing Framework]: https://github.com/magento/mtf
-[Magento Functional Testing Framework]: {{ site.baseurl }}/mftf/docs/introduction.html
+[Magento Functional Testing Framework]: https://devdocs.magento.com/mftf/docs/introduction.html
 [Web API functional testing]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing.html
-[Running Integration Tests]: {{ page.baseurl }}/test/integration/integration_test_execution.html
-[Extension Developer Guide on JavaScript Tests]: {{ page.baseurl }}/test/js/jasmine.html
-[`magento dev:tests:run`]: {{ page.baseurl }}/config-guide/cli/config-cli-subcommands-test.html
+[Running Integration Tests]: integration/index.md
+[Extension Developer Guide on JavaScript Tests]: js/index.md
+[`magento dev:tests:run`]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/unit-tests.html
 [test-driven development]: https://en.wikipedia.org/wiki/Test-driven_development
-[Running Unit Tests]: {{ page.baseurl }}/test/unit/unit_test_execution.html
-[Writing testable code]: {{ page.baseurl }}/test/unit/writing_testable_code.html
-[System Administrators Guide on Running Tests]: {{ page.baseurl }}/config-guide/cli/config-cli-subcommands-test.html
+[Running Unit Tests]: unit/index.md
+[Writing testable code]: unit/writing-testable-code.md
+[System Administrators Guide on Running Tests]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/unit-tests.html
 [ported over]: https://github.com/magento/magento-functional-tests-migration
 [PHPStan]: https://github.com/phpstan/phpstan
 [level 1]: https://phpstan.org/user-guide/rule-levels

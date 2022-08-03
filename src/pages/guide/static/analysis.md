@@ -27,7 +27,7 @@ For all of the static configuration installations below involving the PHPStorm P
 
 <InlineAlert variant="info" />
 
-Javascript code analysis is done through [ESLint]({{site.baseurl}}/guides/v2.4/coding-standards/code-standard-javascript.html#eslint-code-analysis).
+Javascript code analysis is done through [ESLint](https://developer.adobe.com/commerce/php/coding-standards/js/#eslint-code-analysis).
 The ESLint rules are set up in `magento-coding-standard`, which is installed on Magento2 via `composer` since it's a development dependency.
 
 1. Go to PHPStorm preferences > Languages & Frameworks > JavaScript > Code Quality Tools > ESLint.
@@ -38,7 +38,7 @@ The ESLint rules are set up in `magento-coding-standard`, which is installed on 
 
 See the image below for example configuration:
 
-![ESLint]({{site.baseurl}}/common/images/static-eslint.png)
+![ESLint](../../_images/guide/static-eslint.png)
 
 To verify it works, in any JS file add `/** Hello world */` as a doc comment to any method, and you should see a warning about the comment being on one line.
 
@@ -57,7 +57,7 @@ To verify it works, in any JS file add `/** Hello world */` as a doc comment to 
 
 See the image below for example configuration:
 
-![PHPCS]({{site.baseurl}}/common/images/static-codesniff.png)
+![PHPCS](../../_images/guide/static-codesniff.png)
 
 To verify it works, add the following PHP snippet: `$base = basename($_SERVER['SCRIPT_FILENAME']);`.  You should see a warning that the use of `basename` is forbidden, as well as the use of _superglobals_.
 
@@ -71,6 +71,6 @@ To verify it works, add the following PHP snippet: `$base = basename($_SERVER['S
 
 See the image below for example configuration:
 
-![PHPMD]({{site.baseurl}}/common/images/static-md.png)
+![PHPMD](../../_images/guide/static-md.png)
 
 To verify it works, add an unused private method to a class, and you should see a warning from PHPMD about it not being used.

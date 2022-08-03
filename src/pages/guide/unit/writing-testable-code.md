@@ -289,15 +289,15 @@ Almost as a side effect, those classes are very easy to test.
 
 <!-- Link definitions -->
 [single-responsibility-principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
-[generated]: {{ page.baseurl }}/extension-dev-guide/code-generation.html
+[generated]: https://developer.adobe.com/commerce/php/development/components/code-generation/
 [Locator]: https://thephp.cc/news/2015/09/dependencies-in-disguise
-[integration-tests]: {{ page.baseurl }}/test/integration/integration_test_execution.html
+[integration-tests]: ../integration/index.md
 [PHP]: https://glossary.magento.com/php
-[constructor-injection]: {{ page.baseurl }}/extension-dev-guide/depend-inj.html#constructor-injection
-[IoInterface]: {{ site.mage2bloburl }}/{{ page.guide_version }}/lib/internal/Magento/Framework/Filesystem/Io/IoInterface.php
+[constructor-injection]: https://developer.adobe.com/commerce/php/development/components/dependency-injection/
+[IoInterface]: https://github.com/magento/magento2/blob/2.4/lib/internal/Magento/Framework/Filesystem/Io/IoInterface.php
 [DateTimeInterface]: https://www.php.net/manual/en/refs.calendar.php
-[RemoteAddress]: {{ site.mage2bloburl }}/{{ page.guide_version }}/lib/internal/Magento/Framework/HTTP/PhpEnvironment/RemoteAddress.php
-[Request]: {{ site.mage2bloburl }}/{{ page.guide_version }}/lib/internal/Magento/Framework/HTTP/PhpEnvironment/Request.php
+[RemoteAddress]: https://github.com/magento/magento2/blob/2.4/lib/internal/Magento/Framework/HTTP/PhpEnvironment/RemoteAddress.php
+[Request]: https://github.com/magento/magento2/blob/2.4/lib/internal/Magento/Framework/HTTP/PhpEnvironment/Request.php
 [Law-of-Demeter]: https://en.wikipedia.org/wiki/Law_of_Demeter
 [Kent-Beck]: https://en.wikipedia.org/wiki/Kent_Beck
 [BeckDesignRules]: https://martinfowler.com/bliki/BeckDesignRules.html

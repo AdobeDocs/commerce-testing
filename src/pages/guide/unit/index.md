@@ -15,7 +15,7 @@ They can be executed in several different ways.
 
 This option is useful for running the tests during Continuous Integration or on remote servers, or if no IDE with PHPUnit support is available. It only requires a minimum amount of setup.
 
-Please refer to [Running Unit Tests in the CLI]({{ page.baseurl }}/test/unit/unit_test_execution_cli.html) for further information.
+Please refer to [Running Unit Tests in the CLI](command-line.md) for further information.
 
 ### PhpStorm IDE
 
@@ -23,4 +23,4 @@ Running the tests inside an IDE like PhpStorm IDE is convenient for developers, 
 
 Other than convenience there is no benefit over running the tests on the console.
 
-Please refer to [Running Unit Tests in PhpStorm]({{ page.baseurl }}/test/unit/unit_test_execution_phpstorm.html) for further information.
+Please refer to [Running Unit Tests in PhpStorm](phpstorm.md) for further information.

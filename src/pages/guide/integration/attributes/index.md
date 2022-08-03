@@ -7,8 +7,8 @@ title: Using PHP built-in attributes
 
 <InlineAlert variant="info" />
 
-PHP built-in attributes are currently available to {{site.data.var.ce}} contributors only. They will be released for general use with {{site.data.var.ce}} 2.4.5.
-[PHPUnit annotations][] are still available for use with {{site.data.var.ce}}.
+PHP built-in attributes are currently available to Magento Open Source contributors only. They will be released for general use with Magento Open Source 2.4.5.
+[PHPUnit annotations][] are still available for use with Magento Open Source.
 
 ## Quick overview
 
@@ -48,14 +48,14 @@ This order is necessary to meet the requirement of setting up the store-scoped c
 
 <!-- LINK DEFINITIONS -->
 
-[PHPUnit annotations]: {{ page.baseurl }}/test/integration/annotations.html
+[PHPUnit annotations]: ../annotations/index.md
 [PHP built-in attributes]: https://www.php.net/manual/en/language.attributes.overview.php
-[AppIsolation]: {{ page.baseurl }}/test/integration/attributes/magento-app-isolation.html
-[Config]: {{ page.baseurl }}/test/integration/attributes/magento-config-fixture.html
-[DbIsolation]: {{ page.baseurl }}/test/integration/attributes/magento-db-isolation.html
-[DataFixture]: {{ page.baseurl }}/test/integration/attributes/magento-data-fixture.html
-[DataFixtureBeforeTransaction]: {{ page.baseurl }}/test/integration/attributes/magento-data-fixture-before-transaction.html
-[AppArea]: {{ page.baseurl }}/test/integration/attributes/magento-app-area.html
-[Cache]: {{ page.baseurl }}/test/integration/attributes/magento-cache.html
-[IndexerDimensionMode]: {{ page.baseurl }}/test/integration/attributes/magento-indexer-dimension-mode.html
-[ComponentsDir]: {{ page.baseurl }}/test/integration/attributes/magento-components-dir.html
+[AppIsolation]: app-isolation.md
+[Config]: config-fixture.md
+[DbIsolation]: db-isolation.md
+[DataFixture]: data-fixture.md
+[DataFixtureBeforeTransaction]: data-fixture-before-transaction.md
+[AppArea]: app-area.md
+[Cache]: cache.md
+[IndexerDimensionMode]: indexer-dimension-mode.md
+[ComponentsDir]: components-dir.md

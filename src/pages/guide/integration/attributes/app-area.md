@@ -122,4 +122,4 @@ class ClassToTest extends \PHPUnit\Framework\TestCase
 
 <!-- Link definitions -->
 
-[application area]: {{page.baseurl}}/architecture/archi_perspectives/components/modules/mod_and_areas.html
+[application area]: https://developer.adobe.com/commerce/php/architecture/modules/areas/
