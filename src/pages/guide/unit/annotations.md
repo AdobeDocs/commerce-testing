@@ -1,6 +1,6 @@
 ---
 title: DocBlock Annotations | Commerce Testing
-description: 
+description: Learn about Docblock annotation format for Adobe Commerce and Magento Open Source code.
 ---
 
 # DocBlock annotations

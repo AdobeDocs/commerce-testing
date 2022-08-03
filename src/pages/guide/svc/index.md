@@ -1,6 +1,6 @@
 ---
 title: Semantic Version Checker | Commerce Testing
-description: 
+description: Learn how to use the Semantic Version Checker tool to test your Adobe Commerce and Magento Open Source code.
 ---
 
 # Semantic Version Checker

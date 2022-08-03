@@ -1,6 +1,6 @@
 ---
 title: Cache attribute | Commerce Testing
-description: 
+description: Enable and disable caching in Adobe Commmerce and Magento Open Source test environments with this built-in PHP attribute.
 ---
 
 # Cache attribute

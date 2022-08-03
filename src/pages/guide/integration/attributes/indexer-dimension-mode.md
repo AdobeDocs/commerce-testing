@@ -1,6 +1,6 @@
 ---
 title: Indexer dimension mode | Commerce Testing
-description: 
+description: Set the Adobe Commmerce and Magento Open Source indexer mode for a test run with this built-in PHP attribute.
 ---
 
 # Indexer dimension mode

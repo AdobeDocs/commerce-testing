@@ -1,6 +1,6 @@
 ---
 title: Application Testing Guide Introduction | Commerce Testing
-description: 
+description: Learn about different testing strategies to ensure code quality for Adobe Commerce and Magento Open Source projects.
 ---
 
 # Application Testing Guide introduction

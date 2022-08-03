@@ -1,6 +1,6 @@
 ---
 title: Database isolation attribute | Commerce Testing
-description: 
+description: Isolate database changes between tests in Adobe Commmerce and Magento Open Source test environments with this built-in PHP attribute.
 ---
 
 # Database isolation attribute

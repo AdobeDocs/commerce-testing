@@ -1,6 +1,6 @@
 ---
 title: Static Tests | Commerce Testing
-description: 
+description: Learn how to do static testing on Adobe Commerce and Magento Open Source code.
 ---
 
 # Static tests

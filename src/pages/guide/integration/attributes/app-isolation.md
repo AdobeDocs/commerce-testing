@@ -1,6 +1,6 @@
 ---
 title: Application isolation attribute | Commerce Testing
-description: 
+description: Change application state in Adobe Commmerce and Magento Open Source test environments with this built-in PHP attribute.
 ---
 
 # Application isolation attribute

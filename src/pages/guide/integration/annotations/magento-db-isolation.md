@@ -1,11 +1,12 @@
 ---
 title: Database Isolation Annotation | Commerce Testing
-description: 
+description: Isolate database changes between tests in Adobe Commmerce and Magento Open Source test environments with this DocBlock annotation.
 ---
 
 # Database isolation annotation
 
 To isolate database changes between tests, the Integration testing framework (ITF) implements the `@magentoDbIsolation` annotation.
+
 When the `@magentoDbIsolation` is enabled, the ITF:
 
 -  starts a database transaction before the test/test case.

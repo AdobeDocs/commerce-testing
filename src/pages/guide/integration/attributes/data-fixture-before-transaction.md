@@ -1,6 +1,6 @@
 ---
 title: Data fixture before transaction attribute | Commerce Testing
-description: 
+description: Prepare Adobe Commmerce and Magento Open Source databases for testing with this built-in PHP attribute.
 ---
 
 # Data fixture before transaction attribute

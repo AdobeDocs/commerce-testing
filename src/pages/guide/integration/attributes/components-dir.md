@@ -1,6 +1,6 @@
 ---
 title: Component registration attribute | Commerce Testing
-description: 
+description: Register and deregister fixture components in Adobe Commmerce and Magento Open Source test environments with this built-in PHP attribute.
 ---
 
 # Component registration attribute

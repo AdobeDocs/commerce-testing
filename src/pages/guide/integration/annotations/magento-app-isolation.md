@@ -1,12 +1,12 @@
 ---
 title: Application Isolation Annotation | Commerce Testing
-description: 
+description: Change application state in Adobe Commmerce and Magento Open Source test environments with this DocBlock annotation.
 ---
 
-# Application isolaltion annotation
+# Application isolation annotation
 
-An application state can be changed during test execution.
-Such changes can cause a false test failure.
+An application state can be changed during test execution. Such changes can cause a false test failure.
+
 The integration testing framework keeps the tests isolated and provides optimal performance by default.
 Isolation is managed using the `@magentoAppIsolation` annotation.
 

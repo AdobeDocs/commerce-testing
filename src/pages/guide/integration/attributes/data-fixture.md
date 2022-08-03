@@ -1,14 +1,13 @@
 ---
 title: Data fixture attribute | Commerce Testing
-description: 
+description: Prepare Adobe Commmerce and Magento Open Source databases for testing with this built-in PHP attribute.
 ---
 
 # Data fixture attribute
 
 Data fixture attributes apply fixtures that implement `Magento\TestFramework\Fixture\DataFixtureInterface` or `Magento\TestFramework\Fixture\RevertibleDataFixtureInterface`.
 
-It takes two more optional parameters alongside the fixture class name.
-The second parameter is the data that is used to customize the fixture and the third parameter is the alias (ID) of the fixture that is used to retrieve the data returned by the fixture and also as a reference in other fixture parameters.
+It takes two more optional parameters alongside the fixture class name. The second parameter is the data that is used to customize the fixture and the third parameter is the alias (ID) of the fixture that is used to retrieve the data returned by the fixture and also as a reference in other fixture parameters.
 
 Use data fixtures to prepare a database for tests. The Integration Testing Framework (ITF) reverts the database to its initial state automatically.
 To set up a date fixture, use the `DataFixture` attribute.

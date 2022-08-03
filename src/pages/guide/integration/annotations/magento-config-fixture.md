@@ -1,6 +1,6 @@
 ---
 title: Configuration Fixture Annotation | Commerce Testing
-description: 
+description: Configure test values and revert them after test execution in Adobe Commmerce and Magento Open Source test environments with this DocBlock annotation.
 ---
 
 # Configuration fixture annotation

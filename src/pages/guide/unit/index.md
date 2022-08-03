@@ -1,6 +1,6 @@
 ---
 title: PHP Unit Testing | Commerce Testing
-description: 
+description: Learn how to do PHP unit testing for Adobe Commerce and Magento Open Source projects.
 contributor_name: Vinai Kopp
 contributor_link: https://vinaikopp.com/
 ---

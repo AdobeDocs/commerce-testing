@@ -1,6 +1,6 @@
 ---
 title: DocBlock Annotations | Commerce Testing
-description: 
+description: Declare context in your Adobe Commerce and Magento Open Source code with DocBlock annotations.
 ---
 
 # DocBlock annotations

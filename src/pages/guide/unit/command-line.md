@@ -1,6 +1,6 @@
 ---
 title: Command Line | Commerce Testing
-description: 
+description: Learn how to run PHP unit tests on Adobe Commerce and Magento Open Source code with the command-line interface.
 contributor_name: Vinai Kopp
 contributor_link: https://vinaikopp.com/
 functional_areas:

@@ -1,6 +1,6 @@
 ---
 title: Integration Testing | Commerce Testing
-description: 
+description: Learn how to run integration tests for Adobe Commerce and Magento Open Source code.
 contributor_name: Vinai Kopp
 contributor_link: https://vinaikopp.com/
 ---
