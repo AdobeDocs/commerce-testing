@@ -306,7 +306,3 @@ npm install
 [Install Node.js]: https://nodejs.org/en/
 
 [Learn more about testing with Jasmine.]: https://jasmine.github.io/edge/introduction.html
-
-<!-- Abbreviations -->
-
-*[FTF]: Functional Testing Framework
