@@ -7,11 +7,6 @@ description: Declare context in your Adobe Commerce and Magento Open Source code
 
 [PHP built-in attributes][] help to declare context in your code. Attributes can be used alone or together with Annotations to help to declare context in your code.
 
-<InlineAlert variant="info" slots="text" />
-
-PHP built-in attributes are currently available to Magento Open Source contributors only. They will be released for general use with Magento Open Source 2.4.5.
-[PHPUnit annotations][] are still available for use with Magento Open Source.
-
 ## Quick overview
 
 The following attributes are available in integration tests:
