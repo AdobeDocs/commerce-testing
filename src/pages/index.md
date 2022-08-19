@@ -35,11 +35,11 @@ Use these sections to learn about testing.
 
 Explore core code testing principles.
 
-<!-- <DiscoverBlock slots="link, text"/>
+<DiscoverBlock slots="link, text"/>
 
-[Functional Test Framework](functional-test-framework/)
+[Functional Acceptance Testing](functional-acceptance-testing/)
 
-Learn how to perform automated end-to-end testing. -->
+Learn how to perform automated end-to-end testing.
 
 <DiscoverBlock width="100%" slots="heading, text"/>
 
