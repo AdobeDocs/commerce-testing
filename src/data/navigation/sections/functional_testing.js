@@ -105,7 +105,7 @@ module.exports = [
       pages: [
         {
           title: "Parameterized selectors",
-          path: "/functional-testing-framework/section/paramterized-selectors/",
+          path: "/functional-testing-framework/section/parameterized-selectors/",
         },
         {
           title: "Locator functions",
@@ -189,12 +189,12 @@ module.exports = [
       title: "Versioning",
       path: "/functional-testing-framework/versioning/",
     },
-    {
-      title: "Contribution guidelines",
-      path: "https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md",
-    },
-    {
-      title: "Changelog",
-      path: "https://github.com/magento/magento2-functional-testing-framework/blob/master/CHANGELOG.md",
-    },
+    // {
+    //   title: "Contribution guidelines",
+    //   path: 'https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md',
+    // },
+    // {
+    //   title: "Changelog",
+    //   path: 'https://github.com/magento/magento2-functional-testing-framework/blob/master/CHANGELOG.md',
+    // },
   ];
