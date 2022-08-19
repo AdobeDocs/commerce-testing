@@ -274,7 +274,7 @@ Let's see how to handle data after you created a category with custom attributes
 
 The MFTF receives the corresponding JSON response and enables you to reference its data using a variable of format:
 
-__$** _stepKey_ **.** _JsonKey_ **$__
+__$__ _stepKey_ __.__ _JsonKey_ __$__
 
 Example:
 
@@ -284,7 +284,7 @@ $createPreReqCategory.id$
 
 And for a custom attribute:
 
-__$** _stepKey_  **.custom_attributes[** _attribute key_ **]$__
+__$__ _stepKey_  __.custom_attributes[ _attribute key_ ]__ __$__
 
 Example:
 

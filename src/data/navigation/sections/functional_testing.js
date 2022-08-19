@@ -191,10 +191,10 @@ module.exports = [
     },
     // {
     //   title: "Contribution guidelines",
-    //   path: 'https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md',
+    //   path: "https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md",
     // },
     // {
     //   title: "Changelog",
-    //   path: 'https://github.com/magento/magento2-functional-testing-framework/blob/master/CHANGELOG.md',
+    //   path: "https://github.com/magento/magento2-functional-testing-framework/blob/master/CHANGELOG.md",
     // },
   ];

@@ -137,7 +137,7 @@ Add the first parameter, that you would like to pass to the selector, inside of 
 </test>
 ```
 
-Add the second or third parameters, that you'd like to pass to the selector, separated by `, `:
+Add the second or third parameters, that you'd like to pass to the selector, separated by `,`:
 
 ```xml
 <test name="SampleTest">
