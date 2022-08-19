@@ -189,12 +189,18 @@ module.exports = [
       title: "Versioning",
       path: "/functional-testing-framework/versioning/",
     },
-    // {
-    //   title: "Contribution guidelines",
-    //   path: "https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md",
-    // },
-    // {
-    //   title: "Changelog",
-    //   path: "https://github.com/magento/magento2-functional-testing-framework/blob/master/CHANGELOG.md",
-    // },
+    {
+      title: "External resources",
+      path: "/functional-testing-framework/resources/",
+      pages: [
+        {
+          title: "Contribution guidelines",
+          path: "https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md",
+        },
+        {
+          title: "Changelog",
+          path: "https://github.com/magento/magento2-functional-testing-framework/blob/master/CHANGELOG.md",
+        },
+      ],
+    },
   ];
