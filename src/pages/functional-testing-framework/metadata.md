@@ -564,14 +564,9 @@ Example:
 [api reference]: https://devdocs.magento.com/guides/v2.3/get-started/bk-get-started-api.html
 [application/x-www-form-urlencoded]: https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1
 [catalogCategoryRepositoryV1 image]: ../_images/functional-testing/catalogCategoryRepository-operations.png
-
-
-
 [createData]: test/actions.md#createdata
-
 [deleteData]: test/actions.md#deletedata
 [entity]: data.md#entity
-
 [getData]: test/actions.md#getdata
 [HTML forms]: https://www.w3.org/TR/html401/interact/forms.html
 [oauth]: https://devdocs.magento.com/guides/v2.3/get-started/authentication/gs-authentication-oauth.html
