@@ -1,6 +1,6 @@
 ---
 title: Extending functional tests | Commerce Testing
-description:
+description: Create custom Functional Testing Framework tests for Adobe Commerce and Magento Open Source projects.
 ---
 
 # Extending

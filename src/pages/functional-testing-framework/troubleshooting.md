@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting functional tests | Commerce Testing
-description:
+description: Search common Functional Testing Framework errors and solutions that you may encounter when testing Adobe Commerce and Magento Open Source code.
 ---
 
 # Troubleshooting

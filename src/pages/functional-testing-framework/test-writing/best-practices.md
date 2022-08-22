@@ -1,6 +1,6 @@
 ---
 title: Test writing best practices | Commerce Testing
-description:
+description: Review Functional Testing Framework test writing best practices for Adobe Commerce and Magento Open Source projects.
 ---
 
 # Best practices

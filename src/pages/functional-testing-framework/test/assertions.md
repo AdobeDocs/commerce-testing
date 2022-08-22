@@ -1,11 +1,11 @@
 ---
 title: Assertions | Commerce Testing
-description:
+description: Learn about Functional Testing Framework assertions and how to define them for Adobe Commerce and Magento Open Source projects.
 ---
 
 # Assertions
 
-Assertions serve to pass or fail the [test](index.md#test) if a condition is not met. These asserti ons will look familiar to you if you've used any other testing framework, like PHPUnit.
+Assertions serve to pass or fail the [test](index.md#test) if a condition is not met. These assertions will look familiar to you if you've used any other testing framework, like PHPUnit.
 
 All assertions contain the same [common actions attributes](./actions.md#common-attributes): `stepKey`, `before`, and `after`.
 

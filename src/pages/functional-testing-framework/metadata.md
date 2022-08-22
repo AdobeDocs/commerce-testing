@@ -1,6 +1,6 @@
 ---
 title: Functional test metadata | Commerce Testing
-description:
+description: Use data handling actions for your Adobe Commerce and Magento Open Source tests using the Functional Testing Framework.
 ---
 
 # Metadata

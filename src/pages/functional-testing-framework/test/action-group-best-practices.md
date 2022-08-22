@@ -1,6 +1,6 @@
 ---
 title: Action group best practices | Commerce Testing
-description:
+description: Review best practices for using action groups to automate different Adobe Commerce and Magento Open Source test scenarios in the Functional Testing Framework.
 ---
 
 # Action Group Best Practices

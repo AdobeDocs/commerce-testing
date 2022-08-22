@@ -1,6 +1,6 @@
 ---
 title: Functional test suites | Commerce Testing
-description:
+description: Learn how to run groups of tests based on specific conditions for Adobe Commerce and Magento Open Source code using the Functional Testing Framework.
 ---
 
 # Suites

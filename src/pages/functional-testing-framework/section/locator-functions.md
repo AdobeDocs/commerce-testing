@@ -1,6 +1,6 @@
 ---
 title: Locator functions | Commerce Testing
-description:
+description: Learn how to use code locator functions in the Functional Testing Framework to test elements inside sections.
 ---
 
 # Locator functions

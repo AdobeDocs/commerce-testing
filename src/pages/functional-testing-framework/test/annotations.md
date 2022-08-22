@@ -1,6 +1,6 @@
 ---
 title: Annotations | Commerce Testing
-description:
+description: Learn about Functional Testing Framework annotations and how to define them for Adobe Commerce and Magento Open Source projects.
 ---
 
 # Annotations

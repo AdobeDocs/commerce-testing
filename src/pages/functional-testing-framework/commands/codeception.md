@@ -1,6 +1,6 @@
 ---
 title: Codecept CLI commands | Commerce Testing
-description:
+description: Learn about the bin/codecept command-line interface (CLI) tool for the Functional Testing Framework.
 ---
 
 # CLI commands: vendor/bin/codecept

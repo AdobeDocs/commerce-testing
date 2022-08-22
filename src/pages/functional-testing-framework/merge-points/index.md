@@ -1,6 +1,6 @@
 ---
 title: Merge points for testing extensions | Commerce Testing
-description:
+description: Learn how to avoid duplicating code when using the Functional Testing Framework to test Adobe Commerce and Magento Open Source projects.
 ---
 
 # Merge Points for testing extensions in MFTF

@@ -1,6 +1,6 @@
 ---
 title: Test isolation | Commerce Testing
-description:
+description: Learn how proper test isolation in the Functional Testing Framework supports highly customized and evolving Adobe Commerce and Magento Open Source projects.
 ---
 
 # Test Isolation

@@ -1,6 +1,6 @@
 ---
 title: Credentials | Commerce Testing
-description:
+description: Securely use credentials for external services when using the Functional Testing Framework on Adobe Commerce and Magento Open Source projects.
 ---
 
 # Credentials

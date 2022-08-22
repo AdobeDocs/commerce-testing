@@ -1,6 +1,6 @@
 ---
 title: Section structure | Commerce Testing
-description:
+description: Learn how to use sections in the Functional Testing Framework to define user interface elements on a page.
 ---
 
 # Section structure

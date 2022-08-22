@@ -1,6 +1,6 @@
 ---
 title: Action groups | Commerce Testing
-description:
+description: Learn how to group actions to automate different Adobe Commerce and Magento Open Source test scenarios in the Functional Testing Framework.
 ---
 
 # Action groups

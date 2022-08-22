@@ -1,6 +1,6 @@
 ---
 title: Functional test packaging | Commerce Testing
-description:
+description: Run Functional Testing Framework tests for Adobe Commerce and Magento Open Source code from predefined paths and custom paths.
 ---
 
 # MFTF functional test modules and packaging

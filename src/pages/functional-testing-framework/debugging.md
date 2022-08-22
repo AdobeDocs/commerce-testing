@@ -1,6 +1,6 @@
 ---
 title: Debugging funtional tests | Commerce Testing
-description:
+description: Use the Functional Testing Framework to identity test bugs on Adobe Commerce and Magento Open Source projects.
 ---
 
 

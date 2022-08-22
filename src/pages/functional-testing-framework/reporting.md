@@ -1,6 +1,6 @@
 ---
 title: Functional test reporting | Commerce Testing
-description:
+description: Create test reports for Adobe Commerce and Magento Open Source code using the Functional Testing Framework.
 ---
 
 # Reporting

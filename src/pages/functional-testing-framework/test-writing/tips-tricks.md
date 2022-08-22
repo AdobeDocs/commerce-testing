@@ -1,6 +1,6 @@
 ---
 title: Functional testing tips and tricks | Commerce Testing
-description:
+description: Review Functional Testing Framework tips and tricks for Adobe Commerce and Magento Open Source projects.
 ---
 
 # Tips and Tricks
