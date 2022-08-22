@@ -3,9 +3,9 @@ title: Functional test cases | Commerce Testing
 description:
 ---
 
-# Test
+# Test cases
 
-Test cases in the Magento Functional Testing Framework (MFTF) are defined in XML as [`<tests>`].
+Test cases in the Magento Functional Testing Framework (MFTF) are defined in XML as [`<tests>`](#tests).
 `<tests>` is a [Codeception test container][Codeception] that contains multiple individual tests with test metadata and before and after actions.
 
 MFTF `<tests>` is considered a sequence of actions with associated parameters.
@@ -19,7 +19,7 @@ The steps in `<after>` are run in both successful **and** failed test runs.
 
 The following diagram shows the structure of an MFTF test case:
 
-![Structure of MFTF test case](../_images/functional-testing/test-dia.svg)
+![Structure of MFTF test case](../../_images/functional-testing/test-dia.svg)
 
 ## Format
 
@@ -62,13 +62,13 @@ To simplify, we generate one `test.php` file per `<test>` tag provided, though w
 
 There are several XML elements that are used in `<tests>` in the MFTF.
 
-### tests {#tests-tag}
+### tests
 
 `<tests>` is a container for multiple tests. It is a group of test methods that define test flows within a test case.
 
-`<tests>` must contain at least one [`<test>`].
+`<tests>` must contain at least one [`<test>`](#test).
 
-### test {#test-tag}
+### test
 
 `<test>` is a set of steps, including [actions] and [assertions][assertion]. It is a sequence of test steps that define test flow within a test method.
 
@@ -81,35 +81,35 @@ Attribute|Type|Use|Description
 `deprecated`|string|optional|Used to warn about the future deprecation of the test. String will appear in Allure reports and console output at runtime.
 `extends`|string|optional|A name of the parent test to [extend].
 
-`<test>` may also contain [`<annotations>`], [`<before>`], [`<after>`], any [action][actions], or [`<actionGroup>`].
+`<test>` may also contain [`<annotations>`](#annotations), [`<before>`](#before), [`<after>`](#after), any [action][actions], or [`<actionGroup>`](#actiongroup).
 
-### annotations {#annotations-tag}
+### annotations
 
 [Annotations] are supported by both [Codeception] and [Allure].
 
 Codeception annotations typically provide metadata and are able to influence test selection.
 Allure annotations provide metadata for reporting.
 
-### before {#before-tag}
+### before
 
-`<before>` wraps the steps to perform before the [`<test>`].
+`<before>` wraps the steps to perform before the [`<test>`](#test).
 
 `<before>` may contain these child elements:
 
 *  Any [`<action>`][actions]
-*  [`<actionGroup>`]
+*  [`<actionGroup>`](#actiongroup)
 
-### after {#after-tag}
+### after
 
-`<after>` wraps the steps to perform after the [`<test>`].
+`<after>` wraps the steps to perform after the [`<test>`](#test).
 The steps are run in both successful **and** failed test runs.
 
 `<after>` may contain:
 
 *  Any [`<action>`][actions]
-*  [`<actionGroup>`]
+*  [`<actionGroup>`](#actiongroup)
 
-### actionGroup {#actiongroup-tag}
+### actionGroup
 
 `<actionGroup>` calls a corresponding [action group].
 
@@ -120,11 +120,11 @@ Attribute|Type|Use|Description
 `before`|string|optional| `<stepKey>` of an action or action group that must be executed next while merging.
 `after`|string|optional| `<stepKey>` of an action or action group that must be executed one step before the current one while merging.
 
-`<actionGroup>` may contain [`<argument>`].
+`<actionGroup>` may contain [`<argument>`](#argument).
 
-### argument {#argument-tag}
+### argument
 
-`<argument>` sets an argument that is used in the parent [`<actionGroup>`].
+`<argument>` sets an argument that is used in the parent [`<actionGroup>`](#actiongroup).
 
 Attribute|Type|Use
 ---|---|---
@@ -135,19 +135,12 @@ See [Action groups][action group] for more information.
 
 <!-- Link definitions -->
 
-[`<actionGroup>`]: #actiongroup-tag
-[`<after>`]: #after-tag
-[`<annotations>`]: #annotations-tag
-[`<argument>`]: #argument-tag
-[`<before>`]: #before-tag
-[`<test>`]: #test-tag
-[`<tests>`]: #tests-tag
-[action group]: ./test/action-groups.md
-[actions]: ./test/actions.md
+[action group]: action-groups.md
+[actions]: actions.md
 [Allure]: https://github.com/allure-framework/
-[Annotations]: ./test/annotations.md
-[assertion]: ./test/assertions.md
+[Annotations]: annotations.md
+[assertion]: assertions.md
 [Codeception]: https://codeception.com/docs/07-AdvancedUsage
-[extend]: extending.md
-[merging]: ./merging.md#insert-after
-[suites]: ./suite.md
+[extend]: ../extending.md
+[merging]: ../merging.md#update-a-test
+[suites]: ../suite.md

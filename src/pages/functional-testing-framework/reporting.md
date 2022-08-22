@@ -341,7 +341,7 @@ Refer to the [Reporting section][] for more Allure CLI details.
 
 <!-- Link definitions -->
 
-[`after`]: test.md#after-tag
+[`after`]: test/index.md#after
 [`run:group`]: commands/mftf.md#rungroup
 [`run:test`]: commands/mftf.md#runtest
 [Allure Framework]: https://docs.qameta.io/allure/

@@ -43,6 +43,6 @@ Takes place when **second** digit of version number changes.
 [Changelog]: https://github.com/magento/magento2-functional-testing-framework/blob/master/CHANGELOG.md
 [WYSIWYG settings]: getting-started.md#wysiwyg-settings
 [Security settings]: getting-started.md#security-settings
-[Find your version]: introduction.md#find-your-mftf-version
+[Find your version]: index.md#find-your-mftf-version
 [Versioning]: versioning.md#versioning-policy
 [Patch Version Update]: #patch-version-update

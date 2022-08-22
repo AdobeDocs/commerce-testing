@@ -576,9 +576,9 @@ The `_defaultSample` results corresponds to:
 [`codecept`]: ./commands/codeception.md
 [`mftf`]: ./commands/mftf.md
 [`<data>`]: ./data.md
-[elements]: ./section.md#element-tag
+[elements]: section/index.md#element
 [`<pages>`]: ./page.md
-[`<sections>`]: ./section.md
-[`<tests>`]: ./test.md
+[`<sections>`]: section/index.md
+[`<tests>`]: test/index.md
 [`<action groups>`]: test/action-groups.md
 [mftfExtendingPrecedence image]: ../_images/functional-testing/mftf-extending-precedence.png

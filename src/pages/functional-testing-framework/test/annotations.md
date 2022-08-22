@@ -232,6 +232,6 @@ Attribute|Type|Use
 [severity]: #severity
 [stories]: #stories
 [suite]: ../suite.md
-[tests]: ../test.md
+[tests]: index.md
 [title]: #title
 [skip]: #skip

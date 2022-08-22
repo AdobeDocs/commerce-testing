@@ -27,7 +27,7 @@ This step can be referenced within the test using `conditionalClickStep1`.
 
 The value format should met the following principles:
 
-*  Must be unique within [`<test>`](../test.md#test-tag).
+*  Must be unique within [`<test>`](index.md#test).
 *  Naming should be as descriptive as possible:
    *  Describe the action performed.
    *  Briefly describe the purpose.
@@ -59,10 +59,10 @@ Example with `after`:
 
 The following example contains four actions:
 
-1. [Open the Sign In page for a Customer](#example-step1).
-2. [Enter a customer's email](#example-step2).
-3. [Enter a customer's password](#example-step3).
-4. [Click the Sign In button](#example-step4).
+1. [Open the Sign In page for a Customer](#1-open-the-sign-in-page-for-a-customer).
+2. [Enter a customer's email](#2-enter-a-customers-email).
+3. [Enter a customer's password](#3-enter-a-customers-password).
+4. [Click the Sign In button](#4-click-the-sign-in-button).
 
     ```xml
     <amOnPage url="{{StorefrontCustomerSignInPage.url}}" stepKey="amOnSignInPage"/>
@@ -163,7 +163,7 @@ The following test actions handle data entities using [metadata](../metadata.md)
 *  [updateData](#updatedata)
 *  [getData](#getdata)
 
-Learn more in [Handling a REST API response](../metadata.md#rest-response).
+Learn more in [Handling a REST API response](../metadata.md#handling-a-rest-api-response).
 
 ## Actions specifying HTML values
 
@@ -596,7 +596,7 @@ Attribute|Type|Use|Description
 
 #### Examples
 
-Delete the entity that was previously created using [`createData`](#createdata) in the scope of the [test](../test.md#test-tag).
+Delete the entity that was previously created using [`createData`](#createdata) in the scope of the [test](index.md#test).
 
 1. Create _SampleCategory_:
 

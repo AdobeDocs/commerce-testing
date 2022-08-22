@@ -63,7 +63,7 @@ The format of a suite:
 Using suites enables test writers to consolidate conditions that are shared between tests.
 The code lives in one place and executes once per suite.
 
--  Set up preconditions and postconditions using [actions] in [`<before>`] and [`<after>`] correspondingly, just similar to use in a [test].
+-  Set up preconditions and postconditions using [actions](test/actions.md) in [`<before>`](#before) and [`<after>`](#after) correspondingly, just similar to use in a [test](#test).
 -  Clean up after suites just like after tests.
   The MFTF enforces the presence of both `<before>` and `<after>` if either is present.
 
@@ -93,7 +93,7 @@ There are several ways to generate and execute your new test in the context of a
   vendor/bin/mftf generate:suite <suite>
   ```
 
--  To generate any combination of suites and tests, use [`generate:tests`] with the `--tests` flag.
+-  To generate any combination of suites and tests, use [`generate:tests`](commands/mftf.md#generatetests) with the `--tests` flag.
 
 ## Examples
 
@@ -216,7 +216,7 @@ It can contain `<before>`, `<after>`, `<include>`, and `<exclude>`.
 
 A suite hook with preconditions that executes once before the suite tests.
 
-It may contain test steps with any [actions] and [action groups].
+It may contain test steps with any [actions](test/actions.md) and [action groups](test/action-groups.md).
 
 <InlineAlert variant="info" slots="text"/>
 
@@ -227,7 +227,7 @@ To troubleshoot the failure, run the suite locally.
 
 A suite hook with postconditions executed once after the suite tests.
 
-It may contain test steps with any [actions] and [action groups].
+It may contain test steps with any [actions](test/actions.md) and [action groups](test/action-groups.md).
 
 ### include
 
@@ -239,7 +239,7 @@ It may contain filters by:
 -  group which refers to a declared `group` annotation.
 -  module which refers to `test` files under a specific Magento Module.
 
-The element can contain [`<test>`], [`<group>`], and [`<module>`].
+The element can contain [`<test>`](#test), [`<group>`](#group), and [`<module>`](#module).
 
 ### exclude
 
@@ -247,9 +247,9 @@ A set of filters that you can use to specify which tests to exclude in the test 
 
 There are two types of behavior:
 
-1. Applying filters to the included tests when the suite contains [`<include>`] filters.
+1. Applying filters to the included tests when the suite contains [`<include>`](#include) filters.
    The MFTF will exclude tests from the previously included set and generate the remaining tests in the suite.
-2. Applying filters to all tests when the suite does not contain [`<include>`] filters.
+2. Applying filters to all tests when the suite does not contain [`<include>`](#include) filters.
    The MFTF will generate all existing tests except the excluded.
    In this case, the custom suite will contain all generated tests except excluded, and the _default_ suite will contain the excluded tests only.
 
@@ -259,7 +259,7 @@ It may contain filters by:
 -  group which refers to a declared `group` annotation.
 -  module which refers to `test` files under a specific Magento Module.
 
-The element may contain [`<test>`], [`<group>`], and [`<module>`].
+The element may contain [`<test>`](#test), [`<group>`](#group), and [`<module>`](#module).
 
 ### test
 
@@ -282,15 +282,3 @@ Attributes|Type|Use|Description
 `name`|string|required|Filtering tests by their location in the corresponding module.
 `file`|string|optional|Filtering a specific test file in the module.
 `remove`|boolean|optional|Removing the filter during merging.
-
-<!-- Link definitions -->
-[actions]: test/actions.md
-[action groups]: test/action-groups.md
-[`<after>`]: #after-tag
-[`<before>`]: #before-tag
-[`generate:tests`]: commands/mftf.md#generatetests
-[test]: test.md
-[`<test>`]: #test-tag
-[`<group>`]: #group-tag
-[`<module>`]: #module-tag
-[`<include>`]: #include-tag

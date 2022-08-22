@@ -9,9 +9,9 @@ In this topic we talk about handling entities that you need in your tests (such 
 Using data handling actions like [`createData`][createData], [`createData`][createData], [`updateData`][updateData], and [`getData`][getData], you are able to create, delete, update, and read entities for your tests.
 The framework enables you to send HTTP requests with these statically defined data entities:
 
--  [Sending a REST API request][rest request]
--  [Handling a REST API response][rest response]
--  [Sending an HTML form encoded in URL][html form]
+-  [Sending a REST API request](#sending-a-rest-api-request)
+-  [Handling a REST API response](#handling-a-rest-api-response)
+-  [Sending an HTML form encoded in URL](#handling-entities-using-html-forms)
 
 You have probably noticed that some modules in acceptance functional tests contain a directory, which is called `Metadata`.
 
@@ -580,11 +580,8 @@ Example:
 {:target="\_blank"}
 [operation]: #operation-tag
 [reference]: #reference
-[rest request]: #handling-with-api
-[html form]: #using-html-forms
 [update category data by its ID]: #update-object-as-adminOauth
 [updateData]: test/actions.md#updatedata
-[rest response]: #rest-response
 
 *[CRUD]: Create Read Update Delete
 *[MFTF]: Magento Functional Testing Framework

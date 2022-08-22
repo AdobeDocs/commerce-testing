@@ -33,7 +33,7 @@ Consult [when to use Extends][] to use extends when deciding whether to merge or
 - [Extend Tests][]
 
 <!-- Link definitions -->
-[when to use Extends]: ../best-practices.md#when-to-use-extends
+[when to use Extends]: ../test-writing/best-practices.md#when-to-use-extends
 [Merge Action Groups]: merge-action-groups.md
 [Merge Data]: merge-data.md
 [Merge Pages]: merge-pages.md

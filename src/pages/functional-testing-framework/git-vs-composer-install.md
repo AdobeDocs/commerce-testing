@@ -81,5 +81,5 @@ If you are a contributing developer with an understanding of Git and Composer co
 
 [Composer based Installation]: https://devdocs.magento.com/guides/v2.3/install-gde/composer.html
 [GitHub Installation]: https://devdocs.magento.com/guides/v2.3/install-gde/prereq/dev_install.html
-[Standalone]: ../getting-started.html#set-up-a-standalone-mftf
+[Standalone]: getting-started.md#set-up-a-standalone-mftf
 [composer package]: https://devdocs.magento.com/guides/v2.3/extension-dev-guide/package/package_module.html

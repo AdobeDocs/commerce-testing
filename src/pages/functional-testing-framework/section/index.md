@@ -5,7 +5,7 @@ description:
 
 # Section structure
 
-A `<section>` is a reusable part of a [`<page>`](./page.html) and is the standard file for defining UI elements on a page used in a test.
+A `<section>` is a reusable part of a [`<page>`](../page.md) and is the standard file for defining UI elements on a page used in a test.
 
 A `<section>` can define:
 
@@ -24,7 +24,7 @@ Substitutable values in the test can be of the following formats:
 
 The following diagram shows the XML structure of an MFTF section:
 
-![XML Structure of MFTF section](../_images/functional-testing/section-dia.svg)
+![XML Structure of MFTF section](../../_images/functional-testing/section-dia.svg)
 
 ## Format
 
@@ -141,15 +141,15 @@ Whenever the `signIn` button is used in a test, the MFTF will add a 30 second `w
 
 <!-- Link definitions -->
 
-[waitForPageLoad]: test/actions.html#waitforpageload
-[data entity]: ./data.html
-[test]: ./test.html#test-tag
-[`<createData>`]: ./test/actions.html#createdata
-[before]: ./test.html#before-tag
-[after]: ./test.html#after-tag
-[page]: ./page.html
-[action]: ./test/actions.html
+[waitForPageLoad]: ../test/actions.md#waitforpageload
+[data entity]: ../data.md
+[test]: ../test/index.md#test
+[`<createData>`]: ../test/actions.md#createdata
+[before]: ../test/index.md#before
+[after]: ../test/index.md#after
+[page]: ../page.md
+[action]: ../test/actions.md
 [XPath]: https://www.w3schools.com/xml/xpath_nodes.asp
 [CSS]: https://www.w3schools.com/cssref/css_selectors.asp
-[Locator function]: ./section/locator-functions.html
-[Parameterized selectors]: ./section/parameterized-selectors.html
+[Locator function]: locator-functions.md
+[Parameterized selectors]: parameterized-selectors.md

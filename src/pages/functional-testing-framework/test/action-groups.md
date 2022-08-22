@@ -134,7 +134,7 @@ Instead of adding this set of actions, use the _LoginAsAdminActionGroup_ `<actio
 
 ## Data type usage
 
-By default, an [`argument`][] expects an entire `entity` when the `type` value is not defined.
+By default, an [`argument`](#argument) expects an entire `entity` when the `type` value is not defined.
 There are cases when you use a string instead of a whole entity.
 
 For example, the following defines the replacement argument `relevantString` using a primitive data type:
@@ -281,7 +281,6 @@ Attribute|Type|Use|Description
 `type`|Possible values: `string`, `entity` (default).|optional|Defines the argument data type; Defaults to `entity`.
 
 <!-- Link Definitions -->
-[actions]: ./actions.md
-[test]: ../test.md
-[`argument`]: #argument-tag
-[created]: ../data.md#persist-data
+[actions]: actions.md
+[test]: index.md
+[created]: ../data.md#persist-a-data-entity-as-a-prerequisite-of-a-test

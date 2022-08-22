@@ -37,7 +37,7 @@ Explore core code testing principles.
 
 <DiscoverBlock slots="link, text"/>
 
-[Functional Testing Framework](functional-acceptance-testing/)
+[Functional Testing Framework](functional-testing-framework/)
 
 Learn how to perform automated end-to-end testing.
 
