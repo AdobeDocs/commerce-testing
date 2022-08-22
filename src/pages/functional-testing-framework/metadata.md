@@ -31,7 +31,7 @@ A metadata file contains a list of operations with different types (defined in `
 Each [operation] includes:
 
 -  The set of adjustments for processing a request in [attributes][operation], and in some cases, a response  (see `successRegex`, `returnRegex` and `returnIndex` in [reference details][operation]).
--  The type of body content encoding in [contentType].
+-  The type of body content encoding in [contentType](#contenttype).
 -  The body of the request represented as a tree of objects, arrays, and fields.
 
 When a test step requires handling the specified data entity, the MFTF performs the following steps:
@@ -115,7 +115,7 @@ The above screenshot from the [Magento REST API Reference][api reference] demons
 
 -  Delete a category by its identifier (`method="DELETE"`)
 -  Get information about a category by its ID (`method="GET"`)
--  [Create a new category] (`method="POST"`)
+-  [Create a new category](#create-an-object-in-admin) (`method="POST"`)
 -  Update category data by its ID (`method="PUT"`)
 
 We assume that our `.env` file sets `MAGENTO_BASE_URL=https://example.com/` and `MAGENTO_BACKEND_NAME=admin`.
@@ -564,18 +564,17 @@ Example:
 [api reference]: https://devdocs.magento.com/guides/v2.3/get-started/bk-get-started-api.html
 [application/x-www-form-urlencoded]: https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1
 [catalogCategoryRepositoryV1 image]: ../_images/functional-testing/catalogCategoryRepository-operations.png
-[catalogCategoryRepositoryV1SavePostBody]: #catalogCategoryRepositoryV1SavePostBody
-[contentType]: #contentType-tag
-[Create a new category]: #create-object-as-adminOauth
+
+
+
 [createData]: test/actions.md#createdata
-[delete a category by its ID]: #delete-object-as-adminOauth
+
 [deleteData]: test/actions.md#deletedata
-[entity]: data.md#entity-tag
-[get information about a category by its ID]: #get-object-as-adminOauth
+[entity]: data.md#entity
+
 [getData]: test/actions.md#getdata
 [HTML forms]: https://www.w3.org/TR/html401/interact/forms.html
 [oauth]: https://devdocs.magento.com/guides/v2.3/get-started/authentication/gs-authentication-oauth.html
-[operation]: #operation-tag
+[operation]: #operation
 [reference]: #reference
-[update category data by its ID]: #update-object-as-adminOauth
 [updateData]: test/actions.md#updatedata
