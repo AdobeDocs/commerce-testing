@@ -236,12 +236,12 @@ Attribute|Type|Use|Description
 
 #### Example
 
-Pre-condition: the current base URL is `https://www.magento.com`.
+Pre-condition: the current base URL is `https://www.adobe.com`.
 
 ```xml
-<!-- Change the sub-domain to `https://devdocs.magento.com`. -->
-<amOnSubdomain url="devdocs" stepKey="changeSubdomain"/>
-<!-- Open the page `https://devdocs.magento.com` -->
+<!-- Change the sub-domain to `https://developer.adobe.com`. -->
+<amOnSubdomain url="developer" stepKey="changeSubdomain"/>
+<!-- Open the page `https://developer.adobe.com` -->
 <amOnPage url="/" stepKey="goToDataPage"/>
 ```
 
@@ -612,7 +612,7 @@ Delete the entity that was previously created using [`createData`](#createdata) 
 
 #### Example of existing data deletion
 
-Delete an entity using [REST API](https://devdocs.magento.com/redoc/2.3/) request to the corresponding route:
+Delete an entity using [REST API](https://developer.adobe.com/commerce/webapi/rest/) request to the corresponding route:
 
 ```xml
 <grabFromCurrentUrl regex="/^.+id\/([\d]+)/" stepKey="grabId"/>

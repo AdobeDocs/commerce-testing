@@ -405,8 +405,8 @@ A well written test will end up being a set of action groups.
 The finished test is fully abstracted in such a way that it is short and readable and importantly, the abstracted data and action groups can be used again.
 
 <!-- Link Definitions -->
-[actions]: https://devdocs.magento.com/mftf/docs/test/actions.html
-[action groups]: https://devdocs.magento.com/mftf/docs/test/action-groups.html
-[Data entities]: https://devdocs.magento.com/mftf/docs/data.html
-[Input testing data]: https://devdocs.magento.com/mftf/docs/data.html
-[parameterized selectors]: https://devdocs.magento.com/mftf/docs/section/parameterized-selectors.html
+[actions]: ../test/actions.md
+[action groups]: ../test/action-groups.md
+[Data entities]: ../data.md
+[Input testing data]: ../data.md
+[parameterized selectors]: ../section/parameterized-selectors.md
