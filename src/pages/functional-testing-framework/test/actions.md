@@ -145,12 +145,15 @@ The following test actions return a variable:
 
 *  [grabAttributeFrom](#grabattributefrom)
 *  [grabCookie](#grabcookie)
+*  [grabCookieAttributes](#grabcookieattributes)
 *  [grabFromCurrentUrl](#grabfromcurrenturl)
 *  [grabMultiple](#grabmultiple)
 *  [grabPageSource](#grabpagesource)
 *  [grabTextFrom](#grabtextfrom)
 *  [grabValueFrom](#grabvaluefrom)
 *  [executeJS](#executejs)
+*  [getOTP](#getotp)
+*  [return](#return)
 
 Learn more in [Using data returned by test actions](../data.md#use-data-returned-by-test-actions).
 
@@ -1070,6 +1073,25 @@ The `ProductAttributeOptionGetter` entity must be defined in the corresponding [
 
 This action can optionally contain one or more [requiredEntity](#requiredentity) child elements.
 
+### getOTP
+
+Generate a one-time password (OTP) based on a saved `secret` at path `magento/tfa/OTP_SHARED_SECRET` in a MFTF credential storage.
+The one-time password (OTP) is returned and accessible through the stepkey.
+
+MFTF use TOTP from [Spomky-Labs/otphp](https://github.com/Spomky-Labs/otphp), if you want to learn more about this action.
+
+Attribute|Type|Use|Description
+---|---|---|---
+`stepKey`|string|required| A unique identifier of the action.
+`before`|string|optional| `stepKey` of action that must be executed next.
+`after`|string|optional| `stepKey` of preceding action.
+
+#### Example
+
+```xml
+<getOTP stepKey="getOtp"/>
+```
+
 ### grabAttributeFrom
 
 See [grabAttributeFrom docs on codeception.com](http://codeception.com/docs/modules/WebDriver#grabAttributeFrom).
@@ -1114,6 +1136,34 @@ To access this value, use `{$grabCookie1}` in later actions. -->
 <!-- Grab the cookie with the given name `cookie1` from the domain `www.example.com`.
 To access this value, use `{$grabCookieExampleDomain}` in later actions. -->
 <grabCookie userInput="cookie1" parameterArray="['domainName' => '.example.com']" stepKey="grabCookieExampleDomain"/>
+```
+
+### grabCookieAttributes
+
+See [grabCookieAttributes docs on codeception.com](https://codeception.com/docs/modules/WebDriver#grabCookieAttributes).
+
+Attribute|Type|Use|Description
+---|---|---|---
+`userInput`|string|optional| Name of the cookie to grab.
+`parameterArray`|string|optional| Array of cookie parameters to grab.
+`stepKey`|string|required| A unique identifier of the action.
+`before`|string|optional| `stepKey` of action that must be executed next.
+`after`|string|optional| `stepKey` of preceding action.
+
+#### Examples
+
+```xml
+<!-- Grab the cookie attributes with the given name `cookie1`.
+To access these values, use `{$grabCookie1}` in later actions. -->
+<grabCookieAttributes userInput="cookie1" stepKey="grabCookie1"/>
+```
+
+```xml
+<!-- Grab the cookie attributes with the given name `cookie1` from the domain `www.example.com`.
+To access these values, use `{$grabCookieExampleDomain}` in later actions.
+To access expiry date, use  `{$grabCookieExampleDomain.expiry}` in later actions.
+-->
+<grabCookieAttributes userInput="cookie1" parameterArray="['domainName' => '.example.com']" stepKey="grabCookieExampleDomain"/>
 ```
 
 ### grabFromCurrentUrl
@@ -1216,6 +1266,22 @@ Attribute|Type|Use|Description
 <!-- Store the value currently entered in <input id="name" ... >...</input>.
 To access this value, use `{$grabInputName}` in later actions. -->
 <grabValueFrom selector="input#name" stepKey="grabInputName"/>
+```
+
+### return
+
+Specifies what value is returned by an action group. The value can be then accessed in later steps using the action group stepKey. See [Action groups returning a value](action-groups.md) for usage information.
+
+Attribute|Type|Use|Description
+---|---|---|---
+`value`|string|required| value returned by action group.
+`stepKey`|string|required| A unique identifier of the action.
+
+#### Example
+
+```xml
+<!-- Returns value of $grabInputName to the calling -->
+<return value="{$grabInputName}" stepKey="returnInputName"/>
 ```
 
 ### loadSessionSnapshot

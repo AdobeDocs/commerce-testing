@@ -12,8 +12,16 @@ module.exports = [
       path: "/functional-testing-framework/configuration/",
     },
     {
+      title: "Two-factor authentication",
+      path: "/functional-testing-framework/two-factor-authentication/",
+    },
+    {
       title: "Credentials",
       path: "/functional-testing-framework/credentials/",
+    },
+    {
+      title: "Custom helpers",
+      path: "/functional-testing-framework/custom-helpers/",
     },
     {
       title: "Data",
@@ -30,6 +38,14 @@ module.exports = [
     {
       title: "Git vs. Composer installation",
       path: "/functional-testing-framework/git-vs-composer-install/",
+    },
+    {
+      title: "How to use MFTF in CI/CD",
+      path: "/functional-testing-framework/cicd/",
+    },
+    {
+      title: "Interactive pause",
+      path: "/functional-testing-framework/cicd/",
     },
     {
       title: "Merge points for extensions",
@@ -188,6 +204,10 @@ module.exports = [
     {
       title: "Versioning",
       path: "/functional-testing-framework/versioning/",
+    },
+    {
+      title: "Backward incompatible chnages in tests",
+      path: "/functional-testing-framework/backward-incompatible-changes/",
     },
     {
       title: "External resources",
