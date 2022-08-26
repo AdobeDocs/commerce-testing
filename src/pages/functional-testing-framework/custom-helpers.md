@@ -1,6 +1,6 @@
 # Custom Helpers
 
-<InlineAlert variant="warning">
+<InlineAlert variant="warning" slots="text"/>
 
 Due to complexity, you should only write new custom helpers as a last resort, after trying to implement your test using built-in actions.
 

@@ -38,9 +38,9 @@ vendor/bin/mftf run:failed
 Here is a typical work flow for this use case:
 
 - Set `ENABLE_PAUSE` to `true` under `.env`
-- Add <pause> action in a test where you want to pause execution for debugging
+- Add  `<pause>` action in a test where you want to pause execution for debugging
 - Run test
-- Execution should pause at <pause> action and invoke interactive console
+- Execution should pause at `<pause>` action and invoke interactive console
 - Try out commands in interactive console
 - Resume test execution by pressing `ENTER`
 
@@ -63,7 +63,7 @@ You do not need to set `ENABLE_PAUSE` to `true` for this command if you don't wa
 vendor/bin/mftf codecept:run --debug
 ```
 
-<InlineAlert variant="warning">
+<InlineAlert variant="warning" slots="text"/>
 
 The MFTF command "--debug" option has a different meaning than the Codeception command "--debug" mode option.
 
