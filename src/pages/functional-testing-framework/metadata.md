@@ -9,9 +9,9 @@ In this topic we talk about handling entities that you need in your tests (such 
 Using data handling actions like [`createData`], [`deleteData`], [`updateData`], and [`getData`], you are able to create, delete, update, and read entities for your tests.
 The framework enables you to send HTTP requests with these statically defined data entities:
 
--  [Sending a REST API request][rest request]
--  [Handling a REST API response][rest response]
--  [Sending an HTML form encoded in URL][html form]
+-  [Sending a REST API request](#sending-a-rest-api-request)
+-  [Handling a REST API response](#handling-a-rest-api-response)
+-  [Sending an HTML form encoded in URL](#handling-entities-using-html-forms)
 
 You have probably noticed that some modules in acceptance functional tests contain a directory, which is called `Metadata`.
 
@@ -28,10 +28,10 @@ Wishlist
 
 This directory contains XML files with metadata required to create a valid request to handle an entity defined in `dataType`.
 A metadata file contains a list of operations with different types (defined in `type`).
-Each [operation] includes:
+Each [operation](#operation) includes:
 
--  The set of adjustments for processing a request in [attributes][operation], and in some cases, a response  (see `successRegex`, `returnRegex` and `returnIndex` in [reference details][operation]).
--  The type of body content encoding in [contentType].
+-  The set of adjustments for processing a request in [attributes](#operations), and in some cases, a response  (see `successRegex`, `returnRegex` and `returnIndex` in [reference details](#operations)).
+-  The type of body content encoding in [contentType](#contenttype).
 -  The body of the request represented as a tree of objects, arrays, and fields.
 
 When a test step requires handling the specified data entity, MFTF performs the following steps:
@@ -100,7 +100,7 @@ Example:
 ### Sending a REST API request
 
 MFTF allows you to handle basic CRUD operations with an object using [Magento REST API][api reference] requests.
-To convert a request to MFTF format, wrap the corresponding REST API request into XML tags according to the [Reference documentation][reference].
+To convert a request to MFTF format, wrap the corresponding REST API request into XML tags according to the [Reference documentation](#reference).
 
 -  GET is used for retrieving data from objects.
 -  POST is used for creating new objects.
@@ -115,7 +115,7 @@ The above screenshot from the [Magento REST API Reference][api reference] demons
 
 -  Delete a category by its identifier (`method="DELETE"`)
 -  Get information about a category by its ID (`method="GET"`)
--  [Create a new category] (`method="POST"`)
+-  [Create a new category](#create-an-object-in-admin) (`method="POST"`)
 -  Update category data by its ID (`method="PUT"`)
 
 We assume that our `.env` file sets `MAGENTO_BASE_URL=https://example.com/` and `MAGENTO_BACKEND_NAME=admin`.
@@ -185,7 +185,7 @@ The following is encoded in `<operation>`:
 `<contentType>application/json</contentType>` defines a content type of the REST API request, which is set as `application/json` here.
 
 The parameter that declares a body of the request is _catalogCategoryRepositoryV1SavePostBody_.
-Using the [Reference], we can trace how the JSON request was converted into XML representation.
+Using the [Reference](#reference), we can trace how the JSON request was converted into XML representation.
 
 <InlineAlert variant="info" slots="text" />
 
@@ -565,22 +565,11 @@ Example:
 [actions]: test/actions.md
 [api reference]: https://devdocs.magento.com/guides/v2.4/get-started/bk-get-started-api.html
 [application/x-www-form-urlencoded]: https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1
-[catalogCategoryRepositoryV1 image]: img/catalogCategoryRepository-operations.png
-[catalogCategoryRepositoryV1SavePostBody]: #catalogCategoryRepositoryV1SavePostBody
-[contentType]: #contentType-tag
-[Create a new category]: #create-object-as-adminOauth
+[catalogCategoryRepositoryV1 image]: ../_images/functional-testing/catalogCategoryRepository-operations.png
 [createData]: test/actions.md#createdata
-[delete a category by its ID]: #delete-object-as-adminOauth
 [deleteData]: test/actions.md#deletedata
-[entity]: data.md#entity-tag
-[get information about a category by its ID]: #get-object-as-adminOauth
+[entity]: data.md#entity
 [getData]: test/actions.md#getdata
 [HTML forms]: https://www.w3.org/TR/html401/interact/forms.html
 [oauth]: https://devdocs.magento.com/guides/v2.4/get-started/authentication/gs-authentication-oauth.html
-[operation]: #operation-tag
-[reference]: #reference
-[rest request]: #handling-with-api
-[html form]: #using-html-forms
-[update category data by its ID]: #update-object-as-adminOauth
 [updateData]: test/actions.md#updatedata
-[rest response]: #rest-response
