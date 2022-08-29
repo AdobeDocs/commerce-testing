@@ -75,13 +75,13 @@ For the parameterized part of the selector, add `{{var1}}, {{var2}}, ..., {{varN
 </section>
 ```
 
-<InlineAlert variant="info" slots="text"/>
+<InlineAlert variant="info" slots="text" />
 
 There is no need to use sequential variables like `{{var1}}`, `{{var2}}`. Parameterized replacement reads variables and maps them to the test call of the element sequentially from left to right, meaning you can use a selector like `#element .{{categoryId}} .{{productId}}`."
 
 ## Use a parameterized selector in a test
 
-Create a new [test][]:
+Create a new [test](../test/index.md):
 
 ```xml
 <test name="SampleTest">
@@ -151,6 +151,3 @@ Any data can be used in parameterized elements, as well as entered in test actio
 * `'StringLiteral'` is a literal.
 * `$createDataKey.id$` is a reference to persisted data created in the `SampleTest1` within the `stepKey="createDataKey"` action.
 * `{$variable}` is a reference to data returned by a test action, like `<grabValueFrom>`.
-
-<!-- Link Definitions -->
-[test]: ../test/index.md

@@ -22,6 +22,8 @@ In the bad example we see two parameters being passed into the selector with lit
 Good
 </span>
 
+<!-- {% raw %} -->
+
 ```xml
 <test>
     <actionGroup ref="VerifyOptionInProductStorefront" stepKey="verifyConfigurableOption" after="AssertProductInStorefrontProductPage">
@@ -354,7 +356,7 @@ BAD:
 
 If you need to run a command such as  `<magentoCLI command="config:set" />`, do not hardcode paths and values to the command.
 Rather, create an appropriate `ConfigData.xml` file, which contains the required parameters for running the command.
-It will simplify the future maintenance of tests.
+It will simplify the future maintanence of tests.
 
  <span style="color:green">
 GOOD:
@@ -418,6 +420,8 @@ BAD:
 <click selector="{{ProductInWebsitesSection.website('Second Website')}}" stepKey="selectSecondWebsite"/>
 <click selector="{{ProductInWebsitesSection.website('Second Website')}}" stepKey="unselectSecondWebsite"/>
 ```
+
+<!--{% endraw %}-->
 
 <!-- Link Definitions -->
 [This test]: https://github.com/magento/magento2/blob/2.3/app/code/Magento/Captcha/Test/Mftf/Test/StorefrontCaptchaRegisterNewCustomerTest.xml#L24

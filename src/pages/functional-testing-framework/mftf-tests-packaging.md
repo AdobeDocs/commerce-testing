@@ -9,7 +9,7 @@ description: Run Functional Testing Framework tests for Adobe Commerce and Magen
 
 The Magento Functional Testing Framework can run tests from predefined paths and custom paths. The predefined paths are:
 
-```text
+```terminal
 app/code/<Vendor>/<Module>/Test/Mftf
 dev/tests/acceptance/tests/functional/<Vendor>/<TestModule>
 vendor/<Vendor>/<Module>/Test/Mftf

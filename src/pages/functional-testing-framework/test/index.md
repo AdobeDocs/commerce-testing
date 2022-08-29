@@ -6,9 +6,9 @@ description: Learn about Functional Testing Framework test cases and how to defi
 # Test cases
 
 Test cases in the Magento Functional Testing Framework (MFTF) are defined in XML as [`<tests>`](#tests).
-`<tests>` is a [Codeception test container][Codeception] that contains multiple individual tests with test metadata and before and after actions.
+`<tests>` is a [Codeception test container][Codeception] that contains individual test [`<test>`](#test) with its metadata ([`<annotations>`](#annotations)), before ([`<before>`](#before)) and after ([`<after>`](#after)) section.
 
-MFTF `<tests>` is considered a sequence of actions with associated parameters.
+MFTF `<test>` is considered a sequence of actions with associated parameters.
 Any failed [assertion] within a test constitutes a failed test.
 
 <InlineAlert variant="info" slots="text"/>
@@ -16,6 +16,7 @@ Any failed [assertion] within a test constitutes a failed test.
 `<before>` and `<after>` hooks are not global within `<tests>`.
 They only apply to the `<test>` in which they are declared.
 The steps in `<after>` are run in both successful **and** failed test runs.
+</div>
 
 The following diagram shows the structure of an MFTF test case:
 
@@ -23,7 +24,7 @@ The following diagram shows the structure of an MFTF test case:
 
 ## Format
 
-The format of `<tests>` is:
+The format of a test XML file is:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -49,28 +50,23 @@ The format of `<tests>` is:
 
 The following conventions apply to MFTF tests:
 
-*  All names within the framework are in the CamelCase format.
-*  `<test>` name must be alphanumeric.
-*  Each action and action group has its own identifier `<stepKey>` for reference purposes.
+*  One `<test>` tag is allowed per test XML file.
+*  All names within the framework are in the **PascalCase** format and must be alphanumeric.
+*  Each action and action group call should have its own identifier `<stepKey>`.
 *  A test may have any number of [assertions][assertion] at any point within the `<test>`.
-*  If `<test>` is included in `<suite>`, it **cannot be generated in isolation** to the rest of the contents of the suite (see [suites] for details).
-
-Multiple `<test>` tags per XML file can make it hard to find and organize tags.
-To simplify, we generate one `test.php` file per `<test>` tag provided, though we support both single and multiple `<test>` tags per XML file.
+*  If `<test>` is included in [`<suite>`][suites], it **cannot be generated in isolation** from `<before>` and `<after>` section of the suite (see [suites] for details).
 
 ## Elements reference
 
-There are several XML elements that are used in `<tests>` in the MFTF.
+There are several XML elements that are used within `<test>` in the MFTF.
 
 ### tests
 
-`<tests>` is a container for multiple tests. It is a group of test methods that define test flows within a test case.
-
-`<tests>` must contain at least one [`<test>`](#test).
+`<tests>` is a container for test and must contain exactly one [`<test>`](#test).
 
 ### test
 
-`<test>` is a set of steps, including [actions] and [assertions][assertion]. It is a sequence of test steps that define test flow within a test method.
+`<test>` is a set of steps, including [actions], [assertions][assertion] and Action Group calls. It is a sequence of test steps that define test flow within a test method.
 
 Attribute|Type|Use|Description
 ---|---|---|---
@@ -92,21 +88,20 @@ Allure annotations provide metadata for reporting.
 
 ### before
 
-`<before>` wraps the steps to perform before the [`<test>`](#test).
+`<before>` wraps the steps that are preconditions for the [`<test>`](#test). For example: Change configuration, create Customer Account, Create Category and Product.
 
 `<before>` may contain these child elements:
 
-*  Any [`<action>`][actions]
+*  Any [Action][actions]
 *  [`<actionGroup>`](#actiongroup)
 
 ### after
 
-`<after>` wraps the steps to perform after the [`<test>`](#test).
-The steps are run in both successful **and** failed test runs.
+`<after>` wraps the steps to perform after the [`<test>`](#test). The steps are run in both successful **and** failed test runs. The goal of this section is to perform cleanup (revert the environment to the pre-test state).
 
 `<after>` may contain:
 
-*  Any [`<action>`][actions]
+*  Any [Action][actions]
 *  [`<actionGroup>`](#actiongroup)
 
 ### actionGroup
@@ -133,8 +128,6 @@ Attribute|Type|Use
 
 See [Action groups][action group] for more information.
 
-<!-- Link definitions -->
-
 [action group]: action-groups.md
 [actions]: actions.md
 [Allure]: https://github.com/allure-framework/
@@ -142,5 +135,5 @@ See [Action groups][action group] for more information.
 [assertion]: assertions.md
 [Codeception]: https://codeception.com/docs/07-AdvancedUsage
 [extend]: ../extending.md
-[merging]: ../merging.md#update-a-test
+[merging]: ../merging.md#add-several-test-steps
 [suites]: ../suite.md

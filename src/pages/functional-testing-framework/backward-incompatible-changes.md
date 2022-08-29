@@ -1,3 +1,8 @@
+---
+title: Backward incompatible changes | Commerce Testing
+description: Learn about major chnages to the Functional Testing Framework that may require specific action to ensure third-party tests continue working as expected with Adobe Commerce and Magento Open Source tests.
+---
+
 # MFTF 3.0.0 backward incompatible changes
 
 This page highlights backward incompatible changes between releases that have a major impact and require detailed explanation and special instructions to ensure third-party tests continue working with Magento core tests.
@@ -96,7 +101,7 @@ New usage:
 
 **Details**:
 
-See the [actions page for details](test/actions.md#pauseexecution). Here is a usage example:
+See the [actions page for details](test/actions.md#pause). Here is a usage example:
 
 ```xml
 <pause stepKey="pauseExecutionKey"/>

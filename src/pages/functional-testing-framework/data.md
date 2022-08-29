@@ -3,13 +3,14 @@ title: Input testing data | Commerce Testing
 description: Define data entities for the Functional Testing Framework on Adobe Commerce and Magento Open Source projects.
 ---
 
-
 # Input testing data
 
-The MFTF enables you to specify and use `<data>` entities defined in XML. Default `<data>` entities are provided for use and as templates for entity creation and manipulation.
+MFTF enables you to specify and use `<data>` entities defined in XML. Default `<data>` entities are provided for use and as templates for entity creation and manipulation.
 The following diagram shows the XML structure of an MFTF data object:
 
 ![MFTF Data Object](../_images/functional-testing/data-dia.svg)
+
+The MFTF `<data>` entities are stored in `<module_dir>/Test/Mftf/Data/`.
 
 ## Supply data to test by reference to a data entity
 
@@ -24,6 +25,20 @@ In this example:
 *  `SimpleSubCategory` is an entity name.
 *  `name` is a `<data>` key of the entity. The corresponding value will be assigned to `userInput` as a result.
 
+The following is an example of the usage of `<data>` entity in the `Magento/Customer/Test/Mftf/Test/AdminCustomersAllCustomersNavigateMenuTest.xml` test:
+
+```xml
+<actionGroup ref="AdminNavigateMenuActionGroup" stepKey="navigateToAllCustomerPage">
+    <argument name="menuUiId" value="{{AdminMenuCustomers.dataUiId}}"/>
+    <argument name="submenuUiId" value="{{AdminMenuCustomersAllCustomers.dataUiId}}"/>
+</actionGroup>
+```
+
+In the above example:
+
+*  `AdminMenuCustomers` is an entity name.
+*  `dataUiId` is a `<data>` key of the entity.
+
 ### Environmental data
 
 ```xml
@@ -35,6 +50,12 @@ In this example:
 *  `_ENV` is a reference to the `dev/tests/acceptance/.env` file, where basic environment variables are set.
 *  `MAGENTO_ADMIN_USERNAME` is a name of an environment variable.
    The corresponding value will be assigned to `userInput` as a result.
+
+The following is an example of the usage of `_ENV` in the `Magento/Braintree/Test/Mftf/ActionGroup/AdminDeleteRoleActionGroup.xml` action group:
+
+```xml
+<fillField stepKey="TypeCurrentPassword" selector="{{AdminDeleteRoleSection.current_pass}}" userInput="{{_ENV.MAGENTO_ADMIN_PASSWORD}}"/>
+```
 
 ### Sensitive data
 
@@ -50,6 +71,14 @@ In this example:
 *  The decrypted values are only available in the `.credentials` file in which they are stored.
 
 Learn more in [Credentials][].
+
+The following is an example of the usage of `_CREDS` in the `Magento/Braintree/Test/Mftf/Data/BraintreeData.xml` data entity:
+
+```xml
+<entity name="MerchantId" type="merchant_id">
+    <data key="value">{{_CREDS.magento/braintree_enabled_fraud_merchant_id}}</data>
+</entity>
+```
 
 ## Persist a data entity as a prerequisite of a test
 
@@ -67,11 +96,19 @@ In this example:
 *  `email` is a data key of the entity.
   The corresponding value will be assigned to `userInput` as a result.
 
-<InlineAlert variant="info" slots="text"/>
+The following is an example of the usage of the persistant data in `Magento/Customer/Test/Mftf/Test/AdminCreateCustomerWithCountryUSATest.xml` test:
+
+```xml
+<actionGroup ref="AdminFilterCustomerByEmail" stepKey="filterTheCustomerByEmail">
+    <argument name="email" value="$$createCustomer.email$$"/>
+</actionGroup>
+```
+
+<InlineAlert variant="info" slots="text" />
 
 As of MFTF 2.3.6, you no longer need to differentiate between scopes (a test, a hook, or a suite) for persisted data when referencing it in tests.
 
-The MFTF now stores the persisted data and attempts to retrieve it using the combination of `stepKey` and the scope of where it has been called.
+MFTF now stores the persisted data and attempts to retrieve it using the combination of `stepKey` and the scope of where it has been called.
 The current scope is preferred, then widening to _test > hook > suite_ or _hook > test > suite_.
 
 This emphasizes the practice for the `stepKey` of `createData` to be descriptive and unique, as a duplicated `stepKey` in both a `<test>` and `<before>` prefers the `<test>` data.
@@ -81,6 +118,8 @@ This emphasizes the practice for the `stepKey` of `createData` to be descriptive
 A test can also reference data that was returned as a result of [test actions][], like the action `<grabValueFrom selector="someSelector" stepKey="grabStepKey>`.
 
 Further in the test, the data grabbed by the `someSelector` selector can be referenced using the `stepKey` value. In this case, it is `grabStepKey`.
+
+The `stepKey` value can only be referenced within the test scope that it is defined in (`test`, `before/after`).
 
 The following example shows the usage of `grabValueFrom` in testing, where the returned value is used by action's `stepKey`:
 
@@ -111,7 +150,7 @@ userInput="We'll email you an order confirmation with details and tracking info.
 
 ## Format
 
-The format of `<data>` is:
+The format of the `<data>` entity is:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -139,7 +178,7 @@ The following conventions apply to MFTF `<data>`:
 
 ## Example
 
-Example (`.../Catalog/Data/CategoryData.xml` file):
+Example (`Magento/Catalog/Test/Mftf/Data/CategoryData.xml` file):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -207,11 +246,11 @@ You can also call data from the xml definition of a `data` tag directly:
 
 Attributes|Type|Use|Description
 ---|---|---|---
-`name`|string|optional|Name of the `<entity>`.
+`name`|string|optional|Name of the `<entity>`. Use camel case for entity names.
 `type`|string|optional|Node containing the exact name of `<entity>` type. Used later to find specific Persistence Layer Model class. `type` in `<data>` can be whatever the user wants; There are no constraints. It is important when persisting data, depending on the `type` given, as it will try to match a metadata definition with the operation being done. Example: A `myCustomer` entity with `type="customer"`, calling `<createData entity="myCustomer"/>`, will try to find a metadata entry with the following attributes: `<operation dataType="customer" type="create">`.
 `deprecated`|string|optional|Used to warn about the future deprecation of the data entity. String will appear in Allure reports and console output at runtime.
 
-`<entity>` may contain one or more [`<data>`](#data), [`<var>`](#var), [`<required-entities>`](#requiredentity), or [`<array>`](#array) elements in any sequence.
+`<entity>` may contain one or more [`<data>`][], [`<var>`][], [`<required-entities>`][], or [`<array>`][] elements in any sequence.
 
 ### data
 
@@ -221,6 +260,12 @@ Attributes|Type|Use|Description
 ---|---|---|---
 `key`|string|optional|Key attribute of data/value pair.
 `unique`|enum: `"prefix"`, `"suffix"`|optional|Add suite or test wide unique sequence as "prefix" or "suffix" to the data value if specified.
+
+Example:
+
+```xml
+<data key="name" unique="suffix">simpleCategory</data>
+```
 
 ### var
 
@@ -232,6 +277,12 @@ Attributes|Type|Use|Description
 `entityType`|string|optional|Type attribute of referenced entity.
 `entityKey`|string|optional|Key attribute of the referenced entity from which to get a value.
 `unique`|--|--|_This attribute hasn't been implemented yet._
+
+Example:
+
+```xml
+<var key="parent_id" entityType="category" entityKey="id" />
+```
 
 ### requiredEntity
 
@@ -272,15 +323,23 @@ Attributes|Type|Use|Description
 ---|---|---|---
 `key`|string|required|Key attribute of this entity in which to assign a value.
 
-`<array>` may contain [`<item>`](#item) elements.
+`<array>` may contain [`<item>`][] elements.
 
 ### item
 
 `<item>` is an individual piece of data to be passed in as part of the parent `<array>` type.
 
-<!-- Link Definitions -->
+Attributes|Type|Use|Description
+---|---|---|---
+`name`|string|optional|Key attribute of <item/> entity in which to assign a value. By default numeric key will be generated.
 
-[Actions]: ./test/actions.md
-[category creation]: http://docs.magento.com/m2/ce/user_guide/catalog/category-create.html
-[Credentials]: ./credentials.md
-[test actions]: ./test/actions.md#actions-returning-a-variable
+<!-- Link Definitions -->
+[`<array>`]: #array
+[`<data>`]: #data
+[`<item>`]: #item
+[`<required-entities>`]: #requiredentity
+[`<var>`]: #var
+[Actions]: test/actions.md
+[category creation]: https://docs.magento.com/user-guide/catalog/category-create.html
+[Credentials]: credentials.md
+[test actions]: test/actions.md#actions-returning-a-variable

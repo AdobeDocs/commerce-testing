@@ -16,9 +16,9 @@ The following diagram shows the structure of an MFTF action group:
 The following conventions apply to MFTF action groups:
 
 - All action groups are declared in XML files and stored in the `<module>/Test/Mftf/ActionGroup/` directory.
-- Every file name ends with `ActionGroup` suffix. For example `LoginAsAdminActionGroup.xml`.
+- Every file name ends with `ActionGroup` suffix. For exampe `LoginAsAdminActionGroup.xml`.
 - Action group name should be the same as file name without extension.
-- Single file should contain only one `<actionGroup>` node
+- One `<actionGroup>` tag is allowed per action group XML file.
 
 The XML format for the `actionGroups` declaration is:
 
@@ -183,6 +183,37 @@ MFTF resolves `{{myCustomEntity.field1}}` the same as it would in a `selector` o
 </actionGroup>
 ```
 
+## Return a value
+
+Action groups can return a value using a `return` tag.
+
+```xml
+<actionGroup name="GetOrderIdActionGroup">
+    <seeElement selector="{{CheckoutSuccessMainSection.orderLink}}"  stepKey="assertOrderLink"/>
+    <grabTextFrom selector="{{CheckoutSuccessMainSection.orderLink}}" stepKey="orderId"/>
+    <return value="{$orderId}" stepKey="returnOrderId"/>
+</actionGroup>
+```
+
+The value returned can be accessed in later steps using action group step key `{$getOrderId}`.
+
+```xml
+<actionGroup ref="GetOrderIdActionGroup" stepKey="getOrderId"/>
+<!--Filter the Order using Order ID -->
+<actionGroup ref="FilterOrderGridByIdActionGroup" stepKey="filterOrderGridById">
+    <argument name="orderId" value="{$getOrderId}"/>
+</actionGroup>
+```
+
+### Convention to return a value
+
+The following conventions apply to action groups returning a value:
+
+- Only action groups can return value. Use of `return` tag is dis-allowed in tests and suites.
+- An action group does not support multiple `return` tags.
+- For [merging action groups](../merging.md#merge-action-groups), `return` is allowed only in one of the merging action groups.
+- Value returned by an action group can only be referenced within the scope that the action group is defined in (`test`, `before/after`).
+
 ## Optimizing action group structures
 
 Structuring properly an action group increases code reusability and readability.
@@ -280,5 +311,5 @@ Attribute|Type|Use|Description
 
 <!-- Link Definitions -->
 [actions]: actions.md
-[test]: index.md
+[test]: index.md#test
 [created]: ../data.md#persist-a-data-entity-as-a-prerequisite-of-a-test

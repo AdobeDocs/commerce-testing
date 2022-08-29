@@ -1,3 +1,8 @@
+---
+title: CD/CD | Commerce Testing
+description: Learn how to use the Functional Testing Framework in your continuous integration and continuous delivery (CI/CD) workflows for Adobe Commerce and Magento Open Source projects.
+---
+
 # How to use MFTF in CICD
 
 To integrate MFTF tests into your CICD pipeline, it is best to start with the conceptual flow of the pipeline code.

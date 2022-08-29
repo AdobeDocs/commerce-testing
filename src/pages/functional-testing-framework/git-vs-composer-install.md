@@ -5,7 +5,7 @@ description: Compare installation methods for Adobe Commerce and Magento Open So
 
 # Git vs Composer installation of Magento with MFTF
 
-Depending on how you plan to use Magento code, there are different options for installing Magento.
+Depending on how you plan to use Magnto code, there are different options for installing Magento.
 
 ## GitHub Installation
 
@@ -60,6 +60,8 @@ The file structure under both paths is the same:
 │   └── ...
 ├── Section
 │   └── ...
+├── Suite
+│   └── ...
 └── Test
     └── ...
 ```
@@ -70,6 +72,7 @@ With either type of installation, all tests and test data are read and merged by
 
 1. `<magento_root>/app/code/<vendor_name>/<module_name>/Test/Mftf/`
 1. `<magento_root>/vendor/<vendor_name>/<module_name>/Test/Mftf/`
+1. `<magento_root>/dev/tests/acceptance/tests/functional/<vendor_name>/<module_name>/`
 
 ## Conclusion
 
@@ -82,4 +85,4 @@ If you are a contributing developer with an understanding of Git and Composer co
 [Composer based Installation]: https://devdocs.magento.com/guides/v2.3/install-gde/composer.html
 [GitHub Installation]: https://devdocs.magento.com/guides/v2.3/install-gde/prereq/dev_install.html
 [Standalone]: getting-started.md#set-up-a-standalone-mftf
-[composer package]: https://developer.adobe.com/commerce/php/development/package/component/
+[composer package]: https://devdocs.magento.com/guides/v2.3/extension-dev-guide/package/package_module.html

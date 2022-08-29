@@ -1,3 +1,8 @@
+---
+title: Custom helpers | Commerce Testing
+description: Learn how to write custom test actions to address advanced requirements with the Functional Testing Framework for Adobe Commerce and Magento Open Source projects.
+---
+
 # Custom Helpers
 
 <InlineAlert variant="warning" slots="text"/>
@@ -32,7 +37,7 @@ This custom helper selects text on the page with this approach:
 
 This functionality is used to select text on the page and cannot be accomplished using built-in test actions.
 
-### PHP File
+### PHP file
 
 ```php
 <?php
@@ -40,8 +45,11 @@ This functionality is used to select text on the page and cannot be accomplished
  * Copyright &copy; Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 namespace Magento\PageBuilder\Test\Mftf\Helper;
+
 use Magento\FunctionalTestingFramework\Helper\Helper;
+
 /**
  * Class SelectText provides an ability to select needed text.
  */
@@ -62,6 +70,7 @@ class SelectText extends Helper
         try {
             /** @var \Magento\FunctionalTestingFramework\Module\MagentoWebDriver $webDriver */
             $webDriver = $this->getModule('\Magento\FunctionalTestingFramework\Module\MagentoWebDriver');
+
             $contextElement = $webDriver->webDriver->findElement(\Facebook\WebDriver\WebDriverBy::xpath($context));
             $actions = new \Facebook\WebDriver\Interactions\WebDriverActions($webDriver->webDriver);
             $actions->moveToElement($contextElement, $startX, $startY)

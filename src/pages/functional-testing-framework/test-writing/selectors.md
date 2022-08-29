@@ -218,7 +218,7 @@ Similarly, the relative XPath selector is a double forward slash `//`. It is use
 Example:
 
 ```xpath
-//div[@class=’form-group’]//input[@id='user-message']
+//div[@class='form-group']//input[@id='user-message']
 ```
 
 In the `GOOD` example above, all `<div class='form-group'/>` elements in the DOM are matched first. Then all `<input id='user-message'/>` with `<div class='form-group'/>` as one of its parents are matched. The parent does not have to immediately precede it since it uses another double forward slash `//`.
@@ -252,7 +252,7 @@ Given this HTML:
 ```html
 <tr>
     <td>
-        <a href=“#”>Edit</a>
+        <a href="#">Edit</a>
     </td>
     <td>
         <div>Unique Value</div>

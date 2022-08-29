@@ -52,7 +52,7 @@ For our example, we have a test that creates a simple product. Note the hardcode
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright © Magento, Inc. All rights reserved.
+  * Copyright &copy; Magento, Inc. All rights reserved.
   * See COPYING.txt for license details.
   */
 -->
@@ -117,7 +117,7 @@ In this example `AdminProductFormSection` refers to the `<section>` in the XML f
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright © Magento, Inc. All rights reserved.
+  * Copyright &copy; Magento, Inc. All rights reserved.
   * See COPYING.txt for license details.
   */
 -->
@@ -181,7 +181,7 @@ Here we are interested in `<section name="AdminProductFormSection">`, where we a
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright © Magento, Inc. All rights reserved.
+  * Copyright &copy; Magento, Inc. All rights reserved.
   * See COPYING.txt for license details.
   */
 -->
@@ -216,7 +216,7 @@ We replace the hardcoded values with variables and the MFTF will do the variable
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright © Magento, Inc. All rights reserved.
+  * Copyright &copy; Magento, Inc. All rights reserved.
   * See COPYING.txt for license details.
   */
 -->
@@ -321,7 +321,7 @@ To create an action group, take the steps and put them within an `<actionGroup>`
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright © Magento, Inc. All rights reserved.
+  * Copyright &copy; Magento, Inc. All rights reserved.
   * See COPYING.txt for license details.
   */
 -->
@@ -352,7 +352,7 @@ Now we can reference this action group within our test (and any other test).
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright © Magento, Inc. All rights reserved.
+  * Copyright &copy; Magento, Inc. All rights reserved.
   * See COPYING.txt for license details.
   */
 -->
@@ -405,8 +405,8 @@ A well written test will end up being a set of action groups.
 The finished test is fully abstracted in such a way that it is short and readable and importantly, the abstracted data and action groups can be used again.
 
 <!-- Link Definitions -->
-[actions]: ../test/actions.md
-[action groups]: ../test/action-groups.md
-[Data entities]: ../data.md
-[Input testing data]: ../data.md
-[parameterized selectors]: ../section/parameterized-selectors.md
+[actions]: https://devdocs.magento.com/mftf/docs/test/actions.html
+[action groups]: https://devdocs.magento.com/mftf/docs/test/action-groups.html
+[Data entities]: https://devdocs.magento.com/mftf/docs/data.html
+[Input testing data]: https://devdocs.magento.com/mftf/docs/data.html
+[parameterized selectors]: https://devdocs.magento.com/mftf/docs/section/parameterized-selectors.html

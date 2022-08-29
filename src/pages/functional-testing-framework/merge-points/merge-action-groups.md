@@ -6,14 +6,16 @@ description: Learn how to avoid duplicating code when using the Functional Testi
 # Merge action groups
 
 An action group is a set of individual actions working together as a group.
-These action groups can be shared between tests and they also be modified to your needs.
+These action groups can be shared between tests and they also can be modified to your needs.
 
 In this example we add a `<click>` command to check the checkbox that our extension adds to the simple product creation form.
 
 ## Starting test
 
+<!-- {% raw %} -->
+
 ```xml
-<actionGroup name="FillAdminSimpleProductForm">
+<actionGroup name="AdminFillSimpleProductFormActionGroup">
     <arguments>
         <argument name="category"/>
         <argument name="simpleProduct"/>
@@ -41,7 +43,7 @@ In this example we add a `<click>` command to check the checkbox that our extens
 ## File to merge
 
 ```xml
-<actionGroup name="FillAdminSimpleProductForm">
+<actionGroup name="AdminFillSimpleProductFormActionGroup">
     <!-- This will be added after the step "fillQuantity" in the above test. -->
     <click selector="{{MyExtensionSection.myCheckbox}}" stepKey="clickMyCheckbox" after="fillQuantity"/>
 </actionGroup>
@@ -50,7 +52,7 @@ In this example we add a `<click>` command to check the checkbox that our extens
 ## Resultant test
 
 ```xml
-<actionGroup name="FillAdminSimpleProductForm">
+<actionGroup name="AdminFillSimpleProductFormActionGroup">
     <arguments>
         <argument name="category"/>
         <argument name="simpleProduct"/>
@@ -77,3 +79,5 @@ In this example we add a `<click>` command to check the checkbox that our extens
     <seeInField userInput="{{simpleProduct.urlKey}}" selector="{{AdminProductSEOSection.urlKeyInput}}" stepKey="assertFieldUrlKey"/>
 </actionGroup>
 ```
+
+<!-- {% endraw %} -->

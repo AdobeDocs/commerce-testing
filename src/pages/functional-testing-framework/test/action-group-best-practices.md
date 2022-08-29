@@ -57,7 +57,7 @@ We can overcome this by making use of MFTF's extensibility. All we need to do is
 </actionGroup>
 ```
 
-Because the name of this merge is also `LoginAsAdmin`, the two get merged together and an additional step happens every time this action group is used.
+Because the name of this merge is also `LoginAsAdmin`, the two get merged together and an additional step happens everytime this action group is used.
 
 To continue this example, imagine someone else is working on a 'Two-Factor Authentication' extension and they also provide a merge for the `LoginAsAdmin` action group. Their merge looks similar to what we have already seen. The only difference is that this time we fill a different field:
 
@@ -84,4 +84,4 @@ Bringing it all together, our resulting `LoginAsAdmin` action group becomes this
 
 No one file contains this exact content as above, but instead all three files come together to form this action group.
 
-This extensibility can be applied in many ways. We can use it to affect existing Magento entities such as tests, action groups, and data. Not so obvious is that this technique can be used within your own entities to make them more maintainable as well.
+This extensibility can be applied in many ways. We can use it to affect existing Magento entities such as tests, action groups, and data. Not so obvious is that this tehcnique can be used within your own entities to make them more maintainable as well.

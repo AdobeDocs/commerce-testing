@@ -12,7 +12,7 @@ Check out our best practices below to ensure you are getting the absolute most o
 ### Use existing Tests and resources
 
 Magento offers more than **3000** acceptance tests, **2500** [Action group]s, **750** Page declarations with more than **1500** Section definitions.
-It is very probable that behavior you want to test already exists as a Test or Action Group.
+It is very probable that behaviour you want to test already exists as a Test or Action Group.
 Instead of writing everything by yourself - use `extends` attribute to refer to existing element and customize it.
 
 **Reusable Resources**
@@ -39,12 +39,11 @@ We recommend to keep Action Groups having single responsibility, for example `Ad
 Although the Magento Core team and Contributors join forces to cover most of the features with tests, it is impossible to have this done quickly.
 If you've covered Magento Core feature with Functional Tests - you are more than welcome to contribute.
 
-You can also help with MFTF Test Migration to get the experience and valuable feedback from other community members and maintainers.
-
 ## Action group
 
 1. [Action group] names should be sufficiently descriptive to inform a test writer of what the action group does and when it should be used. Add additional explanation in annotations if needed.
-1. Provide default values for the arguments that apply to your most common case scenarios.
+2. Provide default values for the arguments that apply to your most common case scenarios.
+3. One `<actionGroup>` tag is allowed per action group XML file.
 
 ## `actionGroups` vs `extends`
 
@@ -85,7 +84,7 @@ The following pattern is used when merging with `extends`:
  Use a corresponding [`<deleteData>`] test step in your [`<after>`] block when using a [`<createData>`] action in a [`<before>`] block.
 2. Make specific data entries under test to be unique.
  Enable data uniqueness where data values are required to be unique in a database by test design.
- Use `unique=”suffix”` or `unique=”prefix”` to append or prepend a unique value to the [entity] attribute.
+ Use `unique="suffix"` or `unique="prefix"` to append or prepend a unique value to the [entity] attribute.
  This ensures that tests using the entity can be repeated.
 3. Do not modify existing data entity fields or merge additional data fields without complete understanding and verifying the usage of existing data in tests.
  Create a new data entity for your test if you are not sure.
@@ -96,6 +95,8 @@ The following pattern is used when merging with `extends`:
 
 Name files according to the following patterns to make searching in future more easy:
 
+<!-- {% raw %} -->
+
 #### Test file name
 
 Format: {_Admin_ or _Storefront_}{Functionality}_Test.xml_, where Functionality briefly describes the testing functionality.
@@ -104,7 +105,7 @@ Example: _StorefrontCreateCustomerTest.xml_.
 
 #### Action Group file name
 
-Format: {_Admin_ or _Storefront_}{Action Group Summary}ActionGroup.xml, where Action Group Summary describes with a few words what we can expect from it.
+Format: {_Admin_ or _Storefront_}{Action Group Summary}ActionGroup.xml`, where Action Group Summary is a short description of what the action group does.
 
 Example: _AdminCreateStoreActionGroup.xml_
 
@@ -117,6 +118,8 @@ Example: _AdminNavbarSection.xml_.
 #### Data file name
 
 Format: {Type}_Data.xml_, where Type represents the entity type.
+
+<!-- {% endraw %} -->
 
 Example: _ProductData.xml_.
 
@@ -145,16 +148,25 @@ Use a lower case first letter for:
 
 ## Page object
 
-Use [parameterized selectors] for constructing a selector when test specific or runtime generated information is needed.
+1. One `<page>` tag is allowed per page XML file.
+2. Use [parameterized selectors] for constructing a selector when test-specific or runtime-generated information is needed.
 Do not use them for static elements.
 
+<span class="color:red">
 BAD:
+</span>
+
+<!-- {% raw %} -->
 
 ``` xml
 <element name="relatedProductSectionText" type="text" selector=".fieldset-wrapper.admin__fieldset-section[data-index='{{productType}}']" parameterized="true"/>
 ```
 
+<!-- {% endraw %} -->
+
+<span class="color:green">
 GOOD:
+</span>
 
 Define these three elements and reference them by name in the tests.
 
@@ -175,6 +187,7 @@ Define these three elements and reference them by name in the tests.
      It helps to inform the reader of what you are testing and to yield a more descriptive Allure report.
    *  Explain in comments unclear or tricky test steps.
 1. Refer to [sections] instead of writing selectors.
+1. One `<test>` tag is allowed per test XML file.
 
 ## Test step merging order
 
@@ -201,4 +214,3 @@ Since the configurable product module could be disabled, this approach is more r
 [merging]: ../merging.md
 [parameterized selectors]: ../section/parameterized-selectors.md
 [sections]: ../section/index.md
-[MFTF Test Migration]: https://github.com/magento/magento-functional-tests-migration
