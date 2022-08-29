@@ -565,7 +565,6 @@ Example:
 [actions]: test/actions.md
 [api reference]: https://devdocs.magento.com/guides/v2.4/get-started/bk-get-started-api.html
 [application/x-www-form-urlencoded]: https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1
-{:target="_blank"}
 [catalogCategoryRepositoryV1 image]: img/catalogCategoryRepository-operations.png
 [catalogCategoryRepositoryV1SavePostBody]: #catalogCategoryRepositoryV1SavePostBody
 [contentType]: #contentType-tag
@@ -577,9 +576,7 @@ Example:
 [get information about a category by its ID]: #get-object-as-adminOauth
 [getData]: test/actions.md#getdata
 [HTML forms]: https://www.w3.org/TR/html401/interact/forms.html
-{:target="\_blank"}
 [oauth]: https://devdocs.magento.com/guides/v2.4/get-started/authentication/gs-authentication-oauth.html
-{:target="\_blank"}
 [operation]: #operation-tag
 [reference]: #reference
 [rest request]: #handling-with-api
@@ -587,6 +584,3 @@ Example:
 [update category data by its ID]: #update-object-as-adminOauth
 [updateData]: test/actions.md#updatedata
 [rest response]: #rest-response
-
-*[CRUD]: Create Read Update Delete
-*[MFTF]: Magento Functional Testing Framework

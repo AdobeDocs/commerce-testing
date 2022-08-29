@@ -43,9 +43,9 @@ vendor/bin/mftf run:failed
 Here is a typical work flow for this use case:
 
 - Set `ENABLE_PAUSE` to `true` under `.env`
-- Add <pause> action in a test where you want to pause execution for debugging
+- Add `<pause>` action in a test where you want to pause execution for debugging
 - Run test
-- Execution should pause at <pause> action and invoke interactive console
+- Execution should pause at `<pause>` action and invoke interactive console
 - Try out commands in interactive console
 - Resume test execution by pressing `ENTER`
 

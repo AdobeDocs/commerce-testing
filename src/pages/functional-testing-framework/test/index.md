@@ -16,7 +16,6 @@ Any failed [assertion] within a test constitutes a failed test.
 `<before>` and `<after>` hooks are not global within `<tests>`.
 They only apply to the `<test>` in which they are declared.
 The steps in `<after>` are run in both successful **and** failed test runs.
-</div>
 
 The following diagram shows the structure of an MFTF test case:
 

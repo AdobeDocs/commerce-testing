@@ -57,8 +57,6 @@ Example with `after`:
 
 ## Examples
 
-<!-- {% raw %} -->
-
 The following example contains four actions:
 
 1. [Open the Sign In page for a Customer](#1-open-the-sign-in-page-for-a-customer).
@@ -138,8 +136,6 @@ The only difference is that different data is assigned to the attributes, which 
 ```xml
 <click selector="{{StorefrontCustomerSignInFormSection.signInAccountButton}}" stepKey="clickSignInAccountButton"/>
 ```
-
-<!-- {% endraw %} -->
 
 Here, [`<click>`](#click) performs a click on a button that can be found by the selector that is stored in the `signInAccountButton` of the `StorefrontCustomerSignInFormSection`.
 
@@ -1395,7 +1391,7 @@ Note that the makeScreenshot action does not automatically add the screenshot to
 
 <InlineAlert variant="info" slots="text" />
 
-This action does not add a screenshot to the Allure [report](../reporting.md).</div>
+This action does not add a screenshot to the Allure [report](../reporting.md).
 
 ### maximizeWindow
 

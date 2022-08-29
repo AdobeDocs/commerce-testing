@@ -123,7 +123,7 @@ vendor/bin/mftf generate:failed
 ```
 
 This command cleans up the previously generated tests; generates the tests listed in `dev/tests/acceptance/tests/_output/failed`.
-For more details about `failed`, refer to [Reporting][].
+For more details about `failed`, refer to [Reporting](../reporting.md).
 
 ### Run previously failed tests
 
@@ -132,7 +132,7 @@ vendor/bin/mftf run:failed
 ```
 
 This command runs the tests listed in `dev/tests/acceptance/tests/_output/failed`.
-For more details about `failed`, refer to [Reporting][].
+For more details about `failed`, refer to [Reporting](../reporting.md).
 
 ## Error tolerance during generation
 
@@ -164,7 +164,7 @@ vendor/bin/mftf build:project [--upgrade] [config_param_options]
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `-u`, `--upgrade` | Upgrades all installed MFTF tests according to requirements of the last major release. Specifying this flag upgrades only those tests in the default location. Example: `build:project --upgrade`. |
 
-You can include options to set configuration parameter values for your environment since the project build process also [sets up the environment][setup].
+You can include options to set configuration parameter values for your environment since the project build process also [sets up the environment](#setupenv).
 
 ```bash
 vendor/bin/mftf build:project --MAGENTO_BASE_URL=http://magento.local/ --MAGENTO_BACKEND_NAME=admin214365
@@ -194,7 +194,7 @@ vendor/bin/mftf doctor
 #### Description
 
 Perform XML schema validation and generate PHP code from the tests defined in XML files.
-The path is set in the `TESTS_MODULE_PATH` [configuration] parameter.
+The path is set in the `TESTS_MODULE_PATH` [configuration](../configuration.md) parameter.
 
 #### Usage
 
@@ -210,7 +210,7 @@ vendor/bin/mftf generate:tests [option] [<test name>] [<test name>] [--remove]
 | `--filter`                                          | Option to filter tests to be generated.<br/>Template: '&lt;filterName&gt;:&lt;filterValue&gt;'.<br/>Existing filter types: severity, includeGroup, excludeGroup.<br/>Existing severity values: BLOCKER, CRITICAL, MAJOR, AVERAGE, MINOR.<br/>Example: `vendor/bin/mftf generate:tests --filter=severity:CRITICAL --filter=severity:BLOCKER --filter=includeGroup:customer`                                                                                                                                   |
 | `--force`                                           | Forces test generation, regardless of the module merge order defined in the Magento instance. Example: `generate:tests --force`.                                                                                                                                                                                                                                                                                                                                                                             |
 | `-i,--time`                                         | Set time in minutes to determine the group size when `--config=parallel` is used. <br/>Example: `generate:tests --config=parallel --time=15` <br/>Option `--time` will be the default and the __default value__ is `10` when neither `--time` nor `--groups` is specified. <br/>Example: `generate:tests --config=parallel`                                                                                                                                                                                  |
-| `-g,--groups`                                       | Set number of groups to be split into when `--config=parallel` is used. <br>Example: `generate:tests --config=parallel --groups=300` <br/>Options `--time` and `--groups` are mutually exclusive and only one should be used.                                                                                                                                                                                                                                                                                |
+| `-g,--groups`                                       | Set number of groups to be split into when `--config=parallel` is used. <br/>Example: `generate:tests --config=parallel --groups=300` <br/>Options `--time` and `--groups` are mutually exclusive and only one should be used.                                                                                                                                                                                                                                                                                |
 | `--tests`                                           | Defines the test configuration as a JSON string or JSON file path.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `--allow-skipped`                                   | Allows MFTF to generate and run tests marked with `<skip>.`                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `--debug`                                           | Performs schema validations on XML files. <br/> DEFAULT: `generate:tests` implicitly performs schema validation on merged files. It does not indicate the file name where the error is encountered. <br/> DEVELOPER: `--debug` performs per-file validation and returns additional debug information (such as the filename where an error occurred) when test generation fails because of an invalid XML schema. This option takes extra processing time. Use it after test generation has failed once.<br/> |
@@ -442,7 +442,7 @@ tests/functional/tests/MFTF/_generated/default/ThirdTestCest.php
 Regenerates and reruns tests that previously failed.
 
 This command cleans up previously generated tests. It generates and runs the tests listed in `dev/tests/acceptance/tests/_output/failed`.
-For more details about `failed`, refer to [Reporting][].
+For more details about `failed`, refer to [Reporting](../reporting.md).
 
 #### Usage
 
@@ -466,7 +466,7 @@ vendor/bin/mftf run:failed
 
 ### `setup:env`
 
-Updates the [configuration] parameter values in the [`.env`] file.
+Updates the [configuration](../configuration.md) parameter values in the [`.env`] file.
 Creates the `.env` file if it does not exist.
 
 #### Usage
@@ -479,7 +479,7 @@ vendor/bin/mftf setup:env [config_param_option1=<value>] [config_param_option2=<
 The command consumes the parameters in a format of options assigned with values, for example `--MAGENTO_BASE_URL=http://magento.local/`.
 If you specify a parameter that the `.env` file does not contain, the command returns an error.
 
-You can also update configuration parameter values when you use the [`build:project`][build] command.
+You can also update configuration parameter values when you use the [`build:project`](#buildproject) command.
 
 #### Examples
 
@@ -604,7 +604,7 @@ Otherwise, it will apply all the major version MFTF upgrade scripts to all insta
 
 `Test Module` should have the directory structure of ActionGroup, Data, Metadata, Page, Section, Test, and Suite.
 
-<InlineAlert variant="info" slots="text">
+<InlineAlert variant="info" slots="text" />
 
 The upgrade scripts are meant to be used for Test Modules under source code control. If you have old versions of test modules under vendor, those test modules will get upgraded
 
@@ -673,17 +673,4 @@ vendor/bin/mftf codecept:run functional --verbose --steps -g default
 
 <InlineAlert variant="warning" slots="text" />
 
-You may want to limit the usage of this Codeception command with arguments and options for "acceptance" only, since it is what's supported by MFTF.
-When using this command, you should change "acceptance" to "functional" when referring to Codeception documentation.
-
-<!-- LINK DEFINITIONS -->
-
-[configuration]: ../configuration.md
-[Reference]: #reference
-[build]: #buildproject
-[setup]: #setupenv
-[Reporting]: ../reporting.md
-
-<!-- Abbreviations -->
-
-*[MFTF]: Magento Functional Testing Framework
+You may want to limit the usage of this Codeception command with arguments and options for "acceptance" only, since it is what's supported by MFTF. When using this command, you should change "acceptance" to "functional" when referring to Codeception documentation.
