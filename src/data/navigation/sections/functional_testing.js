@@ -45,7 +45,7 @@ module.exports = [
     },
     {
       title: "Interactive pause",
-      path: "/functional-testing-framework/cicd/",
+      path: "/functional-testing-framework/interactive-pause/",
     },
     {
       title: "Merge points for extensions",
@@ -204,6 +204,10 @@ module.exports = [
     {
       title: "Versioning",
       path: "/functional-testing-framework/versioning/",
+    },
+    {
+      title: "Packaging",
+      path: "/functional-testing-framework/mftf-test-packaging/",
     },
     {
       title: "Backward incompatible chnages in tests",
