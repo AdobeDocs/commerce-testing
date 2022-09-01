@@ -283,7 +283,7 @@ The Functional Testing Framework is a root level Adobe Commerce or Magento Open 
 ### Prerequisites
 
 This installation requires a local instance of the Adobe Commerce or Magento Open Source application.
-The Functional Testing Framework uses the [tests from modules][mftf tests] as well as the `app/autoload.php` file.
+The Functional Testing Framework uses the [tests from modules][tests] as well as the `app/autoload.php` file.
 
 ### Step 1. Clone the repository
 
@@ -359,13 +359,13 @@ allure serve dev/tests/_output/allure-results/
 [contributing]: https://github.com/magento/magento2-functional-testing-framework/blob/develop/.github/CONTRIBUTING.md
 [install Allure]: https://github.com/allure-framework/allure2#download
 [java]: https://www.oracle.com/java/technologies/downloads/
-[mftf tests]: index.md#mftf-tests
+[tests]: index.md#tests
 [php]: https://devdocs.magento.com/guides/v2.4/install-gde/system-requirements.html
 [PhpStorm]: https://www.jetbrains.com/phpstorm/
 [selenium server]: https://www.seleniumhq.org/download/
 [Set up a standalone MFTF]: #set-up-a-standalone-mftf
 [test suite]: suite.md
-[Find your version]: index.md#find-your-mftf-version
+[Find your version]: index.md#find-your-framework-version
 [Installation Guide docroot]: https://devdocs.magento.com/guides/v2.4/install-gde/tutorials/change-docroot-to-pub.html
 [two-factor authentication (2FA) extension]: https://devdocs.magento.com/guides/v2.4/security/two-factor-authentication.html
 [Credentials Page]: credentials.md

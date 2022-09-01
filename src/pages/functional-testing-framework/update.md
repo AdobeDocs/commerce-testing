@@ -51,6 +51,6 @@ Takes place when **first** digit of version number changes.
 [Backward Incompatible Changes]: backward-incompatible-changes.md
 [WYSIWYG settings]: getting-started.md#wysiwyg-settings
 [Security settings]: getting-started.md#security-settings
-[Find your version]: index.md#find-your-mftf-version
+[Find your version]: index.md#find-your-framework-version
 [Versioning]: versioning.md#versioning-policy
 [Patch Version Update]: #patch-version-update
