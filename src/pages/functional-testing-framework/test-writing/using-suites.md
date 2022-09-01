@@ -5,11 +5,11 @@ description: Learn how suites help you organize and consolidate Functional Testi
 
 # Using suites
 
-With an increasing number of MFTF tests, it is important to have a mechanism to organize and consolidate them for ease-of-use.
+With an increasing number of tests, it is important to have a mechanism to organize and consolidate them for ease-of-use.
 
 ### What is a suite?
 
-A suite is a collection of MFTF tests that are intended to test specific behaviors of Magento. It may contain initialization and clean up steps common to the included test cases. It allows you to include, exclude and/or group tests with preconditions and post conditions.
+A suite is a collection of tests that are intended to test specific behaviors of Magento. It may contain initialization and clean up steps common to the included test cases. It allows you to include, exclude and/or group tests with preconditions and post conditions.
 You can create a suite referencing tests, test groups and modules.
 
 ### How is a suite defined?
@@ -71,11 +71,11 @@ A suite is comprised of blocks:
 
 This example declares a suite with name `WYSIWYGDisabledSuite`:
 
-*  Disables WYSIWYG of the Magento instance before running the tests.
+*  Disables WYSIWYG of the Adobe Commerce or Magento Open Source instance before running the tests.
 *  Runs all tests from the `Catalog` module, except `WYSIWYGIncompatibleTest`
-*  Returns the Magento instance back to its original state, by enabling WYSIWYG at the end of testing.
+*  Returns the Adobe Commerce or Magento Open Source instance back to its original state, by enabling WYSIWYG at the end of testing.
 
-### Using MFTF suite commands
+### Using suite commands
 
 *  Generate all tests within a suite.
 
@@ -97,7 +97,7 @@ This example declares a suite with name `WYSIWYGDisabledSuite`:
 
 ### Run specific tests within a suite
 
-If a test is referenced in a suite, it can be run in the suite's context with MFTF `run` command. If a test is referenced in multiple suites, the `run` command will run the test multiple times in all contexts.
+If a test is referenced in a suite, it can be run in the suite's context with the `run` command. If a test is referenced in multiple suites, the `run` command will run the test multiple times in all contexts.
 
 ```bash
 vendor/bin/mftf run:test <testName> [<testName>]
@@ -105,4 +105,4 @@ vendor/bin/mftf run:test <testName> [<testName>]
 
 ### When to use suites?
 
-Suites are a great way to organize tests which need the Magento environment to be configured in a specific way as a pre-requisite. The conditions are executed once per suite which optimizes test execution time. If you wish to categorize tests solely based on functionality, use group tags instead.
+Suites are a great way to organize tests which need the Adobe Commerce or Magento Open Source to be configured in a specific way as a pre-requisite. The conditions are executed once per suite which optimizes test execution time. If you wish to categorize tests solely based on functionality, use group tags instead.

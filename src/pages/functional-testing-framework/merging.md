@@ -5,7 +5,7 @@ description: Accelerate test creation for Adobe Commerce and Magento Open Source
 
 # Merging
 
-MFTF allows you to merge test components defined in XML files, such as:
+The Functional Testing Framework allows you to merge test components defined in XML files, such as:
 
 -  [`<tests>`][]
 -  [`<pages>`][]
@@ -34,12 +34,12 @@ This makes it easier to search later on.
 
 ## Merging precedence
 
-**Magento Functional Testing Framework** uses Module's `<sequence>` to merge all XML configurations into Codeception instructions. If there's no Sequence specified, MFTF would use:
+**Functional Testing Framework** uses Module's `<sequence>` to merge all XML configurations into Codeception instructions. If there's no Sequence specified, the Functional Testing Framework would use:
 
 1. Vendor modules (Magento & Vendors) located in `vendor/`
 1. Tests located in `app/code/*/*/Test/Mftf`
 
-![Usual precedence for merging MFTF Tests and resources][mftfExtendingPrecedence image]
+![Usual precedence for merging tests and resources][mftfExtendingPrecedence image]
 
 ## Add a test
 
@@ -65,8 +65,8 @@ Skip the `AdminLoginSuccessfulTest` test in the `.../Backend/Test/AdminLoginSucc
         <annotations>
             <features value="Backend"/>
             <stories value="Login on the Admin Login page"/>
-            <title value="Admin should be able to log into the Magento Admin backend successfully"/>
-            <description value="Admin should be able to log into the Magento Admin backend successfully"/>
+            <title value="Admin should be able to log into the Admin backend successfully"/>
+            <description value="Admin should be able to log into the Admin backend successfully"/>
             <severity value="CRITICAL"/>
             <testCaseId value="MAGETWO-71572"/>
             <group value="example"/>
@@ -100,8 +100,8 @@ The `AdminLoginSuccessfulTest` result corresponds to:
     <annotations>
         <features value="Backend"/>
         <stories value="Login on the Admin Login page"/>
-        <title value="Admin should be able to log into the Magento Admin backend successfully"/>
-        <description value="Admin should be able to log into the Magento Admin backend successfully"/>
+        <title value="Admin should be able to log into the Admin backend successfully"/>
+        <description value="Admin should be able to log into the Admin backend successfully"/>
         <severity value="CRITICAL"/>
         <testCaseId value="MAGETWO-71572"/>
         <group value="example"/>

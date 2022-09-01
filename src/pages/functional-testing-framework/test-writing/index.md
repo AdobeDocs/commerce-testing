@@ -4,3 +4,5 @@ description: Learn about Functional Testing Framework test writing principles to
 ---
 
 # Test writing
+
+Use the topics in this section to learn about the basic principles of writing tests for the Functional Testing Framework.

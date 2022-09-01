@@ -35,7 +35,7 @@ The framework also focuses on the following:
 
 -  **Contributor**: Changes core Adobe Commerce and Magento Open Source behavior and fixes bugs. Uses the framework as an automated "supervisor" that continuously verifies work across the stages of bug fixing. When a fix is complete, the functional test serves as proof of completed work.
 -  **Extension developer**: Creates an extension that changes core Adobe Commerce or Magento Open Source behavior. Writes tests to make sure that Adobe Commerce or Magento Open Source behaves as expected after enabling a feature. Typically extends existing tests and does not need to write tests from scratch.
--  **System integrator**: Maintains ecommerce implementations for clients. Customizes existing tests to match customizations implemented in Adobe Commerce or Magento Open Source. After each upgrade, they Run tests after each Adobe Commerce or Magento OPen Source upgrade to verify that no regression bugs were introduced.
+-  **System integrator**: Maintains ecommerce implementations for clients. Customizes existing tests to match customizations implemented in Adobe Commerce or Magento Open Source. After each upgrade, they Run tests after each Adobe Commerce or Magento Open Source upgrade to verify that no regression bugs were introduced.
 
 ## Output
 
@@ -79,12 +79,12 @@ Directories immediately following the preceding paths use the same format. Subdi
 
 There are two options to find the version of the framework you are using:
 
--  Using the MFTF CLI
+-  Using the Functional Testing Framework CLI
 -  Using the Composer CLI
 
 All of the command-line commands must be executed from the `<magento_root>` directory.
 
-### MFTF CLI
+### Functional Testing Framework CLI
 
 ```bash
 vendor/bin/mftf --version
@@ -109,10 +109,10 @@ utils                           // The test-running utilities.
 .env.example                    // Example file for environment settings.
 .credentials.example            // Example file for credentials to be used by the third-party integrations (generated while running 'bin/mftf build:project'; should be filled with the appropriate credentials in the corresponding sandboxes).
 .gitignore                      // List of files ignored by git.
-.htaccess.sample                // Access settings for the Apache web server to perform the Magento CLI commands.
+.htaccess.sample                // Access settings for the Apache web server to perform the Commerce CLI commands.
 codeception.dist.yml            // Codeception configuration (generated while running 'bin/mftf build:project')
 ```
 
-## MFTF on Github
+## Functional Testing Framework on Github
 
 Follow the [project](https://github.com/magento/magento2-functional-testing-framework) and [contribute on Github](https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md).

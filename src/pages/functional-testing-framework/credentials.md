@@ -6,9 +6,9 @@ description: Securely use credentials for external services when using the Funct
 # Credentials
 
 When you test functionality that involves external services such as UPS, FedEx, PayPal, or SignifyD,
-use the MFTF credentials feature to hide sensitive [data][] like integration tokens and API keys.
+use the Functional Testing Framework credentials feature to hide sensitive [data][] like integration tokens and API keys.
 
-Currently MFTF supports three types of credential storage:
+Currently, the Functional Testing Framework supports three types of credential storage:
 
 -  **.credentials file**
 -  **HashiCorp Vault**
@@ -16,12 +16,12 @@ Currently MFTF supports three types of credential storage:
 
 ## Configure File Storage
 
-MFTF creates a sample file for credentials during [initial setup][]: `magento2/dev/tests/acceptance/.credentials.example`.
+The Functional Testing Framework creates a sample file for credentials during [initial setup][]: `magento2/dev/tests/acceptance/.credentials.example`.
 The file contains an example list of keys for fields that can require credentials.
 
 ### Create `.credentials`
 
-To make MFTF process the file with credentials, in the command line, navigate to `magento2/dev/tests/acceptance/` and rename `.credentials.example` to `.credentials`.
+To make the Functional Testing Framework process the file with credentials, in the command line, navigate to `magento2/dev/tests/acceptance/` and rename `.credentials.example` to `.credentials`.
 
 ```bash
 cd dev/tests/acceptance/
@@ -47,7 +47,7 @@ The command outputs the path if the file is excluded:
 
 ### Define sensitive data in the `.credentials` file
 
-Open the `.credentials` file and, for Magento core credentials, uncomment the fields you want to use and add your values:
+Open the `.credentials` file and, for Adobe Commerce or Magento Open Source core credentials, uncomment the fields you want to use and add your values:
 
 ```conf
 ...
@@ -95,11 +95,11 @@ vendor/my_awesome_service_token=rRVSVnh3cbDsVG39oTMz4A
 Hashicorp vault secures, stores, and tightly controls access to data in modern computing.
 It provides advanced data protection for your testing credentials.
 
-MFTF works with both `vault enterprise` and `vault open source` that use `KV Version 2` secret engine.
+The Functional Testing Framework works with both `vault enterprise` and `vault open source` that use `KV Version 2` secret engine.
 
 ### Install vault CLI
 
-Download and install vault CLI tool if you want to run or develop MFTF tests locally. [Download Vault][Download Vault]
+Download and install vault CLI tool if you want to run or develop tests locally. [Download Vault][Download Vault]
 
 ### Authenticate to vault via vault CLI
 
@@ -109,11 +109,11 @@ Authenticate to vault server via the vault CLI tool: [Login Vault][Login Vault].
 vault login -method -path
 ```
 
-**Do not** use `-no-store` command option, as MFTF will rely on the persisted token in the token helper (usually the local filesystem) for future API requests.
+**Do not** use `-no-store` command option, as the Functional Testing Framework will rely on the persisted token in the token helper (usually the local filesystem) for future API requests.
 
 ### Store secrets in vault
 
-MFTF uses the `KV Version 2` secret engine for secret storage.
+The Functional Testing Framework uses the `KV Version 2` secret engine for secret storage.
 More information for working with `KV Version 2` can be found in [Vault KV2][Vault KV2].
 
 #### Secrets path and key convention
@@ -141,7 +141,7 @@ vault kv put secret/mftf/magento/carriers_usps_userid carriers_usps_userid=usps_
 vault kv put secret/mftf/magento/carriers_usps_password carriers_usps_password=Lmgxvrq89uPwECeV
 ```
 
-### Setup MFTF to use vault
+### Setup the framework to use vault
 
 Add vault configuration environment variables [`CREDENTIAL_VAULT_ADDRESS`][] and [`CREDENTIAL_VAULT_SECRET_BASE_PATH`][]
 from `etc/config/.env.example` in `.env`.
@@ -217,12 +217,12 @@ shipping/carriers_usps_userid
 1234567
 ```
 
-### Setup MFTF to use AWS Secrets Manager
+### Setup the framework to use AWS Secrets Manager
 
 To use AWS Secrets Manager, the AWS region to connect to is required. You can set it through environment variable [`CREDENTIAL_AWS_SECRETS_MANAGER_REGION`][] in `.env`.
 
-MFTF uses the recommended [Default Credential Provider Chain][credential chain] to establish connection to AWS Secrets Manager service.
-You can setup credentials according to [Default Credential Provider Chain][credential chain] and there is no MFTF specific setup required.
+The Functional Testing Framework uses the recommended [Default Credential Provider Chain][credential chain] to establish connection to AWS Secrets Manager service.
+You can setup credentials according to [Default Credential Provider Chain][credential chain] and there is no Functional Testing Framework-specific setup required.
 Optionally, however, you can explicitly set AWS profile through environment variable [`CREDENTIAL_AWS_SECRETS_MANAGER_PROFILE`][] in `.env`.
 
 ```conf
@@ -234,7 +234,7 @@ CREDENTIAL_AWS_SECRETS_MANAGER_PROFILE=default
 ### Optionally set CREDENTIAL_AWS_ACCOUNT_ID environment variable
 
 In case AWS credentials cannot resolve to a valid AWS account, full AWS KMS ([Key Management Service][]) key ARN ([Amazon Resource Name][]) is required.
-You will also need to set `CREDENTIAL_AWS_ACCOUNT_ID` environment variable so that MFTF can construct the full ARN. This is mostly used for CI/CD.
+You will also need to set `CREDENTIAL_AWS_ACCOUNT_ID` environment variable so that the Functional Testing Framework can construct the full ARN. This is mostly used for CI/CD.
 
 ```bash
 export CREDENTIAL_AWS_ACCOUNT_ID=<Your_12_Digits_AWS_Account_ID>
@@ -243,7 +243,7 @@ export CREDENTIAL_AWS_ACCOUNT_ID=<Your_12_Digits_AWS_Account_ID>
 ## Configure multiple credential storage
 
 It is possible and sometimes useful to setup and use multiple credential storage at the same time.
-In this case, the MFTF tests are able to read secret data at runtime from all storage options. MFTF will use the following precedence:
+In this case, the test are able to read secret data at runtime from all storage options. The Functional Testing Framework will use the following precedence:
 
 ```text
 .credentials File > HashiCorp Vault > AWS Secrets Manager
@@ -268,13 +268,13 @@ For example, to reference secret data in the [`fillField`][] action, use the `us
 ## Implementation details
 
 The generated tests do not contain credentials values.
-MFTF dynamically retrieves, encrypts, and decrypts the sensitive data during test execution.
+The Functional Testing Framework dynamically retrieves, encrypts, and decrypts the sensitive data during test execution.
 Decrypted credentials do not appear in the console, error logs, or [test reports][].
 The decrypted values are only available in the `.credentials` file or within vault.
 
 <InlineAlert variant="info" slots="text" />
 
-The MFTF tests delivered with Magento application do not use credentials and do not cover external services, because of sensitivity of the data.
+The test delivered with the Adobe Commerce and Magento Open Source application do not use credentials and do not cover external services, because of sensitivity of the data.
 
 <!-- Link definitions -->
 [`fillField`]: test/actions.md#fillfield

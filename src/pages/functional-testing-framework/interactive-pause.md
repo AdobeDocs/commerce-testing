@@ -18,9 +18,9 @@ In short, when a test gets to `$I->pause()` step, it stops and shows a console w
 ## How to Configure Interactive Pause
 
 To be able to use Interactive console you need to install `hoa/console` library by running `composer require hoa/console` command in your project. This will allow `<pause />` action to work.
-MFTF supports `Interactive Pause` when `ENABLE_PAUSE` is set to `true` in `<project_root>/dev/tests/acceptance/.env` file.
+The Functional Testing Framework supports `Interactive Pause` when `ENABLE_PAUSE` is set to `true` in `<project_root>/dev/tests/acceptance/.env` file.
 
-## MFTF run commands
+## Functional Testing Framework run commands
 
 ```bash
 vendor/bin/mftf run:group
@@ -51,7 +51,7 @@ Here is a typical work flow for this use case:
 
 ### Use `Pause` on test failure
 
-When `ENABLE_PAUSE` is set to `true`, MFTF automatically generates `pause()` action in `_failed()` hook for tests and in `_failed()` function in `MagentoWebDriver`.
+When `ENABLE_PAUSE` is set to `true`, the Functional Testing Framework automatically generates `pause()` action in `_failed()` hook for tests and in `_failed()` function in `MagentoWebDriver`.
 This allows you to use `pause` to debug test failure for a long running test. The work flow might look like:
 
 - Set `ENABLE_PAUSE` to `true` under `.env`
@@ -59,7 +59,7 @@ This allows you to use `pause` to debug test failure for a long running test. Th
 - Execution pauses and invokes interactive console right after test fails
 - Examine and debug on the spot of failure
 
-## MFTF Codecept run command
+## Functional Testing Framework Codecept run command
 
 You can also use MFTF's wrapper command to run Codeception directly and activate `Interactive Pause` by passing `--debug` option.
 You do not need to set `ENABLE_PAUSE` to `true` for this command if you don't want to pause on test failure.
@@ -70,7 +70,7 @@ vendor/bin/mftf codecept:run --debug
 
 <InlineAlert variant="warning" slots="text" />
 
-MFTF command "--debug" option has different meaning than Codeception command "--debug" mode option.
+The Functional Testing Framework command "--debug" option has different meaning than Codeception command "--debug" mode option.
 
 <!-- Link definitions -->
 

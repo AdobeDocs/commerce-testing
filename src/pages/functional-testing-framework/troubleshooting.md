@@ -22,9 +22,9 @@ Something went wrong during the `mftf build:project` command that prevented the 
 
 ### Solution
 
-This issue is fixed in the MFTF 2.5.0.
+This issue is fixed in the version 2.5.0 of the Functional Testing Framework.
 
-In versions of the MFTF lower than 2.5.0 you should:
+In versions of the Functional Testing Framework lower than 2.5.0, you should:
 
 1. Open the functional.suite.yml file at:
 
@@ -52,7 +52,7 @@ Troubleshoot your WebDriver issues on various browsers.
 
 ### PhantomJS
 
-You are unable to upload file input using the MFTF actions and are seeing the following exception:
+You are unable to upload file input using the Functional Testing Framework actions and are seeing the following exception:
 
 ```terminal
 [Facebook\WebDriver\Exception\NoSuchDriverException]

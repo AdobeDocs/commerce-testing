@@ -3,48 +3,48 @@ title: Git vs. Composer installation | Commerce Testing
 description: Compare installation methods for Adobe Commerce and Magento Open Source projects when using the Functional Testing Framework.
 ---
 
-# Git vs Composer installation of Magento with MFTF
+# Git vs Composer installation of Commerce with MFTF
 
-Depending on how you plan to use Magnto code, there are different options for installing Magento.
+Depending on how you plan to use Adobe Commerce or Magento Open Source code, there are different options for installing the application.
 
 ## GitHub Installation
 
-If you are contributing a pull request to the Magento 2 codebase, download Magento 2 from our GitHub repository. Contribution to the codebase is done using the 'fork and pull' model where contributors maintain their own fork of the repo. This repo is then used to submit a pull request to the base repo.
+If you are contributing a pull request to the Magento Open Source codebase, download it from our GitHub repository. Contribution to the codebase is done using the 'fork and pull' model where contributors maintain their own fork of the repo. This repo is then used to submit a pull request to the base repo.
 
 Install guide: [GitHub Installation][]
 
-## Composer based Installation
+## Composer-based installation
 
-A Composer install downloads released packages of Magento 2 from the composer repo [https://repo.magento.com](https://repo.magento.com).
+A Composer install downloads released packages of Adobe Commerce and Magento Open Source from the Composer repo [https://repo.magento.com](https://repo.magento.com).
 
-All Magento modules and their MFTF tests are put under `<vendor>` directory, for convenience of 3rd party developers. With this setup, you can keep your custom modules separate from core modules. You can also develop modules in a separate VCS repository and add them to your `composer.json` which installs them into the `vendor` directory.
+All modules and their test are put under `<vendor>` directory, for convenience of thid-party developers. With this setup, you can keep your custom modules separate from core modules. You can also develop modules in a separate VCS repository and add them to your `composer.json` which installs them into the `vendor` directory.
 
 Install guide: [Composer based Installation][]
 
-## MFTF Installation
+## Functional Testing Framework installation
 
-After installing your Magento project in either of the above ways, the composer dependency `magento/magento2-functional-testing-framework` downloads and installs MFTF. MFTF is embedded in your Magento 2 installation and will cover your project with functional tests.
+After installing your project in either of the above ways, the composer dependency `magento/magento2-functional-testing-framework` downloads and installs the Functional Testing Framework. The Functional Testing Framework is embedded in your Adobe Commerce or Magento Open Source installation and will cover your project with functional tests.
 
-If you want to contribute a pull request into MFTF codebase, you will need to install MFTF in the [Standalone][] mode.
+If you want to contribute a pull request into the Functional Testing Framework codebase, you will need to install it in [Standalone][] mode.
 
 ## Managing modules - Composer vs GitHub
 
 ### Via GitHub
 
-Cloning the Magento 2 git repository is a way of installing where you do not have to worry about matching your codebase with production. Your version control system generally holds and manages your `app/code` folder and you can do manual, ad-hoc development here.
+Cloning the Magento Open Source git repository is a way of installing where you do not have to worry about matching your codebase with production. Your version control system generally holds and manages your `app/code` folder and you can do manual, ad-hoc development here.
 
 ### Via Composer
 
-Magento advocates the use of composer for managing modules. When you install a module through composer, it is added to `vendor/<vendor-name>/<module>`.
+We advocate using Composer to manage modules. When you install a module with Composer, it is added to the `vendor/<vendor-name>/<module>` directory.
 
-When developing your own module or adding MFTF tests to a module, you should not edit in `vendor` because a composer update could overwrite your changes. Instead, overwrite a module under `vendor` by adding files or cloning your module-specific Git repo to `app/code/<vendor-name>/<module>`.
+When developing your own module or adding test to a module, you should not edit in `vendor` because a composer update could overwrite your changes. Instead, overwrite a module under `vendor` by adding files or cloning your module-specific Git repo to `app/code/<vendor-name>/<module>`.
 
 To distribute the module and its tests, you can initialize a git repo and create a [composer package][]. In this way others will be able to download and install your module and access your tests as a composer package, in their `<vendor>` folder.
 
-## MFTF test materials location
+## test materials location
 
--  For GitHub installations, MFTF test materials are located in `<magento_root>/app/code/<vendor_name>/<module_name>/Test/Mftf/`. This is the directory for new tests or to maintain existing ones.
--  For Composer-based installations, MFTF test materials are located at `<magento_root>/vendor/<vendor_name>/<module_name>/Test/Mftf/`. This is the directory to run tests fetched by Composer.
+-  For GitHub installations, test materials are located in `<magento_root>/app/code/<vendor_name>/<module_name>/Test/Mftf/`. This is the directory for new tests or to maintain existing ones.
+-  For Composer-based installations, test materials are located at `<magento_root>/vendor/<vendor_name>/<module_name>/Test/Mftf/`. This is the directory to run tests fetched by Composer.
 
 The file structure under both paths is the same:
 

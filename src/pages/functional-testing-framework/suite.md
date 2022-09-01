@@ -66,7 +66,7 @@ The code lives in one place and executes once per suite.
 
 -  Set up preconditions and postconditions using [actions](test/actions.md) in [`<before>`](#before) and [`<after>`](#after) correspondingly, just similar to use in a [test](test/index.md).
 -  Clean up after suites just like after tests.
-MFTF enforces the presence of both `<before>` and `<after>` if either is present.
+The Functional Testing Framework enforces the presence of both `<before>` and `<after>` if either is present.
 
 ## Test writing
 
@@ -135,16 +135,16 @@ It performs the following steps:
 
 1. Log in to the backend.
 2. Navigate to the **Configuration** page.
-3. Enable **WYSIWYG** in the Magento instance.
+3. Enable **WYSIWYG** in the Adobe Commerce or Magento Open Source instance.
 
-_After_ the testing, the suite returns the Magento instance to the initial state disabling WYSIWYG:
+_After_ the testing, the suite returns the Adobe Commerce or Magento Open Source instance to the initial state disabling WYSIWYG:
 
 1. Log back in.
-2. Disable **WYSIWYG** in the Magento instance.
+2. Disable **WYSIWYG** in the Adobe Commerce or Magento Open Source instance.
 
 This suite includes all tests that contain the `<group value="WYSIWYG"/>` annotation.
 
-### Execute Magento CLI commands in suite conditions
+### Execute CLI commands in suite conditions
 
 ```xml
 <suites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Suite/etc/suiteSchema.xsd">
@@ -167,12 +167,12 @@ This example declares a suite with the name `Cache`.
 
 Preconditions:
 
-1. It disables the Magento instance cache entirely before running the included tests.
+1. It disables the Adobe Commerce or Magento Open Source instance cache entirely before running the included tests.
 2. After the testing, it re-enables the cache.
 
 The suite includes a specific test `SomeCacheRelatedTest` and every `<test>` that includes the `<group value="CacheRelated"/>` annotation.
 
-### Change Magento configurations in suite conditions
+### Change configurations in suite conditions
 
 ```xml
 <suites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Suite/etc/suiteSchema.xsd">
@@ -195,8 +195,8 @@ The suite includes a specific test `SomeCacheRelatedTest` and every `<test>` tha
 
 This example declares a suite with the name `PaypalConfiguration`:
 
--  `<before>` block persists a Paypal Configuration enabling all tests in this suite to run under the newly reconfigured Magento instance.
--  `<after>` block deletes the persisted configuration, returning Magento to its initial state.
+-  `<before>` block persists a Paypal Configuration enabling all tests in this suite to run under the newly reconfigured Adobe Commerce or Magento Open Source instance.
+-  `<after>` block deletes the persisted configuration, returning Adobe Commerce or Magento Open Source to its initial state.
 -  The suite includes all tests from the `Catalog` module, except the `PaypalIncompatibleTest` test.
 
 ## Elements reference
@@ -241,7 +241,7 @@ It may contain filters by:
 
 -  test which names a specific `<test>`.
 -  group which refers to a declared `group` annotation.
--  module which refers to `test` files under a specific Magento Module.
+-  module which refers to `test` files under a specific module.
 
 The element can contain [`<test>`](#test), [`<group>`](#group), and [`<module>`](#module).
 
@@ -252,16 +252,16 @@ A set of filters that you can use to specify which tests to exclude in the test 
 There are two types of behavior:
 
 1. Applying filters to the included tests when the suite contains [`<include>`](#include) filters.
-   The MFTF will exclude tests from the previously included set and generate the remaining tests in the suite.
+   The Functional Testing Framework will exclude tests from the previously included set and generate the remaining tests in the suite.
 2. Applying filters to all tests when the suite does not contain [`<include>`](#include) filters.
-   The MFTF will generate all existing tests except the excluded.
+   The Functional Testing Framework will generate all existing tests except the excluded.
    In this case, the custom suite will contain all generated tests except excluded, and the _default_ suite will contain the excluded tests only.
 
 It may contain filters by:
 
 -  test which names a specific `<test>`.
 -  group which refers to a declared `group` annotation.
--  module which refers to `test` files under a specific Magento Module.
+-  module which refers to `test` files under a specific module.
 
 The element may contain [`<test>`](#test), [`<group>`](#group), and [`<module>`](#module).
 

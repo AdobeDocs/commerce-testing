@@ -34,12 +34,12 @@ Each [operation](#operation) includes:
 -  The type of body content encoding in [contentType](#contenttype).
 -  The body of the request represented as a tree of objects, arrays, and fields.
 
-When a test step requires handling the specified data entity, MFTF performs the following steps:
+When a test step requires handling the specified data entity, the Functional Testing Framework performs the following steps:
 
 -  Reads input data (`<data/>`) and the type (the `type` attribute) of the specified [entity].
 -  Searches the metadata operation for the `dataType` that matches the entity's `type`. For example, `<entity type="product">` matches `<operation dataType="product"`.
 -  Forms a request of the operation and the input data of the entity according to matching metadata.
--  Stores a response and provides access to its data using MFTF variables syntax in XML.
+-  Stores a response and provides access to its data using the Functional Testing Framework variables syntax in XML.
 
 The following diagram demonstrates the XML structure of a metadata file:
 ![Structure of metadata](../_images/functional-testing/metadata-dia.svg)
@@ -99,8 +99,8 @@ Example:
 
 ### Sending a REST API request
 
-MFTF allows you to handle basic CRUD operations with an object using [Magento REST API][api reference] requests.
-To convert a request to MFTF format, wrap the corresponding REST API request into XML tags according to the [Reference documentation](#reference).
+The Functional Testing Framework allows you to handle basic CRUD operations with an object using [REST API][api reference] requests.
+To convert a request to the Functional Testing Framework format, wrap the corresponding REST API request into XML tags according to the [Reference documentation](#reference).
 
 -  GET is used for retrieving data from objects.
 -  POST is used for creating new objects.
@@ -111,7 +111,7 @@ This is an example of how to handle a category using REST API operations provide
 
 ![REST API operations provided by catalogCategoryRepositoryV1][catalogCategoryRepositoryV1 image]
 
-The above screenshot from the [Magento REST API Reference][api reference] demonstrates a list of available operations to:
+The above screenshot from the [REST API Reference][api reference] demonstrates a list of available operations to:
 
 -  Delete a category by its identifier (`method="DELETE"`)
 -  Get information about a category by its ID (`method="GET"`)
@@ -128,7 +128,7 @@ Let's see what happens when you create a category:
 <createData entity="_defaultCategory" stepKey="createPreReqCategory"/>
 ```
 
-MFTF searches in the _Data_ directory an entity with `<entity name="_defaultCategory">` and reads `type` of the entity.
+The Functional Testing Framework searches in the _Data_ directory an entity with `<entity name="_defaultCategory">` and reads `type` of the entity.
 If there are more than one entity with the same name, all of the entities are merged.
 
 _Catalog/Data/CategoryData.xml_:
@@ -141,8 +141,8 @@ _Catalog/Data/CategoryData.xml_:
 </entity>
 ```
 
-Here, `type` is equal to `"category"`, which instructs MFTF to search an operation with `dataType="category"`.
-Since the action is __to create__ a category, MFTF will also search for operation with `type="create"` in _Metadata_ for `dataType="category"`.
+Here, `type` is equal to `"category"`, which instructs the Functional Testing Framework to search an operation with `dataType="category"`.
+Since the action is __to create__ a category, the Functional Testing Framework will also search for operation with `type="create"` in _Metadata_ for `dataType="category"`.
 
 _Catalog/Metadata/CategoryMeta.xml_:
 
@@ -189,13 +189,13 @@ Using the [Reference](#reference), we can trace how the JSON request was convert
 
 <InlineAlert variant="info" slots="text" />
 
-Comments in the example below are used to demonstrate relation between JSON request and MFTF metadata in XML.
+Comments in the example below are used to demonstrate relation between JSON request and Functional Testing Framework metadata in XML.
 JSON does not support comments.
 
 Model schema for _catalogCategoryRepositoryV1SavePostBody_ with XML representation of _Catalog/Metadata/CategoryMeta.xml_ in comments:
 
 ```json
-{                                           // XML representation in the MFTF metadata format (see 'Catalog/Metadata/CategoryMeta.xml')
+{                                           // XML representation in the Functional Testing Framework metadata format (see 'Catalog/Metadata/CategoryMeta.xml')
   "category": {                             // <object key="category" dataType="category">
     "id": 0,                                // Skipped, because Category ID is not available on UI when you create a new category.
     "parent_id": 0,                         // <field key="parent_id">integer</field>
@@ -241,7 +241,7 @@ The corresponding test step is:
 <createData entity="guestCart" stepKey="createGuestCart"/>
 ```
 
-MFTF searches in the _Data_ directory an entity with `<entity name="GuestCart">` and reads `type`.
+The Functional Testing Framework searches in the _Data_ directory an entity with `<entity name="GuestCart">` and reads `type`.
 
 _Quote/Data/GuestCartData.xml_:
 
@@ -260,11 +260,11 @@ _Catalog/Data/CategoryData.xml_:
 </operation>
 ```
 
-As a result, MFTF sends an unauthorized POST request with an empty body to the `https://example.com/rest/V1/guest-carts` and stores the single string response that the endpoint returns.
+As a result, the Functional Testing Framework sends an unauthorized POST request with an empty body to the `https://example.com/rest/V1/guest-carts` and stores the single string response that the endpoint returns.
 
 ### Handling a REST API response
 
-There are cases when you need to reuse the data that Magento responded with to your POST request.
+There are cases when you need to reuse the data that Adobe Commerce or Magento Open source responded with to your POST request.
 
 Let's see how to handle data after you created a category with custom attributes:
 
@@ -272,7 +272,7 @@ Let's see how to handle data after you created a category with custom attributes
 <createData entity="customizedCategory" stepKey="createPreReqCategory"/>
 ```
 
-MFTF receives the corresponding JSON response and enables you to reference its data using a variable of format:
+The Functional Testing Framework receives the corresponding JSON response and enables you to reference its data using a variable of format:
 
 __$__ _stepKey_ __.__ _JsonKey_ __$__
 
@@ -382,7 +382,7 @@ The operation enables you to assign the following form fields:
 
 ### Create an object in storefront
 
-MFTF uses the `CreateWishlist` operation to create a wish list on storefront:
+The Functional Testing Framework uses the `CreateWishlist` operation to create a wish list on storefront:
 
 Source file is _Wishlist/Metadata/WishlistMeta.xml_
 
@@ -457,7 +457,7 @@ An object must match the [entity] of the same `type`.
 | ---------- | ------- | -------- | ---------------------------------------------------------------------------------------------- |
 | `key`      | string  | optional | Name of the object.                                                                            |
 | `dataType` | string  | required | Type of the related [entity].                                                                  |
-| `required` | boolean | optional | Determines if the object is required or not. It must match the Magento REST API specification. |
+| `required` | boolean | optional | Determines if the object is required or not. It must match the REST API specification. |
 
 ### field
 
@@ -467,7 +467,7 @@ Representation of HTML form or REST API fields.
 | ---------- | ------- | -------- | --------------------------------------------------------------------------------------------- |
 | `key`      | string  | required | Name of the field. It must match the field name of the related [entity].                      |
 | `type`     | string  | optional | Type of the value. It may contain a primitive type or the type of another operation.          |
-| `required` | boolean | optional | Determines if the field is required or not. It must match the Magento REST API specification. |
+| `required` | boolean | optional | Determines if the field is required or not. It must match the REST API specification. |
 
 ### array
 

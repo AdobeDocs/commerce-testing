@@ -5,11 +5,14 @@ description: Learn how the Functional Testing Framework relies on modularity to 
 
 # Test Modularity
 
-One of MFTF's most distinguishing functionalities is the framework's modularity.
+One of the framework's most distinguishing functionalities is its modularity.
 
 ## What is test modularity
 
-Within MFTF, test modularity can refer to two different concepts:
+Within the framework, test modularity can refer to two different concepts:
+
+* Merging
+* Materials
 
 ### Test material merging
 
@@ -17,21 +20,21 @@ Test material merging is covered extensively in the [merging] topic, so it will 
 
 ### Modular test materials
 
-This refers to test materials being correctly owned by the right Magento module, and for tests to have references to only what their parent Magento module has a dependency on.
+This refers to test materials being correctly owned by the right Adobe Commerce or Magento Open Source module, and for tests to have references to only what their parent module has a dependency on.
 
-Since MFTF queries the Magento instance for enabled modules, MFTF test materials are included or excluded from the merging process dynamically, making proper ownership and dependencies a must.
+Since the framework queries the Adobe Commerce or Magento Open Source instance for enabled modules, test materials are included or excluded from the merging process dynamically, making proper ownership and dependencies a must.
 
 Consider the following scenario:
 
 * TestA in ModuleA is using materials form ModuleB
 * In Magento, I now disable ModuleB
-* TestA will try to use ModuleB materials, which are no longer being read by MFTF since the Magento instance has it disable
+* TestA will try to use ModuleB materials, which are no longer being read by the framework since the Adobe Commerce or Magento Open Source instance has it disable
 
 Since TestA's dependencies are out of sync with ModuleA, the tests are no longer properly modular.
 
 ## Why is test modularity important?
 
-This concept is important simply because without proper modularity, tests or test materials may be incorrectly merged in (or left out), leading to the the test itself being out of sync with the Magento instance.
+This concept is important simply because without proper modularity, tests or test materials may be incorrectly merged in (or left out), leading to the the test itself being out of sync with the Adobe Commerce or Magento Open Source instance.
 
 For example, in a situation where an extension drastically alters the login process (for instance: two factor authentication), the only way the tests will be able to pass is if the test materials are correctly nested in the extension.
 
@@ -57,9 +60,9 @@ This approach will work on getting the quickest ownership, but it is fairly obvi
 
 #### Deduction
 
-This is the next step up in difficulty from the above method, as it involves searching through the Magento codebase.
+This is the next step up in difficulty from the above method, as it involves searching through the Adobe Commerce or Magento Open Source codebase.
 
-Take the `Add Attribute` button for example. The button has an `id="addAttribute"` and since we know Magento uses XML to declare much of its layout/CSS properties we can start by searching only `*.xml` files.
+Take the `Add Attribute` button for example. The button has an `id="addAttribute"` and since we know Adobe Commerce and Magento Open Source uses XML to declare much of its layout/CSS properties we can start by searching only `*.xml` files.
 
 Searching through the codebase for `"addAttribute"` in `xml` files leads to four different files:
 
@@ -70,7 +73,7 @@ app/code/Magento/Catalog/Test/Mftf/ActionGroup/AdminProductAttributeActionGroup.
 app/code/Magento/Catalog/view/adminhtml/ui_component/product_form.xml
 ```
 
-The first three are clearly MFTF test materials, which leaves us with the final file, and the line below
+The first three are clearly test materials, which leaves us with the final file, and the line below
 
 ```xml
 <button name="addAttribute" class="Magento\Catalog\Block\Adminhtml\Product\Edit\Button\AddAttribute"/>
@@ -82,7 +85,7 @@ This kind of deduction is more involved, but it much more likely to give you the
 
 ### Use bin/mftf static-checks
 
-For tests to be fully modular, an MFTF test must have the same dependencies as its parent module. This is quite difficult to do by hand, and requires checking of every `{{test.material}}` call and any other references to MFTF test materials in a test.
+For tests to be fully modular, it must have the same dependencies as its parent module. This is quite difficult to do by hand, and requires checking of every `{{test.material}}` call and any other references to test materials in a test.
 
 The `static-checks` command includes a test material ownership check that should help suss out these kind of dependency issues.
 

@@ -9,7 +9,7 @@ We strive to write tests using only action groups. Fortunately, we have built up
 
 ## Why use Action Groups?
 
-Action groups simplify maintainability by reducing duplication. Because they are re-usable building blocks, odds are that they are already made use of by existing tests in the Magento codebase. This proves their stability through real-world use. Take for example, the action group named `LoginAsAdmin`:
+Action groups simplify maintainability by reducing duplication. Because they are re-usable building blocks, odds are that they are already made use of by existing tests in the Adobe Commerce or Magento Open Source codebase. This proves their stability through real-world use. Take for example, the action group named `LoginAsAdmin`:
 
 ```xml
 <actionGroup name="LoginAsAdmin">
@@ -47,7 +47,7 @@ Again using `LoginAsAdmin` as our example, we trim away metadata to clearly reve
 </actionGroup>
 ```
 
-This works against the standard Magento admin panel login page. Bu imagine we are working on a Magento extension that adds a CAPTCHA field to the login page. If we create and activate this extension and then run all existing tests, we can expect almost everything to fail because the CAPTCHA field is left unfilled.
+This works against the standard Admin panel login page. Bu imagine we are working on an extension that adds a CAPTCHA field to the login page. If we create and activate this extension and then run all existing tests, we can expect almost everything to fail because the CAPTCHA field is left unfilled.
 
 We can overcome this by making use of MFTF's extensibility. All we need to do is to provide a "merge" that modifies the existing `LoginAsAdmin` action group. Our merge file will look like:
 
@@ -84,4 +84,4 @@ Bringing it all together, our resulting `LoginAsAdmin` action group becomes this
 
 No one file contains this exact content as above, but instead all three files come together to form this action group.
 
-This extensibility can be applied in many ways. We can use it to affect existing Magento entities such as tests, action groups, and data. Not so obvious is that this tehcnique can be used within your own entities to make them more maintainable as well.
+This extensibility can be applied in many ways. We can use it to affect existing Adobe Commerce or Magento Open Source entities such as tests, action groups, and data. Not so obvious is that this tehcnique can be used within your own entities to make them more maintainable as well.

@@ -7,13 +7,13 @@ description: Learn how to group actions to automate different Adobe Commerce and
 
 In the MFTF, you can re-use a group of [actions][], such as logging in as an administrator or a customer, declared in an XML file when you need to perform the same sequence of actions multiple times.
 
-The following diagram shows the structure of an MFTF action group:
+The following diagram shows the structure of a Functional Testing Framework action group:
 
-![Structure of MFTF action group](../../_images/functional-testing/action-groups-dia.svg)
+![Structure of a Functional Testing Framework action group](../../_images/functional-testing/action-groups-dia.svg)
 
 ## Principles
 
-The following conventions apply to MFTF action groups:
+The following conventions apply to Functional Testing Framework action groups:
 
 - All action groups are declared in XML files and stored in the `<module>/Test/Mftf/ActionGroup/` directory.
 - Every file name ends with `ActionGroup` suffix. For exampe `LoginAsAdminActionGroup.xml`.
@@ -169,13 +169,13 @@ The `string` argument type provides a method to pass a single piece of data to t
 
 The `relevantString` argument value points to the data [created][] in the `stepKey="persistedData"` test step.
 `field1` is a data key of the required data string.
-Even with the `persistedData` data entity, the MFTF interprets the `$persistedData.field1$` value as a string.
+Even with the `persistedData` data entity, the Functional Testing Framework interprets the `$persistedData.field1$` value as a string.
 
 ### Define the argument value based on data entity resolution
 
 The argument value points to a piece of data defined in a `data.xml` file.
 The `field1` data contains the required string.
-MFTF resolves `{{myCustomEntity.field1}}` the same as it would in a `selector` or `userInput` attribute.
+The Functional Testing Framework resolves `{{myCustomEntity.field1}}` the same as it would in a `selector` or `userInput` attribute.
 
 ```xml
 <actionGroup stepKey="fillWithXmlData" ref="fillExample">

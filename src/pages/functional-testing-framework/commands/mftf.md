@@ -1,11 +1,11 @@
 ---
-title: MFTF CLI commands | Commerce Testing
+title: Functional Testing Framework CLI commands | Commerce Testing
 description: Learn about the bin/mftf command-line interface (CLI) tool for the Functional Testing Framework.
 ---
 
 # CLI commands: vendor/bin/mftf
 
-The Magento Functional Testing Framework (MFTF) introduces the command line interface (CLI) tool `vendor/bin/mftf` to facilitate your interaction with the framework.
+The Functional Testing Framework (MFTF) introduces the command line interface (CLI) tool `vendor/bin/mftf` to facilitate your interaction with the framework.
 
 Note that `mftf` commands replace the `robo` commands that were used in previous releases.
 
@@ -33,7 +33,7 @@ vendor/bin/mftf build:project
 vendor/bin/mftf build:project --upgrade
 ```
 
-Upgrades all installed MFTF tests after a major MFTF upgrade.
+Upgrades all installed test after a major Functional Testing Framework upgrade.
 
 ### Generate all tests
 
@@ -136,13 +136,13 @@ For more details about `failed`, refer to [Reporting](../reporting.md).
 
 ## Error tolerance during generation
 
-Starting from version 3.2.0, MFTF will not fail right away when encountering generation errors.
-Instead, MFTF will generate as many tests and suites as it can, log errors to `mftf.log`, and exit with a non-zero generation status.
+Starting from version 3.2.0, the Functional Testing Framework will not fail right away when encountering generation errors.
+Instead, the Functional Testing Framework will generate as many tests and suites as it can, log errors to `mftf.log`, and exit with a non-zero generation status.
 
 Note:
 
 - Not all errors are tolerable at generation. For example, schema validation errors, parser errors, and WebApi authentication errors will cause `hard` failures, with no tests or suites being generated.
-- Error tolerance in generation is meant to help local test development and testing and is expected to be run locally. All generation errors must be fixed in order to use other framework functionality, pass static checks, and to deliver MFTF tests.
+- Error tolerance in generation is meant to help local test development and testing and is expected to be run locally. All generation errors must be fixed in order to use other framework functionality, pass static checks, and to deliver test.
 
 ## Reference
 
@@ -162,7 +162,7 @@ vendor/bin/mftf build:project [--upgrade] [config_param_options]
 
 | Option            | Description                                                                                                                                                                                   |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `-u`, `--upgrade` | Upgrades all installed MFTF tests according to requirements of the last major release. Specifying this flag upgrades only those tests in the default location. Example: `build:project --upgrade`. |
+| `-u`, `--upgrade` | Upgrades all installed test according to requirements of the last major release. Specifying this flag upgrades only those tests in the default location. Example: `build:project --upgrade`. |
 
 You can include options to set configuration parameter values for your environment since the project build process also [sets up the environment](#setupenv).
 
@@ -174,12 +174,12 @@ vendor/bin/mftf build:project --MAGENTO_BASE_URL=http://magento.local/ --MAGENTO
 
 #### Description
 
-Diagnose MFTF configuration and setup. Currently this command will check the following:
+Diagnose the Functional Testing Framework configuration and setup. Currently this command will check the following:
 
-- Verify admin credentials are valid. Allowing MFTF authenticates and runs API requests to Magento through cURL
+- Verify admin credentials are valid. Allows the Functional Testing Framework to authenticate and run API requests to Adobe Commerce or Magento Open Source through cURL
 - Verify that Selenium is up and running and available for MFTF
-- Verify that new session of browser can open Magento admin and store front urls
-- Verify that MFTF can run MagentoCLI commands
+- Verify that new session of browser can open Admin and store front urls
+- Verify that the Functional Testing Framework can run Adobe Commerce and Magento Open Source CLI commands
 
 #### Usage
 
@@ -208,11 +208,11 @@ vendor/bin/mftf generate:tests [option] [<test name>] [<test name>] [--remove]
 |-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `--config=[<default> or <singleRun> or <parallel>]` | Creates a single manifest file with a list of all tests. The default location is `tests/functional/Magento/FunctionalTest/_generated/testManifest.txt`.<br/> You can split the list into multiple groups using `--config=parallel`; the groups will be generated in `_generated/groups/` like `_generated/groups/group1.txt, group2.txt, ...`.<br/> Available values: `default` (default), `singleRun`(same as `default`), and `parallel`.<br/> Example: `generate:tests --config=parallel`.                 |
 | `--filter`                                          | Option to filter tests to be generated.<br/>Template: '&lt;filterName&gt;:&lt;filterValue&gt;'.<br/>Existing filter types: severity, includeGroup, excludeGroup.<br/>Existing severity values: BLOCKER, CRITICAL, MAJOR, AVERAGE, MINOR.<br/>Example: `vendor/bin/mftf generate:tests --filter=severity:CRITICAL --filter=severity:BLOCKER --filter=includeGroup:customer`                                                                                                                                   |
-| `--force`                                           | Forces test generation, regardless of the module merge order defined in the Magento instance. Example: `generate:tests --force`.                                                                                                                                                                                                                                                                                                                                                                             |
+| `--force`                                           | Forces test generation, regardless of the module merge order defined in the Adobe Commerce or Magento Open Source instance. Example: `generate:tests --force`.                                                                                                                                                                                                                                                                                                                                                                             |
 | `-i,--time`                                         | Set time in minutes to determine the group size when `--config=parallel` is used. <br/>Example: `generate:tests --config=parallel --time=15` <br/>Option `--time` will be the default and the __default value__ is `10` when neither `--time` nor `--groups` is specified. <br/>Example: `generate:tests --config=parallel`                                                                                                                                                                                  |
 | `-g,--groups`                                       | Set number of groups to be split into when `--config=parallel` is used. <br/>Example: `generate:tests --config=parallel --groups=300` <br/>Options `--time` and `--groups` are mutually exclusive and only one should be used.                                                                                                                                                                                                                                                                                |
 | `--tests`                                           | Defines the test configuration as a JSON string or JSON file path.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| `--allow-skipped`                                   | Allows MFTF to generate and run tests marked with `<skip>.`                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `--allow-skipped`                                   | Allows the framework to generate and run tests marked with `<skip>.`                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | `--debug`                                           | Performs schema validations on XML files. <br/> DEFAULT: `generate:tests` implicitly performs schema validation on merged files. It does not indicate the file name where the error is encountered. <br/> DEVELOPER: `--debug` performs per-file validation and returns additional debug information (such as the filename where an error occurred) when test generation fails because of an invalid XML schema. This option takes extra processing time. Use it after test generation has failed once.<br/> |
 | `-r,--remove`                                       | Removes the existing generated suites and tests cleaning up the `_generated` directory before the actual run. For example, `generate:tests SampleTest --remove` cleans up the entire `_generated` directory and generates `SampleTest` only.                                                                                                                                                                                                                                                                 |
 | `-l,--log`                                          | Generate metadata files during test generation. Accepted parameters are: testEntityJson.                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -499,7 +499,7 @@ The example parameters are taken from the `etc/config/.env.example` file.
 
 ### `static-checks`
 
-Runs all or specific MFTF static-checks on the test codebase that MFTF is currently attached to.
+Runs all or specific Functional Testing Framework static-checks on the test codebase that the Functional Testing Framework is currently attached to.
 Behavior for determining what tests to run is as follows:
 
 -  If test names are specified, only those tests are run.
@@ -518,7 +518,7 @@ vendor/bin/mftf static-checks [<names>]...
 
 | Option                | Description                                                                                               |
 |-----------------------|-----------------------------------------------------------------------------------------------------------|
-| `-p, --path` | Path to a MFTF test module to run "deprecatedEntityUsage" and "pauseActionUsage" static check scripts. Option is ignored by other static check scripts.
+| `-p, --path` | Path to a test module to run "deprecatedEntityUsage" and "pauseActionUsage" static check scripts. Option is ignored by other static check scripts.
 
 #### Examples
 
@@ -599,8 +599,8 @@ Currently, the ruleset only defines the tests to run. Here is an example of the 
 
 ### `upgrade:tests`
 
-When the path argument is specified, this `upgrade` command applies all the major version MFTF upgrade scripts to a `Test Module` in the given path.
-Otherwise, it will apply all the major version MFTF upgrade scripts to all installed test components.
+When the path argument is specified, this `upgrade` command applies all the major version Functional Testing Framework upgrade scripts to a `Test Module` in the given path.
+Otherwise, it will apply all the major version Functional Testing Framework upgrade scripts to all installed test components.
 
 `Test Module` should have the directory structure of ActionGroup, Data, Metadata, Page, Section, Test, and Suite.
 
@@ -614,12 +614,12 @@ The upgrade scripts are meant to be used for Test Modules under source code cont
 vendor/bin/mftf upgrade:tests [<path>]
 ```
 
-`<path>` is the path to a MFTF `Test Module` that needs to be upgraded.
+`<path>` is the path to a Functional Testing Framework `Test Module` that needs to be upgraded.
 The command searches recursively for any `*.xml` files to upgrade.
 
 #### Examples
 
-To upgrade all installed MFTF tests:
+To upgrade all installed test:
 
 ```bash
 vendor/bin/mftf upgrade:tests
@@ -639,7 +639,7 @@ vendor/bin/mftf upgrade:tests /Users/user/magento2/app/code/Magento/Catalog/Test
 
 ### `codecept:run`
 
-A MFTF wrapper command that invokes `vendor/bin/codecept run`. This command runs tests in functional suite. Tests must be generated before using this command.
+A Functional Testing Framework wrapper command that invokes `vendor/bin/codecept run`. This command runs tests in functional suite. Tests must be generated before using this command.
 
 #### Usage
 

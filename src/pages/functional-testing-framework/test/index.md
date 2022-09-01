@@ -5,10 +5,10 @@ description: Learn about Functional Testing Framework test cases and how to defi
 
 # Test cases
 
-Test cases in the Magento Functional Testing Framework (MFTF) are defined in XML as [`<tests>`](#tests).
+Test cases in the Functional Testing Framework are defined in XML as [`<tests>`](#tests).
 `<tests>` is a [Codeception test container][Codeception] that contains individual test [`<test>`](#test) with its metadata ([`<annotations>`](#annotations)), before ([`<before>`](#before)) and after ([`<after>`](#after)) section.
 
-MFTF `<test>` is considered a sequence of actions with associated parameters.
+The Functional Testing Framework `<test>` is considered a sequence of actions with associated parameters.
 Any failed [assertion] within a test constitutes a failed test.
 
 <InlineAlert variant="info" slots="text"/>
@@ -17,9 +17,9 @@ Any failed [assertion] within a test constitutes a failed test.
 They only apply to the `<test>` in which they are declared.
 The steps in `<after>` are run in both successful **and** failed test runs.
 
-The following diagram shows the structure of an MFTF test case:
+The following diagram shows the structure of an test case:
 
-![Structure of MFTF test case](../../_images/functional-testing/test-dia.svg)
+![Structure of test case](../../_images/functional-testing/test-dia.svg)
 
 ## Format
 
@@ -47,7 +47,7 @@ The format of a test XML file is:
 
 ## Principles
 
-The following conventions apply to MFTF tests:
+The following conventions apply to test:
 
 *  One `<test>` tag is allowed per test XML file.
 *  All names within the framework are in the **PascalCase** format and must be alphanumeric.

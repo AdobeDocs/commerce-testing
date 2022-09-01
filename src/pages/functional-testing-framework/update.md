@@ -3,16 +3,16 @@ title: Update the framework | Commerce Testing
 description: Learn how to upddate the Functional Testing Framework for Adobe Commerce and Magento Open Source.
 ---
 
-# Update the Magento Functional Testing Framework
+# Update the Functional Testing Framework
 
 <InlineAlert variant="info" slots="text"/>
 
-[Find your version] of MFTF. The latest Magento 2.4.x release supports MFTF 3.x. The latest Magento 2.3.x release supports MFTF 2.6.x.
+[Find your version] of the Functional Testing Framework. The latest Adobe Commerce or Magento Open Source 2.4.x release supports Functional Testing Framework 3.x. The latest Adobe Commerce or Magento Open Source 2.3.x release supports Functional Testing Framework 2.6.x.
 
-Tests and the Framework itself are stored in different repositories.
+Tests and the framework itself are stored in different repositories.
 
 *  Tests are stored in Module's directory.
-*  MFTF is installed separately (usually as a Composer dependency)
+*  The Functional Testing Framework is installed separately (usually as a Composer dependency)
 
 To understand different types of update - please follow the [Versioning][] page.
 

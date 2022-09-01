@@ -5,12 +5,12 @@ description: Define data entities for the Functional Testing Framework on Adobe 
 
 # Input testing data
 
-MFTF enables you to specify and use `<data>` entities defined in XML. Default `<data>` entities are provided for use and as templates for entity creation and manipulation.
-The following diagram shows the XML structure of an MFTF data object:
+The Functional Testing Framework enables you to specify and use `<data>` entities defined in XML. Default `<data>` entities are provided for use and as templates for entity creation and manipulation.
+The following diagram shows the XML structure of a data object:
 
-![MFTF Data Object](../_images/functional-testing/data-dia.svg)
+![Data Object](../_images/functional-testing/data-dia.svg)
 
-The MFTF `<data>` entities are stored in `<module_dir>/Test/Mftf/Data/`.
+The `<data>` entities are stored in `<module_dir>/Test/Mftf/Data/`.
 
 ## Supply data to test by reference to a data entity
 
@@ -106,9 +106,9 @@ The following is an example of the usage of the persistant data in `Magento/Cust
 
 <InlineAlert variant="info" slots="text" />
 
-As of MFTF 2.3.6, you no longer need to differentiate between scopes (a test, a hook, or a suite) for persisted data when referencing it in tests.
+As of Functional Testing Framework 2.3.6, you no longer need to differentiate between scopes (a test, a hook, or a suite) for persisted data when referencing it in tests.
 
-MFTF now stores the persisted data and attempts to retrieve it using the combination of `stepKey` and the scope of where it has been called.
+The Functional Testing Framework now stores the persisted data and attempts to retrieve it using the combination of `stepKey` and the scope of where it has been called.
 The current scope is preferred, then widening to _test > hook > suite_ or _hook > test > suite_.
 
 This emphasizes the practice for the `stepKey` of `createData` to be descriptive and unique, as a duplicated `stepKey` in both a `<test>` and `<before>` prefers the `<test>` data.
@@ -169,7 +169,7 @@ The format of the `<data>` entity is:
 
 ## Principles
 
-The following conventions apply to MFTF `<data>`:
+The following conventions apply to `<data>` entities:
 
 *  A `<data>` file may contain multiple data entities.
 *  Camel case is used for `<data>` elements. The name represents the `<data>` type. For example, a file with customer data is `CustomerData.xml`. A file for simple product would be `SimpleProductData.xml`.

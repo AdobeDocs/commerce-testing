@@ -3,9 +3,9 @@ title: Test preparation | Commerce Testing
 description: Follow this tutorial to convert a functional test into an abstracted Functional Testing Framework file ready for testing Adobe Commerce and Magento Open Source projects.
 ---
 
-# Preparing a test for MFTF
+# Preparing a test
 
-This tutorial demonstrates the process of converting a raw functional test into a properly abstracted test file, ready for publishing.
+This tutorial demonstrates the process of converting a raw functional test into a properly abstracted test file ready for publishing.
 
 ## The abstraction process
 
@@ -42,7 +42,7 @@ Manual tests are just that: A series of manual steps to be run.
 ## The raw test
 
 This test works just fine. But it will only work if everything referenced in the test stays exactly the same. This neither reusable nor extensible.
-Hardcoded selectors make it impossible to reuse sections in other action groups and tasks. They can also be brittle. If Magento happens to change a `class` or `id` on an element, the test will fail.
+Hardcoded selectors make it impossible to reuse sections in other action groups and tasks. They can also be brittle. If Adobe Commerce or Magento Open Source happens to change a `class` or `id` on an element, the test will fail.
 
 Some data, like the SKU in this example, must be unique for every test run. Hardcoded values will fail here. [Data entities][] allow for `suffix` and `prefix` for ensuring unique data values.
 
@@ -209,8 +209,7 @@ Here we are interested in `<section name="AdminProductFormSection">`, where we a
 
 ## Data entities
 
-The hardcoded values of these form elements are abstracted to a "data entity" XML file.
-We replace the hardcoded values with variables and the MFTF will do the variable substitution.
+The hardcoded values of these form elements are abstracted to a "data entity" XML file. We replace the hardcoded values with variables and the framework does the variable substitution.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

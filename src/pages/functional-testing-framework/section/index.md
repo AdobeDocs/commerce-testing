@@ -22,9 +22,9 @@ Substitutable values in the test can be of the following formats:
    -  `$persistedCreateDataKey.field$` for data created in the scope of a [test][] using the [`<createData>`][] action with `stepKey="persistedCreateDataKey"`.
    -  `$$persistedCreateDataKey.field$$` for data created in [before][] and [after][] hooks. Even though `<before>`and `<after>` are nested inside a [test][], persisted data is stored differently when it is done in a test hook. Therefore it must be accessed with a different notation.
 
-The following diagram shows the XML structure of an MFTF section:
+The following diagram shows the XML structure of a Functional Testing Framework section:
 
-![XML Structure of MFTF section](../../_images/functional-testing/section-dia.svg)
+![XML Structure of Functional Testing Framework section](../../_images/functional-testing/section-dia.svg)
 
 ## Format
 
@@ -45,7 +45,7 @@ The format of a `<section>` is:
 
 ## Principles
 
-The following conventions apply to MFTF sections:
+The following conventions apply to Functional Testing Framework sections:
 
 -  `<section>` name must be alphanumeric.
 -  `*Section.xml` is stored in the _Section_ directory of a module.
@@ -137,7 +137,7 @@ The test step that covers the use case:
 ...
 ```
 
-Whenever the `signIn` button is used in a test, the MFTF will add a 30 second `waitForPageLoad` action immediately after the `click`.
+Whenever the `signIn` button is used in a test, the Functional Testing Framework will add a 30 second `waitForPageLoad` action immediately after the `click`.
 
 <!-- Link definitions -->
 

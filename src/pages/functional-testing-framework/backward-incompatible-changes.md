@@ -3,13 +3,13 @@ title: Backward incompatible changes | Commerce Testing
 description: Learn about major chnages to the Functional Testing Framework that may require specific action to ensure third-party tests continue working as expected with Adobe Commerce and Magento Open Source tests.
 ---
 
-# MFTF 3.0.0 backward incompatible changes
+# Backward incompatible changes
 
-This page highlights backward incompatible changes between releases that have a major impact and require detailed explanation and special instructions to ensure third-party tests continue working with Magento core tests.
+This page highlights backward incompatible changes between releases that have a major impact and require detailed explanation and special instructions to ensure third-party tests continue working with core tests.
 
 ## Minimum supported PHP version changes
 
-We changed the minimum PHP version requirement from 7.0 to 7.3. Because of the PHP version requirement change, this MFTF version only supports Magento 2.4 or later.
+We changed the minimum PHP version requirement 7.4. Because of the PHP version requirement change, this version of the framework only supports Adobe Commerce and Magento Open Source 2.4 or later.
 
 ## Folder structure changes
 
@@ -49,11 +49,11 @@ To run the upgrade tests:
 1. Run `bin/mftf upgrade:tests`. [See command page for details](commands/mftf.md#upgradetests).
 1. Lastly, try to generate all tests. Tests should all be generated as a result of the upgrades. If not, the most likely issue will be a changed XML schema. Check error messaging and search your codebase for the attributes listed.
 
-## MFTF commands
+## Commands
 
-`--debug` option `NONE` removed for strict schema validation. Ensure there are no schema validation errors in test modules before running MFTF commands.
+`--debug` option `NONE` removed for strict schema validation. Ensure there are no schema validation errors in test modules before running commands.
 
-## MFTF actions
+## Actions
 
 ### `executeInSelenium` and `performOn` removed
 
@@ -63,7 +63,7 @@ To run the upgrade tests:
 
 **Details**:
 
-The `helper` allows test writers to solve advanced requirements beyond what MFTF offers out of the box. See [custom-helpers](custom-helpers.md) for more information on usage.
+The `helper` allows test writers to solve advanced requirements beyond what the framework offers out of the box. See [custom-helpers](custom-helpers.md) for more information on usage.
 
 Here is an example of using `helper` in place of `executeSelenium` to achieve same workflow.
 

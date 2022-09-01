@@ -7,7 +7,7 @@ description: Create custom Functional Testing Framework tests for Adobe Commerce
 
 There are cases when you need to create many tests that are very similar to each other.
 For example, only one or two parameters (for example, URL) might vary between tests.
-To avoid copy-pasting and to save some time the Magento Functional Testing Framework (MFTF) enables you to extend test components such as [test], [data], and [action group].
+To avoid copy-pasting and to save some time the Functional Testing Framework (MFTF) enables you to extend test components such as [test], [data], and [action group].
 You can create or update any component of the parent body in your new test/action group/entity.
 
 *  A test starting with `<test name="SampleTest" extends="ParentTest">` creates a test `SampleTest` that takes body of existing test `ParentTest` and adds to it the body of `SampleTest`.

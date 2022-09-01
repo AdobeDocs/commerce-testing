@@ -9,16 +9,16 @@ description: Learn how to write custom test actions to address advanced requirem
 
 Due to complexity, you should only write new custom helpers as a last resort, after trying to implement your test using built-in actions.
 
-Custom Helpers allow test writers to write custom test actions to solve advanced requirements beyond what MFTF offers out of the box.
+Custom Helpers allow test writers to write custom test actions to solve advanced requirements beyond what the Functional Testing Framework offers out of the box.
 
-In MFTF version 3.0.0, the following test actions were removed:
+In version 3.0.0, the following test actions were removed:
 
 *  `<executeInSelenium>`
 *  `<performOn>`
 
 These actions were removed because they allowed custom PHP code to be written inline inside of XML files. This code was difficult to read. It had no proper syntax highlighting and no linting. It was difficult to maintain, troubleshoot, and modify.
 
-However, sometimes custom logic beyond what MFTF offers is necessary so we have provided an alternative solution: the `<helper>` action.
+However, sometimes custom logic beyond what the Functional Testing Framework offers is necessary so we have provided an alternative solution: the `<helper>` action.
 
 ## Example
 

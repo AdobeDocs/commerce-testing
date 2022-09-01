@@ -7,7 +7,7 @@ description: Learn about the bin/codecept command-line interface (CLI) tool for 
 
 <InlineAlert variant="warning" slots="text1, text2"/>
 
-We do not recommend using Codeception commands directly as they can break MFTF basic workflow.
+We do not recommend using Codeception commands directly as they can break the Functional Testing Framework basic workflow.
 All the Codeception commands you need are wrapped using the [mftf tool][].
 
 To run the Codeception testing framework commands directly, change your directory to the `<Magento root>`.

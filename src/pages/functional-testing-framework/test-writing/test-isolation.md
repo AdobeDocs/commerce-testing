@@ -5,22 +5,22 @@ description: Learn how proper test isolation in the Functional Testing Framework
 
 # Test Isolation
 
-Because MFTF is a framework for testing a highly customizable and ever changing application, MFTF tests need to be properly isolated.
+Because the Functional Testing Framework is a framework for testing a highly customizable and ever changing application, tests must be properly isolated.
 
 ## What is test isolation?
 
-Test isolation refers to a test that does not leave behind any data or configuration changes in the Magento instance.
+Test isolation refers to a test that does not leave behind any data or configuration changes in the Adobe Commerce or Magento Open Source instance.
 
-An MFTF test is considered fully isolated if:
+An test is considered fully isolated if:
 
 1. It does not leave data behind.
-1. It does not leave Magento configured in a different state than when the test started.
+1. It does not leave Adobe Commerce or Magento Open Source configured in a different state than when the test started.
 1. It does not affect a following test's outcome.
 1. It does not rely on an irregular configuration to start its preconditions.
 
 ### Deleting versus restoring
 
-In the above list, points 1 and 2 refer to leaving things behind during test execution. This means you are either deleting or restoring entities in Magento after your test's execution.
+In the above list, points 1 and 2 refer to leaving things behind during test execution. This means you are either deleting or restoring entities in Adobe Commerce or Magento Open Source after your test's execution.
 
 Some examples of entities to be deleted include:
 
@@ -32,7 +32,7 @@ The list of entities to restore is much simpler:
 
 1. Application Configuration
 
-The distinction above is because MFTF tests expect the environment to be in a completely clean state, outside of a test or suite's preconditions. Data must be cleaned up and any application configuration must go back to the default.
+The distinction above is because test expect the environment to be in a completely clean state, outside of a test or suite's preconditions. Data must be cleaned up and any application configuration must go back to the default.
 
 ## Why is isolation important?
 
@@ -40,7 +40,7 @@ As mentioned above, isolation is important because poor isolation can lead to ot
 
 ## How can I achieve test isolation?
 
-This is difficult to do given how large the Magento application is, but a systematic approach can ensure a high level of confidence in you test's isolation.
+This is difficult to do given how large the Adobe Commerce and Magento Open Source applications are, but a systematic approach can ensure a high level of confidence in you test's isolation.
 
 ### Cleaning up data
 

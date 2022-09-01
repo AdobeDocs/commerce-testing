@@ -7,13 +7,13 @@ description: Learn how to get started with the Functional Testing Framework for 
 
 <InlineAlert variant="info" slots="text"/>
 
-[Find your version] of MFTF. The latest Magento 2.3.x release supports MFTF 2.6.4. The latest Magento 2.2.x release supports MFTF 2.5.3.
+[Find your version] of the Functional Testing Framework. The latest Adobe Commerce or Magento Open Source 2.4.x release supports Functional Testing Framework 3.x. The latest Adobe Commerce or Magento Open Source 2.3.x release supports Functional Testing Framework 2.6.x.
 
 ## Prepare environment
 
 Make sure that you have the following software installed and configured on your development environment:
 
--  [PHP version supported by the Magento instance under test][php]
+-  [PHP version supported by the Adobe Commerce or Magento Open Source instance under test][php]
 -  [Composer 1.3 or later][composer]
 -  [Java 1.8 or later][java]
 -  [Selenium Server Standalone 3.1 or later][selenium server] and [ChromeDriver 2.33 or later][chrome driver] or other webdriver in the same directory
@@ -40,7 +40,7 @@ git clone git@github.com:magento/magento2.git
 
 ### Step 2. Install dependencies
 
-Checkout the Magento version that you are going to test.
+Checkout the Adobe Commerce or Magento Open Source version that you are going to test.
 
 ```bash
 cd magento2/
@@ -50,7 +50,7 @@ cd magento2/
 git checkout 2.4-develop
 ```
 
-Install the Magento application.
+Install the Adobe Commerce or Magento Open Source application.
 
 ```bash
 composer install
@@ -58,7 +58,7 @@ composer install
 
 ## Prepare Magento
 
-Configure the following settings in Magento as described below.
+Configure the following settings in Adobe Commerce or Magento Open Source as described below.
 
 ### WYSIWYG settings
 
@@ -66,7 +66,7 @@ A Selenium web driver cannot enter data to fields with WYSIWYG.
 
 To disable the WYSIWYG and enable the web driver to process these fields as simple text areas:
 
-1. Log in to the Magento Admin as an administrator.
+1. Log in to the Admin as an administrator.
 2. Navigate to **Stores** > **Settings** > **Configuration** > **General** > **Content Management**.
 3. In the WYSIWYG Options section set the **Enable WYSIWYG Editor** option to **Disabled Completely**.
 4. Click **Save Config**.
@@ -112,13 +112,13 @@ Clean the cache after changing the configuration values:
 bin/magento cache:clean config full_page
 ```
 
-### Testing with the Magento Two-Factor Authentication (2FA) extension
+### Testing with the two-factor authentication (2FA) extension
 
-If the Magento instance under test has the [Magento Two-Factor Authentication (2FA) extension][] installed and enabled, additional configurations is needed to run MFTF tests. Learn more in [Configure MFTF for Magento with Two-Factor Authentication (2FA)](two-factor-authentication.md).
+If the Adobe Commerce or Magento Open Source instance under test has the [two-factor authentication (2FA) extension][] installed and enabled, additional configurations is needed to run test. Learn more in [Configure with two-factor authentication (2FA)](two-factor-authentication.md).
 
 ### Webserver configuration
 
-MFTF does not support executing CLI commands if your web server points to `<MAGE_ROOT_DIR>/pub` directory as recommended in the [Installation Guide][Installation Guide docroot]. For MFTF to execute the CLI commands, the web server must point to the Magento root directory.
+The Functional Testing Framework does not support executing CLI commands if your web server points to `<MAGE_ROOT_DIR>/pub` directory as recommended in the [Installation Guide][Installation Guide docroot]. For the Functional Testing Framework to execute the CLI commands, the web server must point to the Adobe Commerce or Magento Open Source root directory.
 
 ### Nginx settings
 
@@ -136,7 +136,7 @@ You must clean the cache after changing the configuration values:
 bin/magento cache:clean config full_page
 ```
 
-To be able to run Magento command line commands in tests, add the following location block to the Nginx configuration file in the Magento root directory:
+To be able to run Adobe Commerce or Magento Open Source command-line commands in tests, add the following location block to the Nginx configuration file in the Adobe Commerce or Magento Open Source root directory:
 
 ```conf
 location ~* ^/dev/tests/acceptance/utils($|/) {
@@ -150,11 +150,11 @@ location ~* ^/dev/tests/acceptance/utils($|/) {
 }
 ```
 
-## Set up an embedded MFTF
+## Set up an embedded framework
 
-This is the default setup of MFTF that you would need to cover your Magento project with functional tests.
+This is the default setup of the Functional Testing Framework that you would need to cover your Adobe Commerce or Magento Open Source project with functional tests.
 It installs the framework using an existing Composer dependency such as `magento/magento2-functional-testing-framework`.
-If you want to set up MFTF as a standalone tool, refer to [Set up a standalone MFTF][].
+If you want to set up the Functional Testing Framework as a standalone tool, refer to [Set up a standalone MFTF][].
 
 Install MFTF.
 
@@ -164,7 +164,7 @@ composer install
 
 ### Step 1. Build the project
 
-In the Magento project root, run:
+In the Adobe Commerce or Magento Open Source project root, run:
 
 ```bash
 vendor/bin/mftf build:project
@@ -199,7 +199,7 @@ vim dev/tests/acceptance/.env
 
 Specify the following parameters, which are required to launch tests:
 
--  `MAGENTO_BASE_URL` must contain a domain name of the Magento instance that will be tested.
+-  `MAGENTO_BASE_URL` must contain a domain name of the Adobe Commerce or Magento Open Source instance that will be tested.
   Example: `MAGENTO_BASE_URL=http://magento.test`
 
 -  `MAGENTO_BACKEND_NAME` must contain the relative path for the Admin area.
@@ -216,9 +216,9 @@ If the `MAGENTO_BASE_URL` contains a subdirectory like `http://magento.test/mage
 
 Learn more about environmental settings in [Configuration][].
 
-### Step 3. Enable the Magento CLI commands
+### Step 3. Enable the CLI commands
 
-In the Magento project root, run the following command to enable MFTF to send Magento CLI commands to your Magento instance.
+In the Adobe Commerce or Magento Open Source project root, run the following command to enable the Functional Testing Framework to send Adobe Commerce or Magento Open Source CLI commands to your Adobe Commerce or Magento Open Source instance.
 
  ```bash
 cp dev/tests/acceptance/.htaccess.sample dev/tests/acceptance/.htaccess
@@ -265,7 +265,7 @@ See more commands in [`mftf`][].
 
 ### Step 5. Generate reports
 
-During testing, MFTF generates test reports in CLI. You can generate visual representations of the report data using the [Allure Framework][]. To view the reports in a GUI:
+During testing, the Functional Testing Framework generates test reports in CLI. You can generate visual representations of the report data using the [Allure Framework][]. To view the reports in a GUI:
 
 -  [Install Allure][]
 -  Run the tool to serve the artifacts in `dev/tests/acceptance/tests/_output/allure-results/`:
@@ -278,17 +278,17 @@ Learn more about Allure in the [official documentation][allure docs].
 
 ## Set up a standalone MFTF
 
-MFTF is a root level Magento dependency, but it is also available for use as a standalone application. You may want to use a standalone application when you develop for or contribute to MFTF, which facilitates debugging and tracking changes. These guidelines demonstrate how to set up and run Magento acceptance functional tests using standalone MFTF.
+The Functional Testing Framework is a root level Adobe Commerce or Magento Open Source dependency, but it is also available for use as a standalone application. You may want to use a standalone application when you develop for or contribute to MFTF, which facilitates debugging and tracking changes. These guidelines demonstrate how to set up and run Adobe Commerce or Magento Open Source acceptance functional tests using standalone MFTF.
 
 ### Prerequisites
 
-This installation requires a local instance of the Magento application.
-MFTF uses the [tests from Magento modules][mftf tests] as well as the `app/autoload.php` file.
+This installation requires a local instance of the Adobe Commerce or Magento Open Source application.
+The Functional Testing Framework uses the [tests from modules][mftf tests] as well as the `app/autoload.php` file.
 
-### Step 1. Clone the MFTF repository
+### Step 1. Clone the repository
 
-If you develop or contribute to MFTF, it makes sense to clone your fork of the MFTF repository.
-For contribution guidelines, refer to the [Contribution Guidelines for the Magento Functional Testing Framework][contributing].
+If you develop or contribute to MFTF, it makes sense to clone your fork of the Functional Testing Framework repository.
+For contribution guidelines, refer to the [Contribution Guidelines for the Functional Testing Framework][contributing].
 
 ### Step 2. Install the MFTF
 
@@ -310,23 +310,23 @@ bin/mftf build:project
 
 In the `dev/.env` file, define the [basic configuration][] and [`MAGENTO_BP`][] parameters.
 
-### Step 5. Enable the Magento CLI commands
+### Step 5. Enable the CLI commands
 
-Copy the `etc/config/command.php` file into your Magento installation at `<magento root directory>/dev/tests/acceptance/utils/`.
+Copy the `etc/config/command.php` file into your Adobe Commerce or Magento Open Source installation at `<magento root directory>/dev/tests/acceptance/utils/`.
 Create the `utils/` directory, if you didn't find it.
 
-### Step 6. Remove the MFTF package dependency in Magento
+### Step 6. Remove the framework package dependency
 
-MFTF uses the Magento `app/autoload.php` file to read Magento modules.
-The MFTF dependency in Magento supersedes the standalone registered namespaces unless it is removed at a Composer level.
+The Functional Testing Framework uses the Adobe Commerce or Magento Open Source `app/autoload.php` file to read modules.
+The Functional Testing Framework dependency in Adobe Commerce or Magento Open Source supersedes the standalone registered namespaces unless it is removed at a Composer level.
 
 ```bash
-composer remove magento/magento2-functional-testing-framework --dev -d <path to the Magento root directory>
+composer remove magento/magento2-functional-testing-framework --dev -d <path to the Adobe Commerce or Magento Open Source root directory>
 ```
 
 ### Step 7. Run a simple test
 
-Generate and run a single test that will check your logging to the Magento Admin functionality:
+Generate and run a single test that will check your logging to the Admin functionality:
 
 ```bash
 bin/mftf run:test AdminLoginSuccessfulTest
@@ -336,7 +336,7 @@ You can find the generated test at `dev/tests/functional/tests/MFTF/_generated/d
 
 ### Step 8. Generate Allure reports
 
-The standalone MFTF generates Allure reports at `dev/tests/_output/allure-results/`.
+The standalone Functional Testing Framework generates Allure reports at `dev/tests/_output/allure-results/`.
 Run the Allure server pointing to this directory:
 
 ```bash
@@ -367,5 +367,5 @@ allure serve dev/tests/_output/allure-results/
 [test suite]: suite.md
 [Find your version]: index.md#find-your-mftf-version
 [Installation Guide docroot]: https://devdocs.magento.com/guides/v2.4/install-gde/tutorials/change-docroot-to-pub.html
-[Magento Two-Factor Authentication (2FA) extension]: https://devdocs.magento.com/guides/v2.4/security/two-factor-authentication.html
+[two-factor authentication (2FA) extension]: https://devdocs.magento.com/guides/v2.4/security/two-factor-authentication.html
 [Credentials Page]: credentials.md

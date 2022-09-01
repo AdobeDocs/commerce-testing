@@ -5,15 +5,15 @@ description: Review best practices for writing good Functional Testing Framework
 
 # How To write good selectors
 
-Selectors are the atomic unit of test writing. They fit into the hierarchy like this: MFTF tests make use of action groups > which are made up of actions > which interact with page objects > which contain elements > which are specified by selectors. Because they are fundamental building blocks, we must take care when writing them.
+Selectors are the atomic unit of test writing. They fit into the hierarchy like this: test make use of action groups > which are made up of actions > which interact with page objects > which contain elements > which are specified by selectors. Because they are fundamental building blocks, we must take care when writing them.
 
 ## What is a selector?
 
-A "selector" works like an address to an element in the Document Object Model (DOM). It specifies page elements and allows MFTF to interact with them.
+A "selector" works like an address to an element in the Document Object Model (DOM). It specifies page elements and allows the Functional Testing Framework to interact with them.
 By 'element' we mean things such as input fields, buttons, tables, divs, etc.
 By 'interact' we mean actions such as click, fill field, etc.
 
-Selectors live inside of MFTF page objects and are meant to be highly re-usable amongst all tests. They can be written in either CSS or XPath.
+Selectors live inside of Functional Testing Framework page objects and are meant to be highly re-usable amongst all tests. They can be written in either CSS or XPath.
 
 ## Why are good selectors important?
 
@@ -137,7 +137,7 @@ BAD: #actions__1__aggregator
 
 #### CSS and XPath selectors MUST NOT reference the @data-bind attribute
 
-The @data-bind attribute is used by KnockoutJS, a framework Magento uses to create dynamic Javascript pages. Since this @data-bind attribute is tied to a specific framework, it should not be used for selectors. If Magento decides to use a different framework then these @data-bind selectors would break.
+The `@data-bind` attribute is used by KnockoutJS, a framework Adobe Commerce and Magento Open Source use to create dynamic JavaScript pages. Since this `@data-bind` attribute is tied to a specific framework, it should not be used for selectors. If Adobe decides to use a different framework, then these `@data-bind` selectors will break.
 
 #### Use isolation
 

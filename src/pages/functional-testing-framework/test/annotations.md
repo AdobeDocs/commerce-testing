@@ -11,7 +11,7 @@ Within [tests], annotations are contained within their own node.
 
 ## Principles
 
-The following conventions apply to annotations in the Magento Functional Testing Framework (MFTF):
+The following conventions apply to annotations in the Functional Testing Framework:
 
 - All annotations are within an `<annotations>` element.
 - Each element within corresponds to a supported annotation type.
@@ -135,7 +135,7 @@ Severity Level|Usage
 `BLOCKER`|If this test fails, the customer is completely blocked from purchasing a product.
 `CRITICAL`|This is a serious problem impacting conversion, or affecting the operation of the store.
 `MAJOR`|Store conversion rate is reduced owing to this issue. For example, something is broken or missing that impacts checkout frequency or cart volume.
-`AVERAGE`|A fault on the storefront that can negatively impact conversion rate (like UI errors or omissions), or problems with Magento admin functionality.
+`AVERAGE`|A fault on the storefront that can negatively impact conversion rate (like UI errors or omissions), or problems with Admin functionality.
 `MINOR`|An application or configuration fault that has no impact on conversion rate.
 
 ### skip

@@ -5,7 +5,7 @@ description: Use the Functional Testing Framework to identity test bugs on Adobe
 
 # Debugging
 
-Debugging within the Magento Functional Testing Framework is helpful in identifying test bugs by allowing you to pause execution so that you may:
+Debugging within the Functional Testing Framework is helpful in identifying test bugs by allowing you to pause execution so that you may:
 
 -  Examine the page.
 -  Check returned data and other variables being used during run-time.
@@ -28,7 +28,7 @@ This is straightforward to do once you create a basic Debug Configuration.
 If you get a warning `Path to Codeception for local machine is not configured.`:
 
 1. Click `Fix`, then `+`, and select `Codeception Local`.
-1. Click `...` and locate `/vendor/bin/codecept` in your Magento installation folder.
+1. Click `...` and locate `/vendor/bin/codecept` in your Adobe Commerce or Magento Open Source installation folder.
 
 The easiest method of tagging a test for debugging is the following:
 

@@ -5,7 +5,7 @@ description: Learn how to use actions to automate different Adobe Commerce and M
 
 # Test actions
 
-Actions in the MFTF allow you to automate different scenarios of Magento user's actions.
+Actions in the Functional Testing Framework allow you to automate different scenarios of Adobe Commerce or Magento Open Source user's actions.
 They are mostly XML implementations of [Codeception actions](https://codeception.com/docs/modules/WebDriver#Actions).
 Some actions drive browser elements, while others use REST APIs.
 
@@ -170,7 +170,7 @@ Learn more in [Handling a REST API response](../metadata.md#handling-a-rest-api-
 
 ## Actions specifying HTML values
 
-To use HTML in actions you must encode the HTML string. We recommend using [CyberChef](https://gchq.github.io/CyberChef/#recipe=To_HTML_Entity(false,'Numeric%20entities')). Using CyberChef or a similar tool is straightforward: enter in your HTML string, copy the encoded result, and paste that value into your MFTF test.
+To use HTML in actions you must encode the HTML string. We recommend using [CyberChef](https://gchq.github.io/CyberChef/#recipe=To_HTML_Entity(false,'Numeric%20entities')). Using CyberChef or a similar tool is straightforward: enter in your HTML string, copy the encoded result, and paste that value into your test.
 
 For example, we want to ensure that this value is presented as a string and not rendered as a H1 tag: `<h1 class="login-header">`
 
@@ -183,7 +183,7 @@ After passing `<h1 class="login-header">` through CyberChef we get `&#60;h1 clas
 ## Reference
 
 The following list contains reference documentation about all action elements available in the MFTF.
-If the description of an element does not include a link to Codeception analogue, it means that the action is developed by Magento for specific MFTF needs.
+If the description of an element does not include a link to Codeception analogue, it means that the action is developed by ADobe for specific Functional Testing Framework needs.
 
 ### acceptPopup
 
@@ -523,7 +523,7 @@ Attribute|Type|Use|Description
 ### createData
 
 Creates an entity (for example, a category or product).
-To create an entity, the MFTF makes a `POST` request to the Magento API according to the [data](../data.md) and [metadata](../metadata.md) of the entity to be created.
+To create an entity, the Functional Testing Framework makes a `POST` request to the Adobe Commerce or Magento Open Source API according to the [data](../data.md) and [metadata](../metadata.md) of the entity to be created.
 
 Attribute|Type|Use|Description
 ---|---|---|---
@@ -1072,7 +1072,7 @@ To access this value, use `{$generateDate}` in later actions. -->
 
 ### getData
 
-Gets an entity (for example, a category), from the Magento API according to the data and metadata of the entity type that is requested.
+Gets an entity (for example, a category), from the Adobe Commerce or Magento Open Source API according to the data and metadata of the entity type that is requested.
 
 Attribute|Type|Use|Description
 ---|---|---|---
@@ -1098,10 +1098,10 @@ This action can optionally contain one or more [requiredEntity](#requiredentity)
 
 ### getOTP
 
-Generate a one-time password (OTP) based on a saved `secret` at path `magento/tfa/OTP_SHARED_SECRET` in a MFTF credential storage.
+Generate a one-time password (OTP) based on a saved `secret` at path `magento/tfa/OTP_SHARED_SECRET` in the Functional Testing Framework credential storage.
 The one-time password (OTP) is returned and accessible through the stepkey.
 
-MFTF use TOTP from [Spomky-Labs/otphp](https://github.com/Spomky-Labs/otphp), if you want to learn more about this action.
+The Functional Testing Framework use TOTP from [Spomky-Labs/otphp](https://github.com/Spomky-Labs/otphp), if you want to learn more about this action.
 
 Attribute|Type|Use|Description
 ---|---|---|---
@@ -1328,11 +1328,11 @@ To access this value, use the `loadSessionSnapshot` action -->
 
 ### magentoCLI
 
-Specifies a CLI command to execute in a Magento environment.
+Specifies a CLI command to execute in a Adobe Commerce or Magento Open Source.
 
 Attribute|Type|Use|Description
 ---|---|---|---
-`command`|string |optional| CLI command to be executed in Magento environment.
+`command`|string |optional| CLI command to be executed in Adobe Commerce or Magento Open Source.
 `arguments`|string |optional| Unescaped arguments to be passed in with the CLI command.
 `timeout`|string|optional| Number of seconds CLI command can run without outputting anything.
 `stepKey`|string|required| A unique identifier of the action.
@@ -1348,7 +1348,7 @@ Attribute|Type|Use|Description
 
 ### magentoCron
 
-Used to execute Magento Cron jobs. Groups may be provided optionally. Internal mechanism of `<magentoCron>` ensures that Cron Job of single group is ran with 60 seconds interval.
+Used to execute Adobe Commerce or Magento Open Source Cron jobs. Groups may be provided optionally. Internal mechanism of `<magentoCron>` ensures that Cron Job of single group is ran with 60 seconds interval.
 
 Attribute|Type|Use|Description
 ---|---|---|---
@@ -1697,7 +1697,7 @@ Attribute|Type|Use|Description
 
 ### searchAndMultiSelectOption
 
-Search for and select options from a Magento multi-select drop-down menu.
+Search for and select options from a multi-select drop-down menu.
 For example, the drop-down menu you use to assign Products to Categories.
 
 Attribute|Type|Use|Description
@@ -1712,7 +1712,7 @@ Attribute|Type|Use|Description
 #### Example
 
 ```xml
-<!-- Search and select for "Item 1" amd "Item 2" in the Magento multiselect element with the id of `multiSelect`. -->
+<!-- Search and select for "Item 1" amd "Item 2" in the multiselect element with the id of `multiSelect`. -->
 <searchAndMultiSelectOption selector="#multiSelect" parameterArray="['Item 1', 'Item 2']" stepKey="searchAndMultiSelect1"/>
 ```
 
@@ -2085,7 +2085,7 @@ Attribute|Type|Use|Description
 
 ### selectMultipleOptions
 
-Selects all given options in the given Magento drop-down element.
+Selects all given options in the given drop-down element.
 
 Attribute|Type|Use|Description
 ---|---|---|---
@@ -2469,7 +2469,7 @@ Attribute|Type|Use|Description
 
 ### waitForLoadingMaskToDisappear
 
-Wait for all Magento loading overlays to disappear.
+Wait for all loading overlays to disappear.
 
 <InlineAlert variant="info" slots="text" />
 
@@ -2495,13 +2495,13 @@ Attribute|Type|Use|Description
 #### Example
 
 ```xml
-<!-- Wait up to 30 seconds for all Magento loading overlays to disappear before continuing. -->
+<!-- Wait up to 30 seconds for all loading overlays to disappear before continuing. -->
 <waitForLoadingMaskToDisappear stepKey="waitForLoadingMaskToDisappear"/>
 ```
 
 ### waitForPageLoad
 
-Wait for AJAX, Magento loading overlays, and `document.readyState == "complete"`.
+Wait for AJAX, loading overlays, and `document.readyState == "complete"`.
 
 Attribute|Type|Use|Description
 ---|---|---|---

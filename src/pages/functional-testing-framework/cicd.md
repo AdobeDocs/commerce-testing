@@ -3,24 +3,24 @@ title: CD/CD | Commerce Testing
 description: Learn how to use the Functional Testing Framework in your continuous integration and continuous delivery (CI/CD) workflows for Adobe Commerce and Magento Open Source projects.
 ---
 
-# How to use MFTF in CICD
+# How to use the framework in CICD
 
-To integrate MFTF tests into your CICD pipeline, it is best to start with the conceptual flow of the pipeline code.
+To integrate tests into your CICD pipeline, it is best to start with the conceptual flow of the pipeline code.
 
 ## Concept
 
 The overall workflow that tests should follow is:
 
--  Obtain a Magento instance + install pre-requisites.
+-  Obtain an Adobe Commerce or Magento Open Source instance + install pre-requisites.
 -  Generate the tests.
     -  Set options for single or parallel running.
 -  Delegate and run tests and gather test-run artifacts.
     -  Re-run options.
 -  Generate the Allure reports from the results.
 
-## Obtain a Magento instance
+## Obtain a Commerce instance
 
-To start, we need a Magento instance to operate against for test generation and execution.
+To start, we need an Adobe Commerce or Magento Open Source instance to operate against for test generation and execution.
 
 ```bash
 git clone https://github.com/magento/magento2
@@ -32,9 +32,9 @@ or
 composer create-project --repository=https://repo.magento.com/ magento/project-community-edition magento2ce
 ```
 
-For more information on installing magento see [Install Magento using Composer][].
+For more information on installing Commerce see [Install Commerce using Composer][].
 
-After installing the Magento instance, set a couple of configurations to the Magento instance:
+After installing the Adobe Commerce or Magento Open Source instance, set the following configuration:
 
 ```bash
 bin/magento config:set general/locale/timezone America/Los_Angeles
@@ -43,9 +43,9 @@ bin/magento config:set admin/security/use_form_key 0
 bin/magento config:set cms/wysiwyg/enabled disabled
 ```
 
-These set the default state of the Magento instance. If you wish to change the default state of the application (and have updated your tests sufficiently to account for it), this is the step to do it.
+These set the default state of the Adobe Commerce or Magento Open Source instance. If you wish to change the default state of the application (and have updated your tests sufficiently to account for it), this is the step to do it.
 
-If your magento instance has Two-Factor Authentication enabled, see [Configure 2FA][] to configure MFTF tests.
+If your instance has two-factor authentication enabled, see [Configure 2FA][] to configure tests.
 
 ## Install Allure
 
@@ -114,6 +114,6 @@ allure generate <path_to_results> -c -o <path_to_output>
 ```
 
 <!-- Link definitions -->
-[Install Magento using Composer]: https://devdocs.magento.com/guides/v2.4/install-gde/composer.html
+[Install Commerce using Composer]: https://devdocs.magento.com/guides/v2.4/install-gde/composer.html
 [Configure 2FA]: two-factor-authentication.md
 [Allure]: https://docs.qameta.io/allure/

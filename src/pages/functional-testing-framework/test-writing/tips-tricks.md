@@ -57,7 +57,7 @@ Perform non-browser driving actions first. These are more likely to succeed as n
 In the good example, `magentoCLI` and `deleteData` are run first to ensure a proper state.
 In the bad example, we perform some heavy UI steps first.
 
-**Why?** If something goes wrong there, then the critical `magentoCLI` commands may not get a chance to run, leaving Magento configured incorrectly for any upcoming tests.
+**Why?** If something goes wrong there, then the critical `magentoCLI` commands may not get a chance to run, leaving Adobe Commerce or Magento Open Source configured incorrectly for any upcoming tests.
 
 <span style="color:green">
 Good:

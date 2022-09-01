@@ -3,28 +3,28 @@ title: Versioning | Commerce Testing
 description: Learn about the Functional Testing Framework versioning scheme for Adobe Commerce and Magento Open Source code.
 ---
 
-# MFTF versioning schema
+# Functional Testing Framework versioning schema
 
-This document describes the versioning policy for the Magento Functional Testing Framework (MFTF), including the version numbering schema.
+This document describes the versioning policy for the Functional Testing Framework, including the version numbering schema.
 
 ## Backward compatibility
 
 In this context, backward compatibility means that when changes are made to the MFTF, all existing tests still run normally.
-If a modification to MFTF forces tests to be changed, this is a backward incompatible change.
+If a modification to the Functional Testing Framework forces tests to be changed, this is a backward incompatible change.
 
-## Find your MFTF version number
+## Find your version number
 
-To find the version of MFTF that you are using, run the Magento CLI command:
+To find the version of the Functional Testing Framework that you are using, run the Adobe Commerce or Magento Open Source CLI command:
 
 ```bash
 vendor/bin/mftf --version
 ```
 
-## Versioning Policy
+## Versioning policy
 
-MFTF versioning policy follows [Semantic Versioning](https://semver.org/) guidelines.
+The Functional Testing Framework versioning policy follows [Semantic Versioning](https://semver.org/) guidelines.
 
-### 3-component version numbers
+### Three-component version numbers
 
 Version numbering schemes help users to understand the scope of the changes made a new release.
 
@@ -38,11 +38,11 @@ X.Y.Z
 
 For example:
 
--  Magento 2 ships with MFTF version 2.3.9
+-  Adobe Commerce and Magento Open Source 2.4.x ships with Functional Testing Framework version 2.3.9
 -  A patch is added to fix a bug: 2.3.10 (Increment Z = backward compatible change)
 -  New action command added: 2.4.0 (Increment Y, set Z to 0 = backward compatible change)
 -  New action added: 2.4.1 (Increment Z = backward compatible change)
--  Major new features added to MFTF to support changes in Magento codebase: 3.0.0. (Increment X, reset Y and Z to 0 = backward incompatible change)
+-  Major new features added to the Functional Testing Framework to support changes in the Adobe Commerce or Magento Open Source codebase: 3.0.0. (Increment X, reset Y and Z to 0 = backward incompatible change)
 
 ### Z release - patch
 
@@ -60,11 +60,11 @@ Major version **X** MUST be incremented for a release that introduces backward i
 A major release can also include minor and patch level changes.
 You must reset the patch and minor version to 0 when you change the major version.
 
-## Magento 2  compatibility
+## Commerce compatibility
 
-This table lists the version of the MFTF that was released with a particular version of Magento.
+This table lists the version of the Functional Testing Framework that was released with a particular version of Adobe Commerce or Magento Open Source.
 
-|Magento version| MFTF  version|
+|Commerce version| Framework  version|
 |---    |---     |
 | 2.4.0 | 3.0.0  |
 | 2.3.5 | 2.6.4  |

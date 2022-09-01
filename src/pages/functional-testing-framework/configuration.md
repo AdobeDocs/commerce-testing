@@ -5,17 +5,17 @@ description: Learn how to configure the Functional Testing Framework for Adobe C
 
 # Configuration
 
-The `*.env` file provides additional configuration for the Magento Functional Testing Framework (MFTF).
-To run MFTF on your Magento instance, specify the basic configuration values.
+The `*.env` file provides additional configuration for the framework.
+To run the framework on your Adobe Commerce or Magento Open Source instance, specify the basic configuration values.
 Advanced users can create custom configurations based on requirements and environment.
 
 ## Basic configuration
 
-These basic configuration values are __required__ and must be set by the user before MFTF can function correctly.
+These basic configuration values are __required__ and must be set by the user before the framework can function correctly.
 
 ### MAGENTO_BASE_URL
 
-The root URL of the Magento application under test.
+The root URL of the application under test.
 
 Example:
 
@@ -29,7 +29,7 @@ If the `MAGENTO_BASE_URL` contains a subdirectory (like `http://magento.test/mag
 
 ### MAGENTO_BACKEND_NAME
 
-The path to the Magento Admin page.
+The path to the Admin page.
 
 Example:
 
@@ -49,7 +49,7 @@ MAGENTO_BACKEND_BASE_URL=https://admin.magento2.test
 
 ### MAGENTO_ADMIN_USERNAME
 
-The username that tests can use to access the Magento Admin page
+The username that tests can use to access the Admin page
 
 Example:
 
@@ -59,7 +59,7 @@ MAGENTO_ADMIN_USERNAME=admin
 
 ### MAGENTO_ADMIN_PASSWORD
 
-The password that tests will use to log in to the Magento Admin page.
+The password that tests will use to log in to the Admin page.
 
 Example:
 
@@ -69,7 +69,7 @@ MAGENTO_ADMIN_PASSWORD=1234reTyt%$7
 
 ## Advanced configuration
 
-Depending on the environment you use, you may need to configure MFTF more precisely by setting additional configuration parameters.
+Depending on the environment you use, you may need to configure the Functional Testing Framework more precisely by setting additional configuration parameters.
 This section describes available configuration parameters and their default values (where applicable).
 
 ### DEFAULT_TIMEZONE
@@ -148,7 +148,7 @@ SELENIUM_PATH=/wd/hub
 
 ### MAGENTO_RESTAPI
 
-These `MAGENTO_RESTAPI_*` values are optional and can be used in cases when your Magento instance has a different API path than the one in `MAGENTO_BASE_URL`.
+These `MAGENTO_RESTAPI_*` values are optional and can be used in cases when your Adobe Commerce or Magento Open Source instance has a different API path than the one in `MAGENTO_BASE_URL`.
 
 ```conf
 MAGENTO_RESTAPI_SERVER_HOST
@@ -178,8 +178,8 @@ MAGENTO_RESTAPI_SERVER_PORT=5000
 ### \*_BP
 
 Settings to override base paths for the framework.
-You can use it when MFTF is applied as a separate tool.
-For example, when you need to place MFTF and the Magento codebase in separate projects.
+You can use it when the Functional Testing Framework is applied as a separate tool.
+For example, when you need to place the Functional Testing Framework and the Adobe Commerce or Magento Open Source codebase in separate projects.
 
 ```conf
 MAGENTO_BP
@@ -190,8 +190,8 @@ TESTS_MODULES_PATH
 
 #### MAGENTO_BP
 
-The path to a local Magento codebase.
-It enables the [`bin/mftf`][mftf] commands such as `run` and `generate` to parse all modules of the Magento codebase for MFTF tests.
+The path to a local Adobe Commerce or Magento Open Source codebase.
+It enables the [`bin/mftf`][mftf] commands such as `run` and `generate` to parse all modules of the Adobe Commerce or Magento Open Source codebase for tests.
 
 ```conf
 MAGENTO_BP=~/magento2/
@@ -200,7 +200,7 @@ MAGENTO_BP=~/magento2/
 #### TESTS_BP
 
 BP is an acronym for _Base Path_.
-The path to where MFTF supplementary files are located in the Magento codebase.
+The path to where the Functional Testing Framework supplementary files are located in the Adobe Commerce or Magento Open Source codebase.
 
 Example:
 
@@ -210,7 +210,7 @@ TESTS_BP=~/magento2ce/dev/tests/acceptance
 
 #### FW_BP
 
-The path to MFTF.
+The path to the Functional Testing Framework.
 FW_BP is an acronym for _FrameWork Base Path_.
 
 Example:
@@ -221,7 +221,7 @@ FW_BP=~/magento/magento2-functional-testing-framework
 
 ### TESTS_MODULE_PATH
 
-The path to where the MFTF modules mirror Magento modules.
+The path to where the Functional Testing Framework modules mirror Adobe Commerce or Magento Open Source modules.
 
 Example:
 
@@ -232,7 +232,7 @@ TESTS_MODULE_PATH=~/magento2/dev/tests/acceptance/tests/functional/Magento
 ### MODULE_ALLOWLIST
 
 Use for a new module.
-When adding a new directory at `tests/functional/Magento`, add the directory name to `MODULE_ALLOWLIST` to enable MFTF to process it.
+When adding a new directory at `tests/functional/Magento`, add the directory name to `MODULE_ALLOWLIST` to enable the Functional Testing Framework to process it.
 
 Example:
 
@@ -242,14 +242,14 @@ MODULE_ALLOWLIST=Magento_Framework,Magento_ConfigurableProductWishlist,Magento_C
 
 ### MAGENTO_CLI_COMMAND_PATH
 
-Path to the Magento CLI command entry point.
+Path to the CLI command entry point.
 
 Default: `dev/tests/acceptance/utils/command.php`.
 It points to `MAGENTO_BASE_URL` + `dev/tests/acceptance/utils/command.php`
 
 Modify the default value:
 
--  for non-default Magento installation
+-  for non-default Adobe Commerce or Magento Open Source installation
 -  when using a subdirectory in the `MAGENTO_BASE_URL`
 
 Example: `dev/tests/acceptance/utils/command.php`
@@ -338,9 +338,9 @@ ENABLE_BROWSER_LOG=true
 
 ### SELENIUM_CLOSE_ALL_SESSIONS
 
-Forces MFTF to close all Selenium sessions after running a suite.
+Forces the Functional Testing Framework to close all Selenium sessions after running a suite.
 
-Use this if you're having issues with sessions hanging in an MFTF suite.
+Use this if you're having issues with sessions hanging in a Functional Testing Framework suite.
 
 ```conf
 SELENIUM_CLOSE_ALL_SESSIONS=true
@@ -358,7 +358,7 @@ BROWSER_LOG_BLOCKLIST=other,console-api
 
 ### WAIT_TIMEOUT
 
-Global MFTF configuration for the default amount of time (in seconds) that a test will wait while loading a page.
+Global Functional Testing Framework configuration for the default amount of time (in seconds) that a test will wait while loading a page.
 
 ```conf
 WAIT_TIMEOUT=30
@@ -367,7 +367,7 @@ WAIT_TIMEOUT=30
 ### ENABLE_PAUSE
 
 Enables the ability to pause test execution at any point, and enter an interactive shell where you can try commands in action.
-When pause is enabled, MFTF will generate pause() command in _failed() hook so that test will pause execution when failed.
+When pause is enabled, the Functional Testing Framework will generate pause() command in _failed() hook so that test will pause execution when failed.
 
 ```conf
 ENABLE_PAUSE=true
@@ -435,7 +435,7 @@ REMOTE_STORAGE_AWSS3_SECRET_KEY=secret-key
 
 ### MAGENTO_ADMIN_WEBAPI_TOKEN_LIFETIME
 
-The lifetime (in seconds) of Magento Admin WebAPI token; if token is older than this value a refresh attempt will be made just before the next WebAPI call.
+The lifetime (in seconds) of the Admin WebAPI token; if token is older than this value a refresh attempt will be made just before the next WebAPI call.
 
 Example:
 

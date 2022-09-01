@@ -5,13 +5,13 @@ description: Review Functional Testing Framework test writing best practices for
 
 # Best practices
 
-Check out our best practices below to ensure you are getting the absolute most out of the Magento Functional Testing Framework.
+Check out our best practices below to ensure you are getting the absolute most out of the Functional Testing Framework.
 
 ## Focus on reusability
 
 ### Use existing Tests and resources
 
-Magento offers more than **3000** acceptance tests, **2500** [Action group]s, **750** Page declarations with more than **1500** Section definitions.
+Adobe Commerce and Magento Open Source offers more than **3000** acceptance tests, **2500** [Action group]s, **750** Page declarations with more than **1500** Section definitions.
 It is very probable that behaviour you want to test already exists as a Test or Action Group.
 Instead of writing everything by yourself - use `extends` attribute to refer to existing element and customize it.
 
@@ -36,8 +36,8 @@ We recommend to keep Action Groups having single responsibility, for example `Ad
 
 ## Contribute
 
-Although the Magento Core team and Contributors join forces to cover most of the features with tests, it is impossible to have this done quickly.
-If you've covered Magento Core feature with Functional Tests - you are more than welcome to contribute.
+Although the Adobe Core team and Contributors join forces to cover most of the features with tests, it is impossible to have this done quickly.
+If you've covered Adobe Commerce or Magento Open Source Core features with functional tests—you are more than welcome to contribute.
 
 ## Action group
 
@@ -191,9 +191,9 @@ Define these three elements and reference them by name in the tests.
 
 ## Test step merging order
 
-When setting a [merging] order for a test step, do not depend on steps from Magento modules that could be disabled by an application.
+When setting a [merging] order for a test step, do not depend on steps from Adobe Commerce or Magento Open Source modules that could be disabled by an application.
 
-For example, when you write a test step to create a gift card product, set your test step **after** simple product creation and let the MFTF handle the merge order.
+For example, when you write a test step to create a gift card product, set your test step **after** simple product creation and let the framework handle the merge order.
 Since the configurable product module could be disabled, this approach is more reliable than setting the test step **before** creating a configurable product.
 
 <!-- Link definitions -->
