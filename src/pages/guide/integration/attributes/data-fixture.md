@@ -81,34 +81,20 @@ class QuoteTest extends \PHPUnit\Framework\TestCase
 }
 ```
 
-### Passing the `count` number to the fixture to define the number of instances
+### Specifying the number of instances of the same configuration the data fixture should generate 
 
 <InlineAlert variant="info" slots="text" />
 
-This parameter is currently only available for Adobe Commerce developer, and will become publicly available with Adobe Commerce 2.4.6 release. 
+At this time, the parameter is only available for Adobe Commerce developer, and will become publicly available with Adobe Commerce 2.4.6 release.
 
 Sometimes we need to generate several instances of a data fixture with exactly the same configuration.
-For such cases, we can use the `count` parameter, and set its value to the number instances required by the test case.
+For such cases, we can use the `count` parameter, and set its value to the desired number of instances.
 
 ```php?start_inline=1
 class ProductsList extends \PHPUnit\Framework\TestCase
 {
    #[
       DataFixture(ProductFixture::class, count: 3),
-   ]
-   public function testGetProductsCount(): void
-   {
-   }
-}
-```
-
-Or in case where we need to specify an alias:
-
-```php?start_inline=1
-class ProductsList extends \PHPUnit\Framework\TestCase
-{
-   #[
-      DataFixture(ProductFixture::class, as: 'product', count: 3)
    ]
    public function testGetProductsCount(): void
    {
@@ -120,13 +106,31 @@ class ProductsList extends \PHPUnit\Framework\TestCase
 }
 ```
 
-The generated fixtures will be assigned aliases product1, product2 and product3 respectively.
+Or in case where we need to specify an alias:
 
-### Passing the `scope` identifier to the fixture
+```php?start_inline=1
+class ProductsList extends \PHPUnit\Framework\TestCase
+{
+   #[
+      DataFixture(ProductFixture::class, as: 'testProduct', count: 3)
+   ]
+   public function testGetProductsCount(): void
+   {
+      $fixtures = DataFixtureStorageManager::getStorage();
+      $product1 = $fixtures->get('testProduct1');
+      $product2 = $fixtures->get('testProduct2');
+      $product3 = $fixtures->get('testProduct3');
+   }
+}
+```
+
+The generated fixtures will be assigned aliases testProduct1, testProduct2 and testProduct3 respectively.
+
+### Specifying the store scope the data fixture will operate under 
 
 <InlineAlert variant="info" slots="text" />
 
-This parameter is currently only available for Adobe Commerce developer, and will become publicly available with Adobe Commerce 2.4.6 release.
+At this time, the parameter is only available for Adobe Commerce developer, and will become publicly available with Adobe Commerce 2.4.6 release.
 
 If you need to instruct the system to execute a data fixture in the scope of a specific store view, you can set the `scope` parameter value to the valid store view, website or store group identifier. 
 
