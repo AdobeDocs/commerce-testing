@@ -108,19 +108,19 @@ Or in case where we need to specify an alias:
 class ProductsList extends \PHPUnit\Framework\TestCase
 {
    #[
-      DataFixture(ProductFixture::class, as: 'testProduct', count: 3)
+      DataFixture(ProductFixture::class, as: 'product', count: 3)
    ]
    public function testGetProductsCount(): void
    {
       $fixtures = DataFixtureStorageManager::getStorage();
-      $product1 = $fixtures->get('testProduct1');
-      $product2 = $fixtures->get('testProduct2');
-      $product3 = $fixtures->get('testProduct3');
+      $product1 = $fixtures->get('product1');
+      $product2 = $fixtures->get('product2');
+      $product3 = $fixtures->get('product3');
    }
 }
 ```
 
-The generated fixtures will be assigned aliases testProduct1, testProduct2 and testProduct3 respectively.
+The generated fixtures will be assigned aliases product1, product2 and product3 respectively.
 
 ### Specifying the store scope the data fixture will operate under 
 
