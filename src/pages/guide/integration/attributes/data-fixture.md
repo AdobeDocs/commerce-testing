@@ -81,7 +81,7 @@ class QuoteTest extends \PHPUnit\Framework\TestCase
 }
 ```
 
-### Specifying the number of instances of the same configuration the data fixture should generate 
+### Specifying the number of instances of the same configuration the data fixture should generate
 
 <InlineAlert variant="info" slots="text" />
 
@@ -132,7 +132,7 @@ class ProductsList extends \PHPUnit\Framework\TestCase
 
 The generated fixtures will be assigned aliases product1, product2 and product3 respectively.
 
-### Specifying the store scope the data fixture will operate under 
+### Specifying the store scope the data fixture will operate under
 
 <InlineAlert variant="info" slots="text" />
 
