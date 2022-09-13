@@ -94,10 +94,20 @@ For such cases, we can use the `count` parameter, and set its value to the desir
 class ProductsList extends \PHPUnit\Framework\TestCase
 {
    #[
-      DataFixture(ProductFixture::class, count: 3),
+      DataFixture(CategoryFixture::class, ['is_anchor' => 0], 'category1'),
+      DataFixture(CategoryFixture::class, ['parent_id' => '$category1.id$'], 'category2'),
+      DataFixture(ProductFixture::class, ['category_ids' => ['$category1.id$']])
+      DataFixture(ProductFixture::class, ['category_ids' => ['$category2.id$']], count: 2)
    ]
-   public function testGetProductsCount(): void
+   public function testAddCategoryFilter(): void
    {
+      $fixtures = DataFixtureStorageManager::getStorage();
+      $category1 = $fixtures->get('category1');
+      $category2 = $fixtures->get('category2');
+      $collection = $this->collectionFactory->addCategoryFilter($category2);
+      $this->assertEquals(2, $collection->getSize());
+      $collection = $this->collectionFactory->addCategoryFilter($category1);
+      $this->assertEquals(1, $collection->getSize());
    }
 }
 ```
