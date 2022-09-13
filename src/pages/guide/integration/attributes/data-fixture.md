@@ -98,10 +98,6 @@ class ProductsList extends \PHPUnit\Framework\TestCase
    ]
    public function testGetProductsCount(): void
    {
-      $fixtures = DataFixtureStorageManager::getStorage();
-      $product1 = $fixtures->get('product1');
-      $product2 = $fixtures->get('product2');
-      $product3 = $fixtures->get('product3');
    }
 }
 ```
