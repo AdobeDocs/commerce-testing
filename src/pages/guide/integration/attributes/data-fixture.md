@@ -29,7 +29,7 @@ To set up a date fixture, use the `DataFixture` attribute.
 -  **count**
    -  The optional number of entities of the same kind and configuration should this fixture generate.
 -  **scope**
-   -  The optional store scope name, from which the fixture will generate the entity.
+   -  The optional store view, website or store group identifier, from which the fixture will generate the entity.
 -  **as**
    -  The fixture alias that will be used as a reference to retrieve the data returned by the fixture and also as a reference in other fixtures parameters.
 
@@ -74,6 +74,72 @@ class QuoteTest extends \PHPUnit\Framework\TestCase
     #[
         DataFixture(GuestCartFixture::class, as: 'cart'),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
+    ]
+    public function testCollectTotals(): void
+    {
+    }
+}
+```
+
+### Passing the `count` number to the fixture to define the number of instances
+
+<InlineAlert variant="info" slots="text" />
+
+This parameter is currently only available for Adobe Commerce developer, and will become publicly available with Adobe Commerce 2.4.6 release. 
+
+Sometimes we need to generate several instances of a data fixture with exactly the same configuration.
+For such cases, we can use the `count` parameter, and set its value to the number instances required by the test case.
+
+```php?start_inline=1
+class ProductsList extends \PHPUnit\Framework\TestCase
+{
+   #[
+      DataFixture(ProductFixture::class, count: 3),
+   ]
+   public function testGetProductsCount(): void
+   {
+   }
+}
+```
+
+Or in case where we need to specify an alias:
+
+```php?start_inline=1
+class ProductsList extends \PHPUnit\Framework\TestCase
+{
+   #[
+      DataFixture(ProductFixture::class, as: 'product', count: 3)
+   ]
+   public function testGetProductsCount(): void
+   {
+      $fixtures = DataFixtureStorageManager::getStorage();
+      $product1 = $fixtures->get('product1');
+      $product2 = $fixtures->get('product2');
+      $product3 = $fixtures->get('product3');
+   }
+}
+```
+
+The generated fixtures will be assigned aliases product1, product2 and product3 respectively.
+
+### Passing the `scope` identifier to the fixture
+
+<InlineAlert variant="info" slots="text" />
+
+This parameter is currently only available for Adobe Commerce developer, and will become publicly available with Adobe Commerce 2.4.6 release.
+
+If you need to instruct the system to execute a data fixture in the scope of a specific store view, you can set the `scope` parameter value to the valid store view, website or store group identifier. 
+
+In the example below, we create a new store with the `store2` identifier and a product. Then we create a guest cart under the `store2` scope and add a created product to it.
+
+```php?start_inline=1
+class QuoteTest extends \PHPUnit\Framework\TestCase
+{
+    #[
+        DataFixture(StoreFixture::class, as: 'store2'),
+        DataFixture(ProductFixture::class, as: 'p'),
+        DataFixture(GuestCartFixture::class, as: 'cart', scope: 'store2'),
+        DataFixture(AddProductToCartFixture::class, ['cart_id' => '$cart.id$', 'product_id' => '$p.id$', 'qty' => 2]),
     ]
     public function testCollectTotals(): void
     {
