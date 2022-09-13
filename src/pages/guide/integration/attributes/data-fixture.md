@@ -30,6 +30,7 @@ To set up a date fixture, use the `DataFixture` attribute.
    - Available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
    -  The optional number of entities of the same kind and configuration should this fixture generate.
 -  **scope**
+   - Available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
    -  The optional store view, website or store group identifier, from which the fixture will generate the entity.
 -  **as**
    -  The fixture alias that will be used as a reference to retrieve the data returned by the fixture and also as a reference in other fixtures parameters.
