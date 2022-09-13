@@ -16,7 +16,7 @@ To set up a date fixture, use the `DataFixture` attribute.
 
 ```php?start_inline=1
 #[
-    DataFixture(string $type, array $data = [], ?string $as = null)
+    DataFixture(string $type, array $data = [], string $count = 1, string $scope = 'default', ?string $as = null)
 ]
 ```
 
@@ -26,6 +26,10 @@ To set up a date fixture, use the `DataFixture` attribute.
    -  Name of a class that implements `Magento\TestFramework\Fixture\DataFixtureInterface` or `Magento\TestFramework\Fixture\RevertibleDataFixtureInterface`.
 -  **data**
    -  The optional array of data passed on to the fixture.
+-  **count**
+   -  The optional number of entities of the same kind and configuration should this fixture generate.
+-  **scope**
+   -  The optional store scope name, from which the fixture will generate the entity.
 -  **as**
    -  The fixture alias that will be used as a reference to retrieve the data returned by the fixture and also as a reference in other fixtures parameters.
 
