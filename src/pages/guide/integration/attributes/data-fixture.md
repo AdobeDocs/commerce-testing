@@ -16,7 +16,7 @@ To set up a date fixture, use the `DataFixture` attribute.
 
 ```php?start_inline=1
 #[
-    DataFixture(string $type, array $data = [], string $count = 1, string $scope = 'default', ?string $as = null)
+    DataFixture(string $type, array $data = [], ?string $as = null, ?string $scope = null, int $count = 1)
 ]
 ```
 
