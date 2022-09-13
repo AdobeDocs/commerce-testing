@@ -138,7 +138,7 @@ The generated fixtures will be assigned aliases product1, product2 and product3 
 
 At this time, the parameter is only available for Adobe Commerce developer, and will become publicly available with Adobe Commerce 2.4.6 release.
 
-If you need to instruct the system to execute a data fixture in the scope of a specific store view, you can set the `scope` parameter value to the valid store view, website or store group identifier. 
+If you need to instruct the system to execute a data fixture in the scope of a specific store view, you can set the `scope` parameter value to the valid store view, website or store group identifier.
 
 In the example below, we create a new store with the `store2` identifier and a product. Then we create a guest cart under the `store2` scope and add a created product to it.
 
