@@ -7,8 +7,8 @@ module.exports = [
       title: "Application Testing Guide",
       path: "/guide/",
     },
-    // {
-    //   title: "Functional Test Framework",
-    //   path: "/functional-test-framework/",
-    // },
+    {
+      title: "Functional Testing Framework",
+      path: "/functional-testing-framework/",
+    },
   ];

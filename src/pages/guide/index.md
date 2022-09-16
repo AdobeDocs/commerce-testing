@@ -242,7 +242,7 @@ MFTF tests are kept within its respective Module folder:
 [PhpMd]: https://phpmd.org/
 [backward compatibility policy]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/backward-compatibility-policy/
 [Functional Testing Framework]: https://github.com/magento/mtf
-[Functional Testing Framework]: https://devdocs.magento.com/mftf/docs/introduction.html
+[Functional Testing Framework]: ../functional-testing-framework/index.md
 [Web API functional testing]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing.html
 [Running Integration Tests]: integration/index.md
 [Extension Developer Guide on JavaScript Tests]: js/index.md

@@ -1,4 +1,4 @@
 const guide = require("./guide");
-const framework = require("./framework");
+const functional_testing = require("./functional_testing");
 
-module.exports = [...guide, ...framework];
+module.exports = [...guide, ...functional_testing];
