@@ -15,7 +15,7 @@ This documentation is for version 3.0 of the framework, which was released in co
 
 -  To facilitate functional testing and minimize the effort it takes to perform regression testing
 -  Enable extension developers to provide functional tests for their extensions
--  Ensure a common standard of quality between Adobe Commerce and Magento Open Source, extension developer,s and system integrators
+-  Ensure a common standard of quality between Adobe Commerce and Magento Open Source, extension developers and system integrators
 
 The framework also focuses on the following:
 
