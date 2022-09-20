@@ -28,10 +28,10 @@ To set up a date fixture, use the `DataFixture` attribute.
    -  The optional array of data passed on to the fixture.
 -  **count**
    - Available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
-   -  The optional number of entities of the same kind and configuration should this fixture generate.
+   -  The optional number of entities of the same kind and configuration that this fixture should generate.
 -  **scope**
    - Available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
-   -  The optional store view, website or store group identifier, from which the fixture will generate the entity.
+   -  The optional store view, website, or store group identifier from which the fixture will generate the entity.
 -  **as**
    -  The fixture alias that will be used as a reference to retrieve the data returned by the fixture and also as a reference in other fixtures parameters.
 
@@ -87,10 +87,10 @@ class QuoteTest extends \PHPUnit\Framework\TestCase
 
 <InlineAlert variant="info" slots="text" />
 
-At this time, the parameter is only available for Adobe Commerce developer, and will become publicly available with Adobe Commerce 2.4.6 release.
+At this time, the parameter is available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
 
-Sometimes we need to generate several instances of a data fixture with exactly the same configuration.
-For such cases, we can use the `count` parameter, and set its value to the desired number of instances.
+Sometimes, we need to generate several instances of a data fixture with exactly the same configuration.
+For such cases, we can use the `count` parameter and set its value to the desired number of instances.
 
 ```php?start_inline=1
 class ProductsList extends \PHPUnit\Framework\TestCase
@@ -132,17 +132,17 @@ class ProductsList extends \PHPUnit\Framework\TestCase
 }
 ```
 
-The generated fixtures will be assigned aliases product1, product2 and product3 respectively.
+The generated fixtures will be assigned aliases product1, product2, and product3 (respectively).
 
 ### Specifying the store scope for the data fixture
 
 <InlineAlert variant="info" slots="text" />
 
-At this time, the parameter is only available for Adobe Commerce developer, and will become publicly available with Adobe Commerce 2.4.6 release.
+At this time, the parameter is available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
 
-If you need to instruct the system to execute a data fixture in the scope of a specific store view, you can set the `scope` parameter value to the valid store view, website or store group identifier.
+If you need to instruct the system to execute a data fixture in the scope of a specific store view, you can set the `scope` parameter value to the valid store view, website, or store group identifier.
 
-In the example below, we create a new store with the `store2` identifier and a product. Then we create a guest cart under the `store2` scope and add a created product to it.
+In the following example, we create a new store with the `store2` identifier and a product. Then, we create a guest cart under the `store2` scope and add a created product to it.
 
 ```php?start_inline=1
 class QuoteTest extends \PHPUnit\Framework\TestCase

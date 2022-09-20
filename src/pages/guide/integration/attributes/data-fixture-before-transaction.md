@@ -22,9 +22,9 @@ The data fixture before transaction attribute is an extension of [Data Fixture a
 -  **data**
    -  The optional array of data passed on to the fixture.
 -  **count**
-   -  The optional number of entities of the same kind and configuration should this fixture generate.
+   -  The optional number of entities of the same kind and configuration that this fixture should generate.
 -  **scope**
-   -  The optional store scope name, from which the fixture will generate the entity.
+   -  The optional store scope name from which the fixture will generate the entity.
 -  **as**
    -  The fixture alias that will be used as a reference to retrieve the data returned by the fixture and also as a reference in other fixtures parameters.
 
