@@ -1,4 +1,3 @@
-
 ---
 ###########################
 ###########################
@@ -85,9 +84,6 @@ jobs:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
         with:
           cmd: install
-
-      - name: Check internal links
-        run: yarn test:links
 
       - name: Build site
         if: ${{ success() }}
