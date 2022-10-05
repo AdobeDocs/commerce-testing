@@ -16,7 +16,7 @@ To set up a date fixture, use the `DataFixture` attribute.
 
 ```php?start_inline=1
 #[
-    DataFixture(string $type, array $data = [], ?string $as = null)
+    DataFixture(string $type, array $data = [], ?string $as = null, ?string $scope = null, int $count = 1)
 ]
 ```
 
@@ -26,6 +26,12 @@ To set up a date fixture, use the `DataFixture` attribute.
    -  Name of a class that implements `Magento\TestFramework\Fixture\DataFixtureInterface` or `Magento\TestFramework\Fixture\RevertibleDataFixtureInterface`.
 -  **data**
    -  The optional array of data passed on to the fixture.
+-  **count**
+   - Available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
+   -  The optional number of entities of the same kind and configuration that this fixture should generate.
+-  **scope**
+   - Available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
+   -  The optional store view, website, or store group identifier from which the fixture will generate the entity.
 -  **as**
    -  The fixture alias that will be used as a reference to retrieve the data returned by the fixture and also as a reference in other fixtures parameters.
 
@@ -70,6 +76,82 @@ class QuoteTest extends \PHPUnit\Framework\TestCase
     #[
         DataFixture(GuestCartFixture::class, as: 'cart'),
         DataFixture(SetBillingAddressFixture::class, ['cart_id' => '$cart.id$']),
+    ]
+    public function testCollectTotals(): void
+    {
+    }
+}
+```
+
+### Specifying the number of instances of data fixture to generate
+
+<InlineAlert variant="info" slots="text" />
+
+At this time, the parameter is available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
+
+Sometimes, we need to generate several instances of a data fixture with exactly the same configuration.
+For such cases, we can use the `count` parameter and set its value to the desired number of instances.
+
+```php?start_inline=1
+class ProductsList extends \PHPUnit\Framework\TestCase
+{
+   #[
+      DataFixture(CategoryFixture::class, ['is_anchor' => 0], 'category1'),
+      DataFixture(CategoryFixture::class, ['parent_id' => '$category1.id$'], 'category2'),
+      DataFixture(ProductFixture::class, ['category_ids' => ['$category1.id$']])
+      DataFixture(ProductFixture::class, ['category_ids' => ['$category2.id$']], count: 2)
+   ]
+   public function testAddCategoryFilter(): void
+   {
+      $fixtures = DataFixtureStorageManager::getStorage();
+      $category1 = $fixtures->get('category1');
+      $category2 = $fixtures->get('category2');
+      $collection = $this->collectionFactory->addCategoryFilter($category2);
+      $this->assertEquals(2, $collection->getSize());
+      $collection = $this->collectionFactory->addCategoryFilter($category1);
+      $this->assertEquals(1, $collection->getSize());
+   }
+}
+```
+
+Or in case where we need to specify an alias:
+
+```php?start_inline=1
+class ProductsList extends \PHPUnit\Framework\TestCase
+{
+   #[
+      DataFixture(ProductFixture::class, as: 'product', count: 3)
+   ]
+   public function testGetProductsCount(): void
+   {
+      $fixtures = DataFixtureStorageManager::getStorage();
+      $product1 = $fixtures->get('product1');
+      $product2 = $fixtures->get('product2');
+      $product3 = $fixtures->get('product3');
+   }
+}
+```
+
+The generated fixtures will be assigned aliases product1, product2, and product3 (respectively).
+
+### Specifying the store scope for the data fixture
+
+<InlineAlert variant="info" slots="text" />
+
+At this time, the parameter is available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
+
+If you need to instruct the system to execute a data fixture in the scope of a specific store view, you can set the `scope` parameter value to the valid store view, website, or store group identifier.
+
+In the following example, we create a new store with the `store2` identifier and a product. Then, we create a guest cart under the `store2` scope and add a created product to it.
+
+```php?start_inline=1
+class QuoteTest extends \PHPUnit\Framework\TestCase
+{
+    #[
+        DataFixture(StoreFixture::class, as: 'store2'),
+        DataFixture(ProductFixture::class, as: 'p'),
+        DataFixture(GuestCartFixture::class, as: 'cart', scope: 'store2'),
+        DataFixture(AddProductToCartFixture::class, ['cart_id' => '$cart.id$', 'product_id' => '$p.id$', 'qty' => 2]),
     ]
     public function testCollectTotals(): void
     {

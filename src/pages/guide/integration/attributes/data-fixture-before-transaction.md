@@ -11,7 +11,7 @@ The data fixture before transaction attribute is an extension of [Data Fixture a
 
 ```php?start_inline=1
 #[
-    DataFixtureBeforeTransaction(string $type, array $data = [], ?string $as = null)
+    DataFixtureBeforeTransaction(string $type, array $data = [], string $count = 1, string $scope = 'default', ?string $as = null)
 ]
 ```
 
@@ -21,6 +21,10 @@ The data fixture before transaction attribute is an extension of [Data Fixture a
    -  The fully qualified name of a class that implements `Magento\TestFramework\Fixture\DataFixtureInterface` or `Magento\TestFramework\Fixture\RevertibleDataFixtureInterface`.
 -  **data**
    -  The optional array of data passed on to the fixture.
+-  **count**
+   -  The optional number of entities of the same kind and configuration that this fixture should generate.
+-  **scope**
+   -  The optional store scope name from which the fixture will generate the entity.
 -  **as**
    -  The fixture alias that will be used as a reference to retrieve the data returned by the fixture and also as a reference in other fixtures parameters.
 
