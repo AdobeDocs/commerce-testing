@@ -1,6 +1,6 @@
 module.exports = [
     {
-      title: "Commerce Testing",
+      title: "Testing",
       path: "/",
     },
     {
