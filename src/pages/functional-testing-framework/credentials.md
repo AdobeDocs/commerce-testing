@@ -68,7 +68,7 @@ magento/MAGENTO_ADMIN_PASSWORD  must contain the user password required for auth
 ```conf
 ...
 # Admin password
-magento/MAGENTO_ADMIN_PASSWORD =123123q
+magento/MAGENTO_ADMIN_PASSWORD=123123q
 
 ....
 ```
