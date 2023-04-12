@@ -105,7 +105,7 @@ in its static representations generated in Step 6 previously:
 
 For convenience, we can reflect the directory structure of a file to test.
 
-A path to JS [module](https://glossary.magento.com/module) that we want to cover with tests: `app/code/Magento/Ui/view/base/web/js/grid/columns/actions.js`
+A path to JS module that we want to cover with tests: `app/code/Magento/Ui/view/base/web/js/grid/columns/actions.js`
 
 A path to a test of the module: `app/code/Magento/Ui/base/js/grid/columns/actions.test.js`
 

@@ -60,19 +60,19 @@ Until the porting to MFTF is finished, the FTF can still be run to ensure comple
 
 ## API Functional
 
-The Web [API](https://glossary.magento.com/api) testing framework enables you to test the [Web API](https://glossary.magento.com/web-api) from the client application point of view.
+The Web API testing framework enables you to test the Web API from the client application point of view.
 
 For more information, see the [Web API functional testing][].
 
 ## Integration
 
-Integration tests run [PHP](https://glossary.magento.com/php) code in varying degrees of isolation. They tend to be a lot more low-level then functional tests. Because they do not utilize a browser to execute the tests, they can be a lot more granular in what they test. They also tend to run a lot quicker then functional tests.
+Integration tests run PHP code in varying degrees of isolation. They tend to be a lot more low-level then functional tests. Because they do not utilize a browser to execute the tests, they can be a lot more granular in what they test. They also tend to run a lot quicker then functional tests.
 
 For more information, see [Running Integration Tests][].
 
 ## JavaScript
 
-Much of the functionality is provided with the help of sophisticated [JavaScript](https://glossary.magento.com/javascript). JavaScript tests ensure the [frontend](https://glossary.magento.com/frontend) portion of functions as expected.
+Much of the functionality is provided with the help of sophisticated JavaScript. JavaScript tests ensure the frontend portion of functions as expected.
 
 For more information, please see the [Extension Developer Guide on JavaScript Tests][].
 

@@ -9,7 +9,7 @@ contributor_link: https://vinaikopp.com/
 
 Running tests in PhpStorm requires following steps to setup the system.
 
-1. Configuring the [PHP](https://glossary.magento.com/php) interpreter
+1. Configuring the PHP interpreter
 1. Configuring PHPUnit
 1. Creating a run configuration
 
@@ -27,7 +27,7 @@ Then, click the **+** (add) button in the top right to select the desired PHP bi
 
 Please refer to the PhpStorm documentation for further information on [how to configure a local PHP interpreter](https://www.jetbrains.com/help/phpstorm/configuring-local-interpreter.html).
 
-It is also possible to [configure a remote PHP interpreter](https://www.jetbrains.com/help/phpstorm/configuring-remote-interpreters.html), which is a common setup when working with Vagrant or [Docker](https://glossary.magento.com/docker) based development environments.
+It is also possible to [configure a remote PHP interpreter](https://www.jetbrains.com/help/phpstorm/configuring-remote-interpreters.html), which is a common setup when working with Vagrant or Docker based development environments.
 
 Please be aware that the details on configuring the PHP interpreter might vary between PhpStorm versions.
 
@@ -93,4 +93,4 @@ Note that the test class has to inherit from `\PHPUnit_Framework_TestCase` for P
 
 First select the run configuration to execute in the run configuration drop-down menu above the main editor window, then click the **Play** icon beside it.
 
-By clicking the **Debug** icon (of a bug) next to the **Play** icon, it is possible to step-debug code during test execution, if the xdebug PHP [extension](https://glossary.magento.com/extension) is installed.
+By clicking the **Debug** icon (of a bug) next to the **Play** icon, it is possible to step-debug code during test execution, if the xdebug PHP extension is installed.
