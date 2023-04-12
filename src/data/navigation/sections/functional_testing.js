@@ -207,7 +207,7 @@ module.exports = [
     },
     {
       title: "Packaging",
-      path: "/functional-testing-framework/mftf-test-packaging/",
+      path: "/functional-testing-framework/mftf-tests-packaging/",
     },
     {
       title: "Backward incompatible chnages in tests",
