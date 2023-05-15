@@ -58,7 +58,7 @@ GRANT ALL ON magento_integration_tests.* TO 'magento2_test_user'@'localhost' IDE
 ```
 Since MySQL version 8:
 
-```
+```sql
 CREATE DATABASE magento_integration_tests;
 CREATE USER 'magento2_test_user'@'localhost' IDENTIFIED BY 'ftYx4pm6^x9.&^hB';
 GRANT ALL PRIVILEGES ON magento_integration_tests.* TO 'magento2_test_user'@'localhost';
