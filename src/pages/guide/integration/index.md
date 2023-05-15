@@ -56,7 +56,8 @@ Here are examples of SQL commands that create a test database and a dedicated te
 CREATE DATABASE magento_integration_tests;
 GRANT ALL ON magento_integration_tests.* TO 'magento2_test_user'@'localhost' IDENTIFIED BY 'ftYx4pm6^x9.&^hB';
 ```
-Since MySQL version 8
+Since MySQL version 8:
+
 ```
 CREATE DATABASE magento_integration_tests;
 CREATE USER 'magento2_test_user'@'localhost' IDENTIFIED BY 'ftYx4pm6^x9.&^hB';
