@@ -57,6 +57,14 @@ CREATE DATABASE magento_integration_tests;
 GRANT ALL ON magento_integration_tests.* TO 'magento2_test_user'@'localhost' IDENTIFIED BY 'ftYx4pm6^x9.&^hB';
 ```
 
+Since MySQL version 8:
+
+```sql
+CREATE DATABASE magento_integration_tests;
+CREATE USER 'magento2_test_user'@'localhost' IDENTIFIED BY 'ftYx4pm6^x9.&^hB';
+GRANT ALL PRIVILEGES ON magento_integration_tests.* TO 'magento2_test_user'@'localhost';
+```
+
 Replace the example database, username, and password with something that matches your requirements and conventions.
 
 ### Configure the framework for test environment
