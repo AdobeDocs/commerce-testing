@@ -34,6 +34,10 @@ The ESLint rules are set up in `magento-coding-standard`, which is installed on 
 1. Enter the path to your ESLint package: `[magento_root]/node_modules/eslint`
 1. Click **Configuration File** and in the adjacent input field enter the path to the ESLint file the application uses, which is located in `vendor/magento/magento-coding-standard/eslint/.eslintrc-magento`.
 
+<InlineAlert variant="info" slots="text" />
+
+On MacOS systems, you may not be able to choose a file with a leading dot. You can rename the configuration file and remove the dot: `cp vendor/magento/magento-coding-standard/eslint/.eslintrc-magento vendor/magento/magento-coding-standard/eslint/eslintrc-magento`
+
 See the image below for example configuration:
 
 ![ESLint](../../_images/guide/static-eslint.png)
