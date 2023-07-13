@@ -36,7 +36,7 @@ The ESLint rules are set up in `magento-coding-standard`, which is installed on 
 
 <InlineAlert variant="info" slots="text" />
 
-For MacOS system you may not be able to choose file with leading dot. You can rename this config file: `cp vendor/magento/magento-coding-standard/eslint/.eslintrc-magento vendor/magento/magento-coding-standard/eslint/eslintrc-magento`
+On MacOS systems, you may not be able to choose a file with a leading dot. You can rename the configuration file and remove the dot: `cp vendor/magento/magento-coding-standard/eslint/.eslintrc-magento vendor/magento/magento-coding-standard/eslint/eslintrc-magento`
 
 See the image below for example configuration:
 
