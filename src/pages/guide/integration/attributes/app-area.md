@@ -39,7 +39,7 @@ A test class attribute enables the specified application area for all tests in t
 
 <InlineAlert variant="info" slots="text" />
 
-Test class attributes override test method attributes.
+Test method attributes override test class attributes.
 
 Example:
 
