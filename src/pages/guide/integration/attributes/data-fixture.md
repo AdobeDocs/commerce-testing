@@ -29,7 +29,7 @@ To set up a date fixture, use the `DataFixture` attribute.
 -  **count**
    -  The optional number of entities of the same kind and configuration that this fixture should generate.
 -  **scope**
-   -  The optional store view, website, or store group identifier from which the fixture will generate the entity.
+   -  The optional store view, website, or store group fixture alias from the scope of which the fixture will generate the entity.
 -  **as**
    -  The fixture alias that will be used as a reference to retrieve the data returned by the fixture and also as a reference in other fixtures parameters.
 
@@ -180,7 +180,7 @@ Data Fixture is a PHP class that implements `Magento\TestFramework\Fixture\DataF
 1. Data Fixture MUST NOT depend on another fixture.
 1. Data Fixture SHOULD be implemented using service APIs.
 1. Data Fixture SHOULD have dynamic default data to allow generating unique fixtures.
-1. Validation should be handled by the service class and not in the data fixture class.
+1. Data Fixture MUST NOT handle input validation. Such validation should be handled by the service API.
 
 ### Dynamic default data
 
