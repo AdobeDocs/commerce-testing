@@ -27,10 +27,8 @@ To set up a date fixture, use the `DataFixture` attribute.
 -  **data**
    -  The optional array of data passed on to the fixture.
 -  **count**
-   - Available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
    -  The optional number of entities of the same kind and configuration that this fixture should generate.
 -  **scope**
-   - Available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
    -  The optional store view, website, or store group identifier from which the fixture will generate the entity.
 -  **as**
    -  The fixture alias that will be used as a reference to retrieve the data returned by the fixture and also as a reference in other fixtures parameters.
@@ -87,8 +85,6 @@ class QuoteTest extends \PHPUnit\Framework\TestCase
 
 <InlineAlert variant="info" slots="text" />
 
-At this time, the parameter is available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
-
 Sometimes, we need to generate several instances of a data fixture with exactly the same configuration.
 For such cases, we can use the `count` parameter and set its value to the desired number of instances.
 
@@ -138,8 +134,6 @@ The generated fixtures will be assigned aliases product1, product2, and product3
 
 <InlineAlert variant="info" slots="text" />
 
-At this time, the parameter is available to developers using the [2.4-develop](https://github.com/magento/magento2/tree/2.4-develop) branch only. Scheduled for release in 2.4.6.
-
 If you need to instruct the system to execute a data fixture in the scope of a specific store view, you can set the `scope` parameter value to the valid store view, website, or store group identifier.
 
 In the following example, we create a new store with the `store2` identifier and a product. Then, we create a guest cart under the `store2` scope and add a created product to it.
@@ -161,13 +155,13 @@ class QuoteTest extends \PHPUnit\Framework\TestCase
 
 ### Test class and test method scopes
 
-The `DataFixture` can be specified for a particular test or for an entire test case.
+The `DataFixture` can be specified for a particular test case (method) or for an entire test class.
 The basic rules for fixture attributes at different levels are:
 
--  `DataFixture` at a test case level makes the framework apply the declared fixtures to each test in the test case.
+-  `DataFixture` at a test class level makes the framework apply the declared fixtures to each test in the test class.
    When the final test is complete, all class-level fixtures are reverted.
--  `DataFixture` for a particular test signals the framework to revert the fixtures declared on a test case level and applies the fixtures declared at a test method level instead.
-   When the test is complete, the ITF reverts the applied fixtures.
+-  `DataFixture` for a particular test method signals the framework to revert the fixtures declared on a test class level and applies the fixtures declared at a test method level instead.
+   When the test is complete, the ITF reverts the applied fixtures. Test class level data fixtures are ignored if they are present at the test method level.
 
 <InlineAlert variant="info" slots="text" />
 
@@ -186,6 +180,7 @@ Data Fixture is a PHP class that implements `Magento\TestFramework\Fixture\DataF
 1. Data Fixture MUST NOT depend on another fixture.
 1. Data Fixture SHOULD be implemented using service APIs.
 1. Data Fixture SHOULD have dynamic default data to allow generating unique fixtures.
+1. Validation should be handled by the service class and not in the data fixture class.
 
 ### Dynamic default data
 
