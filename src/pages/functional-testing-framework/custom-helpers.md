@@ -1,6 +1,6 @@
 ---
 title: Custom helpers | Commerce Testing
-description: Learn how to write custom test actions to address advanced requirements with the Functional Testing Framework for Adobe Commerce and Magento Open Source projects.
+description: Learn how to write custom test actions to address advanced requirements with the Functional Testing Framework.
 ---
 
 # Custom Helpers

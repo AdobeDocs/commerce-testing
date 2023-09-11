@@ -1,6 +1,6 @@
 ---
 title: CD/CD | Commerce Testing
-description: Learn how to use the Functional Testing Framework in your continuous integration and continuous delivery (CI/CD) workflows for Adobe Commerce and Magento Open Source projects.
+description: Learn how to use the Functional Testing Framework in your continuous integration and continuous delivery (CI/CD) workflows.
 ---
 
 # How to use the framework in CICD

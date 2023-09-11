@@ -1,6 +1,6 @@
 ---
 title: Test modularity | Commerce Testing
-description: Learn how the Functional Testing Framework relies on modularity to support the testing requirements of highly customized and constantly evolving Adobe Commerce and Magento Open Source projects.
+description: Learn how the Functional Testing Framework relies on modularity to support the testing requirements of highly customized and constantly evolving projects.
 ---
 
 # Test Modularity
