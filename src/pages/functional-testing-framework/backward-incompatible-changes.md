@@ -1,6 +1,8 @@
 ---
-title: Backward incompatible changes | Commerce Testing
+title: Backward-incompatible changes | Commerce Testing
 description: Learn about major changes to the Functional Testing Framework that may require specific action to ensure third-party tests continue working as expected.
+keywords:
+  - Tools
 ---
 
 # Backward incompatible changes

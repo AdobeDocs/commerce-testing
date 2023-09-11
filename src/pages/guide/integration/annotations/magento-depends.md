@@ -1,6 +1,9 @@
 ---
 title: Dependency Annotation | Commerce Testing
 description: Define dependencies between methods in Adobe Commmerce and Magento Open Source test environments with this DocBlock annotation.
+keywords:
+  - Integration
+  - Tools
 ---
 
 # Dependency annotation

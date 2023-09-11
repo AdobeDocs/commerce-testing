@@ -1,6 +1,8 @@
 ---
 title: Extend action groups | Commerce Testing
 description: Learn how to customize Functional Testing Framework action groups to cover Adobe Commerce and Magento Open Source extensions.
+keywords:
+  - Tools
 ---
 
 # Extend action groups

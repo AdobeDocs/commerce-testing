@@ -1,6 +1,8 @@
 ---
 title: Extend data entities | Commerce Testing
 description: Learn how to customize Functional Testing Framework data entities to cover Adobe Commerce and Magento Open Source extensions.
+keywords:
+  - Tools
 ---
 
 # Extend data entities

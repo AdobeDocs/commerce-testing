@@ -3,6 +3,8 @@ title:  Unit Tests in PhpStorm | Commerce Testing
 description: Learn how to run PHP unit tests on Adobe Commerce and Magento Open Source code with the PhpStorm integrated development environment.
 contributor_name: Vinai Kopp
 contributor_link: https://vinaikopp.com/
+keywords:
+  - Tools
 ---
 
 # Unit tests in PhpStorm

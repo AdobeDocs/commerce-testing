@@ -3,6 +3,8 @@ title: Writing Testable Code | Commerce Testing
 description: Review best practices for writing testable code in your Adobe Commerce and Magento Open Source projects.
 contributor_name: Vinai Kopp
 contributor_link: https://vinaikopp.com/
+keywords:
+  - Tools
 ---
 
 # Writing testable code

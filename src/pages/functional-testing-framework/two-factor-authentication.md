@@ -1,6 +1,9 @@
 ---
 title: Two-factor authentication | Commerce Testing
-description: Learn how to use the Functional Testing Framework with two-factor authentication for Adobe Commerce and Magento Open Source projects. 
+description: Learn how to use the Functional Testing Framework with two-factor authentication for Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Security
+  - Tools
 ---
 
 # Configuring two-factor authentication (2FA)

@@ -1,6 +1,9 @@
 ---
 title: Configuration | Commerce Testing
 description: Learn how to configure the Functional Testing Framework for Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Configuration
+  - Tools
 ---
 
 # Configuration

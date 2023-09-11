@@ -1,6 +1,8 @@
 ---
 title: Assertions | Commerce Testing
 description: Learn about Functional Testing Framework assertions and how to define them for Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Tools
 ---
 
 # Assertions

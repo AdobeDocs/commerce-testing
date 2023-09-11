@@ -1,6 +1,9 @@
 ---
 title: Application Isolation Annotation | Commerce Testing
 description: Change application state in Adobe Commmerce and Magento Open Source test environments with this DocBlock annotation.
+keywords:
+  - Integration
+  - Tools
 ---
 
 # Application isolation annotation

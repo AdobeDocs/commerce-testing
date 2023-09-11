@@ -1,6 +1,8 @@
 ---
 title: Custom helpers | Commerce Testing
 description: Learn how to write custom test actions to address advanced requirements with the Functional Testing Framework.
+keywords:
+  - Tools
 ---
 
 # Custom Helpers

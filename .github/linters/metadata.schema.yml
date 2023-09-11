@@ -23,6 +23,7 @@ properties:
         - Extensibility
         - Extensions
         - GraphQL
+        - Install
         - Integration
         - Inventory
         - Payments

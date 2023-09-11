@@ -1,6 +1,8 @@
 ---
 title: Test modularity | Commerce Testing
 description: Learn how the Functional Testing Framework relies on modularity to support the testing requirements of highly customized and constantly evolving projects.
+keywords:
+  - Tools
 ---
 
 # Test Modularity

@@ -1,6 +1,8 @@
 ---
 title: Versioning | Commerce Testing
 description: Learn about the Functional Testing Framework versioning scheme for Adobe Commerce and Magento Open Source code.
+keywords:
+  - Tools
 ---
 
 # Functional Testing Framework versioning schema

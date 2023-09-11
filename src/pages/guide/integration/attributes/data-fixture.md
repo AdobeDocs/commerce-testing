@@ -1,6 +1,8 @@
 ---
 title: Data fixture attribute | Commerce Testing
 description: Prepare Adobe Commmerce and Magento Open Source databases for testing with this built-in PHP attribute.
+keywords:
+  - Tools
 ---
 
 # Data fixture attribute
