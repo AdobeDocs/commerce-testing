@@ -1,6 +1,8 @@
 ---
 title: How to write good selectors | Commerce Testing
 description: Review best practices for writing good Functional Testing Framework selectors for Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Tools
 ---
 
 # How To write good selectors

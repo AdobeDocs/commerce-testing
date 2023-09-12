@@ -1,6 +1,8 @@
 ---
 title: Merging functional tests | Commerce Testing
 description: Accelerate test creation for Adobe Commerce and Magento Open Source extensions and customizations using the Functional Testing Framework.
+keywords:
+  - Tools
 ---
 
 # Merging

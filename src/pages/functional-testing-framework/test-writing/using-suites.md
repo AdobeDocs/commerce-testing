@@ -1,6 +1,8 @@
 ---
 title: Using suites | Commerce Testing
 description: Learn how suites help you organize and consolidate Functional Testing Framework tests for Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Tools
 ---
 
 # Using suites

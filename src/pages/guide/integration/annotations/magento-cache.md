@@ -1,6 +1,10 @@
 ---
 title: Cache Annotation | Commerce Testing
 description: Enable and disable caching in Adobe Commmerce and Magento Open Source test environments with this DocBlock annotation.
+keywords:
+  - Cache
+  - Integration
+  - Tools
 ---
 
 # Cache annotation

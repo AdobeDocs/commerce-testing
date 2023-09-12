@@ -1,6 +1,8 @@
 ---
 title: Functional testing reference | Commerce Testing
 description: Learn about Functional Testing Framework command-line interace (CLI) tools for Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Tools
 ---
 
 # Functional testing reference

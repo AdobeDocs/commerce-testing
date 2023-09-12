@@ -1,6 +1,9 @@
 ---
 title: Data Fixture Annotation | Commerce Testing
 description: Prepare Adobe Commmerce and Magento Open Source databases for testing with this DocBlock annotation.
+keywords:
+  - Integration
+  - Tools
 ---
 
 # Data fixture annotation

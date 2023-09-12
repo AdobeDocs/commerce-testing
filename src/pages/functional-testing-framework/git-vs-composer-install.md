@@ -1,6 +1,9 @@
 ---
 title: Git vs. Composer installation | Commerce Testing
 description: Compare installation methods for Adobe Commerce and Magento Open Source projects when using the Functional Testing Framework.
+keywords:
+  - Install
+  - Tools
 ---
 
 # Git vs Composer installation of Commerce with MFTF

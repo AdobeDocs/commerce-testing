@@ -1,6 +1,9 @@
 ---
 title: Update the framework | Commerce Testing
 description: Learn how to upddate the Functional Testing Framework for Adobe Commerce and Magento Open Source.
+keywords:
+  - Tools
+  - Upgrade
 ---
 
 # Update the Functional Testing Framework

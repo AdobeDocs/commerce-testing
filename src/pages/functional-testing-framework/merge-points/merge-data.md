@@ -1,6 +1,8 @@
 ---
 title: Merge data | Commerce Testing
 description: Learn how to avoid duplicating code when using the Functional Testing Framework to test Adobe Commerce and Magento Open Source extensions.
+keywords:
+  - Tools
 ---
 
 # Merge data

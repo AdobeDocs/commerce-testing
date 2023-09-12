@@ -1,6 +1,8 @@
 ---
 title: Interactive pause | Commerce Testing
-description: Learn how to use the pause execution at any point and enter an interactive shell with the Functional Testing Framework for Adobe Commerce and Magento Open Source projects.
+description: Learn how to use the pause execution at any point and enter an interactive shell with the Functional Testing Framework.
+keywords:
+  - Tools
 ---
 
 # Interactive pause

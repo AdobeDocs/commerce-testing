@@ -1,6 +1,8 @@
 ---
 title: Functional test page structure | Commerce Testing
 description: Learn Functional Testing Framework page structure for Adobe Commerce and Magento Open Source peojects.
+keywords:
+  - Tools
 ---
 
 # Page structure

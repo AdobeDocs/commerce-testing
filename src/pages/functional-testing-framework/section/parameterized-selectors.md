@@ -1,6 +1,8 @@
 ---
 title: Parameterized selectors | Commerce Testing
 description: Learn how to use parameterized selectors in the Functional Testing Framework to test Adobe Commerce and Magento Open Source code.
+keywords:
+  - Tools
 ---
 
 # Parameterized selectors

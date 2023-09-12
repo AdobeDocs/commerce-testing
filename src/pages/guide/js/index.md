@@ -1,6 +1,8 @@
 ---
 title: JavaScript Unit Testing with Jasmine | Commerce Testing
 description: Learn how to do JavaScript unit testing for Adobe Commerce and Magento Open Source projects. 
+keywords:
+  - Tools
 ---
 
 # JavaScript unit testing with Jasmine

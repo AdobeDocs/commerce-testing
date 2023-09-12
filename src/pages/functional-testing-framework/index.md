@@ -1,6 +1,8 @@
 ---
 title: Functional Testing Framework | Commerce Testing
 description: Learn how to perform end-to-end functional testing on Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Tools
 ---
 
 # Introduction to the Functional Testing Framework

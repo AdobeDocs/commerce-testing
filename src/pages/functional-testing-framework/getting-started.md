@@ -1,6 +1,8 @@
 ---
 title: Getting started with functional testing | Commerce Testing
 description: Learn how to get started with the Functional Testing Framework for Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Tools
 ---
 
 # Getting started

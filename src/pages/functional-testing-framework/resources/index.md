@@ -1,6 +1,8 @@
 ---
 title: Resources | Commerce Testing
 description: Access Functional Testing Framework resources, such as release notes and contrbutor guidelines.
+keywords:
+  - Tools
 ---
 
 # External resources

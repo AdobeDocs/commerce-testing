@@ -1,6 +1,8 @@
 ---
 title: Test preparation | Commerce Testing
-description: Follow this tutorial to convert a functional test into an abstracted Functional Testing Framework file ready for testing Adobe Commerce and Magento Open Source projects.
+description: Convert a functional test into an abstracted Functional Testing Framework file ready for testing Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Tools
 ---
 
 # Preparing a test

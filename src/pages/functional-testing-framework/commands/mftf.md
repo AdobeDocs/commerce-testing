@@ -1,6 +1,8 @@
 ---
 title: Functional Testing Framework CLI commands | Commerce Testing
 description: Learn about the bin/mftf command-line interface (CLI) tool for the Functional Testing Framework.
+keywords:
+  - Tools
 ---
 
 # CLI commands: vendor/bin/mftf
