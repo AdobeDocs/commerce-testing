@@ -269,14 +269,11 @@ _Quote/Metadata/GuestCartMeta.xml_:
 As a result, the Functional Testing Framework sends an unauthorized POST request with an empty body to the `https://example.com/rest/V1/guest-carts` and stores the single string response that the endpoint returns.
 
 #### Company Relation Example
-This is an example of how to handle a company relation using REST API operations.
+This is an example of how to handle a company relation using REST API operations. This functionality is available only to Adobe Commerce customers.
 
 ##### Create a company relation
 
-Note: This functionality is available only to Adobe Commerce customers.
-
 The corresponding test step is:
-
 First create 2 different companies of different types before creating the company relation
 
 ```xml
