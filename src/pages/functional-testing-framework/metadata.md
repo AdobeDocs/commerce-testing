@@ -302,7 +302,7 @@ First create 2 different companies of different types before creating the compan
 </createData>
 ```
 
-The Functional Testing Framework searches in the _Data_ directory for the entities with `<entity name="Default_Company">`, `<entity name="NewCompany">`, and `<entity name="CreateCompanyRelationData">` and reads `type`.
+The Functional Testing Framework searches in the _Data_ directory for the entities with `<entity name="ParentCompany">`, `<entity name="ChildCompany">`, and `<entity name="OneCompanyRelation">` and reads `type`.
 
 _CompanyRelation/Data/CompanyData.xml_:
 
@@ -341,8 +341,8 @@ _CompanyRelation/Data/CompanyRelationData.xml_:
 </entity>
 ```
 
-- `type="company_relations"` points to the operation with `dataType=company_relations"` and `type="create"` in the _Metadata_ directory.
-- `<requiredEntity type="company_relation">CompanyRelationData</requiredEntity>` points to the data entity with `name="CompanyRelationData"` and `type="company_relation"`.
+- `type="company_relation"` points to the operation with `dataType=company_relation"` and `type="create"` in the _Metadata_ directory.
+- `<requiredEntity type="company_id">CompanyId</requiredEntity>` points to the data entity with `name="CompanyId"` and `type="company_id"`.
 
 _CompanyRelations/Data/CompanyIdData.xml_:
 
@@ -352,7 +352,7 @@ _CompanyRelations/Data/CompanyIdData.xml_:
 </entity>
 ```
 
-- `type="company_relation"` points to the operation with `dataType=company_relation"` and `type="create"` in the _Metadata_ directory.
+- `type="company_id"` points to the operation with `dataType=company_id"` and `type="create"` in the _Metadata_ directory.
 - The `company_id` will only get the `id` from the company with `type="company2"`
 
 _CompanyRelation/Metadata/CompanyIdMeta.xml_:
@@ -384,9 +384,9 @@ _CompanyRelation/Metadata/CompanyRelationMeta.xml_:
 
 As a result, the Functional Testing Framework sends a POST request with an array of company_ids in the body to the `https://example.com/rest/V1/company/{company.id}/relations`. Currently, the Functional Testing Framework supports sending only one company as a child company for a parent.
 
-- `{company.id}` in the url comes from the test `<requiredEntity createDataKey="company1"/>` in EstablishOneCompanyRelationData that has `type="company"`
+- `{company.id}` in the url comes from the test `<requiredEntity createDataKey="parentCompany"/>` in OneCompanyRelation that has `type="company"`
 - `<array key="relations">` will create an array with the key relations
-- `<value>company_relation</value>` will get the data from the operation with `dataType="company_relation"`
+- `<value>company_id</value>` will get the data from the operation with `dataType="company_id"`
 
 ```json
 {
@@ -400,11 +400,13 @@ As a result, the Functional Testing Framework sends a POST request with an array
 
 ##### Delete a company relation
 
+The corresponding test step is:
+
 ```xml
 <deleteData createDataKey="createCompanyRelation" stepKey="deleteCompanyRelation"/>
 ```
 
-`createDataKey="createCompanyRelation"` will be the same as the createData with `stepKey="createCompanyRelation"` in the test. This will call the delete operation that has the same `dataType="company_relations"` as the createData.
+`createDataKey="createCompanyRelation"` will be the same as the createData with `stepKey="createCompanyRelation"` in the test. This will call the delete operation that has the same `dataType="company_relation"` as the createData.
 
 _CompanyRelation/Metadata/CompanyRelationMeta.xml_:
 
@@ -416,8 +418,8 @@ _CompanyRelation/Metadata/CompanyRelationMeta.xml_:
 
 As a result, the Functional Testing Framework sends a DELETE request to the `https://example.com/rest/V1/company/{company.id}/relations/{company2.id}`.
 
-- `{company.id}` in the url comes from the test `<requiredEntity createDataKey="company1"/>` in EstablishOneCompanyRelationData that has `type="company"`
-- `{company2.id}` in the url comes from the test `<requiredEntity createDataKey="company2"/>` in EstablishOneCompanyRelationData that has `type="company2"`
+- `{company.id}` in the url comes from the test `<requiredEntity createDataKey="parentCompany"/>` in OneCompanyRelation that has `type="company"`
+- `{company2.id}` in the url comes from the test `<requiredEntity createDataKey="childCompany"/>` in OneCompanyRelation that has `type="company2"`
 
 ### Handling a REST API response
 
