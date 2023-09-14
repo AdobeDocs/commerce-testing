@@ -110,6 +110,7 @@ To convert a request to the Functional Testing Framework format, wrap the corres
 -  DELETE is used for deleting objects.
 
 #### Category Example
+
 This is an example of how to handle a category using REST API operations provided by the `catalogCategoryRepositoryV1` service.
 
 ![REST API operations provided by catalogCategoryRepositoryV1][catalogCategoryRepositoryV1 image]
@@ -237,6 +238,7 @@ So, the body of a REST API request that creates a simple category is the followi
 ```
 
 #### Guest Cart Example
+
 This is an example of how to handle a guest cart using REST API operations.
 
 ##### Create an object as a guest
@@ -269,38 +271,50 @@ _Quote/Metadata/GuestCartMeta.xml_:
 As a result, the Functional Testing Framework sends an unauthorized POST request with an empty body to the `https://example.com/rest/V1/guest-carts` and stores the single string response that the endpoint returns.
 
 #### Company Relation Example
-This is an example of how to handle a company relation using REST API operations. This functionality is available only to Adobe Commerce customers.
+
+This is an example of how to create the _Data_ and _Metadata_ that allows the Functional Testing Framework to process the REST API operations for creating and deleting a company relation. This functionality is available only to Adobe Commerce B2B customers.
+
+REST API endpoints:
+
+- POST: `/V1/company/:parentId/relations`
+- DELETE: `/V1/company/:parentId/relations/:companyId`
 
 ##### Create a company relation
 
 The corresponding test step is:
+
 First create 2 different companies of different types before creating the company relation
 
 ```xml
 <createData entity="Simple_US_Customer" stepKey="companyAdmin1"/>
-<createData entity="Default_Company" stepKey="company1">
+<createData entity="ParentCompany" stepKey="parentCompany">
     <requiredEntity createDataKey="companyAdmin1"/>
 </createData>
 
 <createData entity="Simple_US_CA_Customer" stepKey="companyAdmin2"/>
-<createData entity="NewCompany" stepKey="company2">
+<createData entity="ChildCompany" stepKey="childCompany">
     <requiredEntity createDataKey="companyAdmin2"/>
 </createData>
 
-<createData entity="EstablishOneCompanyRelationData" stepKey="createCompanyRelation">
-    <requiredEntity createDataKey="company1"/>
-    <requiredEntity createDataKey="company2"/>
+<createData entity="OneCompanyRelation" stepKey="createCompanyRelation">
+    <requiredEntity createDataKey="parentCompany"/>
+    <requiredEntity createDataKey="childCompany"/>
 </createData>
 ```
 
 The Functional Testing Framework searches in the _Data_ directory for the entities with `<entity name="Default_Company">`, `<entity name="NewCompany">`, and `<entity name="CreateCompanyRelationData">` and reads `type`.
 
-_Company/Data/CompanyData.xml_:
+_CompanyRelation/Data/CompanyData.xml_:
 
 ```xml
-<entity name="Default_Company" type="company">
+<!-- Data Type "company" -->
+<entity name="ParentCompany" type="company" extends="Default_Company">
+    <data key="company_name" unique="suffix">Parent Company </data>
+</entity>
+<!-- Data Type "company2" -->
+<entity name="ChildCompany" type="company2">
     <data key="status">1</data>
-    <data key="company_name" unique="suffix">Customer Company</data>
+    <data key="company_name" unique="suffix">Child Company </data>
     <array key="street">
         <item>7700 W Parmer Ln</item>
         <item>Bld D</item>
@@ -315,42 +329,25 @@ _Company/Data/CompanyData.xml_:
     <var key="super_user_id" entityType="customer" entityKey="id"/>
     <var key="company_email" entityType="customer" entityKey="email"/>
 </entity>
-<entity name="NewCompany" type="company2">
-    <data key="status">1</data>
-    <data key="company_name" unique="suffix">New Company</data>
-    <array key="street">
-        <item>90 Schevche street</item>
-        <item>Bld New</item>
-    </array>
-    <data key="city">Mukachevo</data>
-    <data key="country_id">VA</data>
-    <data key="region">New region</data>
-    <data key="postcode">89600</data>
-    <data key="telephone">512-353-3333</data>
-    <data key="customer_group_id">1</data>
-    <data key="sales_representative_id">1</data>
-    <var key="super_user_id" entityType="customer" entityKey="id"/>
-    <var key="company_email" entityType="customer" entityKey="email"/>
-</entity>
 ```
 
 Notice that the 2 company entities have 2 different types `type="company"` and `type="company2"`.  These types will be used later in _Data_ fields and _Metadata_ urls for company relations.
 
-_CompanyRelation/Data/CompanyRelationsData.xml_:
+_CompanyRelation/Data/CompanyRelationData.xml_:
 
 ```xml
-<entity name="EstablishOneCompanyRelationData" type="company_relations">
-    <requiredEntity type="company_relation">CompanyRelationData</requiredEntity>
+<entity name="OneCompanyRelation" type="company_relation">
+    <requiredEntity type="company_id">CompanyId</requiredEntity>
 </entity>
 ```
 
 - `type="company_relations"` points to the operation with `dataType=company_relations"` and `type="create"` in the _Metadata_ directory.
 - `<requiredEntity type="company_relation">CompanyRelationData</requiredEntity>` points to the data entity with `name="CompanyRelationData"` and `type="company_relation"`.
 
-_CompanyRelations/Data/CompanyIdsData.xml_:
+_CompanyRelations/Data/CompanyIdData.xml_:
 
 ```xml
-<entity name="CompanyRelationData" type="company_relation">
+<entity name="CompanyId" type="company_id">
     <var key="company_id" entityType="company2" entityKey="id"/>
 </entity>
 ```
@@ -358,36 +355,39 @@ _CompanyRelations/Data/CompanyIdsData.xml_:
 - `type="company_relation"` points to the operation with `dataType=company_relation"` and `type="create"` in the _Metadata_ directory.
 - The `company_id` will only get the `id` from the company with `type="company2"`
 
-_CompanyRelation/Metadata/CompanyIdsMeta.xml_:
+_CompanyRelation/Metadata/CompanyIdMeta.xml_:
 
 ```xml
-<operation name="CreateCompanyRelation" dataType="company_relation" type="create" >
+<operation name="CreateCompanyId" dataType="company_id" type="create">
     <field key="company_id">integer</field>
 </operation>
 ```
 
 `<field key="company_id">integer</field>` will create an object with a key `company_id` with a value of type integer.
+
 ```json
 {
   "company_id": 1
 }
 ```
 
-_CompanyRelation/Metadata/CompanyRelationsMeta.xml_:
+_CompanyRelation/Metadata/CompanyRelationMeta.xml_:
 
 ```xml
-<operation name="CreateCompanyRelations" dataType="company_relations" type="create" auth="adminOauth" url="/V1/company/{company.id}/relations" method="POST">
+<operation name="CreateCompanyRelation" dataType="company_relation" type="create" auth="adminOauth" url="/V1/company/{company.id}/relations" method="POST">
     <contentType>application/json</contentType>
     <array key="relations">
-        <value>company_relation</value>
+        <value>company_id</value>
     </array>
 </operation>
 ```
 
-As a result, the Functional Testing Framework sends a POST request with an array of company_ids in the body to the `https://example.com/rest/V1/company/:parentId/relations`.
+As a result, the Functional Testing Framework sends a POST request with an array of company_ids in the body to the `https://example.com/rest/V1/company/{company.id}/relations`. Currently, the Functional Testing Framework supports sending only one company as a child company for a parent.
+
 - `{company.id}` in the url comes from the test `<requiredEntity createDataKey="company1"/>` in EstablishOneCompanyRelationData that has `type="company"`
 - `<array key="relations">` will create an array with the key relations
 - `<value>company_relation</value>` will get the data from the operation with `dataType="company_relation"`
+
 ```json
 {
   "relations": [
@@ -404,15 +404,18 @@ As a result, the Functional Testing Framework sends a POST request with an array
 <deleteData createDataKey="createCompanyRelation" stepKey="deleteCompanyRelation"/>
 ```
 
-`createDataKey="createCompanyRelation"` will be the same as the createData `stepKey="createCompanyRelation"` in the test. This will call the delete operation that has the same `dataType="company_relations"` as the createData.
+`createDataKey="createCompanyRelation"` will be the same as the createData with `stepKey="createCompanyRelation"` in the test. This will call the delete operation that has the same `dataType="company_relations"` as the createData.
+
+_CompanyRelation/Metadata/CompanyRelationMeta.xml_:
 
 ```xml
-<operation name="DeleteCompanyRelations" dataType="company_relations" type="delete" auth="adminOauth" url="/V1/company/{company.id}/relations/{company2.id}" method="DELETE">
+<operation name="DeleteCompanyRelation" dataType="company_relation" type="delete" auth="adminOauth" url="/V1/company/{company.id}/relations/{company2.id}" method="DELETE">
     <contentType>application/json</contentType>
 </operation>
 ```
 
-As a result, the Functional Testing Framework sends a DELETE request to the `https://example.com/rest/V1/company/:parentId/relations/:companyId`.
+As a result, the Functional Testing Framework sends a DELETE request to the `https://example.com/rest/V1/company/{company.id}/relations/{company2.id}`.
+
 - `{company.id}` in the url comes from the test `<requiredEntity createDataKey="company1"/>` in EstablishOneCompanyRelationData that has `type="company"`
 - `{company2.id}` in the url comes from the test `<requiredEntity createDataKey="company2"/>` in EstablishOneCompanyRelationData that has `type="company2"`
 
