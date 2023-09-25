@@ -272,7 +272,7 @@ As a result, the Functional Testing Framework sends an unauthorized POST request
 
 #### Company Relation Example
 
-This is an example of how to create the _Data_ and _Metadata_ that allows the Functional Testing Framework to process the REST API operations for creating and deleting a company relation. This functionality is available only to Adobe Commerce B2B customers.
+This example creates XML data files in the _Data_ and _Metadata_ directories that allow the Functional Testing Framework to process the REST API operations for creating and deleting a company relation. This functionality is available only to Adobe Commerce B2B customers.
 
 REST API endpoints:
 
@@ -283,7 +283,7 @@ REST API endpoints:
 
 The corresponding test step is:
 
-First create 2 different companies of different types before creating the company relation
+First create two different companies of different types before creating the company relation.
 
 ```xml
 <createData entity="Simple_US_Customer" stepKey="companyAdmin1"/>
@@ -302,7 +302,7 @@ First create 2 different companies of different types before creating the compan
 </createData>
 ```
 
-The Functional Testing Framework searches in the _Data_ directory for the entities with `<entity name="ParentCompany">`, `<entity name="ChildCompany">`, and `<entity name="OneCompanyRelation">` and reads `type`.
+The Functional Testing Framework searches in the _Data_ directory for the entities with `<entity name="ParentCompany">`, `<entity name="ChildCompany">`, and `<entity name="OneCompanyRelation">` and reads the `type`.
 
 _CompanyRelation/Data/CompanyData.xml_:
 
@@ -331,7 +331,7 @@ _CompanyRelation/Data/CompanyData.xml_:
 </entity>
 ```
 
-Notice that the 2 company entities have 2 different types `type="company"` and `type="company2"`.  These types will be used later in _Data_ fields and _Metadata_ urls for company relations.
+Notice that the two company entities have two different types `type="company"` and `type="company2"`.  These types are used later in _Data_ fields and _Metadata_ urls for company relations.
 
 _CompanyRelation/Data/CompanyRelationData.xml_:
 
@@ -353,7 +353,7 @@ _CompanyRelations/Data/CompanyIdData.xml_:
 ```
 
 - `type="company_id"` points to the operation with `dataType=company_id"` and `type="create"` in the _Metadata_ directory.
-- The `company_id` will only get the `id` from the company with `type="company2"`
+- The `company_id` retrieves only  the `id` from the company with `type="company2"`
 
 _CompanyRelation/Metadata/CompanyIdMeta.xml_:
 
@@ -363,7 +363,7 @@ _CompanyRelation/Metadata/CompanyIdMeta.xml_:
 </operation>
 ```
 
-`<field key="company_id">integer</field>` will create an object with a key `company_id` with a value of type integer.
+`<field key="company_id">integer</field>` creates an object with a key `company_id` with a value of type integer.
 
 ```json
 {
@@ -382,11 +382,11 @@ _CompanyRelation/Metadata/CompanyRelationMeta.xml_:
 </operation>
 ```
 
-As a result, the Functional Testing Framework sends a POST request with an array of company_ids in the body to the `https://example.com/rest/V1/company/{company.id}/relations`. Currently, the Functional Testing Framework supports sending only one company as a child company for a parent.
+As a result, the Functional Testing Framework sends a POST request with an array of `company_ids` in the body to `https://example.com/rest/V1/company/{company.id}/relations`. Currently, the Functional Testing Framework supports sending only one company as a child company for a parent.
 
 - `{company.id}` in the url comes from the test `<requiredEntity createDataKey="parentCompany"/>` in OneCompanyRelation that has `type="company"`
-- `<array key="relations">` will create an array with the key relations
-- `<value>company_id</value>` will get the data from the operation with `dataType="company_id"`
+- `<array key="relations">` creates an array with the key relations
+- `<value>company_id</value>` retrieves the data from the operation with `dataType="company_id"`
 
 ```json
 {
@@ -406,7 +406,7 @@ The corresponding test step is:
 <deleteData createDataKey="createCompanyRelation" stepKey="deleteCompanyRelation"/>
 ```
 
-`createDataKey="createCompanyRelation"` will be the same as the createData with `stepKey="createCompanyRelation"` in the test. This will call the delete operation that has the same `dataType="company_relation"` as the createData.
+`createDataKey="createCompanyRelation"` is the same as the `createData` entity with `stepKey="createCompanyRelation"` in the test. This step calls the delete operation that has the same `dataType="company_relation"` value as the `createData` entity.
 
 _CompanyRelation/Metadata/CompanyRelationMeta.xml_:
 
@@ -416,14 +416,14 @@ _CompanyRelation/Metadata/CompanyRelationMeta.xml_:
 </operation>
 ```
 
-As a result, the Functional Testing Framework sends a DELETE request to the `https://example.com/rest/V1/company/{company.id}/relations/{company2.id}`.
+As a result, the Functional Testing Framework sends a DELETE request to `https://example.com/rest/V1/company/{company.id}/relations/{company2.id}`.
 
-- `{company.id}` in the url comes from the test `<requiredEntity createDataKey="parentCompany"/>` in OneCompanyRelation that has `type="company"`
-- `{company2.id}` in the url comes from the test `<requiredEntity createDataKey="childCompany"/>` in OneCompanyRelation that has `type="company2"`
+- `{company.id}` in the url comes from the test `<requiredEntity createDataKey="parentCompany"/>` in the `OneCompanyRelation` entity that has `type="company"`
+- `{company2.id}` in the url comes from the test `<requiredEntity createDataKey="childCompany"/>` in the `OneCompanyRelation` entity that has `type="company2"`
 
 ### Handling a REST API response
 
-There are cases when you need to reuse the data that Adobe Commerce or Magento Open source responded with to your POST request.
+There are cases when you need to reuse the data that Adobe Commerce or Magento Open source returned in response to your POST request.
 
 Let's see how to handle data after you created a category with custom attributes:
 
