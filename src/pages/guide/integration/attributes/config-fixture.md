@@ -1,6 +1,9 @@
 ---
 title: Configuration fixture attribute | Commerce Testing
 description: Configure test values and revert them after test execution in Adobe Commmerce and Magento Open Source test environments with this built-in PHP attribute.
+keywords:
+  - Configuration
+  - Tools
 ---
 
 # Configuration fixture attribute

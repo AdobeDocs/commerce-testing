@@ -1,6 +1,8 @@
 ---
 title: Test actions | Commerce Testing
 description: Learn how to use actions to automate different Adobe Commerce and Magento Open Source test scenarios in the Functional Testing Framework.
+keywords:
+  - Tools
 ---
 
 # Test actions

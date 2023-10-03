@@ -1,6 +1,8 @@
 ---
 title: Input testing data | Commerce Testing
 description: Define data entities for the Functional Testing Framework on Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Tools
 ---
 
 # Input testing data

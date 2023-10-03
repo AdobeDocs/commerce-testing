@@ -1,6 +1,8 @@
 ---
 title: Application Area Attribute | Commerce Testing
 description: Configure a test environment in the scope of an application area with this built-in PHP attribute.
+keywords:
+  - Tools
 ---
 
 # Application area attribute

@@ -1,6 +1,9 @@
 ---
 title: Application Area Annotation | Commerce Testing
 description: Configure a test environment in the scope of an application area with this DocBlock annotation.
+keywords:
+  - Integration
+  - Tools
 ---
 
 # Application area annotation

@@ -1,6 +1,8 @@
 ---
 title: Functional test cases | Commerce Testing
 description: Learn about Functional Testing Framework test cases and how to define them for Adobe Commerce and Magento Open Source projects.
+keywords:
+  - Tools
 ---
 
 # Test cases

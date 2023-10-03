@@ -1,6 +1,8 @@
 ---
 title: Static Analysis | Commerce Testing
 description: Learn how to do static analysis on Adobe Commerce and Magento Open Source code.
+keywords:
+  - Tools
 ---
 
 # Static analysis

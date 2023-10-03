@@ -1,6 +1,8 @@
 ---
 title: PHP built-in attributes | Commerce Testing
 description: Declare context in your Adobe Commerce and Magento Open Source code with built-in PHP attributes.
+keywords:
+  - Tools
 ---
 
 # PHP built-in attributes

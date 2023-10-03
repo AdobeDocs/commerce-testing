@@ -1,6 +1,8 @@
 ---
 title: Commerce Testing
 description: Review resources for testing Adobe Commerce and Magento Open Source code.
+keywords:
+  - Tools
 ---
 
 <Hero slots="image, heading, text"/>

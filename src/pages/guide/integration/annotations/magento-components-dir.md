@@ -1,6 +1,9 @@
 ---
 title: Component Registration Annotation | Commerce Testing
 description: Register and deregister fixture components in Adobe Commmerce and Magento Open Source test environments with this DocBlock annotation.
+keywords:
+  - Integration
+  - Tools
 ---
 
 # Component registration annotation
