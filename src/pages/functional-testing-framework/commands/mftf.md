@@ -599,6 +599,14 @@ Currently, the ruleset only defines the tests to run. Here is an example of the 
 }
 ```
 
+#### Defining allow-list
+
+Some `static-checks` allow modules to define an `allow-list`, which instruct the static check to ignore specific errors and allow checks to pass.
+All `allow-list` files must be placed in the root of the corresponding module's `Test/Mftf` folder.
+
+The following `static-checks` use `allow-list` files
+-   `testDependencies` as `test-dependency-allowlist`
+
 ### `upgrade:tests`
 
 When the path argument is specified, this `upgrade` command applies all the major version Functional Testing Framework upgrade scripts to a `Test Module` in the given path.
