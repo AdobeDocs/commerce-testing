@@ -604,7 +604,8 @@ Currently, the ruleset only defines the tests to run. Here is an example of the 
 Some `static-checks` allow modules to define an `allow-list`, which instructs the static check to ignore specific errors and allow checks to pass.
 All `allow-list` files must be placed in the root of the corresponding module's `Test/Mftf` folder.
 
-The following `static-checks` use `allow-list` files
+The following `static-checks` use `allow-list` files:
+
 -   `testDependencies` as `test-dependency-allowlist`
 
 ### `upgrade:tests`
