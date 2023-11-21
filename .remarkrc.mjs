@@ -7,7 +7,14 @@ const remarkConfig = {
 	plugins: [
 		remarkValidateLinks,
 		remarkFrontmatter,
-		remarkLintNoDeadUrls,
+		[
+			remarkLintNoDeadUrls,
+			{
+				skipUrlPatterns: [
+					'https://www.php.net'
+				]
+			}
+		],
 		[
 			remarkLintFrontmatterSchema,
 			{
