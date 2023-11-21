@@ -51,4 +51,4 @@ This order is necessary to meet the requirement of setting up the store-scoped c
 
 <!-- LINK DEFINITIONS -->
 
-[PHPUnit annotations]: https://phpunit.readthedocs.io/en/9.5/annotations.html
+[PHPUnit annotations]: https://docs.phpunit.de/en/9.6/annotations.html

@@ -28,7 +28,7 @@ We strongly recommend you do *not*:
 *  Use `new` to instantiate new objects, because that removes the flexibility the dependency configuration offers.
 *  Use the `ObjectManager` directly in production code.
 
-There always is a better alternative, usually a [generated] `Factory` class, or a [`Locator`][Locator] class of sorts.
+There always is a better alternative, usually a [generated] `Factory` class, or a `Locator` class of sorts.
 
 <InlineAlert variant="info" slots="text" />
 
@@ -286,12 +286,11 @@ Almost as a side effect, those classes are very easy to test.
 *  [Rules of simple software design][BeckDesignRules] by Kent Beck
 *  [Clean Code][clean-code] by Robert C. Martin
 *  [Refactoring][refactoring] by Martin Fowler
-*  [Growing Object Oriented Software Guided by Tests][growing-object-oriented-software] by Steve Freeman and Nat Pryce
+*  *Growing Object Oriented Software Guided by Tests* by Steve Freeman and Nat Pryce
 
 <!-- Link definitions -->
 [single-responsibility-principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
 [generated]: https://developer.adobe.com/commerce/php/development/components/code-generation/
-[Locator]: https://thephp.cc/news/2015/09/dependencies-in-disguise
 [integration-tests]: ../integration/index.md
 [PHP]: https://glossary.magento.com/php
 [constructor-injection]: https://developer.adobe.com/commerce/php/development/components/dependency-injection/
@@ -304,4 +303,3 @@ Almost as a side effect, those classes are very easy to test.
 [BeckDesignRules]: https://martinfowler.com/bliki/BeckDesignRules.html
 [clean-code]: https://books.google.com/books/about/Clean_Code.html?id=dwSfGQAACAAJ
 [refactoring]: https://martinfowler.com/books/refactoring.html
-[growing-object-oriented-software]: https://www.growing-object-oriented-software.com
