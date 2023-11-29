@@ -109,6 +109,8 @@ To convert a request to the Functional Testing Framework format, wrap the corres
 -  PUT is used for updating objects.
 -  DELETE is used for deleting objects.
 
+#### Category Example
+
 This is an example of how to handle a category using REST API operations provided by the `catalogCategoryRepositoryV1` service.
 
 ![REST API operations provided by catalogCategoryRepositoryV1][catalogCategoryRepositoryV1 image]
@@ -122,7 +124,7 @@ The above screenshot from the [REST API Reference][api reference] demonstrates a
 
 We assume that our `.env` file sets `MAGENTO_BASE_URL=https://example.com/` and `MAGENTO_BACKEND_NAME=admin`.
 
-#### Create a simple category
+##### Create a simple category
 
 Let's see what happens when you create a category:
 
@@ -235,7 +237,11 @@ So, the body of a REST API request that creates a simple category is the followi
 }
 ```
 
-#### Create an object as a guest
+#### Guest Cart Example
+
+This is an example of how to handle a guest cart using REST API operations.
+
+##### Create an object as a guest
 
 The corresponding test step is:
 
@@ -254,7 +260,7 @@ _Quote/Data/GuestCartData.xml_:
 
 `type="guestCart"` points to the operation with `dataType=GuestCart"` and `type="create"` in the _Metadata_ directory.
 
-_Catalog/Data/CategoryData.xml_:
+_Quote/Metadata/GuestCartMeta.xml_:
 
 ```xml
 <operation name="CreateGuestCart" dataType="GuestCart" type="create" auth="anonymous" url="/V1/guest-carts" method="POST">
@@ -264,9 +270,160 @@ _Catalog/Data/CategoryData.xml_:
 
 As a result, the Functional Testing Framework sends an unauthorized POST request with an empty body to the `https://example.com/rest/V1/guest-carts` and stores the single string response that the endpoint returns.
 
+#### Company Relation Example
+
+This example creates XML data files in the _Data_ and _Metadata_ directories that allow the Functional Testing Framework to process the REST API operations for creating and deleting a company relation. This functionality is available only to Adobe Commerce B2B customers.
+
+REST API endpoints:
+
+- POST: `/V1/company/:parentId/relations`
+- DELETE: `/V1/company/:parentId/relations/:companyId`
+
+##### Create a company relation
+
+The corresponding test step is:
+
+First create two different companies of different types before creating the company relation.
+
+```xml
+<createData entity="Simple_US_Customer" stepKey="companyAdmin1"/>
+<createData entity="ParentCompany" stepKey="parentCompany">
+    <requiredEntity createDataKey="companyAdmin1"/>
+</createData>
+
+<createData entity="Simple_US_CA_Customer" stepKey="companyAdmin2"/>
+<createData entity="ChildCompany" stepKey="childCompany">
+    <requiredEntity createDataKey="companyAdmin2"/>
+</createData>
+
+<createData entity="OneCompanyRelation" stepKey="createCompanyRelation">
+    <requiredEntity createDataKey="parentCompany"/>
+    <requiredEntity createDataKey="childCompany"/>
+</createData>
+```
+
+The Functional Testing Framework searches in the _Data_ directory for the entities with `<entity name="ParentCompany">`, `<entity name="ChildCompany">`, and `<entity name="OneCompanyRelation">` and reads the `type`.
+
+_CompanyRelation/Data/CompanyData.xml_:
+
+```xml
+<!-- Data Type "company" -->
+<entity name="ParentCompany" type="company" extends="Default_Company">
+    <data key="company_name" unique="suffix">Parent Company </data>
+</entity>
+<!-- Data Type "company2" -->
+<entity name="ChildCompany" type="company2">
+    <data key="status">1</data>
+    <data key="company_name" unique="suffix">Child Company </data>
+    <array key="street">
+        <item>7700 W Parmer Ln</item>
+        <item>Bld D</item>
+    </array>
+    <data key="city">Culver City</data>
+    <data key="country_id">US</data>
+    <data key="region_id">57</data>
+    <data key="postcode">90230</data>
+    <data key="telephone">555-555-5555</data>
+    <data key="customer_group_id">1</data>
+    <data key="sales_representative_id">1</data>
+    <var key="super_user_id" entityType="customer" entityKey="id"/>
+    <var key="company_email" entityType="customer" entityKey="email"/>
+</entity>
+```
+
+Notice that the two company entities have two different types `type="company"` and `type="company2"`.  These types are used later in _Data_ fields and _Metadata_ urls for company relations.
+
+_CompanyRelation/Data/CompanyRelationData.xml_:
+
+```xml
+<entity name="OneCompanyRelation" type="company_relation">
+    <requiredEntity type="company_id">CompanyId</requiredEntity>
+</entity>
+```
+
+- `type="company_relation"` points to the operation with `dataType=company_relation"` and `type="create"` in the _Metadata_ directory.
+- `<requiredEntity type="company_id">CompanyId</requiredEntity>` points to the data entity with `name="CompanyId"` and `type="company_id"`.
+
+_CompanyRelations/Data/CompanyIdData.xml_:
+
+```xml
+<entity name="CompanyId" type="company_id">
+    <var key="company_id" entityType="company2" entityKey="id"/>
+</entity>
+```
+
+- `type="company_id"` points to the operation with `dataType=company_id"` and `type="create"` in the _Metadata_ directory.
+- The `company_id` retrieves only  the `id` from the company with `type="company2"`
+
+_CompanyRelation/Metadata/CompanyIdMeta.xml_:
+
+```xml
+<operation name="CreateCompanyId" dataType="company_id" type="create">
+    <field key="company_id">integer</field>
+</operation>
+```
+
+`<field key="company_id">integer</field>` creates an object with a key `company_id` with a value of type integer.
+
+```json
+{
+  "company_id": 1
+}
+```
+
+_CompanyRelation/Metadata/CompanyRelationMeta.xml_:
+
+```xml
+<operation name="CreateCompanyRelation" dataType="company_relation" type="create" auth="adminOauth" url="/V1/company/{company.id}/relations" method="POST">
+    <contentType>application/json</contentType>
+    <array key="relations">
+        <value>company_id</value>
+    </array>
+</operation>
+```
+
+As a result, the Functional Testing Framework sends a POST request with an array of `company_ids` in the body to `https://example.com/rest/V1/company/{company.id}/relations`. Currently, the Functional Testing Framework supports sending only one company as a child company for a parent.
+
+- `{company.id}` in the url comes from the test `<requiredEntity createDataKey="parentCompany"/>` in OneCompanyRelation that has `type="company"`
+- `<array key="relations">` creates an array with the key relations
+- `<value>company_id</value>` retrieves the data from the operation with `dataType="company_id"`
+
+```json
+{
+  "relations": [
+    {
+      "company_id":  1
+    }
+  ]
+}
+```
+
+##### Delete a company relation
+
+The corresponding test step is:
+
+```xml
+<deleteData createDataKey="createCompanyRelation" stepKey="deleteCompanyRelation"/>
+```
+
+`createDataKey="createCompanyRelation"` is the same as the `createData` entity with `stepKey="createCompanyRelation"` in the test. This step calls the delete operation that has the same `dataType="company_relation"` value as the `createData` entity.
+
+_CompanyRelation/Metadata/CompanyRelationMeta.xml_:
+
+```xml
+<operation name="DeleteCompanyRelation" dataType="company_relation" type="delete" auth="adminOauth" url="/V1/company/{company.id}/relations/{company2.id}" method="DELETE">
+    <contentType>application/json</contentType>
+</operation>
+```
+
+As a result, the Functional Testing Framework sends a DELETE request to `https://example.com/rest/V1/company/{company.id}/relations/{company2.id}`.
+
+- `{company.id}` in the url comes from the test `<requiredEntity createDataKey="parentCompany"/>` in the `OneCompanyRelation` entity that has `type="company"`
+- `{company2.id}` in the url comes from the test `<requiredEntity createDataKey="childCompany"/>` in the `OneCompanyRelation` entity that has `type="company2"`
+
 ### Handling a REST API response
 
-There are cases when you need to reuse the data that Adobe Commerce or Magento Open source responded with to your POST request.
+There are cases when you need to reuse the data that Adobe Commerce or Magento Open source returned in response to your POST request.
 
 Let's see how to handle data after you created a category with custom attributes:
 
