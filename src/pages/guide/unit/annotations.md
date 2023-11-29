@@ -134,4 +134,4 @@ public function dataProvider(): array
 }
 ```
 
-You can read more about PHPUnit Data Providers [here](https://phpunit.readthedocs.io/en/8.0/writing-tests-for-phpunit.html#data-providers).
+You can read more about PHPUnit Data Providers [here](https://docs.phpunit.de/en/9.6/writing-tests-for-phpunit.html#data-providers).

@@ -384,5 +384,5 @@ This folder contains the following sub-folders and files:
 <!-- LINK DEFINITIONS -->
 
 [phpstorm run]: ../unit/phpstorm.md
-[PHPUnit documentation]: https://phpunit.readthedocs.io/en/9.1/index.html
+[PHPUnit documentation]: https://docs.phpunit.de/en/9.6/index.html
 [RabbitMQ Management Plugin]: https://www.rabbitmq.com/management.html

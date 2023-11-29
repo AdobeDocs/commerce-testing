@@ -28,7 +28,7 @@ We strongly recommend you do *not*:
 *  Use `new` to instantiate new objects, because that removes the flexibility the dependency configuration offers.
 *  Use the `ObjectManager` directly in production code.
 
-There always is a better alternative, usually a [generated] `Factory` class, or a [`Locator`][Locator] class of sorts.
+There always is a better alternative, usually a [generated] `Factory` class, or a `Locator` class of sorts.
 
 <InlineAlert variant="info" slots="text" />
 
@@ -36,9 +36,9 @@ This rule applies only to production code. When writing [integration tests][inte
 
 ### Collaborator classes
 
-Whenever an external class property, class constant, or a class method is used in a file, this file depends on the class containing the method or constant. Even if the external class is not used as a instantiated object, the current class is still hard-wired to depend on it.
+Whenever an external class property, class constant, or a class method is used in a file, this file depends on the class containing the method or constant. Even if the external class is not used as an instantiated object, the current class is still hard-wired to depend on it.
 
-[PHP] cannot execute the code unless it can load the external class, too. That is why such external classes are referred to as *dependencies*. Try to keep the number dependencies of to a minimum.
+[PHP] cannot execute the code unless it can load the external class, too. That is why such external classes are referred to as *dependencies*. Try to keep the number of dependencies to a minimum.
 
 Collaborator instances should be passed into the class using [constructor injection][constructor-injection].
 
@@ -64,7 +64,7 @@ For example, if you need...
 
   Consider using [`\Magento\Framework\HTTP\PhpEnvironment\Request::getServerValue()`][Request].
 
-Anything that can be easily replaced by a test double is preferable to using low level functions.
+Anything that can be easily replaced by a test double is preferable to using low-level functions.
 
 ## Interfaces over classes
 
@@ -219,15 +219,15 @@ Consider extracting the private functionality into a separate class and using th
 
 ## Helpful principles
 
-Many good practices for software development in general and object oriented programming in particular have been formulated as principles over the last decades. Applying these rules of thumb helps to keep code in good shape and also leads to more easily testable code.
+Many good practices for software development in general and object-oriented programming in particular have been formulated as principles over the last decades. Applying these rules of thumb helps to keep code in good shape and also leads to more easily testable code.
 
-The following list principles are by no means complete, but they can serve as a starting point when you start to write testable code.
+The following list of principles is by no means complete, but they can serve as a starting point when you start to write testable code.
 
 ### Tell, do not ask
 
-Try to use a few getters as possible. Instead, use methods that tell the objects directly what to do. Asking for object values is a sign of misplaced responsibilities. [Kent Beck][Kent-Beck] called that "feature envy".
+Try to use as few getters as possible. Instead, use methods that tell the objects directly what to do. Asking for object values is a sign of misplaced responsibilities. [Kent Beck][Kent-Beck] called that "feature envy".
 
-Consider moving the code in that needs the value into a class that has the data available as the following example shows:
+Consider moving the code that needs the value into a class that has the data available as the following example shows:
 
 ```php
 function extractMatchingDocuments(Document $searchDoc, array $documents)
@@ -277,7 +277,7 @@ Method chaining (for example, `$foo->getSomething()->setThat($x)->doBar()`) is o
 
 An interesting approach to writing more testable code is to try to delegate as much as possible to other classes. Every time any currently not available resource is needed, just think "I do not care where that comes from" and add a collaborator class that provides it.
 
-At first this might seem like it causes the number of classes to explode, but in fact each one of the classes is very short and simple and usually has very limited responsibilities.
+At first, this might seem like it causes the number of classes to explode, but in fact, each one of the classes is very short and simple and usually has very limited responsibilities.
 
 Almost as a side effect, those classes are very easy to test.
 
@@ -286,12 +286,11 @@ Almost as a side effect, those classes are very easy to test.
 *  [Rules of simple software design][BeckDesignRules] by Kent Beck
 *  [Clean Code][clean-code] by Robert C. Martin
 *  [Refactoring][refactoring] by Martin Fowler
-*  [Growing Object Oriented Software Guided by Tests][growing-object-oriented-software] by Steve Freeman and Nat Pryce
+*  *Growing Object Oriented Software Guided by Tests* by Steve Freeman and Nat Pryce
 
 <!-- Link definitions -->
 [single-responsibility-principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
 [generated]: https://developer.adobe.com/commerce/php/development/components/code-generation/
-[Locator]: https://thephp.cc/news/2015/09/dependencies-in-disguise
 [integration-tests]: ../integration/index.md
 [PHP]: https://glossary.magento.com/php
 [constructor-injection]: https://developer.adobe.com/commerce/php/development/components/dependency-injection/
@@ -304,4 +303,3 @@ Almost as a side effect, those classes are very easy to test.
 [BeckDesignRules]: https://martinfowler.com/bliki/BeckDesignRules.html
 [clean-code]: https://books.google.com/books/about/Clean_Code.html?id=dwSfGQAACAAJ
 [refactoring]: https://martinfowler.com/books/refactoring.html
-[growing-object-oriented-software]: https://www.growing-object-oriented-software.com
