@@ -193,6 +193,10 @@ Please refer to the article [Writing testable code][] for more information on wh
 The `bin/magento` tool provides a common entry point to execute any of the tests, which can be useful for continuous integration.
 Please see the [System Administrators Guide on Running Tests][] for more information.
 
+<div>
+    <iframe src="https://developer.adobe.com/commerce/php/best-practices/admin/placement-and-design/#feature-extensions" frameborder="0" width="100%" height="100%" align="center" scrolling="no"></iframe>
+</div>
+
 ## Where to find the tests in the file system
 
 Each test type described above corresponds to a subdirectory in `<magento2 root dir>/dev/tests`, as shown here:
