@@ -21,10 +21,14 @@ First, select `Google Authenticator` as Magento's 2FA provider:
 bin/magento config:set twofactorauth/general/force_providers google
 ```
 
-Now set the OTP window to `1` second:
+Now set the OTP window to `60` seconds:
+
+<InlineAlert variant="info" slots="text" />
+
+The default OTP window is `1` second in [2.4.7-beta](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/adobe-commerce/2-4-7.html).
 
 ```bash
-bin/magento config:set twofactorauth/google/otp_window 1
+bin/magento config:set twofactorauth/google/otp_window 60
 ```
 
 Set a base32-encoded `secret` for `Google Authenticator` to generate a OTP for the default admin user that you set for `MAGENTO_ADMIN_USERNAME` in `.env`:
