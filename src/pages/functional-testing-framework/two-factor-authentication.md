@@ -25,7 +25,7 @@ Now set the OTP window to `60` seconds:
 
 <InlineAlert variant="info" slots="text" />
 
-The default OTP window is `1` second in [2.4.7-beta](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/adobe-commerce/2-4-7.html).
+The default OTP window is `1` second in [2.4.7](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/adobe-commerce/2-4-7.html).
 
 ```bash
 bin/magento config:set twofactorauth/google/otp_window 60
