@@ -25,7 +25,7 @@ Now set the OTP window to `29`:
 
 <InlineAlert variant="info" slots="text" />
 
-The default OTP window is `1` in [2.4.7](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/adobe-commerce/2-4-7.html).
+In [2.4.7](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/adobe-commerce/2-4-7.html) and later, the OTP window configuration setting controls how long (in seconds) the system accepts an administrator's one-time-password (OTP) after it has expired. The system default is `1`.
 
 ```bash
 bin/magento config:set twofactorauth/google/otp_window 29
