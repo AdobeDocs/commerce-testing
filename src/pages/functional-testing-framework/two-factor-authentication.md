@@ -21,7 +21,7 @@ First, select `Google Authenticator` as Magento's 2FA provider:
 bin/magento config:set twofactorauth/general/force_providers google
 ```
 
-Now set the OTP window to `2`:
+Now set the OTP window to `29`:
 
 <InlineAlert variant="info" slots="text" />
 
