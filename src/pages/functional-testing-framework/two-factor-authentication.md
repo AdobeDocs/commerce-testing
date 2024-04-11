@@ -25,7 +25,7 @@ Now set the OTP window to `2`:
 
 <InlineAlert variant="info" slots="text" />
 
-The default OTP window is `1` second in [2.4.7](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/adobe-commerce/2-4-7.html).
+The default OTP window is `1` in [2.4.7](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/adobe-commerce/2-4-7.html). This setting determines the number of past and future codes that remain valid. A value of `1` indicates that the current OTP code plus one code in the past and one code in the future remain valid at any given point in time.  Changing the value to `2` allows the OTP codes to remain valid for longer during automated testing.
 
 ```bash
 bin/magento config:set twofactorauth/google/otp_window 29
