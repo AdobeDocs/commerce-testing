@@ -129,9 +129,9 @@ GOOD: .foo:nth-of-type({{index}})
 
 BAD: .foo:nth-of-type(1)
 
-GOOD: button[contains(@id, "foo")][{{index}}]
+GOOD: `button[contains(@id, "foo")][{{index}}]`
 
-BAD: button[contains(@id, "foo")][1]
+BAD: `button[contains(@id, "foo")][1]`
 
 GOOD: #actions__{{index}}__aggregator
 
@@ -182,7 +182,7 @@ Examples of common CSS selector operators and their purpose:
 
 Symbol|Name|Purpose|Selector
 ---|---|---|---
-`*`|Universal Selector|Allows you to select ALL ELEMENTS on the Page. Wild Card.|`*`
+`*`|Universal Selector|Allows you to select ALL ELEMENTS on the Page. Wildcard.|`*`
 Whitespace|Descendant Combinator|Allows you to combine 2 or more selectors.|`#idname .classname`
 `>`|Child Combinator|Allows you to select the top-level elements THAT FOLLOWS another specified element.|`#idname > .classname`
 `+`|Adjacent Sibling Combinator|Allows you to select an element THAT FOLLOWS DIRECTLY AFTER another specified element.|`#idname + .classname`
@@ -276,7 +276,7 @@ Examples:
 
 Attribute|HTML|Selector
 ---|---|---
-id|`<div id='idname'/>`|`//*[@id='idname']`
+`id`|`<div id='idname'/>`|`//*[@id='idname']`
 class|`<div class='classname'/>`|`//*[@class='classname']`
 type|`<button type='submit'/>`|`//*[@type='submit']`
 value|`<input value='value'/>`|`//*[@value='value']`

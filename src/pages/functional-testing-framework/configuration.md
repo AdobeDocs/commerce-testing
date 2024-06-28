@@ -271,7 +271,7 @@ BROWSER=firefox
 
 ### CREDENTIAL_VAULT_ADDRESS
 
-The Api address for a vault server.
+The API address for a vault server.
 
 Default: http://127.0.0.1:8200
 

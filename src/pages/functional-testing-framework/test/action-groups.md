@@ -18,8 +18,8 @@ The following diagram shows the structure of a Functional Testing Framework acti
 The following conventions apply to Functional Testing Framework action groups:
 
 - All action groups are declared in XML files and stored in the `<module>/Test/Mftf/ActionGroup/` directory.
-- Every file name ends with `ActionGroup` suffix. For exampe `LoginAsAdminActionGroup.xml`.
-- Action group name should be the same as file name without extension.
+- Every filename ends with `ActionGroup` suffix. For exampe `LoginAsAdminActionGroup.xml`.
+- Action group name should be the same as filename without extension.
 - One `<actionGroup>` tag is allowed per action group XML file.
 
 The XML format for the `actionGroups` declaration is:

@@ -47,4 +47,4 @@ Learn how to perform automated end-to-end testing.
 
 ## Contributing to this documentation
 
-We encourag yu to participate i our open documentation initiative. If you have suggestions, corrections, additions, or deletions for this documentation, check out the source on [GitHub](https://github.com/adobedocs/commerce-testing), and open a pull request. IMHO
+We encourage you to participate in our open documentation initiative. If you have suggestions, corrections, additions, or deletions for this documentation, check out the source on [GitHub](https://github.com/adobedocs/commerce-testing), and open a pull request.

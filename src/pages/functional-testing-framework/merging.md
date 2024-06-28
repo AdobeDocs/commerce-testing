@@ -31,7 +31,7 @@ For example:
 -  All data entities with `<entity name="sampleData" type="sample">` will be merged into one.
 -  All action groups with `<actionGroup name="SelectNotLoggedInCustomerGroupActionGroup">` will be merged into one.
 
-Although a file name does not influence merging, we recommend using the same file names in merging updates.
+Although a filename does not influence merging, we recommend using the same filenames in merging updates.
 This makes it easier to search later on.
 
 ## Merging precedence
@@ -380,7 +380,7 @@ The `AdminBaseBackendPage` result corresponds to:
 
 Use merging to add, remove, or update [elements] in sections.
 
-All sections with the same _file name_, _section name_, and _element name_ are merged during test generation.
+All sections with the same _filename_, _section name_, and _element name_ are merged during test generation.
 
 ### Add an element
 
@@ -492,7 +492,7 @@ The `AdminLoginFormSection` result corresponds to:
 You can add or update `<data>` elements within an `<entity>`.
 Removal of individual `<data>` tags is not supported.
 
-Entities and data with the same _file name_, _entity name and type_, and _data key_ are merged during test generation.
+Entities and data with the same _filename_, _entity name and type_, and _data key_ are merged during test generation.
 
 ### Add data
 
