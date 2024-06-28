@@ -45,6 +45,7 @@ jobs:
           # Full git history is needed to get a proper list of changed files
           # within `super-linter`
           fetch-depth: 0
+        # Load SuperLinter configuration
       - run: cat ".github/super-linter.env" >> "$GITHUB_ENV"
 
       ################################
@@ -60,7 +61,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: false
-          VALIDATE_GITHUB_ACTIONS: true
 
       - name: Setup Node
         uses: actions/setup-node@v3
