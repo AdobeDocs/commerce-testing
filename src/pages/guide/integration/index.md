@@ -112,7 +112,7 @@ Leave all the settings that do not start with `db-` and `amqp-` at their default
 You can include additional setup options—available to the `setup:install` command—in the test configuration file. A
 complete list of options is available [here](https://devdocs.magento.com/guides/v2.4/install-gde/install/cli/install-cli.html).
 
-If your project requires custom entries in the `core_config_data` table, such as the introduction of new 3rd party services
+If your project requires custom entries in the `core_config_data` table, such as the introduction of new third-party services
 that affect your application on a basic level or configuration for logic that would prevent access if not configured
 properly, Commerce provides a file template for this purpose.
 

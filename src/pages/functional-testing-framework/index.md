@@ -115,6 +115,6 @@ utils                           // The test-running utilities.
 codeception.dist.yml            // Codeception configuration (generated while running 'bin/mftf build:project')
 ```
 
-## Functional Testing Framework on Github
+## Functional Testing Framework on GitHub
 
-Follow the [project](https://github.com/magento/magento2-functional-testing-framework) and [contribute on Github](https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md).
+Follow the [project](https://github.com/magento/magento2-functional-testing-framework) and [contribute on GitHub](https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md).

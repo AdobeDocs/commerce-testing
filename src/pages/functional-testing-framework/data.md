@@ -140,9 +140,9 @@ The following is an example of the `Magento/Catalog/Test/Mftf/ActionGroup/Assert
 </assertEquals>
 ```
 
-## Hard-coded data input
+## Hardcoded data input
 
-The data to operate against can be included as literals in a test. Hard-coded data input can be useful in assertions.
+The data to operate against can be included as literals in a test. Hardcoded data input can be useful in assertions.
 
 See also [Actions][].
 
@@ -176,7 +176,7 @@ The following conventions apply to `<data>` entities:
 *  A `<data>` file may contain multiple data entities.
 *  Camel case is used for `<data>` elements. The name represents the `<data>` type. For example, a file with customer data is `CustomerData.xml`. A file for simple product would be `SimpleProductData.xml`.
 *  Camel case is used for the entity name.
-*  The file name must have the suffix `Data.xml`.
+*  The filename must have the suffix `Data.xml`.
 
 ## Example
 
@@ -226,7 +226,7 @@ The following is an example of a call in test:
 
 This action inputs data from the `name` of the `_defaultCategory` entity (for example, `simpleCategory598742365`) into the field with the locator defined in the selector of the `categoryNameInput` element of the `AdminCategoryBasicFieldSection`.
 
-You can also call data from the xml definition of a `data` tag directly:
+You can also call data from the XML definition of a `data` tag directly:
 
 ```xml
 <entity name="NewAdminUser" type="user">
@@ -271,7 +271,7 @@ Example:
 
 ### var
 
-`<var>` is an element that can be used to grab a key value from another entity. For example, when creating a customer with the `<createData>` action, the server responds with the auto-incremented ID of that customer. Use `<var>` to access that ID and use it in another data entity.
+`<var>` is an element that can be used to grab a key-value from another entity. For example, when creating a customer with the `<createData>` action, the server responds with the auto-incremented ID of that customer. Use `<var>` to access that ID and use it in another data entity.
 
 Attributes|Type|Use|Description
 ---|---|---|---

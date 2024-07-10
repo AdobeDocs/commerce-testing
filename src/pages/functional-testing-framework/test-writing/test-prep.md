@@ -14,7 +14,7 @@ This tutorial demonstrates the process of converting a raw functional test into 
 When first writing a test for a new piece of code such as a custom extension, it is likely that values are hardcoded for the specific testing environment while in development. To make the test more generic and easier for others to update and use, we need to abstract the test.
 The general process:
 
-1. Convert the manual test to a working, hard-coded test.
+1. Convert the manual test to a working, hardcoded test.
 1. Replace hardcoded selectors to a more flexible format such as [parameterized selectors][].
 1. Convert hardcoded form values and other data to data entities.
 1. Convert [actions][] into [action groups][].

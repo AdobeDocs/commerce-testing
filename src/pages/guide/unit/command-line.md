@@ -57,7 +57,7 @@ Some examples follow:
 
 *  Ubuntu: `/usr/bin/php`
 *  CentOS: `/usr/bin/php`
-*  OS X:
+*  MacOS:
 
    *  System: `/usr/bin/php`
    *  Homebrew: `/usr/local/Cellar/php56/5.6.19/bin/php`

@@ -58,7 +58,7 @@ The following example shows a common test that gets text from a page and asserts
 
 ### assertElementContainsAttribute
 
-The `<assertElementContainsAttribute>` asserts that the selected html element contains and matches the expected value for the given attribute.
+The `<assertElementContainsAttribute>` asserts that the selected HTML element contains and matches the expected value for the given attribute.
 
 Example:
 

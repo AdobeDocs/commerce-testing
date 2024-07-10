@@ -25,7 +25,7 @@ The `mftf` tool logs output continuously to the `dev/tests/acceptance/mftf.log` 
 
 ## Command line
 
-The Functional Testing Framework reports about its progress during test run when you run the `mftf` CLI tool with [`run:test`][] or [`run:group`][] commands.
+The Functional Testing Framework reports about its progress during test run when you run the `mftf` command-line tool with [`run:test`][] or [`run:group`][] commands.
 
 The report can contain three main parts:
 
@@ -172,7 +172,7 @@ A screenshot of the fail goes at the `acceptance/tests/_output` directory in bot
 -  `Magento.AcceptanceTest._default.Backend.AdminMenuNavigationWithSecretKeysTestCest.AdminMenuNavigationWithSecretKeysTest.fail.html`
 -  `Magento.AcceptanceTest._default.Backend.AdminMenuNavigationWithSecretKeysTestCest.AdminMenuNavigationWithSecretKeysTest.fail.png`
 
-The file name encodes:
+The filename encodes:
 
 -  `Magento` namespace
 -  with the `AcceptanceTest` test type

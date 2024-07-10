@@ -12,13 +12,13 @@ Depending on how you plan to use Adobe Commerce or Magento Open Source code, the
 
 ## GitHub Installation
 
-If you are contributing a pull request to the Magento Open Source codebase, download it from our GitHub repository. Contribution to the codebase is done using the 'fork and pull' model where contributors maintain their own fork of the repo. This repo is then used to submit a pull request to the base repo.
+If you are contributing a pull request to the Magento Open Source codebase, download it from our GitHub repository. Contribution to the codebase is done using the 'fork and pull' model where contributors maintain their own fork of the repository. This repository is then used to submit a pull request to the base repository.
 
 Install guide: [GitHub Installation][]
 
 ## Composer-based installation
 
-A Composer install downloads released packages of Adobe Commerce and Magento Open Source from the Composer repo [https://repo.magento.com](https://repo.magento.com).
+A Composer install downloads released packages of Adobe Commerce and Magento Open Source from the Composer repository [https://repo.magento.com](https://repo.magento.com).
 
 All modules and their test are put under `<vendor>` directory, for convenience of thid-party developers. With this setup, you can keep your custom modules separate from core modules. You can also develop modules in a separate VCS repository and add them to your `composer.json` which installs them into the `vendor` directory.
 
@@ -34,15 +34,15 @@ If you want to contribute a pull request into the Functional Testing Framework c
 
 ### Via GitHub
 
-Cloning the Magento Open Source git repository is a way of installing where you do not have to worry about matching your codebase with production. Your version control system generally holds and manages your `app/code` folder and you can do manual, ad-hoc development here.
+Cloning the Magento Open Source Git repository is a way of installing where you do not have to worry about matching your codebase with production. Your version control system generally holds and manages your `app/code` folder and you can do manual, ad-hoc development here.
 
 ### Via Composer
 
 We advocate using Composer to manage modules. When you install a module with Composer, it is added to the `vendor/<vendor-name>/<module>` directory.
 
-When developing your own module or adding test to a module, you should not edit in `vendor` because a composer update could overwrite your changes. Instead, overwrite a module under `vendor` by adding files or cloning your module-specific Git repo to `app/code/<vendor-name>/<module>`.
+When developing your own module or adding test to a module, you should not edit in `vendor` because a composer update could overwrite your changes. Instead, overwrite a module under `vendor` by adding files or cloning your module-specific Git repository to `app/code/<vendor-name>/<module>`.
 
-To distribute the module and its tests, you can initialize a git repo and create a [composer package][]. In this way others will be able to download and install your module and access your tests as a composer package, in their `<vendor>` folder.
+To distribute the module and its tests, you can initialize a Git repository and create a [composer package][]. In this way others will be able to download and install your module and access your tests as a composer package, in their `<vendor>` folder.
 
 ## test materials location
 

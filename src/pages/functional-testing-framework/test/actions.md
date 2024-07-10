@@ -241,7 +241,7 @@ Attribute|Type|Use|Description
 
 #### Example
 
-Pre-condition: the current base URL is `https://www.magento.com`.
+Precondition: the current base URL is `https://www.magento.com`.
 
 ```xml
 <!-- Change the sub-domain to `https://devdocs.magento.com`. -->
@@ -369,7 +369,7 @@ See [click docs on codeception.com](https://codeception.com/docs/modules/WebDriv
 Attribute|Type|Use|Description
 ---|---|---|---
 `selector`|string|optional| The selector identifying the corresponding HTML element.
-`selectorArray`|string|optional| Selects an element as a key value array. See [strict locator](https://codeception.com/docs/modules/WebDriver#locating-elements).
+`selectorArray`|string|optional| Selects an element as a key-value array. See [strict locator](https://codeception.com/docs/modules/WebDriver#locating-elements).
 `userInput`|string|optional| Data to be sent with the click.
 `stepKey`|string|required| A unique identifier of the action.
 `before`|string|optional| `stepKey` of action that must be executed next.
@@ -394,7 +394,7 @@ See [clickWithLeftButton docs on codeception.com](https://codeception.com/docs/m
 Attribute|Type|Use|Description
 ---|---|---|---
 `selector`|string|optional| The selector identifying the corresponding HTML element.
-`selectorArray`|string|optional| Selects an element as a key value array; See [strict locator].
+`selectorArray`|string|optional| Selects an element as a key-value array; See [strict locator].
 `x`|string|optional| The x-axis value in pixels for the click location.
 `y`|string|optional| The y-axis value in pixels for the click location.
 `stepKey`|string|required|A unique identifier of the action.
@@ -425,7 +425,7 @@ See [clickWithRightButton docs on codeception.com](https://codeception.com/docs/
 Attribute|Type|Use|Description
 ---|---|---|---
 `selector`|string|optional| The selector identifying the corresponding HTML element.
-`selectorArray`|string|optional| Selects an element as a key value array; See [strict locator].
+`selectorArray`|string|optional| Selects an element as a key-value array; See [strict locator].
 `x`|string|optional| The x-axis value in pixels for the click location.
 `y`|string|optional| The y-axis value in pixels for the click location.
 `stepKey`|string|required| A unique identifier of the action.
@@ -2339,7 +2339,7 @@ Attribute|Type|Use|Description
 
 ### waitForAjaxLoad
 
-Wait for all AJAX calls to finish.
+Wait for all Ajax calls to finish.
 
 Attribute|Type|Use|Description
 ---|---|---|---
@@ -2503,7 +2503,7 @@ Attribute|Type|Use|Description
 
 ### waitForPageLoad
 
-Wait for AJAX, loading overlays, and `document.readyState == "complete"`.
+Wait for Ajax, loading overlays, and `document.readyState == "complete"`.
 
 Attribute|Type|Use|Description
 ---|---|---|---

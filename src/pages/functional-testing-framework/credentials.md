@@ -76,7 +76,7 @@ magento/MAGENTO_ADMIN_PASSWORD=123123q
 ....
 ```
 
-Or add new key/value pairs for your own credentials. The keys use the following format:
+Or add new key-value pairs for your own credentials. The keys use the following format:
 
 ```conf
 <vendor>/<key_name>=<key_value>
@@ -102,11 +102,11 @@ The Functional Testing Framework works with both `vault enterprise` and `vault o
 
 ### Install vault CLI
 
-Download and install vault CLI tool if you want to run or develop tests locally. [Download Vault][Download Vault]
+Download and install vault command-line tool if you want to run or develop tests locally. [Download Vault][Download Vault]
 
 ### Authenticate to vault via vault CLI
 
-Authenticate to vault server via the vault CLI tool: [Login Vault][Login Vault].
+Authenticate to vault server via the vault command-line tool: [Login Vault][Login Vault].
 
 ```bash
 vault login -method -path
@@ -182,7 +182,7 @@ AWS Secrets Manager offers secret management that supports:
 
 `Secret Name` and `Secret Value` are two key pieces of information for creating a secret.
 
-`Secret Value` can be either plaintext or key/value pairs in JSON format.  
+`Secret Value` can be either plaintext or key-value pairs in JSON format.  
 
 `Secret Name` must use the following format:
 
@@ -190,11 +190,11 @@ AWS Secrets Manager offers secret management that supports:
 mftf/<VENDOR>/<YOUR/SECRET/KEY>
 ```
 
-`Secret Value` can be stored in two different formats: plaintext or key/value pairs.
+`Secret Value` can be stored in two different formats: plaintext or key-value pairs.
 
 For plaintext format, `Secret Value` can be any string you want to secure.
 
-For key/value pairs format, `Secret Value` is a key/value pair with `key` the same as `Secret Name` without `mftf/<VENDOR>/` prefix,  which is `<YOUR/SECRET/KEY>`, and value can be any string you want to secure.
+For key-value pairs format, `Secret Value` is a key-value pair with `key` the same as `Secret Name` without `mftf/<VENDOR>/` prefix,  which is `<YOUR/SECRET/KEY>`, and value can be any string you want to secure.
 
 ##### Create Secrets using AWS CLI
 
@@ -207,7 +207,7 @@ aws secretsmanager create-secret --name "mftf/magento/shipping/carriers_usps_use
 - Sign in to the AWS Secrets Manager console
 - Choose Store a new secret
 - In the Select secret type section, specify "Other type of secret"
-- For `Secret Name`, `Secret Key` and `Secret Value` field, for example, to save the same secret in key/value JSON format, you should use
+- For `Secret Name`, `Secret Key` and `Secret Value` field, for example, to save the same secret in key-value JSON format, you should use
 
 ```conf
 # Secret Name

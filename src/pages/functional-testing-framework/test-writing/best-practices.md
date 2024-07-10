@@ -93,31 +93,31 @@ The following pattern is used when merging with `extends`:
 
 ## Naming conventions
 
-### File names
+### Filenames
 
 Name files according to the following patterns to make searching in future more easy:
 
 <!-- {% raw %} -->
 
-#### Test file name
+#### Test filename
 
 Format: {_Admin_ or _Storefront_}{Functionality}_Test.xml_, where Functionality briefly describes the testing functionality.
 
 Example: _StorefrontCreateCustomerTest.xml_.
 
-#### Action Group file name
+#### Action Group filename
 
 Format: {_Admin_ or _Storefront_}{Action Group Summary}ActionGroup.xml`, where Action Group Summary is a short description of what the action group does.
 
 Example: _AdminCreateStoreActionGroup.xml_
 
-#### Section file name
+#### Section filename
 
 Format: {_Admin_ or _Storefront_}{UI Description}_Section.xml_, where UI Description briefly describes the testing UI.
 
 Example: _AdminNavbarSection.xml_.
 
-#### Data file name
+#### Data filename
 
 Format: {Type}_Data.xml_, where Type represents the entity type.
 
@@ -133,7 +133,7 @@ Use the _Foo.camelCase_ naming convention, which is similar to _Classes_ and _cl
 
 Use an upper case first letter for:
 
-*  File names. Example: _StorefrontCreateCustomerTest.xml_
+*  Filenames. Example: _StorefrontCreateCustomerTest.xml_
 *  Test name attributes. Example: `<test name="TestAllTheThingsTest">`
 *  Data entity names. Example: `<entity name="OutOfStockProduct">`
 *  Page name. Example: `<page name="AdminLoginPage">`
