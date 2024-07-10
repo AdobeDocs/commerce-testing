@@ -31,7 +31,7 @@ To set up a date fixture, use the `DataFixture` attribute.
 -  **count**
    -  The optional number of entities of the same kind and configuration that this fixture should generate.
 -  **scope**
-   -  The optional store view, website, or store group fixture alias from the scope of which the fixture will generate the entity.
+   -  The optional store view, site, or store group fixture alias from the scope of which the fixture will generate the entity.
 -  **as**
    -  The fixture alias that will be used as a reference to retrieve the data returned by the fixture and also as a reference in other fixtures parameters.
 
@@ -136,7 +136,7 @@ The generated fixtures will be assigned aliases product1, product2, and product3
 
 <InlineAlert variant="info" slots="text" />
 
-If you need to instruct the system to execute a data fixture in the scope of a specific store view, you can set the `scope` parameter value to the valid store view, website, or store group identifier.
+If you need to instruct the system to execute a data fixture in the scope of a specific store view, you can set the `scope` parameter value to the valid store view, site, or store group identifier.
 
 In the following example, we create a new store with the `store2` identifier and a product. Then, we create a guest cart under the `store2` scope and add a created product to it.
 

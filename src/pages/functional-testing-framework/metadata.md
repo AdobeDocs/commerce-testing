@@ -74,7 +74,7 @@ The following diagram demonstrates the XML structure of a metadata file:
 ## Principles
 
 1. A `dataType` value must match the `type` value of the corresponding entity.
-2. A file name should be PascalCase and end with `Meta.xml`.
+2. A filename should be PascalCase and end with `Meta.xml`.
    Example: `ProductAttributeMeta.xml`.
 3. A metadata file may contain different types of operations (`type`) with the same data entity (`dataType`).
 
@@ -331,7 +331,7 @@ _CompanyRelation/Data/CompanyData.xml_:
 </entity>
 ```
 
-Notice that the two company entities have two different types `type="company"` and `type="company2"`.  These types are used later in _Data_ fields and _Metadata_ urls for company relations.
+Notice that the two company entities have two different types `type="company"` and `type="company2"`.  These types are used later in _Data_ fields and _Metadata_ URLs for company relations.
 
 _CompanyRelation/Data/CompanyRelationData.xml_:
 
@@ -384,7 +384,7 @@ _CompanyRelation/Metadata/CompanyRelationMeta.xml_:
 
 As a result, the Functional Testing Framework sends a POST request with an array of `company_ids` in the body to `https://example.com/rest/V1/company/{company.id}/relations`. Currently, the Functional Testing Framework supports sending only one company as a child company for a parent.
 
-- `{company.id}` in the url comes from the test `<requiredEntity createDataKey="parentCompany"/>` in OneCompanyRelation that has `type="company"`
+- `{company.id}` in the URL comes from the test `<requiredEntity createDataKey="parentCompany"/>` in OneCompanyRelation that has `type="company"`
 - `<array key="relations">` creates an array with the key relations
 - `<value>company_id</value>` retrieves the data from the operation with `dataType="company_id"`
 
@@ -418,8 +418,8 @@ _CompanyRelation/Metadata/CompanyRelationMeta.xml_:
 
 As a result, the Functional Testing Framework sends a DELETE request to `https://example.com/rest/V1/company/{company.id}/relations/{company2.id}`.
 
-- `{company.id}` in the url comes from the test `<requiredEntity createDataKey="parentCompany"/>` in the `OneCompanyRelation` entity that has `type="company"`
-- `{company2.id}` in the url comes from the test `<requiredEntity createDataKey="childCompany"/>` in the `OneCompanyRelation` entity that has `type="company2"`
+- `{company.id}` in the URL comes from the test `<requiredEntity createDataKey="parentCompany"/>` in the `OneCompanyRelation` entity that has `type="company"`
+- `{company2.id}` in the URL comes from the test `<requiredEntity createDataKey="childCompany"/>` in the `OneCompanyRelation` entity that has `type="company2"`
 
 ### Handling a REST API response
 
@@ -588,7 +588,7 @@ Root element that points to the corresponding XML Schema.
 | `filename`      | string                                                                       | optional |                                                                                                                                              |
 |`deprecated`|string|optional|Used to warn about the future deprecation of the test. String will appear in Allure reports and console output at runtime.|
 
--  \*`url` - full URL is a concatenation of _ENV.baseUrl_ + `/rest/` + _url_.
+-  \*`url` - full URL is a concatenation of _ENV.baseUrl_ + `/rest/` + _URL_.
   To reuse data of a required entity or returned response use a field key wrapped in curly braces such as `{sku}`.
   When the data to reuse is of a different type, declare also the type of data such as `{product.sku}`.
   Example: `"/V1/products/{product.sku}/media/{id}"`.

@@ -7,7 +7,7 @@ keywords:
 
 # Application Testing Guide introduction
 
-The Commerce framework actively leverages various testing strategies to ensure product and code quality. Product quality matters to the end-users working with the storefront, admin panel, web APIs and CLI. Product quality tests verify that the user gets expected results while interacting with the system.
+The Commerce framework actively leverages various testing strategies to ensure product and code quality. Product quality matters to the end users working with the storefront, admin panel, web APIs and CLI. Product quality tests verify that the user gets expected results while interacting with the system.
 
 Code quality is important to developers working with the codebase including:
 

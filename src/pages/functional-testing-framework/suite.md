@@ -197,7 +197,7 @@ The suite includes a specific test `SomeCacheRelatedTest` and every `<test>` tha
 
 This example declares a suite with the name `PaypalConfiguration`:
 
--  `<before>` block persists a Paypal Configuration enabling all tests in this suite to run under the newly reconfigured Adobe Commerce or Magento Open Source instance.
+-  `<before>` block persists a PayPal Configuration enabling all tests in this suite to run under the newly reconfigured Adobe Commerce or Magento Open Source instance.
 -  `<after>` block deletes the persisted configuration, returning Adobe Commerce or Magento Open Source to its initial state.
 -  The suite includes all tests from the `Catalog` module, except the `PaypalIncompatibleTest` test.
 

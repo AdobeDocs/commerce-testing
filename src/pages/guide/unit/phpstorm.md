@@ -35,7 +35,7 @@ Please be aware that the details on configuring the PHP interpreter might vary b
 
 ## Configuring PHPUnit
 
-After configuring the interpreter, the next step is to set up the PHPStorm preferences for how to execute PHPUnit.
+After configuring the interpreter, the next step is to set up the PhpStorm preferences for how to execute PHPUnit.
 
 ![PhpStorm PHPUnit preference panel](../../_images/guide/phpstorm_phpunit_preferences_dialogue.png)
 

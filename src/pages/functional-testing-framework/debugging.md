@@ -10,18 +10,18 @@ keywords:
 Debugging within the Functional Testing Framework is helpful in identifying test bugs by allowing you to pause execution so that you may:
 
 -  Examine the page.
--  Check returned data and other variables being used during run-time.
+-  Check returned data and other variables being used during runtime.
 
 This is straightforward to do once you create a basic Debug Configuration.
 
 ## Prerequisites
 
 -  [Xdebug][]
--  PHPUnit configured for use in [PHPStorm][]
+-  PHPUnit configured for use in [PhpStorm][]
 
-## Creating Debug Configuration with PHPStorm
+## Creating Debug Configuration with PhpStorm
 
-1. If not already installed, download the Codeception Framework plugin for PHPStorm (`PhpStorm->Preferences->Plugins`).
+1. If not already installed, download the Codeception Framework plugin for PhpStorm (`PhpStorm->Preferences->Plugins`).
 1. Click `Edit Configurations` on the configuration dropdown.
 1. Click `+` and select `Codeception` from the available types.
 1. Change `Test Scope` to `Type` and select `functional` from the `Type:` dropdown.
