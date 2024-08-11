@@ -10,7 +10,7 @@ keywords:
 
 A data fixture is a PHP script that sets data you want to reuse in your test. The script can be defined in a separate file or as a local test case method.
 
-Use data fixtures to prepare a database for tests. The Integration Testing Framework (ITF) reverts the database to its initial state automatically. To set up a date fixture, use the `@magentoDataFixture` annotation.
+Use data fixtures to prepare a database for tests. The Integration Testing Framework (ITF) reverts the database to its initial state automatically. To set up a data fixture, use the `@magentoDataFixture` annotation.
 
 ## Format
 
