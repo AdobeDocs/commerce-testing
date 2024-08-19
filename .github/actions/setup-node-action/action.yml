@@ -1,0 +1,31 @@
+name: 'Setup Node and Install Dependencies'
+description: 'Setup Node.js environment and install dependencies'
+inputs:
+  node-version-file:
+    description: 'Path to the .nvmrc file'
+    required: true
+  cache-dependency-path:
+    description: 'Path to the yarn.lock file'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version-file: ${{ inputs.node-version-file }}
+        cache: 'yarn'
+        cache-dependency-path: ${{ inputs.cache-dependency-path }}
+
+    - name: Enable Corepack for Yarn
+      run: corepack enable
+      shell: bash
+
+    - name: Install Dependencies
+      run: yarn install
+      shell: bash
+      env:
+        YARN_ENABLE_IMMUTABLE_INSTALLS: false

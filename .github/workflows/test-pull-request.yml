@@ -72,23 +72,11 @@
         contents: read
         statuses: write
       steps:
-        - name: Checkout Code
-          uses: actions/checkout@v4
-  
-        - name: Setup Node
-          uses: actions/setup-node@v3
+        - name: Use Setup Node and Install Dependencies Action
+          uses: ./.github/actions/setup-node-action
           with:
             node-version-file: '.nvmrc'
-            cache: 'yarn'
             cache-dependency-path: 'yarn.lock'
-  
-        - name: Enable Corepack for Yarn
-          run: corepack enable
-  
-        - name: Install Dependencies
-          run: yarn install
-          env:
-            YARN_ENABLE_IMMUTABLE_INSTALLS: false
   
         - name: Check links
           run: yarn test
@@ -100,23 +88,11 @@
         contents: read
         statuses: write
       steps:
-        - name: Checkout Code
-          uses: actions/checkout@v4
-  
-        - name: Setup Node
-          uses: actions/setup-node@v3
+        - name: Use Setup Node and Install Dependencies Action
+          uses: ./.github/actions/setup-node-action
           with:
             node-version-file: '.nvmrc'
-            cache: 'yarn'
             cache-dependency-path: 'yarn.lock'
-  
-        - name: Enable Corepack for Yarn
-          run: corepack enable
-  
-        - name: Install Dependencies
-          run: yarn install
-          env:
-            YARN_ENABLE_IMMUTABLE_INSTALLS: false
   
         - name: Build site
           run: yarn build
