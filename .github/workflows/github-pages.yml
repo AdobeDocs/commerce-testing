@@ -1,9 +1,13 @@
 ---
 name: Github Pages
 on: workflow_dispatch
+permissions: {}
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      statuses: write
     steps:
       - uses: actions/checkout@v4
       - name: Use Setup Node and Install Dependencies Action
