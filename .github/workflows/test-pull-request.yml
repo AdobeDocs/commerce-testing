@@ -70,7 +70,6 @@
       needs: lint
       permissions:
         contents: read
-        actions: read
         statuses: write
       steps:
         - uses: actions/checkout@v4
