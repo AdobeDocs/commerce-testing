@@ -91,7 +91,7 @@
       steps:
         - uses: actions/checkout@v4
         - name: Use Setup Node and Install Dependencies Action
-          uses: ./.github/actions/setup-node-action
+          uses: commerce-docs/devsite-install-action@main
           with:
             node-version-file: '.nvmrc'
             cache-dependency-path: 'yarn.lock'
