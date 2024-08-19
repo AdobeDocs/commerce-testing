@@ -6,9 +6,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: read
-      statuses: write
-      deployments: write
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Use Setup Node and Install Dependencies Action
