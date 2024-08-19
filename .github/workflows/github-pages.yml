@@ -8,7 +8,7 @@ jobs:
     permissions:
       contents: read
       statuses: write
-      pages: write
+      deployments: write
     steps:
       - uses: actions/checkout@v4
       - name: Use Setup Node and Install Dependencies Action
