@@ -90,6 +90,7 @@
         contents: read
         statuses: write
       steps:
+        - uses: actions/checkout@v4
         - name: Use Setup Node and Install Dependencies Action
           uses: ./.github/actions/setup-node-action
           with:
