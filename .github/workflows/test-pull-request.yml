@@ -34,7 +34,6 @@
       ############################################
       permissions:
         contents: read
-        packages: read
         statuses: write
   
       ##################
@@ -71,7 +70,6 @@
       needs: lint
       permissions:
         contents: read
-        packages: read
         statuses: write
       steps:
         - name: Checkout Code
@@ -100,7 +98,6 @@
       needs: test
       permissions:
         contents: read
-        packages: read
         statuses: write
       steps:
         - name: Checkout Code
