@@ -70,6 +70,7 @@
       needs: lint
       permissions:
         contents: read
+        actions: read
         statuses: write
       steps:
         - name: Use Setup Node and Install Dependencies Action
