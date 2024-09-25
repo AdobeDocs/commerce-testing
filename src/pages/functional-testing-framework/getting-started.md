@@ -354,7 +354,7 @@ allure serve dev/tests/_output/allure-results/
 [allure docs]: https://docs.qameta.io/allure/
 [Allure Framework]: https://github.com/allure-framework
 [basic configuration]: configuration.md#basic-configuration
-[chrome driver]: https://sites.google.com/a/chromium.org/chromedriver/downloads
+[chrome driver]: https://sites.google.com/chromium.org/driver/downloads
 [Codeception Test execution]: https://blog.jetbrains.com/phpstorm/2017/03/codeception-support-comes-to-phpstorm-2017-1/
 [composer]: https://getcomposer.org/download/
 [Configuration]: configuration.md
