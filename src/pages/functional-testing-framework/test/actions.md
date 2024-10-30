@@ -617,7 +617,7 @@ Delete the entity that was previously created using [`createData`](#createdata) 
 
 #### Example of existing data deletion
 
-Delete an entity using [REST API](https://devdocs.magento.com/redoc/2.3/) request to the corresponding route:
+Delete an entity using [REST API](https://developer.adobe.com/commerce/webapi/rest/) request to the corresponding route:
 
 ```xml
 <grabFromCurrentUrl regex="/^.+id\/([\d]+)/" stepKey="grabId"/>

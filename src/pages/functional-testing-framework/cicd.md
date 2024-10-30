@@ -116,6 +116,6 @@ allure generate <path_to_results> -c -o <path_to_output>
 ```
 
 <!-- Link definitions -->
-[Install Commerce using Composer]: https://devdocs.magento.com/guides/v2.4/install-gde/composer.html
+[Install Commerce using Composer]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/composer
 [Configure 2FA]: two-factor-authentication.md
 [Allure]: https://docs.qameta.io/allure/
