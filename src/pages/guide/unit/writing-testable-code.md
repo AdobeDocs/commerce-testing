@@ -38,7 +38,7 @@ This rule applies only to production code. When writing [integration tests][inte
 
 Whenever an external class property, class constant, or a class method is used in a file, this file depends on the class containing the method or constant. Even if the external class is not used as an instantiated object, the current class is still hard-wired to depend on it.
 
-[PHP] cannot execute the code unless it can load the external class, too. That is why such external classes are referred to as *dependencies*. Try to keep the number of dependencies to a minimum.
+PHP cannot execute the code unless it can load the external class, too. That is why such external classes are referred to as *dependencies*. Try to keep the number of dependencies to a minimum.
 
 Collaborator instances should be passed into the class using [constructor injection][constructor-injection].
 
@@ -292,7 +292,6 @@ Almost as a side effect, those classes are very easy to test.
 [single-responsibility-principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
 [generated]: https://developer.adobe.com/commerce/php/development/components/code-generation/
 [integration-tests]: ../integration/index.md
-[PHP]: https://glossary.magento.com/php
 [constructor-injection]: https://developer.adobe.com/commerce/php/development/components/dependency-injection/
 [IoInterface]: https://github.com/magento/magento2/blob/2.4/lib/internal/Magento/Framework/Filesystem/Io/IoInterface.php
 [DateTimeInterface]: https://www.php.net/manual/en/refs.calendar.php

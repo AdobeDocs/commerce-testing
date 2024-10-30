@@ -722,7 +722,7 @@ Example:
 <!-- LINK DEFINITIONS -->
 
 [actions]: test/actions.md
-[api reference]: https://devdocs.magento.com/guides/v2.4/get-started/bk-get-started-api.html
+[api reference]: https://developer.adobe.com/commerce/webapi/get-started/
 [application/x-www-form-urlencoded]: https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1
 [catalogCategoryRepositoryV1 image]: ../_images/functional-testing/catalogCategoryRepository-operations.png
 [createData]: test/actions.md#createdata
@@ -730,5 +730,5 @@ Example:
 [entity]: data.md#entity
 [getData]: test/actions.md#getdata
 [HTML forms]: https://www.w3.org/TR/html401/interact/forms.html
-[oauth]: https://devdocs.magento.com/guides/v2.4/get-started/authentication/gs-authentication-oauth.html
+[oauth]: https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-oauth/
 [updateData]: test/actions.md#updatedata

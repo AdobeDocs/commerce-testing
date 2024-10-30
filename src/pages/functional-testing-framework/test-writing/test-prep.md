@@ -406,8 +406,8 @@ A well written test will end up being a set of action groups.
 The finished test is fully abstracted in such a way that it is short and readable and importantly, the abstracted data and action groups can be used again.
 
 <!-- Link Definitions -->
-[actions]: https://devdocs.magento.com/mftf/docs/test/actions.html
-[action groups]: https://devdocs.magento.com/mftf/docs/test/action-groups.html
-[Data entities]: https://devdocs.magento.com/mftf/docs/data.html
-[Input testing data]: https://devdocs.magento.com/mftf/docs/data.html
-[parameterized selectors]: https://devdocs.magento.com/mftf/docs/section/parameterized-selectors.html
+[actions]: https://developer.adobe.com/commerce/testing/functional-testing-framework/test/actions/
+[action groups]: https://developer.adobe.com/commerce/testing/functional-testing-framework/test/action-groups/
+[Data entities]: https://developer.adobe.com/commerce/testing/functional-testing-framework/data/
+[Input testing data]: https://developer.adobe.com/commerce/testing/functional-testing-framework/data/
+[parameterized selectors]: https://developer.adobe.com/commerce/testing/functional-testing-framework/section/parameterized-selectors/
