@@ -33,3 +33,5 @@ cypress/screenshots
 
 # lerna
 lerna-debug.log
+
+tmp
