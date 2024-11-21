@@ -44,8 +44,8 @@ This functionality is used to select text on the page and cannot be accomplished
 ```php
 <?php
 /**
- * Copyright &copy; Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Copyright Adobe
+ * All rights reserved.
  */
 
 namespace Magento\PageBuilder\Test\Mftf\Helper;

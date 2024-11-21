@@ -54,8 +54,8 @@ For our example, we have a test that creates a simple product. Note the hardcode
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright &copy; Magento, Inc. All rights reserved.
-  * See COPYING.txt for license details.
+  * Copyright Adobe
+  * All Rights Reserved.
   */
 -->
 
@@ -119,8 +119,8 @@ In this example `AdminProductFormSection` refers to the `<section>` in the XML f
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright &copy; Magento, Inc. All rights reserved.
-  * See COPYING.txt for license details.
+  * Copyright Adobe
+  * All Rights Reserved.
   */
 -->
 
@@ -183,8 +183,8 @@ Here we are interested in `<section name="AdminProductFormSection">`, where we a
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright &copy; Magento, Inc. All rights reserved.
-  * See COPYING.txt for license details.
+  * Copyright Adobe
+  * All Rights Reserved.
   */
 -->
 <sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -217,8 +217,8 @@ The hardcoded values of these form elements are abstracted to a "data entity" XM
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright &copy; Magento, Inc. All rights reserved.
-  * See COPYING.txt for license details.
+  * Copyright Adobe
+  * All Rights Reserved.
   */
 -->
 
@@ -322,8 +322,8 @@ To create an action group, take the steps and put them within an `<actionGroup>`
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright &copy; Magento, Inc. All rights reserved.
-  * See COPYING.txt for license details.
+  * Copyright Adobe
+  * All Rights Reserved.
   */
 -->
 <actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -353,8 +353,8 @@ Now we can reference this action group within our test (and any other test).
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright &copy; Magento, Inc. All rights reserved.
-  * See COPYING.txt for license details.
+  * Copyright Adobe
+  * All Rights Reserved.
   */
 -->
 
