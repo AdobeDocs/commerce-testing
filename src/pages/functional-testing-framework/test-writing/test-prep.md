@@ -54,7 +54,7 @@ For our example, we have a test that creates a simple product. Note the hardcode
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright Adobe
+  * Copyright [first year code created] Adobe
   * All Rights Reserved.
   */
 -->
@@ -119,7 +119,7 @@ In this example `AdminProductFormSection` refers to the `<section>` in the XML f
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright Adobe
+  * Copyright [first year code created] Adobe
   * All Rights Reserved.
   */
 -->
@@ -183,7 +183,7 @@ Here we are interested in `<section name="AdminProductFormSection">`, where we a
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright Adobe
+  * Copyright [first year code created] Adobe
   * All Rights Reserved.
   */
 -->
@@ -217,7 +217,7 @@ The hardcoded values of these form elements are abstracted to a "data entity" XM
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright Adobe
+  * Copyright [first year code created] Adobe
   * All Rights Reserved.
   */
 -->
@@ -322,7 +322,7 @@ To create an action group, take the steps and put them within an `<actionGroup>`
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright Adobe
+  * Copyright [first year code created] Adobe
   * All Rights Reserved.
   */
 -->
@@ -353,7 +353,7 @@ Now we can reference this action group within our test (and any other test).
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
-  * Copyright Adobe
+  * Copyright [first year code created] Adobe
   * All Rights Reserved.
   */
 -->
