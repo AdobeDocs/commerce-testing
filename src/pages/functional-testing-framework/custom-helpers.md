@@ -44,7 +44,7 @@ This functionality is used to select text on the page and cannot be accomplished
 ```php
 <?php
 /**
- * Copyright Adobe
+ * Copyright [first year code created] Adobe
  * All rights reserved.
  */
 
