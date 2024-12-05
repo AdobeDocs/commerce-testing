@@ -13,13 +13,13 @@ keywords:
 
 To run all tests, navigate to the application root directory and execute the following command:
 
-*  earlier v2.4.7:
+*  earlier v2.4.7 running PHPUnit 9:
 
 ```bash
 ./vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist
 ```
 
-*  since v2.4.8:
+*  since v2.4.8 running PHPUnit 10 from the `dev/tests/integration` directory:
 
 ```bash
 cd dev/tests/integration
