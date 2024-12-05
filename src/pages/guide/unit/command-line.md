@@ -13,9 +13,20 @@ keywords:
 
 To run all tests, navigate to the application root directory and execute the following command:
 
+*  earlier v2.4.7:
+
 ```bash
-cd dev/tests/unit/
-./../../../vendor/bin/phpunit -c phpunit.xml.dist
+./vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist
+```
+
+*  since v2.4.8:
+
+```bash
+cd dev/tests/integration
+```
+
+```bash
+../../../vendor/bin/phpunit -c phpunit.xml.dist
 ```
 
 ## Run only a subset of the unit tests
@@ -24,9 +35,20 @@ To run only tests within a specific directory branch, all you have to do is to s
 
 The following example tells PHPUnit to look for any file ending with `Test.php` within the directory branch `app/code/Example/Module/Test/Unit` and try to execute it.
 
+*  earlier v2.4.7 running PHPUnit 9:
+
 ```bash
-cd dev/tests/unit/
-./../../../vendor/bin/phpunit -c phpunit.xml.dist ./../../../app/code/Example/Module/Test/Unit
+./vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist app/code/Example/Module/Test/Unit
+```
+
+*  since v2.4.8 running PHPUnit 10 from the `dev/tests/integration` directory:
+
+```bash
+cd dev/tests/integration
+```
+
+```bash
+../../../vendor/bin/phpunit -c phpunit.xml.dist ../../../app/code/Example/Module/Test/Unit
 ```
 
 ## Explanation
