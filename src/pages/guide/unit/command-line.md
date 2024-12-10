@@ -13,20 +13,8 @@ keywords:
 
 To run all tests, navigate to the application root directory and execute the following command:
 
-*  earlier v2.4.7 running PHPUnit 9:
-
 ```bash
 ./vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist
-```
-
-*  since v2.4.8 running PHPUnit 10 from the `dev/tests/integration` directory:
-
-```bash
-cd dev/tests/integration
-```
-
-```bash
-../../../vendor/bin/phpunit -c phpunit.xml.dist
 ```
 
 ## Run only a subset of the unit tests
@@ -35,20 +23,8 @@ To run only tests within a specific directory branch, all you have to do is to s
 
 The following example tells PHPUnit to look for any file ending with `Test.php` within the directory branch `app/code/Example/Module/Test/Unit` and try to execute it.
 
-*  earlier v2.4.7 running PHPUnit 9:
-
 ```bash
 ./vendor/bin/phpunit -c dev/tests/unit/phpunit.xml.dist app/code/Example/Module/Test/Unit
-```
-
-*  since v2.4.8 running PHPUnit 10 from the `dev/tests/integration` directory:
-
-```bash
-cd dev/tests/integration
-```
-
-```bash
-../../../vendor/bin/phpunit -c phpunit.xml.dist ../../../app/code/Example/Module/Test/Unit
 ```
 
 ## Explanation
@@ -113,3 +89,23 @@ Add the following line in the `<php>` block to disable the PHP memory limit duri
 ```xml
 <ini name="memory_limit" value="-1"/>
 ```
+
+### CLI Command run with PHPUnit 10
+
+If you encounter an error similar to `Bootstrapping of extension Qameta\Allure\PHPUnit\AllureExtension failed: Config file allure/allure.config.php doesn't exist`, follow these steps to resolve it.
+
+To resolve this issue and successfully execute unit tests, follow the steps outlined below:
+
+#### Steps to Run Tests via CLI:
+
+1. Navigate to the unit test directory
+   From the project root, execute the following command to change into the unit test directory:
+   ```bash
+   cd dev/tests/unit/
+   ```
+
+2. Run PHPUnit
+   Use the following command to execute PHPUnit with the appropriate configuration:
+   ```bash
+   ../../../vendor/bin/phpunit -c phpunit.xml.dist ../../../app/code/Example/Module/Test/Unit
+   ```
