@@ -204,6 +204,138 @@ class ProductsListTest extends \PHPUnit\Framework\TestCase
     }
 }
 ```
+### Comment block for data fixture
+
+When writing a data fixture class, it is important to provide a comment block that includes the following information:
+
+-  The usage of the fixture.
+- The example how to use the fixture.
+- For fixtures which can be used in different ways, give example of each use case.
+
+### Examples
+
+Example 1:
+
+```php?start_inline=1
+ /* 
+ *    Target Rule fixture
+ *
+ *    Usage: Using array list. (sku in (simple1,simple3))
+ *
+ *    #[
+ *        DataFixture(
+ *            RuleFixture::class,
+ *            [
+ *                'conditions' => [
+ *                    [
+ *                        'attribute' => 'sku',
+ *                        'operator' => '()',
+ *                        'value' => 'simple1,simple3'
+ *                    ]
+ *                ]
+ *            ],
+ *            'rule'
+ *        )
+ *    ]
+ */
+ ```
+Example 2:
+    
+If the fixture can be used in different ways, provide a short description of each use case.
+ ```php?start_inline=1
+    /* 
+    *    Product fixture
+    *
+    *    Usage-1: Using array list. (sku in (simple1,simple3))
+    *
+    *    #[
+    *        DataFixture(
+    *            ProductFixture::class,
+    *            [
+    *                'sku' => 'simple1',
+    *                'price' => 10
+    *            ],
+    *            'product1'
+    *        )
+    *    ]
+    *    
+    *    Usage-2: Using associative array. (sku=simple1 OR sku=simple3)
+    *    
+    *    #[
+    *        DataFixture(
+    *            RuleFixture::class,
+    *            [
+    *                'conditions' => [
+    *                    'aggregator' => 'any',
+    *                    'conditions' => [
+    *                        [
+    *                            'attribute' => 'sku',
+    *                            'value' => 'simple1'
+    *                        ],
+    *                        [
+    *                            'attribute' => 'sku',
+    *                            'value' => 'simple3'
+    *                        ]
+    *                    ],
+    *                ],
+    *            ],
+    *            'rule'
+    *        )
+    *    ]
+    */
+```
+
+When we implement `apply(array $data=[])` from DataFixtureInterface for the fixture class, we should provide details what $data contains as array.
+
+Example:
+
+```php?start_inline=1
+    /**
+     * Apply fixture
+     *
+     * @param array $data
+     * @return void
+     *
+     * <pre>
+     *    $data = [
+     *      'sku' => (int) SKU. Required
+     *      'name' => (string) Product Name. Required
+     *      'price' => (float) Product Price. Required
+     *      'description' => (text) Product Description. Optional
+     *    ]
+     * </pre>
+     */
+    public function apply(array $data = []): void
+    {
+        $this->product->create($data);
+    }
+```
+
+If `array $data=[]` can be used in different ways, provide a short description of each use case.
+
+```php?start_inline=1
+    /**
+     * Apply fixture
+     *
+     * @param array $data
+     * @return void
+     *
+     * $data['items']: can be supplied in following formats:
+     *      - array of arrays [["sku":"$product1.sku$","qty":1], ["sku":"$product2.sku$","qty":1]]
+     *      - array of arrays [["order_item_id":"$oItem1.sku$","qty":1], ["order_item_id":"$oItem2.sku$","qty":1]]
+     *      - array of arrays [["product_id":"$product1.id$","qty":1], ["product_id":"$product2.id$","qty":1]]
+     *      - array of arrays [["quote_item_id":"$qItem1.id$","qty":1], ["quote_item_id":"$qItem2.id$","qty":1]]
+     *      - array of SKUs ["$product1.sku$", "$product2.sku$"]
+     *      - array of order items IDs ["$oItem1.id$", "$oItem2.id$"]
+     *      - array of product instances ["$product1$", "$product2$"]*
+     */
+    public function apply(array $data = []): void
+    {
+        $service = $this->serviceFactory->create(RefundOrderInterface::class, 'execute');
+        $invoiceId = $service->execute($this->prepareData($data));
+        return $this->creditmemoRepository->get($invoiceId);
+    }
+```
 
 ### Decoupling fixtures
 
