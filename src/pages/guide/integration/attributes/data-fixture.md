@@ -206,7 +206,9 @@ class ProductsListTest extends \PHPUnit\Framework\TestCase
 ```
 ### Comment block for data fixture
 
-When writing a data fixture class, it is important to provide a comment block that includes the following information:
+When creating a data fixture class, it is important to include a comprehensive comment block that provides a detailed description of the fixture’s usage and relevant use case scenarios. This documentation serves as the sole reference for other developers who will utilize the fixture and is essential for maintaining its integrity. Not only is it the responsibility of the developer who creates the fixture, but also of the code reviewer to ensure that the documentation block is clear, accurate, and well-structured.
+
+Please make sure to include the following points in your documentation block:
 
 -  The usage of the fixture.
 - The example how to use the fixture.
