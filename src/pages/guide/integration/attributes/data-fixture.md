@@ -245,46 +245,46 @@ Example 2:
     
 If the fixture can be used in different ways, provide a short description of each use case.
  ```php?start_inline=1
-    /* 
-    *    Product fixture
-    *
-    *    Usage-1: Using array list. (sku in (simple1,simple3))
-    *
-    *    #[
-    *        DataFixture(
-    *            ProductFixture::class,
-    *            [
-    *                'sku' => 'simple1',
-    *                'price' => 10
-    *            ],
-    *            'product1'
-    *        )
-    *    ]
-    *    
-    *    Usage-2: Using associative array. (sku=simple1 OR sku=simple3)
-    *    
-    *    #[
-    *        DataFixture(
-    *            RuleFixture::class,
-    *            [
-    *                'conditions' => [
-    *                    'aggregator' => 'any',
-    *                    'conditions' => [
-    *                        [
-    *                            'attribute' => 'sku',
-    *                            'value' => 'simple1'
-    *                        ],
-    *                        [
-    *                            'attribute' => 'sku',
-    *                            'value' => 'simple3'
-    *                        ]
-    *                    ],
-    *                ],
-    *            ],
-    *            'rule'
-    *        )
-    *    ]
-    */
+/* 
+*    Product fixture
+*
+*    Usage-1: Using array list. (sku in (simple1,simple3))
+*
+*    #[
+*        DataFixture(
+*            ProductFixture::class,
+*            [
+*                'sku' => 'simple1',
+*                'price' => 10
+*            ],
+*            'product1'
+*        )
+*    ]
+*    
+*    Usage-2: Using associative array. (sku=simple1 OR sku=simple3)
+*    
+*    #[
+*        DataFixture(
+*            RuleFixture::class,
+*            [
+*                'conditions' => [
+*                    'aggregator' => 'any',
+*                    'conditions' => [
+*                        [
+*                            'attribute' => 'sku',
+*                            'value' => 'simple1'
+*                        ],
+*                        [
+*                            'attribute' => 'sku',
+*                            'value' => 'simple3'
+*                        ]
+*                    ],
+*                ],
+*            ],
+*            'rule'
+*        )
+*    ]
+*/
 ```
 
 When we implement `apply(array $data=[])` from DataFixtureInterface for the fixture class, we should provide details what $data contains as array.
