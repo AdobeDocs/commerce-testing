@@ -204,6 +204,145 @@ class ProductsListTest extends \PHPUnit\Framework\TestCase
     }
 }
 ```
+### Comment block for data fixture
+
+When creating a data fixture class, it is important to include a comprehensive comment block that provides a detailed description of the fixture’s usage and relevant use case scenarios. This documentation serves as the sole reference for other developers who will utilize the fixture and is essential for maintaining its integrity. Not only is it the responsibility of the developer who creates the fixture, but also of the code reviewer to ensure that the documentation block is clear, accurate, and well-structured.
+
+Please make sure to include the following points in your documentation block:
+
+- The usage of the fixture.
+- The example how to use the fixture.
+- For fixtures which can be used in different ways, give example of each use case.
+
+### Examples
+
+Example 1:
+
+```php?start_inline=1
+/* 
+*    Target Rule fixture creates a rule with conditions provided as an array.
+*
+*    Usage: Create target rule using array list. It will check SKU values is in (simple1,simple3) as condition. 
+*
+*    #[
+*        DataFixture(
+*            RuleFixture::class,
+*            [
+*                'conditions' => [
+*                    [
+*                        'attribute' => 'sku',
+*                        'operator' => '()',
+*                        'value' => 'simple1,simple3'
+*                    ]
+*                ]
+*            ],
+*            'rule'
+*        )
+*    ]
+*/
+ ```
+Example 2:
+    
+If the fixture can be used in different ways, provide a short description of each use case.
+ ```php?start_inline=1
+/* 
+*    Target Rule fixture creates a rule with conditions provided as an array.
+*
+*    Usage-1: Create target rule using array list. It will check SKU values is in (simple1,simple3) as condition.
+*
+*    #[
+*        DataFixture(
+*            RuleFixture::class,
+*            [
+*                'conditions' => [
+*                    [
+*                        'attribute' => 'sku',
+*                        'operator' => '()',
+*                        'value' => 'simple1,simple3'
+*                    ]
+*                ]
+*            ],
+*            'rule'
+*        )
+*    ]
+*    
+*    Usage-2: Create target rule using associative array. It will check if sku=simple1 OR sku=simple3 as condition.
+*    
+*    #[
+*        DataFixture(
+*            RuleFixture::class,
+*            [
+*                'conditions' => [
+*                    'aggregator' => 'any',
+*                    'conditions' => [
+*                        [
+*                            'attribute' => 'sku',
+*                            'value' => 'simple1'
+*                        ],
+*                        [
+*                            'attribute' => 'sku',
+*                            'value' => 'simple3'
+*                        ]
+*                    ],
+*                ],
+*            ],
+*            'rule'
+*        )
+*    ]
+*/
+```
+
+When we implement `apply(array $data=[])` from DataFixtureInterface for the fixture class, we should provide details what $data contains as array.
+
+Example:
+
+```php?start_inline=1
+    /**
+     * Apply fixture when creating a product
+     *
+     * @param array $data
+     * @return void
+     *
+     * <pre>
+     *    $data = [
+     *      'sku' => (int) SKU. Required
+     *      'name' => (string) Product Name. Required
+     *      'price' => (float) Product Price. Required
+     *      'description' => (text) Product Description. Optional
+     *    ]
+     * </pre>
+     */
+     public function apply(array $data = []): void
+     {
+         $this->product->create($data);
+     }
+```
+
+If `array $data=[]` can be used in different ways, provide a short description of each use case.
+
+```php?start_inline=1
+    /**
+     * Apply fixture when creating a credit memo
+     *
+     * @param array $data
+     * @return void
+     *
+     * $data['items']: can be supplied in following formats:
+     *      - array of arrays [["sku":"$product1.sku$","qty":1], ["sku":"$product2.sku$","qty":1]]
+     *      - array of arrays [["order_item_id":"$oItem1.sku$","qty":1], ["order_item_id":"$oItem2.sku$","qty":1]]
+     *      - array of arrays [["product_id":"$product1.id$","qty":1], ["product_id":"$product2.id$","qty":1]]
+     *      - array of arrays [["quote_item_id":"$qItem1.id$","qty":1], ["quote_item_id":"$qItem2.id$","qty":1]]
+     *      - array of SKUs ["$product1.sku$", "$product2.sku$"]
+     *      - array of order items IDs ["$oItem1.id$", "$oItem2.id$"]
+     *      - array of product instances ["$product1$", "$product2$"]*
+     */
+     public function apply(array $data = []): void
+     {
+        $service = $this->serviceFactory->create(RefundOrderInterface::class, 'execute');
+        $invoiceId = $service->execute($this->prepareData($data));
+        return $this->creditmemoRepository->get($invoiceId);
+     }
+```
 
 ### Decoupling fixtures
 
