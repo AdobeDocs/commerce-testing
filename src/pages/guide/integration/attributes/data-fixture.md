@@ -210,7 +210,7 @@ When creating a data fixture class, it is important to include a comprehensive c
 
 Please make sure to include the following points in your documentation block:
 
--  The usage of the fixture.
+- The usage of the fixture.
 - The example how to use the fixture.
 - For fixtures which can be used in different ways, give example of each use case.
 
@@ -219,49 +219,54 @@ Please make sure to include the following points in your documentation block:
 Example 1:
 
 ```php?start_inline=1
- /* 
- *    Target Rule fixture
- *
- *    Usage: Using array list. (sku in (simple1,simple3))
- *
- *    #[
- *        DataFixture(
- *            RuleFixture::class,
- *            [
- *                'conditions' => [
- *                    [
- *                        'attribute' => 'sku',
- *                        'operator' => '()',
- *                        'value' => 'simple1,simple3'
- *                    ]
- *                ]
- *            ],
- *            'rule'
- *        )
- *    ]
- */
+/* 
+*    Target Rule fixture creates a rule with conditions provided as an array.
+*
+*    Usage: Create target rule using array list. It will check SKU values is in (simple1,simple3) as condition. 
+*
+*    #[
+*        DataFixture(
+*            RuleFixture::class,
+*            [
+*                'conditions' => [
+*                    [
+*                        'attribute' => 'sku',
+*                        'operator' => '()',
+*                        'value' => 'simple1,simple3'
+*                    ]
+*                ]
+*            ],
+*            'rule'
+*        )
+*    ]
+*/
  ```
 Example 2:
     
 If the fixture can be used in different ways, provide a short description of each use case.
  ```php?start_inline=1
 /* 
-*    Product fixture
+*    Target Rule fixture creates a rule with conditions provided as an array.
 *
-*    Usage-1: Using array list. (sku in (simple1,simple3))
+*    Usage-1: Create target rule using array list. It will check SKU values is in (simple1,simple3) as condition.
 *
 *    #[
 *        DataFixture(
-*            ProductFixture::class,
+*            RuleFixture::class,
 *            [
-*                'sku' => 'simple1',
-*                'price' => 10
+*                'conditions' => [
+*                    [
+*                        'attribute' => 'sku',
+*                        'operator' => '()',
+*                        'value' => 'simple1,simple3'
+*                    ]
+*                ]
 *            ],
-*            'product1'
+*            'rule'
 *        )
 *    ]
 *    
-*    Usage-2: Using associative array. (sku=simple1 OR sku=simple3)
+*    Usage-2: Create target rule using associative array. It will check if sku=simple1 OR sku=simple3 as condition.
 *    
 *    #[
 *        DataFixture(
@@ -293,7 +298,7 @@ Example:
 
 ```php?start_inline=1
     /**
-     * Apply fixture
+     * Apply fixture when creating a product
      *
      * @param array $data
      * @return void
@@ -307,17 +312,17 @@ Example:
      *    ]
      * </pre>
      */
-    public function apply(array $data = []): void
-    {
-        $this->product->create($data);
-    }
+     public function apply(array $data = []): void
+     {
+         $this->product->create($data);
+     }
 ```
 
 If `array $data=[]` can be used in different ways, provide a short description of each use case.
 
 ```php?start_inline=1
     /**
-     * Apply fixture
+     * Apply fixture when creating a credit memo
      *
      * @param array $data
      * @return void
@@ -331,12 +336,12 @@ If `array $data=[]` can be used in different ways, provide a short description o
      *      - array of order items IDs ["$oItem1.id$", "$oItem2.id$"]
      *      - array of product instances ["$product1$", "$product2$"]*
      */
-    public function apply(array $data = []): void
-    {
+     public function apply(array $data = []): void
+     {
         $service = $this->serviceFactory->create(RefundOrderInterface::class, 'execute');
         $invoiceId = $service->execute($this->prepareData($data));
         return $this->creditmemoRepository->get($invoiceId);
-    }
+     }
 ```
 
 ### Decoupling fixtures
