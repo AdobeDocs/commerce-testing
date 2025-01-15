@@ -89,3 +89,19 @@ Add the following line in the `<php>` block to disable the PHP memory limit duri
 ```xml
 <ini name="memory_limit" value="-1"/>
 ```
+
+### CLI Command run with PHPUnit 10
+
+If you encounter an error similar to `Bootstrapping of extension Qameta\Allure\PHPUnit\AllureExtension failed: Config file allure/allure.config.php doesn't exist`, follow the steps below to resolve it and run your unit tests successfully.
+
+1. From the project root, change into the unit test directory.
+
+   ```bash
+   cd dev/tests/unit/
+   ```
+
+2. Run PHPUnit with the appropriate configuration.
+
+   ```bash
+   ../../../vendor/bin/phpunit -c phpunit.xml.dist ../../../app/code/Example/Module/Test/Unit
+   ```
