@@ -101,7 +101,7 @@ If you encounter an error similar to `Bootstrapping of extension Qameta\Allure\P
    ```
 
 2. Run PHPUnit with the appropriate configuration.
-   
+
    ```bash
    ../../../vendor/bin/phpunit -c phpunit.xml.dist ../../../app/code/Example/Module/Test/Unit
    ```
