@@ -292,58 +292,6 @@ If the fixture can be used in different ways, provide a short description of eac
 */
 ```
 
-When we implement `apply(array $data=[])` from DataFixtureInterface for the fixture class, we should provide details what $data contains as array.
-
-Example:
-
-```php?start_inline=1
-    /**
-     * Apply fixture when creating a product
-     *
-     * @param array $data
-     * @return void
-     *
-     * <pre>
-     *    $data = [
-     *      'sku' => (int) SKU. Required
-     *      'name' => (string) Product Name. Required
-     *      'price' => (float) Product Price. Required
-     *      'description' => (text) Product Description. Optional
-     *    ]
-     * </pre>
-     */
-     public function apply(array $data = []): void
-     {
-         $this->product->create($data);
-     }
-```
-
-If `array $data=[]` can be used in different ways, provide a short description of each use case.
-
-```php?start_inline=1
-    /**
-     * Apply fixture when creating a credit memo
-     *
-     * @param array $data
-     * @return void
-     *
-     * $data['items']: can be supplied in following formats:
-     *      - array of arrays [["sku":"$product1.sku$","qty":1], ["sku":"$product2.sku$","qty":1]]
-     *      - array of arrays [["order_item_id":"$oItem1.sku$","qty":1], ["order_item_id":"$oItem2.sku$","qty":1]]
-     *      - array of arrays [["product_id":"$product1.id$","qty":1], ["product_id":"$product2.id$","qty":1]]
-     *      - array of arrays [["quote_item_id":"$qItem1.id$","qty":1], ["quote_item_id":"$qItem2.id$","qty":1]]
-     *      - array of SKUs ["$product1.sku$", "$product2.sku$"]
-     *      - array of order items IDs ["$oItem1.id$", "$oItem2.id$"]
-     *      - array of product instances ["$product1$", "$product2$"]*
-     */
-     public function apply(array $data = []): void
-     {
-        $service = $this->serviceFactory->create(RefundOrderInterface::class, 'execute');
-        $invoiceId = $service->execute($this->prepareData($data));
-        return $this->creditmemoRepository->get($invoiceId);
-     }
-```
-
 ### Decoupling fixtures
 
 Fixtures must be written in the way that they only use one API to generate data. For example, the fixture that creates
