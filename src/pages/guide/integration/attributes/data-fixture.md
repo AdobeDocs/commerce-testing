@@ -212,7 +212,7 @@ Please make sure to include the following points in your documentation block:
 
 - The usage of the fixture.
 - The example how to use the fixture.
-- For fixtures which can be used in different ways, give example of each use case.
+- For fixtures that can be used in different ways, examples of each use case.
 
 ### Examples
 
