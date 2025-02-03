@@ -210,7 +210,7 @@ When creating a data fixture class, it is important to include a comprehensive c
 
 You must include the following in your documentation block:
 
-- The usage of the fixture.
+- Usage of the fixture.
 - An example showing how to use the fixture.
 - For fixtures that can be used in different ways, examples of each use case.
 
