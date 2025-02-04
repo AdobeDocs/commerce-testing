@@ -242,6 +242,7 @@ Example 1:
 *    ]
 */
  ```
+
 Example 2:
     
 If the fixture can be used in different ways, provide a short description of each use case.
