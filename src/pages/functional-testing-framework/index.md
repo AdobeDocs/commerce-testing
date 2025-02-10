@@ -11,7 +11,7 @@ The Functional Testing Framework is a framework used to perform automated end-to
 
 <InlineAlert variant="info" slots="text"/>
 
-This documentation is for version 3.0 of the framework, which was released in conjunction with Adobe Commerce and Magento Open Source 2.4. It is a major update and introduces many new changes and fixes. You can find documentation for version 2.0 [here](https://devdocs.magento.com/mftf/v2/docs/introduction.html). See [find your version](#find-your-framework-version) if you are unsure about which version you are using.
+This documentation is for version 3.0 of the framework, which was released in conjunction with Adobe Commerce and Magento Open Source 2.4. It is a major update and introduces many new changes and fixes. You can find documentation for version 2.0 [here](https://github.com/magento/magento2-functional-testing-framework/blob/2.x-develop/docs/introduction.md). See [find your version](#find-your-framework-version) if you are unsure about which version you are using.
 
 ## Goals
 

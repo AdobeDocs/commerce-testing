@@ -342,6 +342,6 @@ Attributes|Type|Use|Description
 [`<required-entities>`]: #requiredentity
 [`<var>`]: #var
 [Actions]: test/actions.md
-[category creation]: https://docs.magento.com/user-guide/catalog/category-create.html
+[category creation]: https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/categories/create/category-create
 [Credentials]: credentials.md
 [test actions]: test/actions.md#actions-returning-a-variable

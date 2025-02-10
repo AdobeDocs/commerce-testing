@@ -205,6 +205,95 @@ class ProductsListTest extends \PHPUnit\Framework\TestCase
 }
 ```
 
+### Comment block for data fixture
+
+When creating a data fixture class, it is important to include a comprehensive comment block that provides a detailed description of the fixture’s usage and relevant use case scenarios. This documentation serves as the sole reference for other developers who use the fixture and is essential for maintaining its integrity. It is the responsibility of both the developer who creates the fixture and the developer who reviews the code to ensure that the documentation block is clear, accurate, and well-structured.
+
+You must include the following in your documentation block:
+
+- Usage of the fixture.
+- An example showing how to use the fixture.
+- For fixtures that can be used in different ways, examples of each use case.
+
+### Examples
+
+Example 1:
+
+```php?start_inline=1
+/* 
+*    Target Rule fixture creates a rule with conditions provided as an array.
+*
+*    Usage: Create target rule using array list. It will check SKU values is in (simple1,simple3) as condition. 
+*
+*    #[
+*        DataFixture(
+*            RuleFixture::class,
+*            [
+*                'conditions' => [
+*                    [
+*                        'attribute' => 'sku',
+*                        'operator' => '()',
+*                        'value' => 'simple1,simple3'
+*                    ]
+*                ]
+*            ],
+*            'rule'
+*        )
+*    ]
+*/
+ ```
+
+Example 2:
+If the fixture can be used in different ways, provide a short description of each use case.
+
+ ```php?start_inline=1
+/* 
+*    Target Rule fixture creates a rule with conditions provided as an array.
+*
+*    Usage-1: Create target rule using array list. It will check SKU values is in (simple1,simple3) as condition.
+*
+*    #[
+*        DataFixture(
+*            RuleFixture::class,
+*            [
+*                'conditions' => [
+*                    [
+*                        'attribute' => 'sku',
+*                        'operator' => '()',
+*                        'value' => 'simple1,simple3'
+*                    ]
+*                ]
+*            ],
+*            'rule'
+*        )
+*    ]
+*    
+*    Usage-2: Create target rule using associative array. It will check if sku=simple1 OR sku=simple3 as condition.
+*    
+*    #[
+*        DataFixture(
+*            RuleFixture::class,
+*            [
+*                'conditions' => [
+*                    'aggregator' => 'any',
+*                    'conditions' => [
+*                        [
+*                            'attribute' => 'sku',
+*                            'value' => 'simple1'
+*                        ],
+*                        [
+*                            'attribute' => 'sku',
+*                            'value' => 'simple3'
+*                        ]
+*                    ],
+*                ],
+*            ],
+*            'rule'
+*        )
+*    ]
+*/
+```
+
 ### Decoupling fixtures
 
 Fixtures must be written in the way that they only use one API to generate data. For example, the fixture that creates
