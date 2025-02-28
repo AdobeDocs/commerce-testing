@@ -338,11 +338,11 @@ You can find the generated test at `dev/tests/functional/tests/MFTF/_generated/d
 
 ### Step 8. Generate Allure reports
 
-The standalone Functional Testing Framework generates Allure reports at `dev/tests/_output/allure-results/`.
+The standalone Functional Testing Framework generates Allure reports at `dev/tests/acceptance/tests/_output/allure-results/`.
 Run the Allure server pointing to this directory:
 
 ```bash
-allure serve dev/tests/_output/allure-results/
+allure serve dev/tests/acceptance/tests/_output/allure-results/
 ```
 
 <!-- Link definitions -->
