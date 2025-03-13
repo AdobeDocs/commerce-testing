@@ -10,7 +10,6 @@ keywords:
 ![Commerce Testing](_images/home-bg.jpeg)
 
 # Commerce Testing
-
 Learn how to test code for Adobe Commerce and Magento Open Source web-based storefronts.
 
 <Resources slots="heading, links"/>
@@ -18,9 +17,8 @@ Learn how to test code for Adobe Commerce and Magento Open Source web-based stor
 ## Resources
 
 *  [Commerce open-source projects](https://developer.adobe.com/open/magento)
-*  [Community Slack workspace](https://opensource.magento.com/slack)
+-  [Community Slack workspace](https://opensource.magento.com/slack)
 *  [Contributor statistics](https://developer.adobe.com/open/magento/statistic)
-
 ## Overview
 
 This documentation provides resources for testing code for Adobe Commerce and Magento Open Source.
