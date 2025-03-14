@@ -1,13 +1,14 @@
----
-  name: Validate pull request
-  
-  on: pull_request
+name: Validate pull request
 
-  permissions:
-    contents: read
-    statuses: write
-    pull-requests: write
-  
-  jobs:
-    testing:
-      uses: AdobeDocs/commerce-php/.github/workflows/validate-pr_job.yml@main
+on: pull_request_target
+
+permissions:
+  contents: read
+  statuses: write
+  pull-requests: write
+
+jobs:
+  testing:
+    uses: AdobeDocs/commerce-php/.github/workflows/validate-pr_job.yml@main
+    with:
+      github_token: ${{ secrets.GITHUB_TOKEN }}
