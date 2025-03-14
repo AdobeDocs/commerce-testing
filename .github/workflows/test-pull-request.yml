@@ -1,6 +1,9 @@
 name: Validate pull request
 
-on: pull_request_target
+on:
+  pull_request_target:
+    types:
+      - opened
 
 permissions:
   contents: read
