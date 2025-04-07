@@ -35,7 +35,7 @@ The option `-c dev/tests/unit/phpunit.xml.dist` specifies the configuration file
 
 If custom configuration settings are required (more on that later), the file `dev/tests/unit/phpunit.xml.dist` can be copied to `dev/tests/unit/phpunit.xml` and adjusted as needed. In that case modify the `-c` flag accordingly.
 
-PHPUnit has many additional command line options. Please refer to the [PHPUnit documentation](https://phpunit.de/manual/4.1/en/textui.html#textui.clioptions) for more information (currently Commerce uses PHPUnit version 4.1.0, 2.2.x uses PHPUnit version 6.x).
+PHPUnit has many additional command line options. Please refer to the [PHPUnit documentation](https://docs.phpunit.de/en/10.5/textui.html#command-line-options) for more information (Commerce v2.4.8 uses PHPUnit version 10.x, earlier 2.4.x versions use PHPUnit version 9.x).
 
 ## Solutions to common problems
 
