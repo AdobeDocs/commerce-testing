@@ -61,18 +61,3 @@ It MAY include patch level changes. Patch version MUST be reset to 0 when minor 
 Major version **X** MUST be incremented for a release that introduces backward incompatible changes.
 A major release can also include minor and patch level changes.
 You must reset the patch and minor version to 0 when you change the major version.
-
-## Commerce compatibility
-
-This table lists the version of the Functional Testing Framework that was released with a particular version of Adobe Commerce or Magento Open Source.
-
-|Commerce version| Framework  version|
-|---    |---     |
-| 2.4.0 | 3.0.0  |
-| 2.3.5 | 2.6.4  |
-| 2.3.4 | 2.5.3  |
-| 2.3.3 | 2.4.5  |
-| 2.3.2 | 2.3.14 |
-| 2.3.1 | 2.3.13 |
-| 2.3.0 | 2.3.9  |
-| 2.2.8 | 2.3.13 |
