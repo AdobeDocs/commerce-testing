@@ -16,7 +16,7 @@ After preparing the system, you can execute tests using the command line interfa
 
 ## Working with data fixtures
 
-Data fixtures are essential components for integration testing, allowing you to set up test data before running your tests. Adobe Commerce supports both legacy file-based fixtures and modern class-based parametrized fixtures.
+Data fixtures are essential components for integration testing, allowing you to set up test data before running your tests. Adobe Commerce supports both legacy fixtures (deprecated, file-based) and modern parametrized data fixtures.
 
 <InlineAlert variant="success" slots="text" />
 

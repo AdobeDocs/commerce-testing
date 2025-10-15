@@ -8,6 +8,10 @@ module.exports = [
       path: "/guide/integration/",
       pages: [
         {
+          title: "Working with data fixtures",
+          path: "/guide/integration/data-fixtures-guide/",
+        },
+        {
           title: "DocBlock annotations",
           path: "/guide/integration/annotations/",
           pages: [

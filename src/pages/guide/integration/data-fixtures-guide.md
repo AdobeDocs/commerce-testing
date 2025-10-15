@@ -20,21 +20,21 @@ Adobe Commerce and Magento Open Source support multiple ways to work with data f
 
 <InlineAlert variant="warning" slots="text" />
 
-**Legacy file-based fixtures** (like `Magento/Catalog/_files/product_simple.php`) are **discouraged** for new test development. Use **parametrized class-based fixtures** instead for better maintainability, reusability, and type safety.
+**Legacy fixtures** (file-based fixtures like `Magento/Catalog/_files/product_simple.php`) are **deprecated**. New legacy fixtures **cannot be created**. Use **parametrized data fixtures** instead for better maintainability, reusability, and type safety.
 
 <InlineAlert variant="success" slots="text" />
 
-**Parametrized class-based fixtures** are the recommended approach and can be used with **both DocBlock annotations and PHP Attributes**. PHP Attributes offer the best developer experience with superior IDE support and type safety.
+**Parametrized data fixtures** are the recommended approach and can be used with **both DocBlock annotations and PHP Attributes**. PHP Attributes offer the best developer experience with superior IDE support and type safety.
 
 ### Comparison
 
-| Approach | Status | Can Parametrize | Syntax |
+| Approach | Status | Can Parametrize | Syntax Example |
 |----------|--------|-----------------|--------|
-| **File-based fixtures** | ⚠️ Discouraged | ❌ No | `@magentoDataFixture Magento/Catalog/_files/product.php` |
-| **Class-based with Annotations** | ✅ Recommended | ✅ Yes | `@magentoDataFixture \Magento\Catalog\Test\Fixture\Product::class` |
-| **Class-based with Attributes** | ✅ Recommended | ✅ Yes | `#[DataFixture(ProductFixture::class, ['sku' => 'test'])]` |
+| **Legacy fixtures** (file-based) | ⛔ Deprecated - Cannot create new | ❌ No | `@magentoDataFixture Magento/Catalog/_files/product.php` |
+| **Parametrized data with Annotations** | ✅ Recommended | ✅ Yes | `@magentoDataFixture \Vendor\Module\Test\Fixture\Product with:{"sku": "test"} as:product` |
+| **Parametrized data with Attributes** | ✅ Recommended | ✅ Yes | `#[DataFixture(ProductFixture::class, ['sku' => 'test'], 'product')]` |
 
-### Why avoid legacy file-based fixtures?
+### Why avoid legacy fixtures?
 
 1. **No parametrization** - Each variation requires a separate file
 2. **Hard to maintain** - Changes require modifying PHP scripts scattered across the codebase
@@ -44,9 +44,13 @@ Adobe Commerce and Magento Open Source support multiple ways to work with data f
 
 ## Types of data fixtures
 
-### 1. File-based fixtures (Legacy - Discouraged ⚠️)
+### 1. Legacy fixtures (Deprecated - Cannot create new ⛔)
 
-These are PHP scripts that directly execute database operations. They **cannot be parametrized** and create maintenance challenges.
+Legacy fixtures are file-based PHP scripts (stored in `_files/` directories) that directly execute database operations. They **cannot be parametrized** and are now deprecated.
+
+<InlineAlert variant="warning" slots="text" />
+
+New legacy fixtures **cannot be created**. Existing legacy fixtures should be migrated to parametrized data fixtures.
 
 **Example with DocBlock annotation:**
 
@@ -60,7 +64,7 @@ public function testProductExists(): void
 }
 ```
 
-**Example legacy fixture file:** `Magento/Catalog/_files/product_simple.php`
+**Example of a legacy fixture file:** `Magento/Catalog/_files/product_simple.php`
 
 ```php
 <?php
@@ -84,7 +88,7 @@ Bootstrap::getObjectManager()
 
 **Problems:** To create a product with a different SKU or price, you need to create an entirely new fixture file!
 
-### 2. Class-based fixtures (Modern - Recommended ✅)
+### 2. Parametrized data fixtures (Modern - Recommended ✅)
 
 These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFixtureInterface`. They support **powerful parametrization** and can be used with **both DocBlock annotations and PHP Attributes**.
 
@@ -102,29 +106,35 @@ public function testProductExists(): void
 }
 ```
 
-#### With DocBlock Annotations (Still parametrized!)
+#### With DocBlock Annotations (Parametrized syntax)
+
+DocBlock annotations support parametrized data fixtures using the `with:` and `as:` syntax:
 
 ```php
 /**
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product::class
+ * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "simple-product", "price": 10} as:product
  */
 public function testProductExists(): void
 {
-    // Uses default fixture values with auto-generated unique SKU
+    $fixtures = DataFixtureStorageManager::getStorage();
+    $product = $fixtures->get('product');
+    // Test with customized product data
 }
 ```
 
-**Note:** While DocBlock annotations can reference class-based fixtures, they have limited parametrization compared to PHP Attributes. You typically get default values with auto-generated unique identifiers.
+**Syntax:**
+- `with:{"key": "value"}` - Pass parameters as JSON object
+- `as:alias` - Assign an alias to reference the fixture data
 
 ## Parameterized data fixtures
 
-The power of modern class-based fixtures lies in their ability to be parametrized - you can customize the data they create without writing new fixture classes.
+The power of modern parametrized data fixtures lies in their ability to be customized - you can configure the data they create without writing new fixture classes.
 
 <InlineAlert variant="success" slots="text" />
 
-Parametrization is available with both DocBlock annotations and PHP Attributes, but **PHP Attributes offer significantly more flexibility and control** over the fixture data.
+Parametrized data fixtures work with **both** DocBlock annotations (using `with:` and `as:` syntax) and PHP Attributes. PHP Attributes offer better IDE support and type safety.
 
-### With PHP Attributes (Full parametrization)
+### With PHP Attributes
 
 PHP Attributes support powerful parametrization, allowing you to customize fixture data, create references between fixtures, generate multiple instances, and control scope.
 
@@ -203,24 +213,67 @@ public function testProductInStore(): void
 }
 ```
 
-### With DocBlock Annotations (Limited parametrization)
+### With DocBlock Annotations
 
-DocBlock annotations can use class-based fixtures but with limited customization. They rely on the fixture's default values with auto-generated unique identifiers.
+DocBlock annotations support both parametrized data fixtures and legacy fixtures.
 
-#### Using class-based fixtures
+#### Using parametrized data fixtures
+
+**Syntax:** `@magentoDataFixture \Fully\Qualified\ClassName with:{"param": "value"} as:alias`
+
+- **`\Fully\Qualified\ClassName`** - Full class name of the fixture
+- **`with:{"param": "value"}`** (optional) - Parameters as JSON object
+- **`as:alias`** (optional) - Alias to reference fixture data
+- **`$alias$`** - Reference another fixture's data
+
+**Basic example:**
 
 ```php
 /**
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product::class
- * @magentoDataFixture \Magento\Customer\Test\Fixture\Customer::class
+ * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "simple1", "price": 5.0} as:product1
+ * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "simple2", "price": 10.0} as:product2
  */
-public function testWithMultipleFixtures(): void
+public function testTwoProducts(): void
 {
-    // Products and customers created with default values + unique IDs
+    $fixtures = DataFixtureStorageManager::getStorage();
+    $product1 = $fixtures->get('product1');
+    $product2 = $fixtures->get('product2');
 }
 ```
 
-#### Legacy file-based fixtures (Avoid!)
+**With fixture references:**
+
+```php
+/**
+ * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "simple1", "price": 5.0} as:product1
+ * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "simple2", "price": 10.0} as:product2
+ * @magentoDataFixture \Magento\Quote\Test\Fixture\GuestCart as:cart
+ * @magentoDataFixture \Magento\Quote\Test\Fixture\AddProductToCart with:{"cart": "$cart$", "product": "$product1$", "qty": 2}
+ * @magentoDataFixture \Magento\Quote\Test\Fixture\AddProductToCart with:{"cart": "$cart$", "product": "$product2$", "qty": 1}
+ */
+public function testCartWithProducts(): void
+{
+    $fixtures = DataFixtureStorageManager::getStorage();
+    $cart = $fixtures->get('cart');
+    // Cart now has 2 units of product1 and 1 unit of product2
+}
+```
+
+**Without parameters (uses defaults):**
+
+```php
+/**
+ * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product as:product
+ */
+public function testProductWithDefaults(): void
+{
+    $fixtures = DataFixtureStorageManager::getStorage();
+    $product = $fixtures->get('product');
+    // Product created with default values (auto-generated unique SKU, etc.)
+}
+```
+
+#### Using legacy file-based fixtures (Deprecated)
 
 ```php
 /**
@@ -229,15 +282,16 @@ public function testWithMultipleFixtures(): void
  */
 public function testWithLegacyFixtures(): void
 {
-    // ⚠️ Discouraged - can't customize data, hard to maintain
+    // ⛔ DEPRECATED - New legacy fixtures cannot be created
+    // Use parametrized data fixtures instead
 }
 ```
 
 ## Migration guide: Legacy to Modern
 
-If you have tests using legacy file-based fixtures, here's how to migrate:
+If you have tests using legacy fixtures (file-based with `@magentoDataFixture`), you should migrate them to parametrized data fixtures. New legacy fixtures **cannot be created**.
 
-### Before (Legacy file-based)
+### Before (Legacy fixtures with DocBlock annotations)
 
 ```php
 /**
@@ -250,7 +304,21 @@ public function testProductPrice(): void
 }
 ```
 
-### After (Modern class-based with Attributes)
+### After (Option 1: Parametrized data with Annotations)
+
+```php
+/**
+ * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "test-product", "price": 10} as:product
+ */
+public function testProductPrice(): void
+{
+    $fixtures = DataFixtureStorageManager::getStorage();
+    $product = $fixtures->get('product');
+    $this->assertEquals(10, $product->getPrice());
+}
+```
+
+### After (Option 2: Parametrized data with PHP Attributes)
 
 ```php
 #[
@@ -261,19 +329,6 @@ public function testProductPrice(): void
     $fixtures = DataFixtureStorageManager::getStorage();
     $product = $fixtures->get('product');
     $this->assertEquals(10, $product->getPrice());
-}
-```
-
-### After (Modern class-based with Annotations)
-
-```php
-/**
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product::class
- */
-public function testProductPrice(): void
-{
-    // Product created with auto-generated unique SKU and default price
-    // Note: Less control than Attributes, but better than legacy files
 }
 ```
 
@@ -486,34 +541,36 @@ When method-level fixtures are present, class-level fixtures are **ignored** for
 
 ## Best practices
 
-### 1. Avoid legacy file-based fixtures
+### 1. Do not create legacy fixtures
 
 <InlineAlert variant="warning" slots="text" />
 
-Do not create new tests using legacy file-based fixtures (e.g., `Magento/Catalog/_files/product_simple.php`). Always use modern class-based fixtures instead.
+**New legacy fixtures cannot be created.** Do not create new tests using legacy fixtures (e.g., `Magento/Catalog/_files/product_simple.php`). Always use parametrized data fixtures instead. Existing legacy fixtures should be migrated.
 
-**Bad:**
+**Bad - Cannot create new:**
 ```php
 /**
  * @magentoDataFixture Magento/Catalog/_files/product_simple.php
  */
 ```
 
-**Good:**
+**Good - Use parametrized data fixtures:**
+
+With PHP Attributes:
 ```php
 #[DataFixture(ProductFixture::class, ['sku' => 'test-product'])]
 ```
 
-**Also Good (if not using PHP 8):**
+Or with DocBlock annotations:
 ```php
 /**
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product::class
+ * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "test-product"} as:product
  */
 ```
 
 ### 2. Prefer PHP Attributes for new tests
 
-PHP Attributes provide better type safety, IDE support, full parametrization, and are easier to maintain.
+PHP Attributes provide better type safety, IDE support, and are easier to read than the DocBlock annotation `with:` and `as:` syntax.
 
 ### 3. Keep fixtures focused
 
