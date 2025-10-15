@@ -30,7 +30,7 @@ Adobe Commerce and Magento Open Source support multiple ways to work with data f
 
 | Approach | Status | Can Parametrize | Syntax Example |
 |----------|--------|-----------------|--------|
-| **Legacy fixtures** (file-based) | ⛔ Deprecated - Cannot create new | ❌ No | `@magentoDataFixture Magento/Catalog/_files/product.php` |
+| **Legacy fixtures** (file-based) | Deprecated | ❌ No | `@magentoDataFixture Magento/Catalog/_files/product.php` |
 | **Parametrized data with Annotations** | ✅ Recommended | ✅ Yes | `@magentoDataFixture \Vendor\Module\Test\Fixture\Product with:{"sku": "test"} as:product` |
 | **Parametrized data with Attributes** | ✅ Recommended | ✅ Yes | `#[DataFixture(ProductFixture::class, ['sku' => 'test'], 'product')]` |
 
@@ -44,7 +44,7 @@ Adobe Commerce and Magento Open Source support multiple ways to work with data f
 
 ## Types of data fixtures
 
-### 1. Legacy fixtures (Deprecated - Cannot create new ⛔)
+### 1. Legacy fixtures (Deprecated)
 
 Legacy fixtures are file-based PHP scripts (stored in `_files/` directories) that directly execute database operations. They **cannot be parametrized** and are now deprecated.
 
@@ -88,7 +88,7 @@ Bootstrap::getObjectManager()
 
 **Problems:** To create a product with a different SKU or price, you need to create an entirely new fixture file!
 
-### 2. Parametrized data fixtures (Modern - Recommended ✅)
+### 2. Parametrized data fixtures (Recommended)
 
 These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFixtureInterface`. They support **powerful parametrization** and can be used with **both DocBlock annotations and PHP Attributes**.
 
@@ -282,7 +282,7 @@ public function testProductWithDefaults(): void
  */
 public function testWithLegacyFixtures(): void
 {
-    // ⛔ DEPRECATED - New legacy fixtures cannot be created
+    // DEPRECATED - New legacy fixtures cannot be created
     // Use parametrized data fixtures instead
 }
 ```
