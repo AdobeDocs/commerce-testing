@@ -24,7 +24,7 @@ Adobe Commerce and Magento Open Source support multiple ways to work with data f
 
 <InlineAlert variant="success" slots="text" />
 
-**Parametrized data fixtures** are the recommended approach and **require PHP Attributes** (`#[DataFixture()]`). DocBlock annotations (`@magentoDataFixture`) only work with legacy file-based fixtures.
+**Parametrized data fixtures are the recommended approach.** They require PHP Attributes (`#[DataFixture()]`), which offer superior type safety, better IDE support, improved readability, and powerful parametrization capabilities. DocBlock annotations (`@magentoDataFixture`) only work with legacy file-based fixtures.
 
 ### Comparison
 

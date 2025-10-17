@@ -18,9 +18,9 @@ After preparing the system, you can execute tests using the command line interfa
 
 Data fixtures are essential components for integration testing, allowing you to set up test data before running your tests. Adobe Commerce supports both legacy fixtures (deprecated, file-based) and modern parametrized data fixtures.
 
-<InlineAlert variant="success" slots="text" />
+<InlineAlert variant="warning" slots="text" />
 
-For comprehensive guidance on data fixtures, including parametrization, examples, and best practices, see the [Working with Data Fixtures](data-fixtures-guide.md) guide.
+**Legacy file-based fixtures are strongly discouraged for new tests.** Use parametrized data fixtures with [PHP Attributes](attributes/index.md) instead. They offer superior type safety, better IDE support, improved readability, and powerful parametrization capabilities. For comprehensive guidance, see the [Working with Data Fixtures](data-fixtures-guide.md) guide.
 
 ## Set up the integration test framework
 
