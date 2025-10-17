@@ -330,7 +330,7 @@ Proper data cleanup is essential. Tests run in groups (test suites), and leftove
 
 ### 8. Rely only on explicitly configured fixtures
 
-Your tests should depend on fixtures created before the test runs - that's their purpose. However, only rely on things you've explicitly configured in your test's fixture declarations, not on implicit side effects or fixtures from other tests.
+Your tests should depend on fixtures created before the test runs. However, only rely on things you've explicitly configured in your test's fixture declarations, not on implicit side effects or fixtures from other tests.
 
 ## Finding available fixtures
 
