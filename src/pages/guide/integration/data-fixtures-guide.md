@@ -24,15 +24,18 @@ Adobe Commerce and Magento Open Source support multiple ways to work with data f
 
 <InlineAlert variant="success" slots="text" />
 
-**Parametrized data fixtures** are the recommended approach and can be used with **both DocBlock annotations and PHP Attributes**. PHP Attributes offer the best developer experience with superior IDE support and type safety.
+**Parametrized data fixtures** are the recommended approach and **require PHP Attributes** (`#[DataFixture()]`). DocBlock annotations (`@magentoDataFixture`) only work with legacy file-based fixtures.
 
 ### Comparison
 
 | Approach | Status | Can Parametrize | Syntax Example |
 |----------|--------|-----------------|--------|
 | **Legacy fixtures** (file-based) | Deprecated | ❌ No | `@magentoDataFixture Magento/Catalog/_files/product.php` |
-| **Parametrized data with Annotations** | ✅ Recommended | ✅ Yes | `@magentoDataFixture \Vendor\Module\Test\Fixture\Product with:{"sku": "test"} as:product` |
-| **Parametrized data with Attributes** | ✅ Recommended | ✅ Yes | `#[DataFixture(ProductFixture::class, ['sku' => 'test'], 'product')]` |
+| **Parametrized data fixtures** (with PHP Attributes) | ✅ Recommended | ✅ Yes | `#[DataFixture(ProductFixture::class, ['sku' => 'test'], 'product')]` |
+
+<InlineAlert variant="warning" slots="text" />
+
+Parametrized data fixtures **cannot** be used with DocBlock annotations (`@magentoDataFixture`). They require PHP Attributes (`#[DataFixture()]`).
 
 ### Why avoid legacy fixtures?
 
@@ -90,7 +93,11 @@ Bootstrap::getObjectManager()
 
 ### 2. Parametrized data fixtures (Recommended)
 
-These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFixtureInterface`. They support **powerful parametrization** and can be used with **both DocBlock annotations and PHP Attributes**.
+These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFixtureInterface`. They support **powerful parametrization** and **require PHP Attributes** (`#[DataFixture()]`).
+
+<InlineAlert variant="warning" slots="text" />
+
+Parametrized data fixtures **cannot** be used with DocBlock annotations. Only PHP Attributes support parametrization.
 
 #### With PHP Attributes (Best option)
 
@@ -106,33 +113,13 @@ public function testProductExists(): void
 }
 ```
 
-#### With DocBlock Annotations (Parametrized syntax)
-
-DocBlock annotations support parametrized data fixtures using the `with:` and `as:` syntax:
-
-```php
-/**
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "simple-product", "price": 10} as:product
- */
-public function testProductExists(): void
-{
-    $fixtures = DataFixtureStorageManager::getStorage();
-    $product = $fixtures->get('product');
-    // Test with customized product data
-}
-```
-
-**Syntax:**
-- `with:{"key": "value"}` - Pass parameters as JSON object
-- `as:alias` - Assign an alias to reference the fixture data
-
 ## Parameterized data fixtures
 
 The power of modern parametrized data fixtures lies in their ability to be customized - you can configure the data they create without writing new fixture classes.
 
-<InlineAlert variant="success" slots="text" />
+<InlineAlert variant="warning" slots="text" />
 
-Parametrized data fixtures work with **both** DocBlock annotations (using `with:` and `as:` syntax) and PHP Attributes. PHP Attributes offer better IDE support and type safety.
+Parametrized data fixtures **require PHP Attributes**. They cannot be used with DocBlock annotations (`@magentoDataFixture`).
 
 ### With PHP Attributes
 
@@ -152,49 +139,49 @@ public function testCustomProduct(): void
 
 #### Using aliases and references
 
-You can create multiple fixtures and reference data between them:
+You can create multiple fixtures and reference data between them using the `$alias.property$` syntax.
+
+**Example:**
 
 ```php
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+
 #[
-    DataFixture(CategoryFixture::class, ['name' => 'Electronics'], 'category'),
-    DataFixture(ProductFixture::class, ['sku' => 'laptop', 'category_ids' => ['$category.id$']], 'product')
+    DataFixture(ProductFixture::class, ['price' => 11.99], as: 'product1')]
+    DataFixture(ProductFixture::class, ['price' => 22.88], as: 'product2')]
+    DataFixture(CustomerFixture::class, as: 'customer')]
+    DataFixture(User::class, as: 'user')]
+    DataFixture(
+        Company::class,
+        ['sales_representative_id' => '$user.id$', 'super_user_id' => '$customer.id$'],
+        'company'
+    )]
 ]
-public function testProductInCategory(): void
+public function testWithReferences(): void
 {
-    $fixtures = DataFixtureStorageManager::getStorage();
-    $category = $fixtures->get('category');
-    $product = $fixtures->get('product');
+    $product1 = DataFixtureStorageManager::getStorage()->get('product1');
+    $customer = DataFixtureStorageManager::getStorage()->get('customer');
+    // Use fixtures in your test
 }
 ```
 
-The syntax `$category.id$` references the `id` property from the `category` fixture.
+The syntax `$user.id$` references the `id` property from the `user` fixture.
 
 #### Generating multiple instances
 
-Use the `count` parameter to generate multiple instances:
+Create multiple fixtures by declaring them separately:
 
 ```php
 #[
-    DataFixture(ProductFixture::class, ['price' => 10], count: 5)
+    DataFixture(ProductFixture::class, ['sku' => 'test-product-1'], 'p1'),
+    DataFixture(ProductFixture::class, ['sku' => 'test-product-2'], 'p2'),
+    DataFixture(ProductFixture::class, ['sku' => 'test-product-3'], 'p3')
 ]
-public function testFiveProducts(): void
+public function testMultipleProducts(): void
 {
-    // Creates 5 products with auto-generated unique SKUs
-}
-```
-
-With aliases:
-
-```php
-#[
-    DataFixture(ProductFixture::class, as: 'product', count: 3)
-]
-public function testThreeProducts(): void
-{
-    $fixtures = DataFixtureStorageManager::getStorage();
-    $product1 = $fixtures->get('product1');
-    $product2 = $fixtures->get('product2');
-    $product3 = $fixtures->get('product3');
+    $product1 = DataFixtureStorageManager::getStorage()->get('p1');
+    $product2 = DataFixtureStorageManager::getStorage()->get('p2');
+    $product3 = DataFixtureStorageManager::getStorage()->get('p3');
 }
 ```
 
@@ -213,67 +200,11 @@ public function testProductInStore(): void
 }
 ```
 
-### With DocBlock Annotations
+### With DocBlock Annotations (Legacy fixtures only)
 
-DocBlock annotations support both parametrized data fixtures and legacy fixtures.
+<InlineAlert variant="warning" slots="text" />
 
-#### Using parametrized data fixtures
-
-**Syntax:** `@magentoDataFixture \Fully\Qualified\ClassName with:{"param": "value"} as:alias`
-
-- **`\Fully\Qualified\ClassName`** - Full class name of the fixture
-- **`with:{"param": "value"}`** (optional) - Parameters as JSON object
-- **`as:alias`** (optional) - Alias to reference fixture data
-- **`$alias$`** - Reference another fixture's data
-
-**Basic example:**
-
-```php
-/**
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "simple1", "price": 5.0} as:product1
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "simple2", "price": 10.0} as:product2
- */
-public function testTwoProducts(): void
-{
-    $fixtures = DataFixtureStorageManager::getStorage();
-    $product1 = $fixtures->get('product1');
-    $product2 = $fixtures->get('product2');
-}
-```
-
-**With fixture references:**
-
-```php
-/**
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "simple1", "price": 5.0} as:product1
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "simple2", "price": 10.0} as:product2
- * @magentoDataFixture \Magento\Quote\Test\Fixture\GuestCart as:cart
- * @magentoDataFixture \Magento\Quote\Test\Fixture\AddProductToCart with:{"cart": "$cart$", "product": "$product1$", "qty": 2}
- * @magentoDataFixture \Magento\Quote\Test\Fixture\AddProductToCart with:{"cart": "$cart$", "product": "$product2$", "qty": 1}
- */
-public function testCartWithProducts(): void
-{
-    $fixtures = DataFixtureStorageManager::getStorage();
-    $cart = $fixtures->get('cart');
-    // Cart now has 2 units of product1 and 1 unit of product2
-}
-```
-
-**Without parameters (uses defaults):**
-
-```php
-/**
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product as:product
- */
-public function testProductWithDefaults(): void
-{
-    $fixtures = DataFixtureStorageManager::getStorage();
-    $product = $fixtures->get('product');
-    // Product created with default values (auto-generated unique SKU, etc.)
-}
-```
-
-#### Using legacy file-based fixtures (Deprecated)
+DocBlock annotations (`@magentoDataFixture`) **only work with legacy file-based fixtures**. They cannot use parametrized data fixtures. For parametrization, use PHP Attributes.
 
 ```php
 /**
@@ -289,9 +220,9 @@ public function testWithLegacyFixtures(): void
 
 ## Migration guide: Legacy to Modern
 
-If you have tests using legacy fixtures (file-based with `@magentoDataFixture`), you should migrate them to parametrized data fixtures. New legacy fixtures **cannot be created**.
+If you have tests using legacy fixtures, you should migrate them to parametrized data fixtures with PHP Attributes. New legacy fixtures **cannot be created**.
 
-### Before (Legacy fixtures with DocBlock annotations)
+### Before (Legacy fixtures)
 
 ```php
 /**
@@ -304,21 +235,7 @@ public function testProductPrice(): void
 }
 ```
 
-### After (Option 1: Parametrized data with Annotations)
-
-```php
-/**
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "test-product", "price": 10} as:product
- */
-public function testProductPrice(): void
-{
-    $fixtures = DataFixtureStorageManager::getStorage();
-    $product = $fixtures->get('product');
-    $this->assertEquals(10, $product->getPrice());
-}
-```
-
-### After (Option 2: Parametrized data with PHP Attributes)
+### After (Parametrized data fixtures with PHP Attributes)
 
 ```php
 #[
@@ -336,171 +253,115 @@ public function testProductPrice(): void
 
 ### Product fixtures
 
-#### Simple product (Attributes)
+#### Simple products
 
 ```php
 #[
-    DataFixture(
-        ProductFixture::class,
-        [
-            'sku' => 'simple-product',
-            'name' => 'Simple Product',
-            'price' => 10,
-            'type_id' => 'simple',
-            'attribute_set_id' => 4,
-            'status' => 1,
-            'visibility' => 4,
-            'stock_data' => ['qty' => 100, 'is_in_stock' => true]
-        ],
-        'product'
-    )
+    DataFixture(ProductFixture::class, ['sku' => 'simple-product', 'price' => 10], 'product')
 ]
-```
-
-#### Configurable product with variants
-
-```php
-#[
-    DataFixture(ProductFixture::class, ['sku' => 'simple1', 'price' => 10], 's1'),
-    DataFixture(ProductFixture::class, ['sku' => 'simple2', 'price' => 20], 's2'),
-    DataFixture(
-        ConfigurableProductFixture::class,
-        [
-            'sku' => 'configurable',
-            '_options' => ['$s1$', '$s2$']
-        ]
-    )
-]
-```
-
-### Category fixtures
-
-```php
-#[
-    DataFixture(CategoryFixture::class, ['name' => 'Parent Category', 'is_active' => true], 'parent'),
-    DataFixture(CategoryFixture::class, ['name' => 'Child Category', 'parent_id' => '$parent.id$'], 'child')
-]
-```
-
-### Customer fixtures
-
-```php
-#[
-    DataFixture(
-        CustomerFixture::class,
-        [
-            'email' => 'customer@example.com',
-            'firstname' => 'John',
-            'lastname' => 'Doe',
-            'password' => 'password123'
-        ],
-        'customer'
-    )
-]
-```
-
-### Cart/Quote fixtures
-
-```php
-#[
-    DataFixture(ProductFixture::class, ['price' => 10], 'product'),
-    DataFixture(GuestCartFixture::class, as: 'cart'),
-    DataFixture(
-        AddProductToCartFixture::class,
-        [
-            'cart_id' => '$cart.id$',
-            'product_id' => '$product.id$',
-            'qty' => 2
-        ]
-    )
-]
-```
-
-### Order fixtures
-
-```php
-#[
-    DataFixture(ProductFixture::class, ['price' => 100], 'product'),
-    DataFixture(CustomerFixture::class, as: 'customer'),
-    DataFixture(
-        OrderFixture::class,
-        [
-            'customer_id' => '$customer.id$',
-            'items' => [
-                ['product_id' => '$product.id$', 'qty' => 1]
-            ]
-        ],
-        'order'
-    )
-]
-```
-
-### CMS page fixtures
-
-```php
-#[
-    DataFixture(
-        PageFixture::class,
-        [
-            'title' => 'Test Page',
-            'identifier' => 'test-page',
-            'content' => '<h1>Test Content</h1>',
-            'is_active' => true
-        ]
-    )
-]
-```
-
-### Store fixtures
-
-```php
-#[
-    DataFixture(WebsiteFixture::class, as: 'website'),
-    DataFixture(
-        StoreGroupFixture::class,
-        ['website_id' => '$website.id$'],
-        'store_group'
-    ),
-    DataFixture(
-        StoreFixture::class,
-        [
-            'code' => 'custom_store',
-            'store_group_id' => '$store_group.id$'
-        ],
-        'store'
-    )
-]
-```
-
-## Complex example: Bundle product
-
-```php
-#[
-    DataFixture(ProductFixture::class, ['sku' => 'simple1', 'price' => 10], 'p1'),
-    DataFixture(ProductFixture::class, ['sku' => 'simple2', 'price' => 20], 'p2'),
-    DataFixture(ProductFixture::class, ['sku' => 'simple3', 'price' => 30], 'p3'),
-    DataFixture(BundleSelectionFixture::class, ['sku' => '$p1.sku$', 'price' => 10], 'link1'),
-    DataFixture(BundleSelectionFixture::class, ['sku' => '$p2.sku$', 'price' => 20], 'link2'),
-    DataFixture(BundleSelectionFixture::class, ['sku' => '$p3.sku$', 'price' => 30], 'link3'),
-    DataFixture(
-        BundleOptionFixture::class,
-        ['product_links' => ['$link1$', '$link2$', '$link3$']],
-        'option'
-    ),
-    DataFixture(
-        BundleProductFixture::class,
-        [
-            'sku' => 'bundle-product',
-            'price' => 50,
-            '_options' => ['$option$']
-        ]
-    )
-]
-public function testBundleProduct(): void
+public function testProduct(): void
 {
-    // Test bundle product logic
+    $product = DataFixtureStorageManager::getStorage()->get('product');
+    // Most fixture classes have sensible defaults, you only need to specify what matters for your test
 }
 ```
+
+### Multiple related products
+
+```php
+#[
+    DataFixture(ProductFixture::class, ['sku' => 'simple1', 'price' => 5.0], 'product1'),
+    DataFixture(ProductFixture::class, ['sku' => 'simple2', 'price' => 10.0], 'product2')
+]
+public function testMultipleProducts(): void
+{
+    $product1 = DataFixtureStorageManager::getStorage()->get('product1');
+    $product2 = DataFixtureStorageManager::getStorage()->get('product2');
+}
+```
+
+### Retrieving fixture data
+
+Always use `DataFixtureStorageManager` to retrieve fixture data created by fixtures:
+
+```php
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+
+#[
+    DataFixture(ProductFixture::class, ['price' => 25.00], 'test_product')
+]
+public function testProduct(): void
+{
+    $product = DataFixtureStorageManager::getStorage()->get('test_product');
+    // Important: Retrieve a fresh instance from repository for assertions
+    $product = $this->productRepository->get($product->getSku());
+    $this->assertEquals(25.00, $product->getPrice());
+}
+```
+
+<InlineAlert variant="info" slots="text" />
+
+Data fixtures execute in a global scope, while test methods may execute in different scopes (using `AppArea`). Always retrieve a fresh instance from the repository to prevent unexpected behavior. Don't modify fixture data directly or use it for assertions.
+
+### Using legacy fixtures alongside parametrized ones
+
+You can mix both types when needed:
+
+```php
+#[
+    DataFixture(SourceFixture::class, ['source_code' => 'custom_source'], 'source'),
+    DataFixture(ProductFixture::class, ['sku' => 'test-product'], 'product'),
+    DataFixture('Magento_InventoryIndexer::Test/_files/reindex_inventory.php')
+]
+public function testMixedFixtures(): void
+{
+    $source = DataFixtureStorageManager::getStorage()->get('source');
+    $product = DataFixtureStorageManager::getStorage()->get('product');
+    // Legacy fixture doesn't have an alias, its data is applied globally
+}
+```
+
+## Complex example: Inventory with multiple sources
+
+Example showing fixture composition and references:
+
+```php
+use Magento\TestFramework\Fixture\DataFixtureStorageManager;
+
+#[
+    DataFixture(SourceFixture::class, ['source_code' => 'test_source'], 'source'),
+    DataFixture(StockFixture::class, as: 'stock'),
+    DataFixture(
+        StockSourceLinksFixture::class,
+        [['stock_id' => '$stock.stock_id$', 'source_code' => '$source.source_code$']]
+    ),
+    DataFixture(
+        StockSalesChannelsFixture::class,
+        ['stock_id' => '$stock.stock_id$', 'sales_channels' => ['base']]
+    ),
+    DataFixture(ProductFixture::class, ['sku' => 'test-product-1'], 'p1'),
+    DataFixture(ProductFixture::class, ['sku' => 'test-product-2'], 'p2'),
+    DataFixture(
+        SourceItemsFixture::class,
+        [
+            ['sku' => '$p1.sku$', 'source_code' => '$source.source_code$', 'quantity' => 10, 'status' => 1],
+            ['sku' => '$p2.sku$', 'source_code' => '$source.source_code$', 'quantity' => 20, 'status' => 1],
+        ]
+    ),
+    DataFixture(Indexer::class, as: 'indexer')
+]
+public function testInventoryConfiguration(): void
+{
+    $stock = DataFixtureStorageManager::getStorage()->get('stock');
+    $product1 = DataFixtureStorageManager::getStorage()->get('p1');
+    // Test inventory logic
+}
+```
+
+This example demonstrates:
+- Creating related fixtures (source, stock, products)
+- Linking fixtures together using `$alias.property$` references
+- Passing arrays of data with references
 
 ## Fixture scope: Class vs Method
 
@@ -554,23 +415,14 @@ When method-level fixtures are present, class-level fixtures are **ignored** for
  */
 ```
 
-**Good - Use parametrized data fixtures:**
-
-With PHP Attributes:
+**Good - Use parametrized data fixtures with PHP Attributes:**
 ```php
 #[DataFixture(ProductFixture::class, ['sku' => 'test-product'])]
 ```
 
-Or with DocBlock annotations:
-```php
-/**
- * @magentoDataFixture \Magento\Catalog\Test\Fixture\Product with:{"sku": "test-product"} as:product
- */
-```
+### 2. Use PHP Attributes for parametrized data fixtures
 
-### 2. Prefer PHP Attributes for new tests
-
-PHP Attributes provide better type safety, IDE support, and are easier to read than the DocBlock annotation `with:` and `as:` syntax.
+Parametrized data fixtures require PHP Attributes.
 
 ### 3. Keep fixtures focused
 
@@ -598,25 +450,23 @@ Most modern fixtures use `%uniqid%` to auto-generate unique values. You don't al
 ]
 ```
 
-### 6. Use appropriate isolation
+### 6. Use isolation attributes carefully
 
-Combine fixtures with appropriate isolation attributes:
+<InlineAlert variant="info" slots="text" />
 
-```php
-#[
-    AppIsolation(enabled: true),
-    DbIsolation(enabled: true),
-    DataFixture(ProductFixture::class)
-]
-```
+**Database isolation** is enabled by default when using data fixtures. **Application isolation** has significant performance implications and should only be used when necessary (e.g., when modifying application state like sessions).
 
 ### 7. Clean up is automatic
 
-Fixtures that implement `RevertibleDataFixtureInterface` are automatically cleaned up. You don't need to manually delete test data.
+Fixtures that implement `RevertibleDataFixtureInterface` are automatically cleaned up. This is critical to prevent test pollution where data from one test affects another test.
 
-### 8. Don't depend on fixture execution order
+<InlineAlert variant="warning" slots="text" />
 
-While fixtures are applied in the order specified, design your tests to not rely on side effects between fixtures.
+Proper data cleanup is essential. Tests run in groups (test suites), and leftover data from one test can cause unexpected failures in subsequent tests. Always ensure your fixtures properly implement the `revert()` method.
+
+### 8. Rely only on explicitly configured fixtures
+
+Your tests should depend on fixtures created before the test runs - that's their purpose. However, only rely on things you've explicitly configured in your test's fixture declarations, not on implicit side effects or fixtures from other tests.
 
 ## Finding available fixtures
 
@@ -631,7 +481,13 @@ Check these directories in the Adobe Commerce or Magento Open Source codebase to
 
 ## Creating custom fixtures
 
-If you need custom fixtures, create a class that implements `DataFixtureInterface`:
+If you need custom fixtures, create a class that implements `DataFixtureInterface` or `RevertibleDataFixtureInterface`.
+
+<InlineAlert variant="info" slots="text" />
+
+For detailed guidance on creating custom data fixtures, see the official Magento DevBlog article: [How to Create Data Fixtures (Part 2/2)](https://community.magento.com/t5/Magento-DevBlog/How-to-Use-and-Create-Data-Fixture-in-Integration-and-API/ba-p/500927).
+
+### Basic structure
 
 ```php
 <?php
@@ -663,11 +519,31 @@ class CustomFixture implements RevertibleDataFixtureInterface
 }
 ```
 
+### When to use RevertibleDataFixtureInterface
+
+Use `RevertibleDataFixtureInterface` when the data fixture creates data that needs to be manually removed after the test. Examples:
+- Product data
+- Category data
+- Customer data
+- Any persistent entity
+
+Use `DataFixtureInterface` when the data is automatically removed with related data. Examples:
+- Adding a shipping address to a cart (removed when cart is deleted)
+- Assigning a product to a category (removed when product is deleted)
+
 ## Learn more
+
+### Official Documentation
 
 - [DocBlock Annotations](annotations/index.md) - Complete annotation reference
 - [PHP Attributes](attributes/index.md) - Complete attributes reference
 - [DataFixture Attribute](attributes/data-fixture.md) - Detailed DataFixture documentation
 - [@magentoDataFixture Annotation](annotations/magento-data-fixture.md) - Legacy annotation documentation
+
+### DevBlog Articles
+
+- [How to Use and Create Data Fixture in Integration and API Functional Tests (Part 1/2)](https://community.magento.com/t5/Magento-DevBlog/How-to-Use-and-Create-Data-Fixture-in-Integration-and-API/ba-p/500568) - Official guide on using data fixtures with real examples
+- [How to Use and Create Data Fixture in Integration and API Functional Tests (Part 2/2)](https://community.magento.com/t5/Magento-DevBlog/How-to-Use-and-Create-Data-Fixture-in-Integration-and-API/ba-p/500927) - Official guide on creating custom data fixtures
+
 
 

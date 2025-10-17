@@ -11,9 +11,9 @@ keywords:
 DocBlock annotations help to declare context in your code. In addition to built-in [PHPUnit annotations][]
 , the Integration testing framework provides custom annotations described in this topic.
 
-<InlineAlert variant="success" slots="text" />
+<InlineAlert variant="warning" slots="text" />
 
-Native PHP8 Attributes can be used instead or together with DocBlock annotations. This new method offers more flexibility and improves readability of the code. See the [Attributes](../attributes/index.md) to learn more.
+**DocBlock annotations are strongly discouraged for new tests.** Use [PHP Attributes](../attributes/index.md) instead. PHP Attributes offer superior type safety, better IDE support, improved readability, and enable powerful parametrization of data fixtures. DocBlock annotations should only be used when maintaining legacy tests or when PHP 8+ is not available.
 
 ### Quick overview
 
