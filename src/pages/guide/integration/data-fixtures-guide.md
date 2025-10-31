@@ -301,13 +301,30 @@ Most fixtures have sensible defaults with dynamic unique values. Only override v
 
 ```php
 // Bad - overriding SKU when not needed
-#[DataFixture(ProductFixture::class, ['sku' => 'my-sku', 'price' => 10])]
+#[DataFixture(ProductFixture::class, ['sku' => 'my-sku', 'price' => 100], 'product')]
 
-// Good - let SKU be auto-generated
-#[DataFixture(ProductFixture::class, ['price' => 10], 'product')]
+// Good - let SKU be auto-generated and reference it when needed
+#[
+    DataFixture(ProductFixture::class, ['price' => 100], 'product'),
+    DataFixture(
+        CatalogRuleFixture::class,
+        [
+            'is_active' => false,
+            'conditions' => [['attribute' => 'sku', 'value' => '$product.sku$']]
+        ],
+        'rule'
+    )
+]
+public function testCatalogRule(): void
+{
+    $product = DataFixtureStorageManager::getStorage()->get('product');
+    $rule = DataFixtureStorageManager::getStorage()->get('rule');
+    // Access auto-generated SKU
+    $sku = $product->getSku();
+}
 ```
 
-You can still reference auto-generated values using `$alias.property$` syntax even when you don't override them.
+You can reference auto-generated values using `$alias.property$` syntax without overriding them.
 
 ### 6. Understand isolation behavior
 
