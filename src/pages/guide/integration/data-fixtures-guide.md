@@ -99,9 +99,8 @@ These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFi
 
 Parametrized data fixtures **cannot** be used with DocBlock annotations. Only PHP Attributes support parametrization.
 
-#### With PHP Attributes (Best option)
-
 ```php
+// Only override values that matter for your test. SKU is auto-generated with a unique value
 #[
     DataFixture(ProductFixture::class, ['price' => 10.00], 'product')
 ]
@@ -109,8 +108,6 @@ public function testProductExists(): void
 {
     $fixtures = DataFixtureStorageManager::getStorage();
     $product = $fixtures->get('product');
-    // Only override values that matter for your test
-    // SKU is auto-generated with a unique value
 }
 ```
 
@@ -122,11 +119,9 @@ The power of modern parametrized data fixtures lies in their ability to be custo
 
 Parametrized data fixtures **require PHP Attributes**. They cannot be used with DocBlock annotations (`@magentoDataFixture`).
 
-### With PHP Attributes
+For detailed information on basic parametrization, aliases, store scope, and the `count` parameter, see [DataFixture Attribute](attributes/data-fixture.md).
 
-For detailed information on using PHP Attributes with data fixtures, including basic parametrization, aliases, store scope, and the `count` parameter, see [DataFixture Attribute](attributes/data-fixture.md).
-
-#### Key concept: Fixture references
+### Key concept: Fixture references
 
 You can reference data from one fixture in another using the `$alias.property$` syntax:
 
