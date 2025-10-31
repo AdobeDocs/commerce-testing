@@ -245,6 +245,7 @@ public function testInventoryConfiguration(): void
 ```
 
 This example demonstrates:
+
 - Creating related fixtures (source, stock, products)
 - Linking fixtures together using `$alias.property$` references
 - Passing arrays of data with references
@@ -259,6 +260,7 @@ This example demonstrates:
 **New legacy fixtures cannot be created.** Do not create new tests using legacy fixtures (e.g., `Magento/Catalog/_files/product_simple.php`). Always use parametrized data fixtures instead. Existing legacy fixtures should be migrated.
 
 **Bad - Cannot create new:**
+
 ```php
 /**
  * @magentoDataFixture Magento/Catalog/_files/product_simple.php
@@ -266,6 +268,7 @@ This example demonstrates:
 ```
 
 **Good - Use parametrized data fixtures with PHP Attributes:**
+
 ```php
 #[DataFixture(ProductFixture::class, ['price' => 10])]
 ```
@@ -295,7 +298,7 @@ Always use the `as` parameter when you need to reference fixture data in other f
 
 ### 5. Leverage fixture defaults
 
-Most fixtures have sensible defaults with dynamic unique values. Only override values that matter for your specific test scenario. 
+Most fixtures have sensible defaults with dynamic unique values. Only override values that matter for your specific test scenario.
 
 **Don't override unique fields unnecessarily:**
 
@@ -398,12 +401,14 @@ class CustomFixture implements RevertibleDataFixtureInterface
 ### When to use RevertibleDataFixtureInterface
 
 Use `RevertibleDataFixtureInterface` when the data fixture creates data that needs to be manually removed after the test. Examples:
+
 - Product data
 - Category data
 - Customer data
 - Any persistent entity
 
 Use `DataFixtureInterface` when the data is automatically removed with related data. Examples:
+
 - Adding a shipping address to a cart (removed when cart is deleted)
 - Assigning a product to a category (removed when product is deleted)
 
@@ -420,6 +425,3 @@ Use `DataFixtureInterface` when the data is automatically removed with related d
 
 - [How to Use and Create Data Fixture in Integration and API Functional Tests (Part 1/2)](https://community.magento.com/t5/Magento-DevBlog/How-to-Use-and-Create-Data-Fixture-in-Integration-and-API/ba-p/500568) - Official guide on using data fixtures with real examples
 - [How to Use and Create Data Fixture in Integration and API Functional Tests (Part 2/2)](https://community.magento.com/t5/Magento-DevBlog/How-to-Use-and-Create-Data-Fixture-in-Integration-and-API/ba-p/500927) - Official guide on creating custom data fixtures
-
-
-
