@@ -99,6 +99,12 @@ These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFi
 
 Parametrized data fixtures **cannot** be used with DocBlock annotations. Only PHP Attributes support parametrization.
 
+The power of modern parametrized data fixtures lies in their ability to be customized as you can configure the data they create without writing new fixture classes.
+
+For detailed information on basic parametrization, aliases, store scope, and the `count` parameter, see [DataFixture Attribute](attributes/data-fixture.md).
+
+**Basic example:**
+
 ```php
 // Only override values that matter for your test. SKU is auto-generated with a unique value
 #[
@@ -111,19 +117,9 @@ public function testProductExists(): void
 }
 ```
 
-## Parameterized data fixtures
+**Fixture references - building complex scenarios:**
 
-The power of modern parametrized data fixtures lies in their ability to be customized - you can configure the data they create without writing new fixture classes.
-
-<InlineAlert variant="warning" slots="text" />
-
-Parametrized data fixtures **require PHP Attributes**. They cannot be used with DocBlock annotations (`@magentoDataFixture`).
-
-For detailed information on basic parametrization, aliases, store scope, and the `count` parameter, see [DataFixture Attribute](attributes/data-fixture.md).
-
-### Key concept: Fixture references
-
-You can reference data from one fixture in another using the `$alias.property$` syntax:
+You can reference data from one fixture in another using the `$alias.property$` syntax. This allows you to build complex, interconnected test data scenarios:
 
 ```php
 #[
@@ -135,26 +131,6 @@ You can reference data from one fixture in another using the `$alias.property$` 
         'company'
     )
 ]
-```
-
-This allows you to build complex, interconnected test data scenarios.
-
-### With DocBlock Annotations (Legacy fixtures only)
-
-<InlineAlert variant="warning" slots="text" />
-
-DocBlock annotations (`@magentoDataFixture`) **only work with legacy file-based fixtures**. They cannot use parametrized data fixtures. For parametrization, use PHP Attributes.
-
-```php
-/**
- * @magentoDataFixture Magento/Catalog/_files/product_simple.php
- * @magentoDataFixture Magento/Customer/_files/customer.php
- */
-public function testWithLegacyFixtures(): void
-{
-    // DEPRECATED - New legacy fixtures cannot be created
-    // Use parametrized data fixtures instead
-}
 ```
 
 ## Migration guide: Legacy to Modern
