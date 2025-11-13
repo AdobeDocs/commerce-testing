@@ -20,7 +20,7 @@ Data fixtures are essential components for integration testing, allowing you to 
 
 <InlineAlert variant="warning" slots="text" />
 
-**Legacy file-based fixtures are strongly discouraged for new tests.** Use parametrized data fixtures with [PHP Attributes](attributes/index.md) instead. They offer superior type safety, better IDE support, improved readability, and powerful parametrization capabilities. For comprehensive guidance, see the [Working with Data Fixtures](data-fixtures-guide.md) guide.
+**Legacy file-based fixtures are strongly discouraged for new tests.** Use parameterized data fixtures with [PHP Attributes](attributes/index.md) instead. They offer superior type safety, better IDE support, improved readability, and powerful parameterization capabilities. For comprehensive guidance, see the [Working with Data Fixtures](data-fixtures-guide.md) guide.
 
 ## Set up the integration test framework
 
