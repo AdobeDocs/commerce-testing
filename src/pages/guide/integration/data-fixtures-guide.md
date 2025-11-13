@@ -47,7 +47,7 @@ Parameterized data fixtures **cannot** be used with DocBlock annotations (`@mage
 
 ### Legacy fixtures (Deprecated)
 
-Legacy fixtures are file-based PHP scripts (stored in `_files/` directories) that directly execute database operations. They **cannot be parametrized** and are now deprecated.
+Legacy fixtures are file-based PHP scripts (stored in `_files/` directories) that directly execute database operations. They **cannot be parameterized** and are now deprecated.
 
 <InlineAlert variant="warning" slots="text" />
 
