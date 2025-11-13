@@ -35,11 +35,11 @@ Adobe Commerce and Magento Open Source support multiple ways to work with data f
 
 <InlineAlert variant="warning" slots="text" />
 
-Parametrized data fixtures **cannot** be used with DocBlock annotations (`@magentoDataFixture`). They require PHP Attributes (`#[DataFixture()]`).
+Parameterized data fixtures **cannot** be used with DocBlock annotations (`@magentoDataFixture`). They require PHP Attributes (`#[DataFixture()]`).
 
 ### Why avoid legacy fixtures?
 
-1. **No parametrization** - Each variation requires a separate file
+1. **No parameterization** - Each variation requires a separate file
 2. **Hard to maintain** - Changes require modifying PHP scripts scattered across the codebase
 3. **Poor discoverability** - Difficult to find what data a fixture creates
 4. **No type safety** - Parameters and return values are not typed
@@ -47,7 +47,7 @@ Parametrized data fixtures **cannot** be used with DocBlock annotations (`@magen
 
 ## Types of data fixtures
 
-### 1. Legacy fixtures (Deprecated)
+### Legacy fixtures (Deprecated)
 
 Legacy fixtures are file-based PHP scripts (stored in `_files/` directories) that directly execute database operations. They **cannot be parametrized** and are now deprecated.
 
@@ -91,7 +91,7 @@ Bootstrap::getObjectManager()
 
 **Problems:** To create a product with a different SKU or price, you need to create an entirely new fixture file!
 
-### 2. Parametrized data fixtures (Recommended)
+### Parameterized data fixtures (Recommended)
 
 These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFixtureInterface`. They support **powerful parametrization** and **require PHP Attributes** (`#[DataFixture()]`).
 
