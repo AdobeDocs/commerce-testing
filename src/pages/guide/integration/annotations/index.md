@@ -13,7 +13,7 @@ DocBlock annotations help to declare context in your code. In addition to built-
 
 <InlineAlert variant="warning" slots="text" />
 
-**DocBlock annotations are strongly discouraged for new tests.** Use [PHP Attributes](../attributes/index.md) instead. PHP Attributes offer superior type safety, better IDE support, improved readability, and enable powerful parametrization of data fixtures. DocBlock annotations should only be used when maintaining legacy tests or when PHP 8+ is not available.
+**DocBlock annotations are strongly discouraged for new tests.** Use [PHP Attributes](../attributes/index.md) instead. PHP Attributes offer superior type safety, better IDE support, improved readability, and enable powerful parameterization of data fixtures. DocBlock annotations should only be used when maintaining legacy tests or when PHP 8+ is not available.
 
 ### Quick overview
 
