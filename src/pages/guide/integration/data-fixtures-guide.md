@@ -12,7 +12,7 @@ keywords:
 
 Data fixtures are reusable components that set up test data in your database before running integration tests. They help you create a consistent, predictable test environment by populating the database with entities like products, customers, orders, categories, and more.
 
-Think of data fixtures as the "arrange" phase of your test - they prepare the data your test needs to verify specific functionality.
+Think of data fixtures as the "arrange" phase of your test--they prepare the data your test needs to verify specific functionality.
 
 ## Modern vs Legacy approaches
 
