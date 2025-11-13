@@ -20,7 +20,7 @@ Adobe Commerce and Magento Open Source support multiple ways to work with data f
 
 <InlineAlert variant="warning" slots="text" />
 
-**Legacy fixtures** (file-based fixtures like `Magento/Catalog/_files/product_simple.php`) are **deprecated**. New legacy fixtures **cannot be created**. Use **parametrized data fixtures** instead for better maintainability, reusability, and type safety.
+**Legacy fixtures** (file-based fixtures like `Magento/Catalog/_files/product_simple.php`) are **deprecated**. New legacy fixtures **cannot be created**. Use **parameterized data fixtures** instead for better maintainability, reusability, and type safety.
 
 <InlineAlert variant="success" slots="text" />
 
