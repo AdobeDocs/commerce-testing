@@ -241,7 +241,7 @@ This example demonstrates:
  */
 ```
 
-**Good - Use parametrized data fixtures with PHP Attributes:**
+**Good - Use parameterized data fixtures with PHP Attributes:**
 
 ```php
 #[DataFixture(ProductFixture::class, ['price' => 10])]
