@@ -51,7 +51,7 @@ Legacy fixtures are file-based PHP scripts (stored in `_files/` directories) tha
 
 <InlineAlert variant="warning" slots="text" />
 
-New legacy fixtures **cannot be created**. Existing legacy fixtures should be migrated to parametrized data fixtures.
+New legacy fixtures **cannot be created**. Existing legacy fixtures should be migrated to parameterized data fixtures.
 
 **Example with DocBlock annotation:**
 
