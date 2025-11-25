@@ -14,6 +14,14 @@ Integration tests require the Commerce runtime environment, so they need a littl
 
 After preparing the system, you can execute tests using the command line interface or within an IDE like PhpStorm.
 
+## Working with data fixtures
+
+Data fixtures are essential components for integration testing, allowing you to set up test data before running your tests. Adobe Commerce supports both legacy fixtures (deprecated, file-based) and modern parameterized data fixtures.
+
+<InlineAlert variant="warning" slots="text" />
+
+**Legacy file-based fixtures are strongly discouraged for new tests.** Use parameterized data fixtures with [PHP Attributes](attributes/index.md) instead. They offer superior type safety, better IDE support, improved readability, and powerful parameterization capabilities. For comprehensive guidance, see the [Working with Data Fixtures](data-fixtures-guide.md) guide.
+
 ## Set up the integration test framework
 
 To run integration tests, you must create and configure a test database.
@@ -133,7 +141,7 @@ return [
 
 Note that the file above is only for configuration files required by all integration tests. If you need to introduce
 new configuration values for particular tests to perform their function, use the
-[@magentoConfigFixture](annotations/magento-config-fixture.md) annotation instead.
+[@magentoConfigFixture](annotations/magento-config-fixture.md) annotation instead. For setting up test data, see the [Working with Data Fixtures](data-fixtures-guide.md) guide.
 
 <InlineAlert variant="info" slots="text" />
 
