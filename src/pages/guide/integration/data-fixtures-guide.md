@@ -26,10 +26,10 @@ Adobe Commerce and Magento Open Source support multiple ways to work with data f
 
 ### Comparison
 
-| Approach | Status | Can Parametrize | Syntax Example |
+| Approach | Status | Can Parameterize | Syntax Example |
 |----------|--------|-----------------|--------|
 | **Legacy fixtures** (file-based) | Deprecated | ❌ No | `@magentoDataFixture Magento/Catalog/_files/product.php` |
-| **Parametrized data fixtures** (with PHP Attributes) | ✅ Recommended | ✅ Yes | `#[DataFixture(ProductFixture::class, ['price' => 10], 'product')]` |
+| **Parameterized data fixtures** (with PHP Attributes) | ✅ Recommended | ✅ Yes | `#[DataFixture(ProductFixture::class, ['price' => 10], 'product')]` |
 
 <InlineAlert variant="warning" slots="text" />
 
