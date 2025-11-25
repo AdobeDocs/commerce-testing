@@ -12,7 +12,7 @@ Data fixtures are reusable components that set up test data in your database bef
 
 Think of data fixtures as the "arrange" phase of your test--they prepare the data your test needs to verify specific functionality.
 
-## Modern vs Legacy approaches
+## Modern vs legacy approaches
 
 Adobe Commerce and Magento Open Source support multiple ways to work with data fixtures, but not all are equally recommended.
 
@@ -37,11 +37,11 @@ Parameterized data fixtures **cannot** be used with DocBlock annotations (`@mage
 
 ### Why avoid legacy fixtures?
 
-1. **No parameterization** - Each variation requires a separate file
-2. **Hard to maintain** - Changes require modifying PHP scripts scattered across the codebase
-3. **Poor discoverability** - Difficult to find what data a fixture creates
-4. **No type safety** - Parameters and return values are not typed
-5. **Coupling** - Tests become tightly coupled to specific fixture files
+- **No parameterization** - Each variation requires a separate file
+- **Hard to maintain** - Changes require modifying PHP scripts scattered across the codebase
+- **Poor discoverability** - Difficult to find what data a fixture creates
+- **No type safety** - Parameters and return values are not typed
+- **Coupling** - Tests become tightly coupled to specific fixture files
 
 ## Types of data fixtures
 
@@ -49,15 +49,15 @@ This section covers the two main types of data fixtures: legacy file-based fixtu
 
 ### Parameterized data fixtures (Recommended)
 
-These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFixtureInterface`. They support **powerful parametrization** and **require PHP Attributes** (`#[DataFixture()]`).
+These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFixtureInterface`. They support **powerful parameterization** and **require PHP Attributes** (`#[DataFixture()]`).
 
 <InlineAlert variant="warning" slots="text" />
 
-Parametrized data fixtures **cannot** be used with DocBlock annotations. Only PHP Attributes support parametrization.
+Parameterized data fixtures **cannot** be used with DocBlock annotations. Only PHP Attributes support parameterization.
 
-The power of modern parametrized data fixtures lies in their ability to be customized as you can configure the data they create without writing new fixture classes.
+The power of modern parameterized data fixtures lies in their ability to be customized as you can configure the data they create without writing new fixture classes.
 
-For detailed information on basic parametrization, aliases, store scope, and the `count` parameter, see [DataFixture Attribute](attributes/data-fixture.md).
+For detailed information on basic parameterization, aliases, store scope, and the `count` parameter, see [DataFixture Attribute](attributes/data-fixture.md).
 
 **Basic example:**
 
@@ -133,9 +133,9 @@ Bootstrap::getObjectManager()
 
 **Problems:** To create a product with a different SKU or price, you need to create an entirely new fixture file!
 
-## Migration guide: Legacy to Modern
+## Migrating legacy fixtures to modern
 
-If you have tests using legacy fixtures, you should migrate them to parametrized data fixtures with PHP Attributes. New legacy fixtures **cannot be created**.
+If you have tests using legacy fixtures, you should migrate them to parameterized data fixtures with PHP Attributes. New legacy fixtures **cannot be created**.
 
 ### Before (Legacy fixtures)
 
@@ -150,7 +150,7 @@ public function testProductPrice(): void
 }
 ```
 
-### After (Parametrized data fixtures with PHP Attributes)
+### After (Parameterized data fixtures with PHP Attributes)
 
 ```php
 #[
@@ -233,7 +233,7 @@ Follow these best practices when working with data fixtures.
 
 <InlineAlert variant="warning" slots="text" />
 
-**New legacy fixtures cannot be created.** Do not create new tests using legacy fixtures (e.g., `Magento/Catalog/_files/product_simple.php`). Always use parametrized data fixtures instead. Existing legacy fixtures should be migrated.
+**New legacy fixtures cannot be created.** Do not create new tests using legacy fixtures (e.g., `Magento/Catalog/_files/product_simple.php`). Always use parameterized data fixtures instead. Existing legacy fixtures should be migrated.
 
 **Bad - Cannot create new:**
 
@@ -253,9 +253,9 @@ Follow these best practices when working with data fixtures.
 
 Only override fixture values that are necessary for your test. Unique fields like SKU are dynamically generated and should not be overridden unless specifically required by the test scenario.
 
-### Use PHP Attributes for parametrized data fixtures
+### Use PHP Attributes for parameterized data fixtures
 
-Parametrized data fixtures require PHP Attributes.
+Parameterized data fixtures require PHP Attributes.
 
 ### Keep fixtures focused
 
@@ -374,7 +374,7 @@ class CustomFixture implements RevertibleDataFixtureInterface
 }
 ```
 
-### When to use RevertibleDataFixtureInterface
+### When to use `RevertibleDataFixtureInterface`
 
 Use `RevertibleDataFixtureInterface` when the data fixture creates data that needs to be manually removed after the test. Examples:
 
