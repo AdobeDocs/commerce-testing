@@ -45,6 +45,50 @@ Parameterized data fixtures **cannot** be used with DocBlock annotations (`@mage
 
 ## Types of data fixtures
 
+This section covers the two main types of data fixtures: legacy file-based fixtures and modern parameterized data fixtures.
+
+### Parameterized data fixtures (Recommended)
+
+These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFixtureInterface`. They support **powerful parametrization** and **require PHP Attributes** (`#[DataFixture()]`).
+
+<InlineAlert variant="warning" slots="text" />
+
+Parametrized data fixtures **cannot** be used with DocBlock annotations. Only PHP Attributes support parametrization.
+
+The power of modern parametrized data fixtures lies in their ability to be customized as you can configure the data they create without writing new fixture classes.
+
+For detailed information on basic parametrization, aliases, store scope, and the `count` parameter, see [DataFixture Attribute](attributes/data-fixture.md).
+
+**Basic example:**
+
+```php
+// Only override values that matter for your test. SKU is auto-generated with a unique value
+#[
+    DataFixture(ProductFixture::class, ['price' => 10.00], 'product')
+]
+public function testProductExists(): void
+{
+    $fixtures = DataFixtureStorageManager::getStorage();
+    $product = $fixtures->get('product');
+}
+```
+
+**Fixture references - building complex scenarios:**
+
+You can reference data from one fixture in another using the `$alias.property$` syntax. This allows you to build complex, interconnected test data scenarios:
+
+```php
+#[
+    DataFixture(CustomerFixture::class, as: 'customer'),
+    DataFixture(User::class, as: 'user'),
+    DataFixture(
+        Company::class,
+        ['sales_representative_id' => '$user.id$', 'super_user_id' => '$customer.id$'],
+        'company'
+    )
+]
+```
+
 ### Legacy fixtures (Deprecated)
 
 Legacy fixtures are file-based PHP scripts (stored in `_files/` directories) that directly execute database operations. They **cannot be parameterized** and are now deprecated.
@@ -89,48 +133,6 @@ Bootstrap::getObjectManager()
 
 **Problems:** To create a product with a different SKU or price, you need to create an entirely new fixture file!
 
-### Parameterized data fixtures (Recommended)
-
-These are PHP classes that implement `DataFixtureInterface` or `RevertibleDataFixtureInterface`. They support **powerful parametrization** and **require PHP Attributes** (`#[DataFixture()]`).
-
-<InlineAlert variant="warning" slots="text" />
-
-Parametrized data fixtures **cannot** be used with DocBlock annotations. Only PHP Attributes support parametrization.
-
-The power of modern parametrized data fixtures lies in their ability to be customized as you can configure the data they create without writing new fixture classes.
-
-For detailed information on basic parametrization, aliases, store scope, and the `count` parameter, see [DataFixture Attribute](attributes/data-fixture.md).
-
-**Basic example:**
-
-```php
-// Only override values that matter for your test. SKU is auto-generated with a unique value
-#[
-    DataFixture(ProductFixture::class, ['price' => 10.00], 'product')
-]
-public function testProductExists(): void
-{
-    $fixtures = DataFixtureStorageManager::getStorage();
-    $product = $fixtures->get('product');
-}
-```
-
-**Fixture references - building complex scenarios:**
-
-You can reference data from one fixture in another using the `$alias.property$` syntax. This allows you to build complex, interconnected test data scenarios:
-
-```php
-#[
-    DataFixture(CustomerFixture::class, as: 'customer'),
-    DataFixture(User::class, as: 'user'),
-    DataFixture(
-        Company::class,
-        ['sales_representative_id' => '$user.id$', 'super_user_id' => '$customer.id$'],
-        'company'
-    )
-]
-```
-
 ## Migration guide: Legacy to Modern
 
 If you have tests using legacy fixtures, you should migrate them to parametrized data fixtures with PHP Attributes. New legacy fixtures **cannot be created**.
@@ -162,9 +164,7 @@ public function testProductPrice(): void
 }
 ```
 
-## Working with fixture data
-
-### Retrieving fixture data
+## Retrieving fixture data
 
 Always use `DataFixtureStorageManager` to retrieve fixture data created by fixtures:
 
@@ -227,7 +227,9 @@ This example demonstrates:
 
 ## Best practices
 
-### 1. Do not create legacy fixtures
+Follow these best practices when working with data fixtures.
+
+### Do not create legacy fixtures
 
 <InlineAlert variant="warning" slots="text" />
 
@@ -251,15 +253,15 @@ This example demonstrates:
 
 Only override fixture values that are necessary for your test. Unique fields like SKU are dynamically generated and should not be overridden unless specifically required by the test scenario.
 
-### 2. Use PHP Attributes for parametrized data fixtures
+### Use PHP Attributes for parametrized data fixtures
 
 Parametrized data fixtures require PHP Attributes.
 
-### 3. Keep fixtures focused
+### Keep fixtures focused
 
 Each fixture should do one thing. Use multiple fixtures and compose them rather than creating complex all-in-one fixtures.
 
-### 4. Use fixture aliases for references
+### Use fixture aliases for references
 
 Always use the `as` parameter when you need to reference fixture data in other fixtures:
 
@@ -270,7 +272,7 @@ Always use the `as` parameter when you need to reference fixture data in other f
 ]
 ```
 
-### 5. Leverage fixture defaults
+### Leverage fixture defaults
 
 Most fixtures have sensible defaults with dynamic unique values. Only override values that matter for your specific test scenario.
 
@@ -303,13 +305,13 @@ public function testCatalogRule(): void
 
 You can reference auto-generated values using `$alias.property$` syntax without overriding them.
 
-### 6. Understand isolation behavior
+### Understand isolation behavior
 
 <InlineAlert variant="info" slots="text" />
 
 Database isolation is enabled by default when using data fixtures. Application isolation has significant performance implications and should only be used when necessary (e.g., when modifying application state like sessions). See [AppIsolation](attributes/app-isolation.md) and [DbIsolation](attributes/db-isolation.md) for details.
 
-### 7. Fixture cleanup is automatic
+### Fixture cleanup is automatic
 
 Fixtures that implement `RevertibleDataFixtureInterface` are automatically cleaned up. This is critical to prevent test pollution where data from one test affects another test.
 
@@ -317,7 +319,7 @@ Fixtures that implement `RevertibleDataFixtureInterface` are automatically clean
 
 Proper data cleanup is essential. Tests run in groups (test suites), and leftover data from one test can cause unexpected failures in subsequent tests. Always ensure your fixtures properly implement the `revert()` method.
 
-### 8. Rely only on explicitly configured fixtures
+### Rely only on explicitly configured fixtures
 
 Your tests should depend on fixtures created before the test runs. However, only rely on things you've explicitly configured in your test's fixture declarations, not on implicit side effects or fixtures from other tests.
 
@@ -387,6 +389,8 @@ Use `DataFixtureInterface` when the data is automatically removed with related d
 - Assigning a product to a category (removed when product is deleted)
 
 ## Learn more
+
+Refer to the following resources for more information on data fixtures.
 
 ### Official Documentation
 
