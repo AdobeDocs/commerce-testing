@@ -1,10 +1,8 @@
 - pathPrefix:
     - /commerce/testing/
 
-- home:
-    - [Commerce](/commerce/docs)
-
 - pages:
+    - [Commerce](https://developer.adobe.com/commerce/docs)
     - [Testing](/index.md)
     - [Application Testing Guide](/guide/index.md)
     - [Functional Testing Framework](/functional-testing-framework/index.md)
