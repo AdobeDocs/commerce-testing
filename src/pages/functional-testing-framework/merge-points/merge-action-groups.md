@@ -14,8 +14,6 @@ In this example we add a `<click>` command to check the checkbox that our extens
 
 ## Starting test
 
-\<!-- {% raw %} --\>
-
 ```xml
 <actionGroup name="AdminFillSimpleProductFormActionGroup">
     <arguments>
@@ -81,5 +79,3 @@ In this example we add a `<click>` command to check the checkbox that our extens
     <seeInField userInput="{{simpleProduct.urlKey}}" selector="{{AdminProductSEOSection.urlKeyInput}}" stepKey="assertFieldUrlKey"/>
 </actionGroup>
 ```
-
-\<!-- {% endraw %} --\>

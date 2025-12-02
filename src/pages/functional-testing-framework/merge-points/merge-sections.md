@@ -13,8 +13,6 @@ In this example we add another selector to the section on the products page sect
 
 ## Starting section
 
-\<!-- {% raw %} --\>
-
 ```xml
 <section name="AdminProductsPageSection">
     <element name="addProductButton" type="button" selector="//button[@id='add_new_product-button']"/>
@@ -49,5 +47,3 @@ In this example we add another selector to the section on the products page sect
     <element name="myExtensionElement" type="button" selector="input.myExtension"/>
 </section>
 ```
-
-\<!-- {% endraw %} --\>

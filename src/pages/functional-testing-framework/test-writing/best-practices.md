@@ -97,8 +97,6 @@ The following pattern is used when merging with `extends`:
 
 Name files according to the following patterns to make searching in future more easy:
 
-\<!-- {% raw %} --\>
-
 #### Test filename
 
 Format: {_Admin_ or _Storefront_}{Functionality}_Test.xml_, where Functionality briefly describes the testing functionality.
@@ -120,8 +118,6 @@ Example: _AdminNavbarSection.xml_.
 #### Data filename
 
 Format: {Type}_Data.xml_, where Type represents the entity type.
-
-\<!-- {% endraw %} --\>
 
 Example: _ProductData.xml_.
 
@@ -158,13 +154,9 @@ Do not use them for static elements.
 BAD:
 </span>
 
-\<!-- {% raw %} --\>
-
 ``` xml
 <element name="relatedProductSectionText" type="text" selector=".fieldset-wrapper.admin__fieldset-section[data-index='{{productType}}']" parameterized="true"/>
 ```
-
-\<!-- {% endraw %} --\>
 
 <span class="color:green">
 GOOD:

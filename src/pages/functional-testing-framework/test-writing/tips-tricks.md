@@ -24,8 +24,6 @@ In the bad example we see two parameters being passed into the selector with lit
 Good
 </span>
 
-\<!-- {% raw %} --\>
-
 ```xml
 <test>
     <actionGroup ref="VerifyOptionInProductStorefront" stepKey="verifyConfigurableOption" after="AssertProductInStorefrontProductPage">
@@ -422,8 +420,6 @@ BAD:
 <click selector="{{ProductInWebsitesSection.website('Second Website')}}" stepKey="selectSecondWebsite"/>
 <click selector="{{ProductInWebsitesSection.website('Second Website')}}" stepKey="unselectSecondWebsite"/>
 ```
-
-\<!--{% endraw %}--\>
 
 \<!-- Link Definitions --\>
 [This test]: https://github.com/magento/magento2/blob/2.3/app/code/Magento/Captcha/Test/Mftf/Test/StorefrontCaptchaRegisterNewCustomerTest.xml#L24
