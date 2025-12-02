@@ -5,7 +5,7 @@ keywords:
   - Tools
 ---
 
-<Hero slots="image, heading, text"/>
+<SuperHero slots="image, heading, text"/>
 
 ![Commerce Testing](_images/home-bg.jpeg)
 
