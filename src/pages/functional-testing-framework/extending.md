@@ -337,7 +337,7 @@ __Use case__: Create an entity named `DivPanelGreen`, which is similar to the `D
 </entities>
 ```
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 [test]: test/index.md
 [data]: data.md
 [action group]: test/action-groups.md

@@ -165,7 +165,7 @@ Attributes|Type|Use|Description
 `name`|string|required|Unique section name identifier.
 `remove`|boolean|optional|The default value is `"false"`. Set to `"true"` to remove this element during parsing.
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 [`<createData>`]: test/actions.md#createdata
 [`<test>`]: test/index.md
 [actions]: test/actions.md

@@ -93,6 +93,6 @@ The `static-checks` command includes a test material ownership check that should
 
 See [mftf commands] for more information.
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 [merging]: ../merging.md
 [mftf commands]: ../commands/mftf.md

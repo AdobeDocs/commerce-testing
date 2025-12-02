@@ -97,7 +97,7 @@ The following pattern is used when merging with `extends`:
 
 Name files according to the following patterns to make searching in future more easy:
 
-<!-- {% raw %} -->
+\<!-- {% raw %} --\>
 
 #### Test filename
 
@@ -121,7 +121,7 @@ Example: _AdminNavbarSection.xml_.
 
 Format: {Type}_Data.xml_, where Type represents the entity type.
 
-<!-- {% endraw %} -->
+\<!-- {% endraw %} --\>
 
 Example: _ProductData.xml_.
 
@@ -158,13 +158,13 @@ Do not use them for static elements.
 BAD:
 </span>
 
-<!-- {% raw %} -->
+\<!-- {% raw %} --\>
 
 ``` xml
 <element name="relatedProductSectionText" type="text" selector=".fieldset-wrapper.admin__fieldset-section[data-index='{{productType}}']" parameterized="true"/>
 ```
 
-<!-- {% endraw %} -->
+\<!-- {% endraw %} --\>
 
 <span class="color:green">
 GOOD:
@@ -198,7 +198,7 @@ When setting a [merging] order for a test step, do not depend on steps from Adob
 For example, when you write a test step to create a gift card product, set your test step **after** simple product creation and let the framework handle the merge order.
 Since the configurable product module could be disabled, this approach is more reliable than setting the test step **before** creating a configurable product.
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 
 [`<after>`]: ../test/actions.md#before-and-after
 [`<before>`]: ../test/actions.md#before-and-after

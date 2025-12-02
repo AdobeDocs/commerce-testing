@@ -290,9 +290,9 @@ cd <magento_root>/node_modules/grunt-contrib-jasmine
 npm install
 ```
 
-<!-- LINK DEFINITIONS -->
+\<!-- LINK DEFINITIONS --\>
 
-<!-- External -->
+\<!-- External --\>
 [`<magento_root_dir>/app/code/Magento/Ui/view/base/web/js/grid/columns/actions.js`]: https://github.com/magento/magento2/blob/2.4/app/code/Magento/Ui/view/base/web/js/grid/columns/actions.js
 
 [`app/code/Magento/Ui/base/js/grid/columns/actions.test.js`]: https://github.com/magento/magento2/blob/2.4/dev/tests/js/jasmine/tests/app/code/Magento/Ui/base/js/grid/columns/actions.test.js

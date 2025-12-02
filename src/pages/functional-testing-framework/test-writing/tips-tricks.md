@@ -24,7 +24,7 @@ In the bad example we see two parameters being passed into the selector with lit
 Good
 </span>
 
-<!-- {% raw %} -->
+\<!-- {% raw %} --\>
 
 ```xml
 <test>
@@ -423,8 +423,8 @@ BAD:
 <click selector="{{ProductInWebsitesSection.website('Second Website')}}" stepKey="unselectSecondWebsite"/>
 ```
 
-<!--{% endraw %}-->
+\<!--{% endraw %}--\>
 
-<!-- Link Definitions -->
+\<!-- Link Definitions --\>
 [This test]: https://github.com/magento/magento2/blob/2.3/app/code/Magento/Captcha/Test/Mftf/Test/StorefrontCaptchaRegisterNewCustomerTest.xml#L24
 [Data file]: https://github.com/magento/magento2/blob/2.3/app/code/Magento/Captcha/Test/Mftf/Data/CaptchaConfigData.xml

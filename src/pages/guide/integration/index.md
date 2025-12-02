@@ -389,7 +389,7 @@ This folder contains the following sub-folders and files:
 -  `sandbox-<hash>/` – The folder where each Commerce instance stores temporary and configuration data.
 -  `phpunit.xml.dist` – A PHPUnit configuration file.
 
-<!-- LINK DEFINITIONS -->
+\<!-- LINK DEFINITIONS --\>
 
 [phpstorm run]: ../unit/phpstorm.md
 [PHPUnit documentation]: https://docs.phpunit.de/en/9.6/index.html

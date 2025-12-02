@@ -74,6 +74,6 @@ vendor/bin/mftf codecept:run --debug
 
 The Functional Testing Framework command "--debug" option has different meaning than Codeception command "--debug" mode option.
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 
 [pause on codeception.com]: https://codeception.com/docs/02-GettingStarted#Interactive-Pause

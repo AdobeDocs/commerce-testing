@@ -446,7 +446,7 @@ Example:
 MAGENTO_ADMIN_WEBAPI_TOKEN_LIFETIME=10800
 ```
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 
 [`MAGENTO_CLI_COMMAND_PATH`]: #magento_cli_command_path
 [generateDate]: test/actions.md#generatedate

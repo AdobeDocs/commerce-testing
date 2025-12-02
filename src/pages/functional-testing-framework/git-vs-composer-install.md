@@ -83,7 +83,7 @@ There is no difference between having the test materials in `app/code` or in `/v
 
 If you are a contributing developer with an understanding of Git and Composer commands, you can choose the GitHub installation method instead.
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 
 [Composer based Installation]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/composer
 [GitHub Installation]: https://developer.adobe.com/commerce/contributor/guides/install/clone-repository/

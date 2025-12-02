@@ -234,7 +234,7 @@ MFTF tests are kept within its respective Module folder:
 └── <Module2SampleData>
 ```
 
-<!-- Link Definitions -->
+\<!-- Link Definitions --\>
 [definition of done]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/definition-of-done/
 [Web API Functional]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing/
 [Integration]: integration/index.md

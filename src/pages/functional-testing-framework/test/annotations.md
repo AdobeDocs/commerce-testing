@@ -227,7 +227,7 @@ Attribute|Type|Use
 <useCaseId value="USECASE-1"/>
 ```
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 
 [`@Description`]: https://github.com/allure-framework/allure-phpunit#extended-test-class-or-test-method-description
 [`@Features`]: https://github.com/allure-framework/allure-phpunit#map-test-classes-and-test-methods-to-features-and-stories

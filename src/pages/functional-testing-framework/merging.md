@@ -59,7 +59,7 @@ Learn more about running tests with different options using [`mftf`] or [`codece
 
 Skip the `AdminLoginSuccessfulTest` test in the `.../Backend/Test/AdminLoginSuccessfulTest.xml` file while merging with the `.../Foo/Test/AdminLoginSuccessfulTest.xml` file:
 
-<!-- {% raw %} -->
+\<!-- {% raw %} --\>
 
 ```xml
 <tests ...>
@@ -561,9 +561,9 @@ The `_defaultSample` results corresponds to:
 </entity>
 ```
 
-<!-- {% endraw %} -->
+\<!-- {% endraw %} --\>
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 
 [`codecept`]: commands/codeception.md
 [`mftf`]: commands/mftf.md

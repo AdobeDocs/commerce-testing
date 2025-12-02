@@ -80,6 +80,6 @@ use Magento\Framework\Component\ComponentRegistrar;
 
 A theme must be registered in the database. Each time you register a theme, reset the entire application. Use the [`@magentoDbIsolation`][] annotation to keep the database integrity safe.
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 
 [`@magentoDbIsolation`]: ../annotations/magento-db-isolation.md

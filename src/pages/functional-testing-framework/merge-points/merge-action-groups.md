@@ -14,7 +14,7 @@ In this example we add a `<click>` command to check the checkbox that our extens
 
 ## Starting test
 
-<!-- {% raw %} -->
+\<!-- {% raw %} --\>
 
 ```xml
 <actionGroup name="AdminFillSimpleProductFormActionGroup">
@@ -82,4 +82,4 @@ In this example we add a `<click>` command to check the checkbox that our extens
 </actionGroup>
 ```
 
-<!-- {% endraw %} -->
+\<!-- {% endraw %} --\>

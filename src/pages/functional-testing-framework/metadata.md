@@ -719,7 +719,7 @@ Example:
 <param key="status">someValue</param>
 ```
 
-<!-- LINK DEFINITIONS -->
+\<!-- LINK DEFINITIONS --\>
 
 [actions]: test/actions.md
 [api reference]: https://developer.adobe.com/commerce/webapi/get-started/

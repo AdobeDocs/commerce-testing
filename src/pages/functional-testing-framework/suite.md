@@ -102,7 +102,7 @@ There are several ways to generate and execute your new test in the context of a
 
 ### Enabling/disabling WYSIWYG in suite conditions
 
-<!-- {% raw %} -->
+\<!-- {% raw %} --\>
 
 ```xml
 <suites xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../dev/tests/acceptance/vendor/magento/magento2-functional-testing-framework/src/Magento/FunctionalTestingFramework/Suite/etc/suiteSchema.xsd">
@@ -130,7 +130,7 @@ There are several ways to generate and execute your new test in the context of a
 </suites>
 ```
 
-<!-- {% endraw %} -->
+\<!-- {% endraw %} --\>
 This example declares a suite with the name `WYSIWYG`.
 The suite enables WYSIWYG _before_ running tests.
 It performs the following steps:

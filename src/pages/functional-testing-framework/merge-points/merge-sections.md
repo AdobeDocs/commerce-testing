@@ -13,7 +13,7 @@ In this example we add another selector to the section on the products page sect
 
 ## Starting section
 
-<!-- {% raw %} -->
+\<!-- {% raw %} --\>
 
 ```xml
 <section name="AdminProductsPageSection">
@@ -50,4 +50,4 @@ In this example we add another selector to the section on the products page sect
 </section>
 ```
 
-<!-- {% endraw %} -->
+\<!-- {% endraw %} --\>

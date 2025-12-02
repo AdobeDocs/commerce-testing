@@ -242,6 +242,6 @@ class ConfigFixtureTest extends \PHPUnit\Framework\TestCase
 
 ```
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 
 [configuration reference]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/paths/config-reference-sens.html

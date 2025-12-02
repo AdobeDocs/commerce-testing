@@ -33,13 +33,13 @@ Use these sections to learn about testing.
 
 ### Sections
 
-[Application Testing Guide](guide/)
+[Application Testing Guide](guide/index.md)
 
 Explore core code testing principles.
 
 <DiscoverBlock slots="link, text"/>
 
-[Functional Testing Framework](functional-testing-framework/)
+[Functional Testing Framework](functional-testing-framework/index.md)
 
 Learn how to perform automated end-to-end testing.
 

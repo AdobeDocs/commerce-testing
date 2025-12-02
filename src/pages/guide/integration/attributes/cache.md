@@ -97,6 +97,6 @@ class BarTest extends \PHPUnit\Framework\TestCase
 
    All cache types are disabled initially, so `Cache('config', false)` doesn't make sense here.
 
-<!-- Link definitions -->
+\<!-- Link definitions --\>
 
 [cache type]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/manage-cache.html
