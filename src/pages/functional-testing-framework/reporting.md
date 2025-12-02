@@ -317,5 +317,4 @@ Refer to the [Reporting section][] for more Allure CLI details.
 [codecept]: commands/codeception.md
 [codeception]: https://codeception.com/docs/reference/Commands
 [mftf]: commands/mftf.md
-[report an issue]: https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md#report-an-issue
 [Reporting section]: https://docs.qameta.io/allure/#_reporting

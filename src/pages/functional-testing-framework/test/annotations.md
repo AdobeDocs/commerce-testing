@@ -241,7 +241,6 @@ Attribute|Type|Use
 [features]: #features
 [group]: #group
 [setup instructions in Allure]: https://github.com/allure-framework/allure1/wiki/Test-Case-ID
-[severity]: #severity
 [stories]: #stories
 [suite]: ../suite.md
 [tests]: index.md#tests

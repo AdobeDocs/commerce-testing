@@ -366,7 +366,6 @@ allure serve dev/tests/acceptance/tests/_output/allure-results/
 [PhpStorm]: https://www.jetbrains.com/phpstorm/
 [selenium server]: https://www.seleniumhq.org/download/
 [Set up a standalone MFTF]: #set-up-a-standalone-mftf
-[test suite]: suite.md
 [Find your version]: index.md#find-your-framework-version
 [Installation Guide docroot]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/tutorials/docroot
 [two-factor authentication (2FA) extension]: https://developer.adobe.com/commerce/testing/functional-testing-framework/two-factor-authentication/

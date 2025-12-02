@@ -47,7 +47,6 @@ This order is necessary to meet the requirement of setting up the store-scoped c
 
 \<!-- LINK DEFINITIONS --\>
 
-[PHPUnit annotations]: ../annotations/index.md
 [PHP built-in attributes]: https://www.php.net/manual/en/language.attributes.overview.php
 [AppIsolation]: app-isolation.md
 [Config]: config-fixture.md

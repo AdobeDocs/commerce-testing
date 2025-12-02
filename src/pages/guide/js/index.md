@@ -103,7 +103,7 @@ in its static representations generated in Step 6 previously:
 
 `<magento_root_dir>/pub/static/<area>/<theme>/<localisation>/Magento_Ui/js/columns/actions.js`.
 
-### Step 1. Create a new file with name `<fileName>.test.js` in an appropriate module directory.
+### Step 1. Create a new file with name `<fileName>.test.js` in an appropriate module directory
 
 For convenience, we can reflect the directory structure of a file to test.
 
@@ -113,7 +113,7 @@ A path to a test of the module: `app/code/Magento/Ui/base/js/grid/columns/action
 
 In `<magento_root_dir>/dev/tests/js/jasmine/tests` create the test with appropriate path.
 
-### Step 2. Require a file that you want to test.
+### Step 2. Require a file that you want to test
 
 For our example we need to cover all static view files ending with `Magento_Ui/js/grid/columns/actions`.
 
@@ -128,7 +128,7 @@ define([
 });
 ```
 
-### Step 3. Write your Jasmine test code.
+### Step 3. Write your Jasmine test code
 
 A Jasmine test consists of main two parts:
 
@@ -246,7 +246,7 @@ The array of the tests can be edited in the `_SpecRunner.html` file to include o
 
 ### Error: Cannot find module '&lt;module&gt;'
 
-#### Issue:
+#### Issue
 
 An error message appears:
 
@@ -258,7 +258,7 @@ Loading "Gruntfile.js" tasks...ERROR
 Warning: Task "spec" not found. Use --force to continue.
 ```
 
-#### Solution:
+#### Solution
 
 1. Make sure your Node.js version is up-to-date.
 1. Remove `package.json`, `Gruntfile.js`.
@@ -268,7 +268,7 @@ Warning: Task "spec" not found. Use --force to continue.
 
 ### Warning: Cannot read property 'pid' of undefined
 
-#### Issue:
+#### Issue
 
 An error message appears:
 
@@ -278,7 +278,7 @@ Warning: Cannot read property 'pid' of undefined
 Use --force to continue. Aborted due to warnings.
 ```
 
-#### Solution:
+#### Solution
 
 Run in your terminal:
 

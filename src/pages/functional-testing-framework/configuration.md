@@ -14,7 +14,7 @@ Advanced users can create custom configurations based on requirements and enviro
 
 ## Basic configuration
 
-These basic configuration values are __required__ and must be set by the user before the framework can function correctly.
+These basic configuration values are **required** and must be set by the user before the framework can function correctly.
 
 ### MAGENTO_BASE_URL
 
