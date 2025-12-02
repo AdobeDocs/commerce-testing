@@ -40,7 +40,7 @@ bin/magento security:tfa:google:set-secret <MAGENTO_ADMIN_USERNAME> <OTP_SHARED_
 ## Configure the MFTF
 
 Save the same base32-encoded `secret` in the Functional Testing Framework credential storage, e.g. `.credentials` file, `HashiCorp Vault` or `AWS Secrets Manager`.
-More details are [here](./credentials.md).
+More details are in [Credentials](./credentials.md).
 
 The path of the `secret` should be:
 

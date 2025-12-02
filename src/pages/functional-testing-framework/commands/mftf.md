@@ -520,7 +520,7 @@ vendor/bin/mftf static-checks [<names>]...
 
 | Option                | Description                                                                                               |
 |-----------------------|-----------------------------------------------------------------------------------------------------------|
-| `-p, --path` | Path to a test module to run "deprecatedEntityUsage" and "pauseActionUsage" static check scripts. Option is ignored by other static check scripts.
+| `-p, --path` | Path to a test module to run "deprecatedEntityUsage" and "pauseActionUsage" static check scripts. Option is ignored by other static check scripts. |
 
 #### Examples
 

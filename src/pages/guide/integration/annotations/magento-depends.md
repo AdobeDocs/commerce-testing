@@ -125,4 +125,4 @@ public function testEmail(CustomerInterface $customer)
 }
 ```
 
-You can read more about PHPUnit dependency annotation [here](https://docs.phpunit.de/en/9.6/annotations.html#depends).
+You can read more about PHPUnit dependency annotation in the [PHPUnit documentation](https://docs.phpunit.de/en/9.6/annotations.html#depends).

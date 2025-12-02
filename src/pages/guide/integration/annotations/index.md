@@ -15,7 +15,7 @@ DocBlock annotations help to declare context in your code. In addition to built-
 
 **DocBlock annotations are strongly discouraged for new tests.** Use [PHP Attributes](../attributes/index.md) instead. PHP Attributes offer superior type safety, better IDE support, improved readability, and enable powerful parameterization of data fixtures. DocBlock annotations should only be used when maintaining legacy tests or when PHP 8+ is not available.
 
-### Quick overview
+## Quick overview
 
 The following annotations are available in integration tests:
 
@@ -32,7 +32,7 @@ Enable/Disable Cache|`@magentoCache`|`@magentoCache all enabled disabled`|Enable
 Indexer Dimension Mode|`@magentoIndexerDimensionMode`|`@magentoIndexerDimensionMode <indexer> <mode>`|Sets the indexer dimension mode for the test run. More information can be found in the [DevBlog](https://community.magento.com/t5/Magento-DevBlog/Indexers-parallelization-and-optimization/ba-p/104922).
 Register Components|`@magentoComponentsDir`|`@magentoComponentsDir <dir_path>`|Registers fixture components from specified directory (recursively). Unregisters the components after the test is finished.
 
-### Applying annotations
+## Applying annotations
 
 The Magento-specific annotations for integration tests are applied in the following order:
 

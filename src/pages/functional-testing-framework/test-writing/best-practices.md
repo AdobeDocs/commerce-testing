@@ -17,7 +17,7 @@ Adobe Commerce and Magento Open Source offers more than **3000** acceptance test
 It is very probable that behaviour you want to test already exists as a Test or Action Group.
 Instead of writing everything by yourself - use `extends` attribute to refer to existing element and customize it.
 
-**Reusable Resources**
+#### Reusable Resources
 
 *  Tests (reusable with `<test extends="...">` argument)
 *  Action Group (reusable with including `<actionGroup ref="...">`, or extending `<actionGroup extends="...">`)
@@ -150,17 +150,13 @@ Use a lower case first letter for:
 2. Use [parameterized selectors] for constructing a selector when test-specific or runtime-generated information is needed.
 Do not use them for static elements.
 
-<span class="color:red">
-BAD:
-</span>
+**Bad:**
 
 ``` xml
 <element name="relatedProductSectionText" type="text" selector=".fieldset-wrapper.admin__fieldset-section[data-index='{{productType}}']" parameterized="true"/>
 ```
 
-<span class="color:green">
-GOOD:
-</span>
+**Good:**
 
 Define these three elements and reference them by name in the tests.
 

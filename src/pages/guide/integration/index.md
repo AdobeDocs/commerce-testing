@@ -118,7 +118,7 @@ return [
 Leave all the settings that do not start with `db-` and `amqp-` at their default values.
 
 You can include additional setup options—available to the `setup:install` command—in the test configuration file. A
-complete list of options is available [here](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/advanced).
+complete list of options is available in the [Installation Guide](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/advanced).
 
 If your project requires custom entries in the `core_config_data` table, such as the introduction of new third-party services
 that affect your application on a basic level or configuration for logic that would prevent access if not configured
