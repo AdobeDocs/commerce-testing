@@ -66,5 +66,8 @@ MD049: false
 MD050:
   style: asterisk
 
+# MD052/reference-links-images - Reference links and images should have a title attribute (disabled for flexibility)
+MD052: false
+
 # MD060/table-column-style - Table column style (disabled for flexible formatting)
 MD060: false
