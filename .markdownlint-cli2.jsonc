@@ -8,5 +8,10 @@
         "coverage/",
         ".github/",
         "src/pages/config.md"
-        ]
+        ],
+
+    // Custom rules
+    "customRules": [
+        ".markdownlint-custom-rules.js"
+    ]
 }
