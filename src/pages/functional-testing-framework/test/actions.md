@@ -1518,7 +1518,7 @@ Attribute|Type|Use|Description
 
 ### pause
 
-See usage of `<pause` in [interactive-pause](../interactive-pause.md) and [pause docs on codeception.com](https://codeception.com/docs/02-GettingStarted#Interactive-Pause).
+See usage of `<pause` in [interactive-pause](../interactive-pause.md) and [pause docs on codeception.com](https://codeception.com/docs/Debugging#Pause).
 
 Attribute|Type|Use|Description
 ---|---|---|---

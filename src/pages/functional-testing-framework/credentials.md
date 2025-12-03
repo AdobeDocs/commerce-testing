@@ -286,7 +286,7 @@ The test delivered with the Adobe Commerce and Magento Open Source application d
 [data]: data.md
 [initial setup]: getting-started.md
 [test reports]: reporting.md
-[Download Vault]: https://www.hashicorp.com/products/vault/
+[Download Vault]: https://www.hashicorp.com/en/products/vault
 [Login Vault]: https://developer.hashicorp.com/vault/docs/commands/login
 [Vault KV2]: https://developer.hashicorp.com/vault/docs/secrets/kv/kv-v2
 [`CREDENTIAL_VAULT_ADDRESS`]: configuration.md#credential_vault_address

@@ -231,14 +231,14 @@ MFTF tests are kept within its respective module folder:
 ```
 
 \<!-- Link Definitions --\>
-[definition of done]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/definition-of-done/
+[definition of done]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/definition-of-done
 [Web API Functional]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing/
 [Integration]: integration/index.md
 [performance toolkit]: https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/generate-data
 [JavaScript]: js/index.md
 [PhpCs]: https://developer.adobe.com/commerce/php/coding-standards/php/
 [PhpMd]: https://phpmd.org/
-[backward compatibility policy]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/backward-compatibility-policy/
+[backward compatibility policy]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/backward-compatibility-policy
 [Functional Testing Framework]: ../functional-testing-framework/index.md
 [Web API functional testing]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing/
 [Running Integration Tests]: integration/index.md

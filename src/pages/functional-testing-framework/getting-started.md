@@ -364,7 +364,7 @@ allure serve dev/tests/acceptance/tests/_output/allure-results/
 [tests]: index.md#tests
 [php]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/system-requirements
 [PhpStorm]: https://www.jetbrains.com/phpstorm/
-[selenium server]: https://www.seleniumhq.org/download/
+[selenium server]: https://www.selenium.dev/downloads/
 [Set up a standalone MFTF]: #set-up-a-standalone-mftf
 [Find your version]: index.md#find-your-framework-version
 [Installation Guide docroot]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/tutorials/docroot

@@ -86,6 +86,6 @@ If you are a contributing developer with an understanding of Git and Composer co
 \<!-- Link definitions --\>
 
 [Composer based Installation]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/composer
-[GitHub Installation]: https://developer.adobe.com/commerce/contributor/guides/install/clone-repository/
+[GitHub Installation]: https://developer.adobe.com/commerce/contributor/guides/install/clone-repository
 [Standalone]: getting-started.md#set-up-a-standalone-mftf
 [composer package]: https://developer.adobe.com/commerce/php/development/package/component/

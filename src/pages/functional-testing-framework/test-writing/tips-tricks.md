@@ -378,5 +378,5 @@ When working with input type `checkbox`, do not use the `click` action; use `che
 ```
 
 \<!-- Link Definitions --\>
-[This test]: https://github.com/magento/magento2/blob/2.3/app/code/Magento/Captcha/Test/Mftf/Test/StorefrontCaptchaRegisterNewCustomerTest.xml#L24
-[Data file]: https://github.com/magento/magento2/blob/2.3/app/code/Magento/Captcha/Test/Mftf/Data/CaptchaConfigData.xml
+[This test]: https://github.com/magento/magento2/blob/2.4/app/code/Magento/Captcha/Test/Mftf/Test/StorefrontCaptchaRegisterNewCustomerTest.xml#L25
+[Data file]: https://github.com/magento/magento2/blob/2.4/app/code/Magento/Captcha/Test/Mftf/Data/CaptchaConfigData.xml

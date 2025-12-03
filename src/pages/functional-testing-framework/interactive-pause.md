@@ -11,13 +11,13 @@ It can be difficut to write a successful test on the first attempt. You will nee
 
 Since Codeception 3.0, you can pause execution in any point and enter an interactive shell where you will be able to try commands in action.
 
-Now this `Interactive Pause` feature is available in MFTF. All you need to do is to set `ENABLE_PAUSE` to `true` in `.env`.
+Now this feature is available in MFTF. All you need to do is to set `ENABLE_PAUSE` to `true` in `.env`.
 
-Check [pause on codeception.com][] for documentation and a video to see `Interactive Pause` in action.
+Check [PAUSE on Codeception documentation][pause].
 
 In short, when a test gets to `$I->pause()` step, it stops and shows a console where you can try all available commands with auto-completion, stash commands, save screenshots, etc.
 
-## How to Configure Interactive Pause
+## How to configure interactive pause
 
 To be able to use Interactive console you need to install `hoa/console` library by running `composer require hoa/console` command in your project. This will allow `<pause />` action to work.
 The Functional Testing Framework supports `Interactive Pause` when `ENABLE_PAUSE` is set to `true` in `<project_root>/dev/tests/acceptance/.env` file.
@@ -76,4 +76,4 @@ The Functional Testing Framework command "--debug" option has different meaning 
 
 \<!-- Link definitions --\>
 
-[pause on codeception.com]: https://codeception.com/docs/02-GettingStarted#Interactive-Pause
+[pause]: https://codeception.com/docs/Debugging#Pause
