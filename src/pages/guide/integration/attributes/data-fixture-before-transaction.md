@@ -51,5 +51,4 @@ class CategoryTest extends TestCase
 }
 ```
 
-
 [Data Fixture attribute]: data-fixture.md

@@ -345,7 +345,6 @@ Run the Allure server pointing to this directory:
 allure serve dev/tests/acceptance/tests/_output/allure-results/
 ```
 
-
 [`codecept`]: commands/codeception.md
 [`generate:urn-catalog`]: commands/mftf.md#generateurn-catalog
 [`MAGENTO_BP`]: configuration.md#magento_bp

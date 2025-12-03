@@ -186,7 +186,6 @@ When setting a [merging] order for a test step, do not depend on steps from Adob
 For example, when you write a test step to create a gift card product, set your test step **after** simple product creation and let the framework handle the merge order.
 Since the configurable product module could be disabled, this approach is more reliable than setting the test step **before** creating a configurable product.
 
-
 [`<after>`]: ../test/actions.md#before-and-after
 [`<before>`]: ../test/actions.md#before-and-after
 [`<comment>`]: ../test/actions.md#comment

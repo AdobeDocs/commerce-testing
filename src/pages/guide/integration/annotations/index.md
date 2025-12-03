@@ -49,5 +49,4 @@ The Magento-specific annotations for integration tests are applied in the follow
 
 This order is necessary to meet the requirement of setting up the store-scoped configuration values for fixture stores (stores that are created by data fixtures).
 
-
 [PHPUnit annotations]: https://docs.phpunit.de/en/9.6/annotations.html

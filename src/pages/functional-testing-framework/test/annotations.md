@@ -227,7 +227,6 @@ Attribute|Type|Use
 <useCaseId value="USECASE-1"/>
 ```
 
-
 [`@Description`]: https://github.com/allure-framework/allure-phpunit#extended-test-class-or-test-method-description
 [`@Features`]: https://github.com/allure-framework/allure-phpunit#map-test-classes-and-test-methods-to-features-and-stories
 [`@group`]: https://codeception.com/docs/07-AdvancedUsage#Groups
