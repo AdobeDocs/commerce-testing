@@ -312,9 +312,9 @@ Refer to the [Reporting section][] for more Allure CLI details.
 [`after`]: test/index.md#after
 [`run:group`]: commands/mftf.md#rungroup
 [`run:test`]: commands/mftf.md#runtest
-[Allure Framework]: https://docs.qameta.io/allure/
+[Allure Framework]: https://allurereport.org/
 [Allure Test Report]: https://github.com/allure-framework
 [codecept]: commands/codeception.md
 [codeception]: https://codeception.com/docs/reference/Commands
 [mftf]: commands/mftf.md
-[Reporting section]: https://docs.qameta.io/allure/#_reporting
+[Reporting section]: https://allurereport.org/docs/

@@ -31,13 +31,13 @@ To write a selector you need to be able to see the DOM and find the element with
 
 See these links for more information about built-in browser developer tools:
 
-*  [Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools/)
-*  [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools)
+*  [Chrome Developer Tools](https://developer.chrome.com/docs/devtools/)
+*  [Firefox Developer Tools](https://firefox-source-docs.mozilla.org/devtools-user/index.html)
 
 See these links for common browser addons that may offer advantages over browser developer tools:
 
-*  [Live editor for CSS, Less & Sass - Magic CSS](https://chrome.google.com/webstore/detail/live-editor-for-css-less/ifhikkcafabcgolfjegfcgloomalapol?hl=en)
-*  [XPath Helper](https://chrome.google.com/webstore/detail/xpath-helper/hgimnogjllphhhkhlmebbmlgjoejdpjl?hl=en)
+*  [Live editor for CSS, Less & Sass - Magic CSS](https://chromewebstore.google.com/detail/live-editor-for-css-less/ifhikkcafabcgolfjegfcgloomalapol?hl=en)
+*  [XPath Helper](https://chromewebstore.google.com/detail/xpath-helper/hgimnogjllphhhkhlmebbmlgjoejdpjl?hl=en)
 
 ### CSS vs XPath
 

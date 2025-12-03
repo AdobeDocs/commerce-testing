@@ -351,7 +351,7 @@ allure serve dev/tests/acceptance/tests/_output/allure-results/
 [`generate:urn-catalog`]: commands/mftf.md#generateurn-catalog
 [`MAGENTO_BP`]: configuration.md#magento_bp
 [`mftf`]: commands/mftf.md
-[allure docs]: https://docs.qameta.io/allure/
+[allure docs]: https://allurereport.org/docs/
 [Allure Framework]: https://github.com/allure-framework
 [basic configuration]: configuration.md#basic-configuration
 [chrome driver]: https://sites.google.com/chromium.org/driver/downloads

@@ -118,4 +118,4 @@ allure generate <path_to_results> -c -o <path_to_output>
 \<!-- Link definitions --\>
 [Install Commerce using Composer]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/composer
 [Configure 2FA]: two-factor-authentication.md
-[Allure]: https://docs.qameta.io/allure/
+[Allure]: https://allurereport.org/docs/

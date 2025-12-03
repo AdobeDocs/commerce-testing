@@ -297,7 +297,7 @@ npm install
 
 [`app/code/Magento/Ui/base/js/grid/columns/actions.test.js`]: https://github.com/magento/magento2/blob/2.4/dev/tests/js/jasmine/tests/app/code/Magento/Ui/base/js/grid/columns/actions.test.js
 
-[Deploy static view files]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/static-view/static-view-file-deployment.html
+[Deploy static view files]: https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/static-view/static-view-file-deployment
 
 [fontconfig library]: https://www.freedesktop.org/wiki/Software/fontconfig/
 

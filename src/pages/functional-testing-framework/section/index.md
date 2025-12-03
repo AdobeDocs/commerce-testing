@@ -152,6 +152,6 @@ Whenever the `signIn` button is used in a test, the Functional Testing Framework
 [page]: ../page.md
 [action]: ../test/actions.md
 [XPath]: https://www.w3schools.com/xml/xpath_nodes.asp
-[CSS]: https://www.w3schools.com/cssref/css_selectors.asp
+[CSS]: https://www.w3schools.com/cssref/css_selectors.php
 [Locator function]: locator-functions.md
 [Parameterized selectors]: parameterized-selectors.md

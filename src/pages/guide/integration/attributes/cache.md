@@ -99,4 +99,4 @@ class BarTest extends \PHPUnit\Framework\TestCase
 
 \<!-- Link definitions --\>
 
-[cache type]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/manage-cache.html
+[cache type]: https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/manage-cache

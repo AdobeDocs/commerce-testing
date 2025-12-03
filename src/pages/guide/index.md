@@ -234,7 +234,7 @@ MFTF tests are kept within its respective module folder:
 [definition of done]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/definition-of-done/
 [Web API Functional]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing/
 [Integration]: integration/index.md
-[performance toolkit]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/generate-data.html
+[performance toolkit]: https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/generate-data
 [JavaScript]: js/index.md
 [PhpCs]: https://developer.adobe.com/commerce/php/coding-standards/php/
 [PhpMd]: https://phpmd.org/
@@ -243,10 +243,10 @@ MFTF tests are kept within its respective module folder:
 [Web API functional testing]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing/
 [Running Integration Tests]: integration/index.md
 [Extension Developer Guide on JavaScript Tests]: js/index.md
-[`magento dev:tests:run`]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/unit-tests.html
+[`magento dev:tests:run`]: https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/unit-tests
 [test-driven development]: https://en.wikipedia.org/wiki/Test-driven_development
 [Running Unit Tests]: unit/index.md
 [Writing testable code]: unit/writing-testable-code.md
-[System Administrators Guide on Running Tests]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/unit-tests.html
+[System Administrators Guide on Running Tests]: https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/unit-tests
 [PHPStan]: https://github.com/phpstan/phpstan
 [level 1]: https://phpstan.org/user-guide/rule-levels
