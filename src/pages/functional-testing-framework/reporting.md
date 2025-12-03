@@ -307,7 +307,6 @@ allure generate dev/tests/acceptance/tests/_output/allure-result --clean
 
 Refer to the [Reporting section][] for more Allure CLI details.
 
-\<!-- Link definitions --\>
 
 [`after`]: test/index.md#after
 [`run:group`]: commands/mftf.md#rungroup

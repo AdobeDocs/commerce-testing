@@ -79,6 +79,5 @@ A theme must be registered in the database.
 Each time you register a theme, reset the entire application.
 Use the [`DbIsolation`][] attribute to keep the database integrity safe.
 
-\<!-- Link definitions --\>
 
 [`DbIsolation`]: ../annotations/magento-db-isolation.md

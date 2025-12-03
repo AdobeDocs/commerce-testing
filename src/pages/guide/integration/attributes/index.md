@@ -45,7 +45,6 @@ This order is necessary to meet the requirement of setting up the store-scoped c
 
 [PHP built-in attributes][] are only available with PHP8 and above.
 
-\<!-- LINK DEFINITIONS --\>
 
 [PHP built-in attributes]: https://www.php.net/manual/en/language.attributes.overview.php
 [AppIsolation]: app-isolation.md

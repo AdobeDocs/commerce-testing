@@ -405,7 +405,6 @@ Now we can reference this action group within our test (and any other test).
 A well written test will end up being a set of action groups.
 The finished test is fully abstracted in such a way that it is short and readable and importantly, the abstracted data and action groups can be used again.
 
-\<!-- Link Definitions --\>
 [actions]: https://developer.adobe.com/commerce/testing/functional-testing-framework/test/actions/
 [action groups]: https://developer.adobe.com/commerce/testing/functional-testing-framework/test/action-groups/
 [Data entities]: https://developer.adobe.com/commerce/testing/functional-testing-framework/data/

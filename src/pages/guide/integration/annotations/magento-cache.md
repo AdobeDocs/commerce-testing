@@ -100,6 +100,5 @@ class BarTest extends \PHPUnit\Framework\TestCase
 
    All cache types are disabled initially, so `@magentoCache config disabled` doesn't make sense here.
 
-\<!-- Link definitions --\>
 
 [cache type]: https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/manage-cache

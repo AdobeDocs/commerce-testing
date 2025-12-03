@@ -559,7 +559,6 @@ The `_defaultSample` results corresponds to:
 </entity>
 ```
 
-\<!-- Link definitions --\>
 
 [`codecept`]: commands/codeception.md
 [`mftf`]: commands/mftf.md

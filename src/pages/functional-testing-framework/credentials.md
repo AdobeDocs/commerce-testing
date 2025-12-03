@@ -279,7 +279,6 @@ The decrypted values are only available in the `.credentials` file or within vau
 
 The test delivered with the Adobe Commerce and Magento Open Source application do not use credentials and do not cover external services, because of sensitivity of the data.
 
-\<!-- Link definitions --\>
 [`fillField`]: test/actions.md#fillfield
 [`magentoCLI`]: test/actions.md#magentocli
 [`createData`]: test/actions.md#createdata

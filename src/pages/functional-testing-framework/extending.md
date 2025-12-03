@@ -337,7 +337,6 @@ Extend data to reuse entities in your module.
 </entities>
 ```
 
-\<!-- Link definitions --\>
 [test]: test/index.md
 [data]: data.md
 [action group]: test/action-groups.md

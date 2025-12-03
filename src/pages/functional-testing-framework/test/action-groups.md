@@ -311,7 +311,6 @@ Attribute|Type|Use|Description
 `defaultValue`|string|optional|Provides a default data value.
 `type`|Possible values: `string`, `entity` (default).|optional|Defines the argument data type; Defaults to `entity`.
 
-\<!-- Link Definitions --\>
 [actions]: actions.md
 [test]: index.md#test
 [created]: ../data.md#persist-a-data-entity-as-a-prerequisite-of-a-test
