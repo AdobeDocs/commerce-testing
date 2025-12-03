@@ -99,25 +99,25 @@ Name files according to the following patterns to make searching in future more 
 
 #### Test filename
 
-Format: {_Admin_ or _Storefront_}{Functionality}_Test.xml_, where Functionality briefly describes the testing functionality.
+Format: `{_Admin_ or _Storefront_}{Functionality}_Test.xml_`, where Functionality briefly describes the testing functionality.
 
 Example: _StorefrontCreateCustomerTest.xml_.
 
 #### Action Group filename
 
-Format: {_Admin_ or _Storefront_}{Action Group Summary}ActionGroup.xml`, where Action Group Summary is a short description of what the action group does.
+Format: `{_Admin_ or _Storefront_}{Action Group Summary}ActionGroup.xml`, where Action Group Summary is a short description of what the action group does.
 
 Example: _AdminCreateStoreActionGroup.xml_
 
 #### Section filename
 
-Format: {_Admin_ or _Storefront_}{UI Description}_Section.xml_, where UI Description briefly describes the testing UI.
+Format: `{_Admin_ or _Storefront_}{UI Description}_Section.xml_`, where UI Description briefly describes the testing UI.
 
 Example: _AdminNavbarSection.xml_.
 
 #### Data filename
 
-Format: {Type}_Data.xml_, where Type represents the entity type.
+Format: `{Type}_Data.xml_`, where Type represents the entity type.
 
 Example: _ProductData.xml_.
 
