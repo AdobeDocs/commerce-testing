@@ -981,13 +981,13 @@ Attribute|Type|Use|Description
 
 See [rapidClick docs on codeception.com](https://codeception.com/docs/modules/WebDriver#rapidClick).
 
-| Attribute  | Type   | Use      | Description                                     |
-|------------|--------|----------|-------------------------------------------------|
-| `selector` | string | optional | A selector for the HTML element to rapid click. |
-| `count`    | string | required | Click count.                                    |
-| `stepKey`  | string | required | A unique identifier of the action.              |
-| `before`   | string | optional | `stepKey` of action that must be executed next. |
-| `after`    | string | optional | `stepKey` of preceding action.                  |
+Attribute|Type|Use|Description
+---|---|---|---
+`selector`|string|optional|A selector for the HTML element to rapid click.
+`count`|string|required|Click count.
+`stepKey`|string|required|A unique identifier of the action.
+`before`|string|optional|`stepKey` of action that must be executed next.
+`after`|string|optional|`stepKey` of preceding action.
 
 #### Examples
 
@@ -1518,7 +1518,7 @@ Attribute|Type|Use|Description
 
 ### pause
 
-See usage of `<pause` in [interactive-pause](../interactive-pause.md) and [pause docs on codeception.com](https://codeception.com/docs/02-GettingStarted#Interactive-Pause).
+See usage of `<pause` in [interactive-pause](../interactive-pause.md) and [pause docs on codeception.com](https://codeception.com/docs/Debugging#Pause).
 
 Attribute|Type|Use|Description
 ---|---|---|---

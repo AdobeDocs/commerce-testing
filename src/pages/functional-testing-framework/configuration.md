@@ -14,7 +14,7 @@ Advanced users can create custom configurations based on requirements and enviro
 
 ## Basic configuration
 
-These basic configuration values are __required__ and must be set by the user before the framework can function correctly.
+These basic configuration values are **required** and must be set by the user before the framework can function correctly.
 
 ### MAGENTO_BASE_URL
 
@@ -445,8 +445,6 @@ Example:
 ```conf
 MAGENTO_ADMIN_WEBAPI_TOKEN_LIFETIME=10800
 ```
-
-<!-- Link definitions -->
 
 [`MAGENTO_CLI_COMMAND_PATH`]: #magento_cli_command_path
 [generateDate]: test/actions.md#generatedate

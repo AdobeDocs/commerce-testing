@@ -307,15 +307,12 @@ allure generate dev/tests/acceptance/tests/_output/allure-result --clean
 
 Refer to the [Reporting section][] for more Allure CLI details.
 
-<!-- Link definitions -->
-
 [`after`]: test/index.md#after
 [`run:group`]: commands/mftf.md#rungroup
 [`run:test`]: commands/mftf.md#runtest
-[Allure Framework]: https://docs.qameta.io/allure/
+[Allure Framework]: https://allurereport.org/
 [Allure Test Report]: https://github.com/allure-framework
 [codecept]: commands/codeception.md
 [codeception]: https://codeception.com/docs/reference/Commands
 [mftf]: commands/mftf.md
-[report an issue]: https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md#report-an-issue
-[Reporting section]: https://docs.qameta.io/allure/#_reporting
+[Reporting section]: https://allurereport.org/docs/

@@ -20,11 +20,7 @@ In the bad example we see two parameters being passed into the selector with lit
 
 **Why?** The next person maintaining the test or extending it may not be able to understand what the parameters are referencing.
 
-<span style="color:green">
-Good
-</span>
-
-<!-- {% raw %} -->
+**Good:**
 
 ```xml
 <test>
@@ -43,9 +39,7 @@ Good
 </actionGroup>
 ```
 
-<span style="color:red">
-Bad
-</span>
+**Bad:**
 
 ```xml
 <test>
@@ -61,9 +55,7 @@ In the bad example, we perform some heavy UI steps first.
 
 **Why?** If something goes wrong there, then the critical `magentoCLI` commands may not get a chance to run, leaving Adobe Commerce or Magento Open Source configured incorrectly for any upcoming tests.
 
-<span style="color:green">
-Good:
-</span>
+**Good:**
 
 ```xml
 <after>
@@ -81,9 +73,7 @@ Good:
 </after>
 ```
 
-<span style="color:red">
-Bad:
-</span>
+**Bad:**
 
 ```xml
 <after>
@@ -115,17 +105,13 @@ And for `seeElement` it will output something like this:
 There is a subtle distinction: The first is a failure but it is the desired result: a 'positive failure'.
 The second is a proper result of the action.
 
-<span style="color:green">
-Good:
-</span>
+**Good:**
 
 ```xml
 <see selector="//div[@data-element='content']//p" userInput="SOME EXPECTED TEXT" stepKey="seeSlide1ContentStorefront"/>
 ```
 
-<span style="color:red">
-Bad:
-</span>
+**Bad:**
 
 ```xml
 <seeElement selector="//div[@data-element='content']//p[.='SOME EXPECTED TEXT']" stepKey="seeSlide1ContentStorefront"/>
@@ -135,9 +121,7 @@ Bad:
 
 Whenever possible, specify a `defaultValue` for action group arguments.
 
-<span style="color:green">
-GOOD:
-</span>
+**Good:**
 
 ```xml
 <actionGroup name="StorefrontAssertProductImagesOnProductPageActionGroup">
@@ -155,9 +139,7 @@ GOOD:
 </actionGroup>
 ```
 
-<span style="color:red">
-BAD:
-</span>
+**Bad:**
 
 ```xml
 <actionGroup name="StorefrontAssertProductImagesOnProductPageActionGroup">
@@ -183,9 +165,7 @@ Build your tests using action groups, even if an action group contains a single 
 Extending a single action group will update all tests that use this group.
 This improves maintainability as multiple instances of a failure can be fixed with a single action group update.
 
-<span style="color:green">
-GOOD:
-</span>
+**Good:**
 
 ```xml
 <test name="NavigateClamberWatchEntityTest">
@@ -211,9 +191,7 @@ GOOD:
 </test>
 ```
 
-<span style="color:red">
-BAD:
-</span>
+**Bad:**
 
 ```xml
 <test name="NavigateClamberWatchEntityTest">
@@ -241,9 +219,7 @@ Do not use numbers to make a `stepKey` unique.
 
 **Why?** This helps with readability and clarity.
 
-<span style="color:green">
-GOOD:
-</span>
+**Good:**
 
 ```xml
 <click selector="{{StorefrontNavigationSection.topCategory(SimpleSubCategory.name)}}" stepKey="clickSimpleSubCategoryLink" />
@@ -259,9 +235,7 @@ GOOD:
 <waitForPageLoad stepKey="waitForCustomSimpleProductPageLoad" />
 ```
 
-<span style="color:red">
-BAD:
-</span>
+**Bad:**
 
 ```xml
 <click selector="{{StorefrontNavigationSection.topCategory(SimpleSubCategory.name)}}" stepKey="clickCategoryLink1" />
@@ -299,15 +273,11 @@ When possible, use `contains(text(), 'someTextHere')` rather than `text()='someT
 If you are comparing text within a selector and have an unexpected space, or a blank line above or below the string, `text()` will fail while the `contains(text())` format will catch it.
 In this scenario `text()` is more exacting. Use it when you need to be very precise about what is getting compared.
 
-<span style="color:green">
-GOOD:
-</span>
+**Good:**
 
 `//span[contains(text(), 'SomeTextHere')]`
 
-<span style="color:red">
-BAD:
-</span>
+**Bad:**
 
 `//span[text()='SomeTextHere']`
 
@@ -336,17 +306,13 @@ Example:
 </div>
 ```
 
-<span style="color:green">
-GOOD:
-</span>
+**Good:**
 
 ```xml
 <element name="productName" type="input" selector="*[data-index='product-details'] input[name='product[name]']"/>
 ```
 
-<span style="color:red">
-BAD:
-</span>
+**Bad:**
 
 ```xml
 <element name="productName" type="input" selector=".admin__field[data-index=name] input"/>
@@ -360,17 +326,13 @@ If you need to run a command such as  `<magentoCLI command="config:set" />`, do 
 Rather, create an appropriate `ConfigData.xml` file, which contains the required parameters for running the command.
 It will simplify the future maintanence of tests.
 
- <span style="color:green">
-GOOD:
-</span>
+**Good:**
 
 ```xml
 <magentoCLI command="config:set {{StorefrontCustomerCaptchaLength3ConfigData.path}} {{StorefrontCustomerCaptchaLength3ConfigData.value}}" stepKey="setCaptchaLength" />
 ```
 
- <span style="color:red">
-BAD:
-</span>
+**Bad:**
 
 ```xml
 <magentoCLI command="config:set customer/captcha/length 3" stepKey="setCaptchaLength" />
@@ -384,17 +346,13 @@ For example:
 Use descriptive variable names to increase readability.
 **Why?** It makes the code easier to follow and update.
 
- <span style="color:green">
-GOOD:
-</span>
+**Good:**
 
 ```xml
 <element name="storeName" type="checkbox" selector="//label[contains(text(),'{{storeName}}')]" parameterized="true"/>
 ```
 
-<span style="color:red">
-BAD:
-</span>
+**Bad:**
 
 ```xml
 <element name="storeName" type="checkbox" selector="//label[contains(text(),'{{var1}}')]" parameterized="true"/>
@@ -405,26 +363,19 @@ BAD:
 When working with input type `checkbox`, do not use the `click` action; use `checkOption` or `uncheckOption` instead.
 **Why?** A click does not make it clear what the ending state will be; it will simply toggle the current state. Using the proper actions will ensure the expected state of the checkbox.
 
-<span style="color:green">
-GOOD:
-</span>
+**Good:**
 
 ```xml
 <checkOption selector="{{ProductInWebsitesSection.website('Second Website')}}" stepKey="selectSecondWebsite"/>
 <uncheckOption selector="{{ProductInWebsitesSection.website('Second Website')}}" stepKey="unselectSecondWebsite"/>
 ```
 
-<span style="color:red">
-BAD:
-</span>
+**Bad:**
 
 ```xml
 <click selector="{{ProductInWebsitesSection.website('Second Website')}}" stepKey="selectSecondWebsite"/>
 <click selector="{{ProductInWebsitesSection.website('Second Website')}}" stepKey="unselectSecondWebsite"/>
 ```
 
-<!--{% endraw %}-->
-
-<!-- Link Definitions -->
-[This test]: https://github.com/magento/magento2/blob/2.3/app/code/Magento/Captcha/Test/Mftf/Test/StorefrontCaptchaRegisterNewCustomerTest.xml#L24
-[Data file]: https://github.com/magento/magento2/blob/2.3/app/code/Magento/Captcha/Test/Mftf/Data/CaptchaConfigData.xml
+[This test]: https://github.com/magento/magento2/blob/2.4/app/code/Magento/Captcha/Test/Mftf/Test/StorefrontCaptchaRegisterNewCustomerTest.xml#L25
+[Data file]: https://github.com/magento/magento2/blob/2.4/app/code/Magento/Captcha/Test/Mftf/Data/CaptchaConfigData.xml

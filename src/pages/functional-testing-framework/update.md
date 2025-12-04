@@ -49,7 +49,6 @@ Takes place when **first** digit of version number changes.
 1. Update your tests, including data, metadata and other resources. Check if they contain tags that are unsupported in the newer version.
 1. Remove the references to resources (ActionGroups, Sections, Tests) marked as deprecated.
 
-<!-- Link Definitions -->
 [Changelog]: https://github.com/magento/magento2-functional-testing-framework/blob/master/CHANGELOG.md
 [Backward Incompatible Changes]: backward-incompatible-changes.md
 [WYSIWYG settings]: getting-started.md#wysiwyg-settings

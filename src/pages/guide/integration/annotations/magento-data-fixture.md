@@ -1,6 +1,6 @@
 ---
 title: Data Fixture Annotation | Commerce Testing
-description: Prepare Adobe Commmerce and Magento Open Source databases for testing with this DocBlock annotation.
+description: Prepare Adobe Commerce and Magento Open Source databases for testing with this DocBlock annotation.
 keywords:
   - Integration
   - Tools
@@ -119,8 +119,6 @@ Method           | `\Magento\Catalog\Model\ProductTest::prepareProduct` | `\Mage
 ### Restrictions
 
 Do not rely on and do not modify an application state from within a fixture, because [application isolation annotation][magentoAppIsolation] can reset the application state at any time.
-
-<!-- Link definitions -->
 
 [magentoAppIsolation]: ../annotations/magento-app-isolation.md
 [`dev/tests/integration/testsuite/Magento/Cms/_files/pages.php`]: https://github.com/magento/magento2/blob/2.4/dev/tests/integration/testsuite/Magento/Cms/_files/pages.php

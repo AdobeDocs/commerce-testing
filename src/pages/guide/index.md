@@ -193,13 +193,9 @@ Please refer to the article [Writing testable code][] for more information on wh
 The `bin/magento` tool provides a common entry point to execute any of the tests, which can be useful for continuous integration.
 Please see the [System Administrators Guide on Running Tests][] for more information.
 
-<div>
-    <iframe src="https://developer.adobe.com/commerce/php/best-practices/admin/placement-and-design/#feature-extensions" frameborder="0" width="100%" height="100%" align="center" scrolling="no"></iframe>
-</div>
-
 ## Where to find the tests in the file system
 
-Each test type described above corresponds to a subdirectory in `<magento2 root dir>/dev/tests`, as shown here:
+Each test type described above corresponds to a subdirectory in `<repo_root>/dev/tests`, as shown here:
 
 ```tree
 <repo_root>
@@ -216,7 +212,7 @@ Each test type described above corresponds to a subdirectory in `<magento2 root 
 
 Each of these test types must satisfy different requirements before the MFTF can execute them.
 
-MFTF tests are kept within its respective Module folder:
+MFTF tests are kept within its respective module folder:
 
 ```tree
 <extension_repo_root>
@@ -234,23 +230,22 @@ MFTF tests are kept within its respective Module folder:
 └── <Module2SampleData>
 ```
 
-<!-- Link Definitions -->
-[definition of done]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/definition-of-done/
+[definition of done]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/definition-of-done
 [Web API Functional]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing/
 [Integration]: integration/index.md
-[performance toolkit]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/generate-data.html
+[performance toolkit]: https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/generate-data
 [JavaScript]: js/index.md
 [PhpCs]: https://developer.adobe.com/commerce/php/coding-standards/php/
 [PhpMd]: https://phpmd.org/
-[backward compatibility policy]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/backward-compatibility-policy/
+[backward compatibility policy]: https://developer.adobe.com/commerce/contributor/guides/code-contributions/backward-compatibility-policy
 [Functional Testing Framework]: ../functional-testing-framework/index.md
 [Web API functional testing]: https://developer.adobe.com/commerce/webapi/get-started/web-api-functional-testing/
 [Running Integration Tests]: integration/index.md
 [Extension Developer Guide on JavaScript Tests]: js/index.md
-[`magento dev:tests:run`]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/unit-tests.html
+[`magento dev:tests:run`]: https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/unit-tests
 [test-driven development]: https://en.wikipedia.org/wiki/Test-driven_development
 [Running Unit Tests]: unit/index.md
 [Writing testable code]: unit/writing-testable-code.md
-[System Administrators Guide on Running Tests]: https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/unit-tests.html
+[System Administrators Guide on Running Tests]: https://experienceleague.adobe.com/en/docs/commerce-operations/configuration-guide/cli/unit-tests
 [PHPStan]: https://github.com/phpstan/phpstan
 [level 1]: https://phpstan.org/user-guide/rule-levels

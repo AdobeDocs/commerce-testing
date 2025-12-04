@@ -288,7 +288,6 @@ Almost as a side effect, those classes are very easy to test.
 *  [Refactoring][refactoring] by Martin Fowler
 *  *Growing Object Oriented Software Guided by Tests* by Steve Freeman and Nat Pryce
 
-<!-- Link definitions -->
 [single-responsibility-principle]: https://en.wikipedia.org/wiki/Single_responsibility_principle
 [generated]: https://developer.adobe.com/commerce/php/development/components/code-generation/
 [integration-tests]: ../integration/index.md

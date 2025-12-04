@@ -345,13 +345,11 @@ Run the Allure server pointing to this directory:
 allure serve dev/tests/acceptance/tests/_output/allure-results/
 ```
 
-<!-- Link definitions -->
-
 [`codecept`]: commands/codeception.md
 [`generate:urn-catalog`]: commands/mftf.md#generateurn-catalog
 [`MAGENTO_BP`]: configuration.md#magento_bp
 [`mftf`]: commands/mftf.md
-[allure docs]: https://docs.qameta.io/allure/
+[allure docs]: https://allurereport.org/docs/
 [Allure Framework]: https://github.com/allure-framework
 [basic configuration]: configuration.md#basic-configuration
 [chrome driver]: https://sites.google.com/chromium.org/driver/downloads
@@ -364,9 +362,8 @@ allure serve dev/tests/acceptance/tests/_output/allure-results/
 [tests]: index.md#tests
 [php]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/system-requirements
 [PhpStorm]: https://www.jetbrains.com/phpstorm/
-[selenium server]: https://www.seleniumhq.org/download/
+[selenium server]: https://www.selenium.dev/downloads/
 [Set up a standalone MFTF]: #set-up-a-standalone-mftf
-[test suite]: suite.md
 [Find your version]: index.md#find-your-framework-version
 [Installation Guide docroot]: https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/tutorials/docroot
 [two-factor authentication (2FA) extension]: https://developer.adobe.com/commerce/testing/functional-testing-framework/two-factor-authentication/

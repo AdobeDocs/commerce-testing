@@ -17,7 +17,7 @@ Adobe Commerce and Magento Open Source offers more than **3000** acceptance test
 It is very probable that behaviour you want to test already exists as a Test or Action Group.
 Instead of writing everything by yourself - use `extends` attribute to refer to existing element and customize it.
 
-**Reusable Resources**
+#### Reusable Resources
 
 *  Tests (reusable with `<test extends="...">` argument)
 *  Action Group (reusable with including `<actionGroup ref="...">`, or extending `<actionGroup extends="...">`)
@@ -31,7 +31,7 @@ Avoid using resources that are marked as **Deprecated**. Usually there is a repl
 
 ### Extract repetitive Actions
 
-Instead of writing a few of Tests that perform mostly the same actions, you should thing about [Action group] that is a container for repetitive Actions.
+Instead of writing a few of Tests that perform mostly the same actions, you should think about [Action group] that is a container for repetitive Actions.
 If each run needs different data, use `<arguments>` to inject necessary information.
 
 We recommend to keep Action Groups having single responsibility, for example `AdminLoginActionGroup`, which expected outcome is being logged in as Administrator when [Action group] is executed.
@@ -97,31 +97,27 @@ The following pattern is used when merging with `extends`:
 
 Name files according to the following patterns to make searching in future more easy:
 
-<!-- {% raw %} -->
-
 #### Test filename
 
-Format: {_Admin_ or _Storefront_}{Functionality}_Test.xml_, where Functionality briefly describes the testing functionality.
+Format: `{_Admin_ or _Storefront_}{Functionality}_Test.xml_`, where Functionality briefly describes the testing functionality.
 
 Example: _StorefrontCreateCustomerTest.xml_.
 
 #### Action Group filename
 
-Format: {_Admin_ or _Storefront_}{Action Group Summary}ActionGroup.xml`, where Action Group Summary is a short description of what the action group does.
+Format: `{_Admin_ or _Storefront_}{Action Group Summary}ActionGroup.xml`, where Action Group Summary is a short description of what the action group does.
 
 Example: _AdminCreateStoreActionGroup.xml_
 
 #### Section filename
 
-Format: {_Admin_ or _Storefront_}{UI Description}_Section.xml_, where UI Description briefly describes the testing UI.
+Format: `{_Admin_ or _Storefront_}{UI Description}_Section.xml_`, where UI Description briefly describes the testing UI.
 
 Example: _AdminNavbarSection.xml_.
 
 #### Data filename
 
-Format: {Type}_Data.xml_, where Type represents the entity type.
-
-<!-- {% endraw %} -->
+Format: `{Type}_Data.xml_`, where Type represents the entity type.
 
 Example: _ProductData.xml_.
 
@@ -154,21 +150,13 @@ Use a lower case first letter for:
 2. Use [parameterized selectors] for constructing a selector when test-specific or runtime-generated information is needed.
 Do not use them for static elements.
 
-<span class="color:red">
-BAD:
-</span>
-
-<!-- {% raw %} -->
+**Bad:**
 
 ``` xml
 <element name="relatedProductSectionText" type="text" selector=".fieldset-wrapper.admin__fieldset-section[data-index='{{productType}}']" parameterized="true"/>
 ```
 
-<!-- {% endraw %} -->
-
-<span class="color:green">
-GOOD:
-</span>
+**Good:**
 
 Define these three elements and reference them by name in the tests.
 
@@ -197,8 +185,6 @@ When setting a [merging] order for a test step, do not depend on steps from Adob
 
 For example, when you write a test step to create a gift card product, set your test step **after** simple product creation and let the framework handle the merge order.
 Since the configurable product module could be disabled, this approach is more reliable than setting the test step **before** creating a configurable product.
-
-<!-- Link definitions -->
 
 [`<after>`]: ../test/actions.md#before-and-after
 [`<before>`]: ../test/actions.md#before-and-after

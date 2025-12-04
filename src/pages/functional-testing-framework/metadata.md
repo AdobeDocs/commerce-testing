@@ -146,7 +146,7 @@ _Catalog/Data/CategoryData.xml_:
 ```
 
 Here, `type` is equal to `"category"`, which instructs the Functional Testing Framework to search an operation with `dataType="category"`.
-Since the action is __to create__ a category, the Functional Testing Framework will also search for operation with `type="create"` in _Metadata_ for `dataType="category"`.
+Since the action is **to create** a category, the Functional Testing Framework will also search for operation with `type="create"` in _Metadata_ for `dataType="category"`.
 
 _Catalog/Metadata/CategoryMeta.xml_:
 
@@ -433,7 +433,7 @@ Let's see how to handle data after you created a category with custom attributes
 
 The Functional Testing Framework receives the corresponding JSON response and enables you to reference its data using a variable of format:
 
-__$__ _stepKey_ __.__ _JsonKey_ __$__
+**$__ _stepKey_ __.__ _JsonKey_ __$**
 
 Example:
 
@@ -443,7 +443,7 @@ $createPreReqCategory.id$
 
 And for a custom attribute:
 
-__$__ _stepKey_  __.custom_attributes[ _attribute key_ ]__ __$__
+**$__ _stepKey_  __.custom_attributes[ _attribute key_ ]__ __$**
 
 Example:
 
@@ -719,16 +719,9 @@ Example:
 <param key="status">someValue</param>
 ```
 
-<!-- LINK DEFINITIONS -->
-
-[actions]: test/actions.md
 [api reference]: https://developer.adobe.com/commerce/webapi/get-started/
 [application/x-www-form-urlencoded]: https://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1
 [catalogCategoryRepositoryV1 image]: ../_images/functional-testing/catalogCategoryRepository-operations.png
-[createData]: test/actions.md#createdata
-[deleteData]: test/actions.md#deletedata
 [entity]: data.md#entity
-[getData]: test/actions.md#getdata
 [HTML forms]: https://www.w3.org/TR/html401/interact/forms.html
 [oauth]: https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-oauth/
-[updateData]: test/actions.md#updatedata

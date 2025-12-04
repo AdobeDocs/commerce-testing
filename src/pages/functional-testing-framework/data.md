@@ -333,9 +333,8 @@ Attributes|Type|Use|Description
 
 Attributes|Type|Use|Description
 ---|---|---|---
-`name`|string|optional|Key attribute of <item/> entity in which to assign a value. By default numeric key will be generated.
+`name`|string|optional|Key attribute of `<item/>` entity in which to assign a value. By default numeric key will be generated.
 
-<!-- Link Definitions -->
 [`<array>`]: #array
 [`<data>`]: #data
 [`<item>`]: #item

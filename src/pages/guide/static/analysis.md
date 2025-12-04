@@ -21,7 +21,7 @@ For all of the static configuration installations below involving the PhpStorm P
 
 <InlineAlert variant="warning" slots="text" />
 
-[JSCS package has been deprecated](https://www.npmjs.com/package/jscs) and [merged with ESLint](https://eslint.org/blog/2016/04/welcoming-jscs-to-eslint).
+[JSCS package has been deprecated](https://www.npmjs.com/package/jscs) and [merged with ESLint](https://eslint.org/blog/2016/04/welcoming-jscs-to-eslint/).
 
 ### ESLint
 

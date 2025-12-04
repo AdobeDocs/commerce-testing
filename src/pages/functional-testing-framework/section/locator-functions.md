@@ -42,7 +42,6 @@ Given the above element definitions, you call the elements in a test just like a
 </test>
 ```
 
-<!-- Link Definitions -->
 [Locator functions]: https://codeception.com/docs/reference/Locator
 [section]: index.md
 [parameterized selectors]: parameterized-selectors.md

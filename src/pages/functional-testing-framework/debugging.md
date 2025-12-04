@@ -39,6 +39,5 @@ The easiest method of tagging a test for debugging is the following:
 
 Your Debug Configuration should now be able to run your test and pause execution on any breakpoints you have set in the generated `.php` file under the `_generated` folder.
 
-<!-- Link definitions -->
 [Xdebug]: https://xdebug.org/docs/install
 [PHPStorm]: https://www.jetbrains.com/phpstorm/

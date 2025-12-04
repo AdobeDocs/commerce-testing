@@ -279,20 +279,19 @@ The decrypted values are only available in the `.credentials` file or within vau
 
 The test delivered with the Adobe Commerce and Magento Open Source application do not use credentials and do not cover external services, because of sensitivity of the data.
 
-<!-- Link definitions -->
 [`fillField`]: test/actions.md#fillfield
 [`magentoCLI`]: test/actions.md#magentocli
 [`createData`]: test/actions.md#createdata
 [data]: data.md
 [initial setup]: getting-started.md
 [test reports]: reporting.md
-[Download Vault]: https://www.hashicorp.com/products/vault/
-[Login Vault]: https://www.vaultproject.io/docs/commands/login.html
-[Vault KV2]: https://www.vaultproject.io/docs/secrets/kv/kv-v2.html
+[Download Vault]: https://www.hashicorp.com/en/products/vault
+[Login Vault]: https://developer.hashicorp.com/vault/docs/commands/login
+[Vault KV2]: https://developer.hashicorp.com/vault/docs/secrets/kv/kv-v2
 [`CREDENTIAL_VAULT_ADDRESS`]: configuration.md#credential_vault_address
 [`CREDENTIAL_VAULT_SECRET_BASE_PATH`]: configuration.md#credential_vault_secret_base_path
 [credential chain]: https://docs.aws.amazon.com/sdk-for-php/v3/developer-guide/guide_credentials.html
 [`CREDENTIAL_AWS_SECRETS_MANAGER_PROFILE`]: configuration.md#credential_aws_secrets_manager_profile
 [`CREDENTIAL_AWS_SECRETS_MANAGER_REGION`]: configuration.md#credential_aws_secrets_manager_region
 [Key Management Service]: https://aws.amazon.com/kms/
-[Amazon Resource Name]: https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+[Amazon Resource Name]: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html

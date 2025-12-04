@@ -67,7 +67,6 @@ Use of PhantomJS is not supported by the MFTF.
 
 #### Solution
 
-For headless browsing, the [Headless Chrome][]{:target="\_blank"} has better compatibility with the MFTF.
+For headless browsing, the [Headless Chrome][] has better compatibility with the MFTF.
 
-<!-- Link Definitions -->
-[Headless Chrome]: https://developers.google.com/web/updates/2017/04/headless-chrome
+[Headless Chrome]: https://developer.chrome.com/blog/headless-chrome/

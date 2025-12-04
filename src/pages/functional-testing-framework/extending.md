@@ -30,7 +30,7 @@ The extended test will be skipped if the parent test is skipped.
 
 ### Update a test step
 
-__Use case__: Create two similar tests with a different action group reference by overwriting a `stepKey`.
+**Use case**: Create two similar tests with a different action group reference by overwriting a `stepKey`.
 
 > Test with "extends":
 
@@ -66,7 +66,7 @@ __Use case__: Create two similar tests with a different action group reference b
 
 ### Add a test step
 
-__Use case__: Create two similar tests where the second test contains two additional steps specified to occur `before` or `after` other `stepKeys`.
+**Use case**: Create two similar tests where the second test contains two additional steps specified to occur `before` or `after` other `stepKeys`.
 
 > Tests with "extends":
 
@@ -105,7 +105,7 @@ __Use case__: Create two similar tests where the second test contains two additi
 
 ### Update a test before hook
 
-__Use case__: Create two similar tests where the second test contains an additional action in the `before` hook.
+**Use case**: Create two similar tests where the second test contains an additional action in the `before` hook.
 
 > Tests with "extends":
 
@@ -154,7 +154,7 @@ Extend an [action group] to add or update [actions] in your module.
 
 ### Update an action
 
-__Use case__: The `AssertAdminCountProductActionGroup` action group counts the particular product.
+**Use case**: The `AssertAdminCountProductActionGroup` action group counts the particular product.
 Modify the action group to use another product.
 
 > Action groups with "extends":
@@ -208,7 +208,7 @@ Modify the action group to use another product.
 
 ### Add an action
 
-__Use case__: The `AdminGetProductCountActionGroup` action group returns the count of products.
+**Use case**: The `AdminGetProductCountActionGroup` action group returns the count of products.
 Add a new test `AssertAdminVerifyProductCountActionGroup` that asserts the count of products:
 
 > Action groups with "extends":
@@ -265,7 +265,7 @@ Extend data to reuse entities in your module.
 
 ### Update a data entry
 
-__Use case__: Create an entity named `DivPanelGreen`, which is similar to the `DivPanel` entity, except that it is green.
+**Use case**: Create an entity named `DivPanelGreen`, which is similar to the `DivPanel` entity, except that it is green.
 
 > Entities with "extends":
 
@@ -301,7 +301,7 @@ __Use case__: Create an entity named `DivPanelGreen`, which is similar to the `D
 
 ### Add a data entry
 
-__Use case__: Create an entity named `DivPanelGreen`, which is similar to the `DivPanel` entity, except that it has a specific panel color.
+**Use case**: Create an entity named `DivPanelGreen`, which is similar to the `DivPanel` entity, except that it has a specific panel color.
 
 > Entities with "extends":
 
@@ -337,7 +337,6 @@ __Use case__: Create an entity named `DivPanelGreen`, which is similar to the `D
 </entities>
 ```
 
-<!-- Link definitions -->
 [test]: test/index.md
 [data]: data.md
 [action group]: test/action-groups.md

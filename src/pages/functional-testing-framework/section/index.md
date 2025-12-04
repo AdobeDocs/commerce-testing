@@ -141,8 +141,6 @@ The test step that covers the use case:
 
 Whenever the `signIn` button is used in a test, the Functional Testing Framework will add a 30 second `waitForPageLoad` action immediately after the `click`.
 
-<!-- Link definitions -->
-
 [waitForPageLoad]: ../test/actions.md#waitforpageload
 [data entity]: ../data.md
 [test]: ../test/index.md#test
@@ -152,6 +150,6 @@ Whenever the `signIn` button is used in a test, the Functional Testing Framework
 [page]: ../page.md
 [action]: ../test/actions.md
 [XPath]: https://www.w3schools.com/xml/xpath_nodes.asp
-[CSS]: https://www.w3schools.com/cssref/css_selectors.asp
+[CSS]: https://www.w3schools.com/cssref/css_selectors.php
 [Locator function]: locator-functions.md
 [Parameterized selectors]: parameterized-selectors.md

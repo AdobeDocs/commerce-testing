@@ -360,7 +360,5 @@ See the [`Magento\Catalog\Test\Fixture\Product`][] fixture for an example.
 
 Do not rely on and do not modify an application state from within a fixture. The [application isolation attribute][magentoAppIsolation] can reset the application state at any time.
 
-<!-- Link definitions -->
-
 [magentoAppIsolation]: ../annotations/magento-app-isolation.md
 [`Magento\Catalog\Test\Fixture\Product`]: https://github.com/magento/magento2/blob/2.4-develop/app/code/Magento/Catalog/Test/Fixture/Product.php

@@ -225,7 +225,7 @@ See [assertEqualsWithDelta docs on codeception.com](https://codeception.com/docs
 
 Attribute|Type|Use|Description
 ---|---|---|---
-`delta`|string|optional|
+`delta`|string|optional| -
 `message`|string|optional|Text of informational message about a cause of failure.
 `stepKey`|string|required| A unique identifier of the text step.
 `before`|string|optional| `stepKey` of action that must be executed next.
@@ -533,7 +533,7 @@ See [assertNotEqualsWithDelta docs on codeception.com](https://codeception.com/d
 
 Attribute|Type|Use|Description
 ---|---|---|---
-`delta`|string|optional|
+`delta`|string|optional| -
 `message`|string|optional|Text of informational message about a cause of failure.
 `stepKey`|string|required| A unique identifier of the text step.
 `before`|string|optional| `stepKey` of action that must be executed next.
@@ -705,7 +705,7 @@ See [fail docs on codeception.com](https://codeception.com/docs/modules/Asserts#
 
 Attribute|Type|Use|Description
 ---|---|---|---
-`message`|string|required|
+`message`|string|required| -
 `stepKey`|string|required| A unique identifier of the text step.
 `before`|string|optional| `stepKey` of action that must be executed next.
 `after`|string|optional| `stepKey` of the preceding action.

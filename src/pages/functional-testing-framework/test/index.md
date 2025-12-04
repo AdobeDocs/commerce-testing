@@ -122,8 +122,8 @@ Attribute|Type|Use|Description
 
 `<argument>` sets an argument that is used in the parent [`<actionGroup>`](#actiongroup).
 
-Attribute|Type|Use
----|---|---
+Attribute|Type|Use|Description
+---|---|---|---
 `name`|string|optional| Name of the argument.
 `value`|string|optional| Value of the argument.
 

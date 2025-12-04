@@ -25,7 +25,7 @@ Now set the OTP window to `29`:
 
 <InlineAlert variant="info" slots="text" />
 
-In [2.4.7](https://experienceleague.adobe.com/docs/commerce-operations/release/notes/adobe-commerce/2-4-7.html) and later, the OTP window configuration setting controls how long (in seconds) the system accepts an administrator's one-time-password (OTP) after it has expired. This value must be less than 30 seconds. The system default is also changed to `29`.
+In [2.4.7](https://experienceleague.adobe.com/en/docs/commerce-operations/release/notes/adobe-commerce/2-4-7) and later, the OTP window configuration setting controls how long (in seconds) the system accepts an administrator's one-time-password (OTP) after it has expired. This value must be less than 30 seconds. The system default is also changed to `29`.
 
 ```bash
 bin/magento config:set twofactorauth/google/leeway 29
@@ -40,7 +40,7 @@ bin/magento security:tfa:google:set-secret <MAGENTO_ADMIN_USERNAME> <OTP_SHARED_
 ## Configure the MFTF
 
 Save the same base32-encoded `secret` in the Functional Testing Framework credential storage, e.g. `.credentials` file, `HashiCorp Vault` or `AWS Secrets Manager`.
-More details are [here](./credentials.md).
+More details are in [Credentials](./credentials.md).
 
 The path of the `secret` should be:
 
