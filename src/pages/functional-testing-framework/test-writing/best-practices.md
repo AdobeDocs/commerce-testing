@@ -31,7 +31,7 @@ Avoid using resources that are marked as **Deprecated**. Usually there is a repl
 
 ### Extract repetitive Actions
 
-Instead of writing a few of Tests that perform mostly the same actions, you should thing about [Action group] that is a container for repetitive Actions.
+Instead of writing a few of Tests that perform mostly the same actions, you should think about [Action group] that is a container for repetitive Actions.
 If each run needs different data, use `<arguments>` to inject necessary information.
 
 We recommend to keep Action Groups having single responsibility, for example `AdminLoginActionGroup`, which expected outcome is being logged in as Administrator when [Action group] is executed.

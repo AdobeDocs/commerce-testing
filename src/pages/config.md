@@ -89,7 +89,5 @@
     - [Update MFTF](/functional-testing-framework/update.md)
     - [Versioning](/functional-testing-framework/versioning.md)
     - [Packaging](/functional-testing-framework/mftf-tests-packaging.md)
-    - [Backward incompatible chnages in tests](/functional-testing-framework/backward-incompatible-changes.md)
+    - [Backward incompatible changes in tests](/functional-testing-framework/backward-incompatible-changes.md)
     - [External resources](/functional-testing-framework/resources/index.md)
-        - [Contribution guidelines](https://github.com/magento/magento2-functional-testing-framework/blob/master/.github/CONTRIBUTING.md)
-        - [Changelog](https://github.com/magento/magento2-functional-testing-framework/blob/master/CHANGELOG.md)
