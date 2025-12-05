@@ -8,8 +8,6 @@ on:
         type: string
         required: false
         default: ""
-  issue_comment:
-    types: [created]
   # For testing: runs on push to any branch containing 'preview' or 'gh-pages'
   # Remove this trigger after testing is complete
   push:
@@ -24,7 +22,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  pull-requests: write  # Required to comment on PRs
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -36,43 +33,11 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    # Run on workflow_dispatch, push, OR when someone comments "/deploy-preview" on a PR
-    if: >
-      github.event_name == 'workflow_dispatch' ||
-      github.event_name == 'push' ||
-      (github.event_name == 'issue_comment' &&
-       github.event.issue.pull_request &&
-       contains(github.event.comment.body, '/deploy-preview'))
     steps:
-      - name: Get PR branch
-        id: pr-branch
-        if: github.event_name == 'issue_comment'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const pr = await github.rest.pulls.get({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number
-            });
-            core.setOutput('branch', pr.data.head.ref);
-
-      - name: Add reaction to comment
-        if: github.event_name == 'issue_comment'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.reactions.createForIssueComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: context.payload.comment.id,
-              content: 'rocket'
-            });
-
       - name: Checkout content repo
         uses: actions/checkout@v4
         with:
-          ref: ${{ steps.pr-branch.outputs.branch || inputs.branch || github.ref }}
+          ref: ${{ inputs.branch || github.ref }}
           path: content
 
       - name: Clone adp-devsite
@@ -159,18 +124,28 @@ jobs:
             --timeout=30 \
             || true
 
-          # Organize the output structure
+          # Organize the output structure - preserve directory structure for relative links
           if [ -d "localhost:3000" ]; then
-            # Move commerce/testing content to root
-            if [ -d "localhost:3000/commerce/testing" ]; then
-              cp -r localhost:3000/commerce/testing/* . 2>/dev/null || true
-            fi
-            # Move hlx_statics to root for asset paths
-            if [ -d "localhost:3000/hlx_statics" ]; then
-              mkdir -p hlx_statics
-              cp -r localhost:3000/hlx_statics/* hlx_statics/ 2>/dev/null || true
-            fi
+            # Move everything up from localhost:3000 to _site root
+            # This keeps commerce/testing/ and hlx_statics/ at correct relative positions
+            mv localhost:3000/* . 2>/dev/null || true
             rm -rf localhost:3000
+            
+            # Create a redirect index.html at root that points to commerce/testing/
+            cat > index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>Redirecting...</title>
+            <meta http-equiv="refresh" content="0; url=commerce/testing/">
+            <link rel="canonical" href="commerce/testing/">
+          </head>
+          <body>
+            <p>Redirecting to <a href="commerce/testing/">Commerce Testing documentation</a>...</p>
+          </body>
+          </html>
+          EOF
           fi
 
           # Stop servers
@@ -201,21 +176,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  notify:
-    name: Notify PR
-    runs-on: ubuntu-latest
-    needs: deploy
-    if: github.event_name == 'issue_comment'
-    steps:
-      - name: Comment on PR with deployment URL
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `🚀 **Preview deployed!**\n\n📖 View the preview: ${{ needs.deploy.outputs.page_url }}\n\n_This preview was generated from this PR's branch._`
-            });
 
