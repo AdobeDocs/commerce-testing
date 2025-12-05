@@ -1,0 +1,159 @@
+---
+name: GitHub Pages preview
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to deploy"
+        type: string
+        required: false
+        default: ""
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout content repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch || github.ref }}
+          path: content
+
+      - name: Clone adp-devsite
+        uses: actions/checkout@v4
+        with:
+          repository: AdobeDocs/adp-devsite
+          path: adp-devsite
+
+      - name: Clone devsite-runtime-connector
+        uses: actions/checkout@v4
+        with:
+          repository: aemsites/devsite-runtime-connector
+          path: devsite-runtime-connector
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/jod"
+
+      - name: Install dependencies
+        run: |
+          cd content && npm install && cd ..
+          cd adp-devsite && npm install && cd ..
+          cd devsite-runtime-connector && npm install
+
+      - name: Start servers and generate static site
+        run: |
+          ROOT_DIR=$(pwd)
+
+          # Start content server (port 3003)
+          (cd "$ROOT_DIR/content" && npm run dev) &
+          CONTENT_PID=$!
+
+          # Start adp-devsite (port 3000)
+          (cd "$ROOT_DIR/adp-devsite" && npm run dev) &
+          DEVSITE_PID=$!
+
+          # Start runtime connector
+          (cd "$ROOT_DIR/devsite-runtime-connector" && npm run dev) &
+          CONNECTOR_PID=$!
+
+          # Wait for servers to be ready
+          echo "Waiting for servers to start..."
+          sleep 15
+
+          # Check if servers are running
+          for port in 3000 3003; do
+            for i in {1..30}; do
+              if curl -s "http://localhost:$port" > /dev/null 2>&1; then
+                echo "Server on port $port is ready"
+                break
+              fi
+              echo "Waiting for port $port... (attempt $i)"
+              sleep 2
+            done
+          done
+
+          # Generate list of all page URLs from markdown files
+          # Navigation is JS-driven, so we need to explicitly list all pages
+          cd "$ROOT_DIR/content"
+          find src/pages -name "*.md" | sed 's|src/pages/||' | sed 's|\.md$||' | sed 's|/index$|/|' | while read path; do
+            echo "http://localhost:3000/commerce/testing/$path"
+          done > "$ROOT_DIR/urls.txt"
+
+          echo "Generated $(wc -l < "$ROOT_DIR/urls.txt") URLs to crawl"
+          cat "$ROOT_DIR/urls.txt"
+
+          # Create output directory
+          mkdir -p "$ROOT_DIR/_site"
+          cd "$ROOT_DIR/_site"
+
+          # Use wget to crawl and generate static site
+          # --execute robots=off is required because the dev server returns Disallow: /
+          wget \
+            --input-file="$ROOT_DIR/urls.txt" \
+            --page-requisites \
+            --adjust-extension \
+            --convert-links \
+            --restrict-file-names=windows \
+            --domains localhost \
+            --execute robots=off \
+            --wait=0.1 \
+            --tries=3 \
+            --timeout=30 \
+            || true
+
+          # Organize the output structure
+          if [ -d "localhost:3000" ]; then
+            # Move commerce/testing content to root
+            if [ -d "localhost:3000/commerce/testing" ]; then
+              cp -r localhost:3000/commerce/testing/* . 2>/dev/null || true
+            fi
+            # Move hlx_statics to root for asset paths
+            if [ -d "localhost:3000/hlx_statics" ]; then
+              mkdir -p hlx_statics
+              cp -r localhost:3000/hlx_statics/* hlx_statics/ 2>/dev/null || true
+            fi
+            rm -rf localhost:3000
+          fi
+
+          # Stop servers
+          kill $CONTENT_PID $DEVSITE_PID $CONNECTOR_PID 2>/dev/null || true
+
+          echo "Static site generated successfully"
+          find . -type f | wc -l
+          echo "files generated"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
