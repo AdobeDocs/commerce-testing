@@ -153,6 +153,15 @@ jobs:
           echo "=== wget log tail ==="
           tail -100 "$ROOT_DIR/wget.log"
 
+          # Fetch additional JS files that are dynamically loaded by scripts.js
+          echo "Fetching dynamically loaded scripts..."
+          mkdir -p localhost+3000/hlx_statics/scripts
+          wget -q -O localhost+3000/hlx_statics/scripts/lib-helix.js "http://localhost:3000/hlx_statics/scripts/lib-helix.js" || true
+          wget -q -O localhost+3000/hlx_statics/scripts/lib-adobeio.js "http://localhost:3000/hlx_statics/scripts/lib-adobeio.js" || true
+          
+          # Also fetch any other common dynamic dependencies
+          wget -q -O localhost+3000/hlx_statics/scripts/delayed.js "http://localhost:3000/hlx_statics/scripts/delayed.js" || true
+
           # Debug: List what was downloaded
           echo "=== Downloaded files ==="
           find . -type f | head -50
