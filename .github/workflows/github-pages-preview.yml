@@ -159,12 +159,17 @@ jobs:
           echo "Total files: $(find . -type f | wc -l)"
 
           # Organize the output structure
-          if [ -d "localhost:3000" ]; then
+          # Note: --restrict-file-names=windows converts : to + in directory names
+          if [ -d "localhost+3000" ]; then
+            echo "Found localhost+3000 directory, organizing..."
+            mv localhost+3000/* . 2>/dev/null || true
+            rm -rf localhost+3000
+          elif [ -d "localhost:3000" ]; then
             echo "Found localhost:3000 directory, organizing..."
             mv localhost:3000/* . 2>/dev/null || true
             rm -rf localhost:3000
           else
-            echo "WARNING: localhost:3000 directory not found!"
+            echo "WARNING: No localhost directory found!"
             ls -la
           fi
 
