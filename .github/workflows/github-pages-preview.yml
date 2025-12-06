@@ -153,14 +153,15 @@ jobs:
           echo "=== wget log tail ==="
           tail -100 "$ROOT_DIR/wget.log"
 
-          # Fetch additional JS files that are dynamically loaded by scripts.js
-          echo "Fetching dynamically loaded scripts..."
-          mkdir -p localhost+3000/hlx_statics/scripts
-          wget -q -O localhost+3000/hlx_statics/scripts/lib-helix.js "http://localhost:3000/hlx_statics/scripts/lib-helix.js" || true
-          wget -q -O localhost+3000/hlx_statics/scripts/lib-adobeio.js "http://localhost:3000/hlx_statics/scripts/lib-adobeio.js" || true
+          # Copy all hlx_statics from adp-devsite source directly
+          # This ensures all dynamically loaded blocks/components are available
+          echo "Copying hlx_statics from adp-devsite source..."
+          mkdir -p localhost+3000/hlx_statics
+          cp -r "$ROOT_DIR/adp-devsite/hlx_statics/"* localhost+3000/hlx_statics/ 2>/dev/null || true
           
-          # Also fetch any other common dynamic dependencies
-          wget -q -O localhost+3000/hlx_statics/scripts/delayed.js "http://localhost:3000/hlx_statics/scripts/delayed.js" || true
+          echo "hlx_statics files copied:"
+          find localhost+3000/hlx_statics -type f 2>/dev/null | wc -l
+          echo "files"
 
           # Debug: List what was downloaded
           echo "=== Downloaded files ==="
