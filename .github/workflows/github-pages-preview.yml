@@ -163,6 +163,27 @@ jobs:
           find localhost+3000/hlx_statics -type f 2>/dev/null | wc -l
           echo "files"
 
+          # Fetch API endpoints needed for dynamic content
+          echo "Fetching API endpoints..."
+          mkdir -p localhost+3000/commerce/testing
+          mkdir -p localhost+3000/franklin_assets
+          
+          # Config endpoint (for side navigation/TOC)
+          curl -s "http://localhost:3000/commerce/testing/config" -o localhost+3000/commerce/testing/config || true
+          echo "Config endpoint saved"
+          
+          # Footer HTML
+          curl -s "http://localhost:3000/franklin_assets/footer.plain.html" -o localhost+3000/franklin_assets/footer.plain.html || true
+          echo "Footer HTML saved"
+          
+          # Product index map
+          curl -s "http://localhost:3000/franklin_assets/product-index-map.json" -o localhost+3000/franklin_assets/product-index-map.json || true
+          echo "Product index map saved"
+          
+          # Site-wide banner config
+          curl -s "http://localhost:3000/commerce/testing/site-wide-banner.json" -o localhost+3000/commerce/testing/site-wide-banner.json || true
+          echo "Site-wide banner config saved"
+
           # Debug: List what was downloaded
           echo "=== Downloaded files ==="
           find . -type f | head -50
