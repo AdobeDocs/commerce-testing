@@ -204,6 +204,19 @@ jobs:
             ls -la
           fi
 
+          # Fix absolute paths for GitHub Pages
+          # GitHub Pages serves at /commerce-testing/ but JS requests go to domain root
+          # Solution: Inject a fetch interceptor script to rewrite URLs
+          echo "Adding fetch interceptor for GitHub Pages compatibility..."
+          
+          INTERCEPTOR_SCRIPT='<script>(function(){var BASE="/commerce-testing";var origFetch=window.fetch;window.fetch=function(url,opts){if(typeof url==="string"&&url.startsWith("/")&&!url.startsWith(BASE)){url=BASE+url}return origFetch.call(this,url,opts)};var origXHROpen=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(method,url){if(typeof url==="string"&&url.startsWith("/")&&!url.startsWith(BASE)){url=BASE+url}return origXHROpen.apply(this,arguments)}})();</script>'
+          
+          find . -name "*.html" -type f | while read htmlfile; do
+            # Add interceptor script right after <head>
+            sed -i "s|<head>|<head>${INTERCEPTOR_SCRIPT}|" "$htmlfile" 2>/dev/null || true
+          done
+          echo "Fetch interceptor added to all HTML files"
+
           # Always create at least a minimal index.html
           echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Commerce Testing - Preview</title><meta http-equiv="refresh" content="0; url=commerce/testing/"><link rel="canonical" href="commerce/testing/"></head><body><p>Redirecting to <a href="commerce/testing/">Commerce Testing documentation</a>...</p></body></html>' > index.html
 
