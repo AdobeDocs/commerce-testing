@@ -209,8 +209,8 @@ jobs:
           # Solution: Inject INLINE interceptor script (must run before any other scripts)
           echo "Adding INLINE fetch interceptor for GitHub Pages compatibility..."
           
-          # Create interceptor file (using echo to avoid heredoc YAML issues)
-          echo '<script>!function(){var B="/commerce-testing",F=window.fetch;window.fetch=function(u,o){if("string"==typeof u&&u.startsWith("/")&&!u.startsWith(B)){u=B+u}return F.call(this,u,o)};var X=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){if("string"==typeof u&&u.startsWith("/")&&!u.startsWith(B)){u=B+u}return X.apply(this,arguments)}}();</script>' > /tmp/interceptor.txt
+          # Create interceptor file (handles both relative paths and full URLs)
+          echo '<script>!function(){var B="/commerce-testing",H=location.origin,F=window.fetch;window.fetch=function(u,o){if("string"==typeof u){if(u.startsWith("/")&&!u.startsWith(B))u=B+u;else if(u.startsWith(H)&&!u.includes(B))u=u.replace(H,H+B)}return F.call(this,u,o)};var X=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){if("string"==typeof u){if(u.startsWith("/")&&!u.startsWith(B))u=B+u;else if(u.startsWith(H)&&!u.includes(B))u=u.replace(H,H+B)}return X.apply(this,arguments)}}();</script>' > /tmp/interceptor.txt
           echo "Interceptor content:"
           cat /tmp/interceptor.txt
           
