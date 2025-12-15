@@ -209,22 +209,23 @@ jobs:
           # Solution: Inject INLINE interceptor script (must run before any other scripts)
           echo "Adding INLINE fetch interceptor for GitHub Pages compatibility..."
           
-          # Inline script that patches fetch/XHR immediately (no external file to wait for)
-          INLINE_SCRIPT='<script>!function(){var B="/commerce-testing",F=window.fetch;window.fetch=function(u,o){return"string"==typeof u&&u.startsWith("/")&&!u.startsWith(B)&&(u=B+u),F.call(this,u,o)};var X=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){return"string"==typeof u&&u.startsWith("/")&&!u.startsWith(B)&&(u=B+u),X.apply(this,arguments)}}();</script>'
+          # Create interceptor file (using echo to avoid heredoc YAML issues)
+          echo '<script>!function(){var B="/commerce-testing",F=window.fetch;window.fetch=function(u,o){if("string"==typeof u&&u.startsWith("/")&&!u.startsWith(B)){u=B+u}return F.call(this,u,o)};var X=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){if("string"==typeof u&&u.startsWith("/")&&!u.startsWith(B)){u=B+u}return X.apply(this,arguments)}}();</script>' > /tmp/interceptor.txt
+          echo "Interceptor content:"
+          cat /tmp/interceptor.txt
           
-          # Inject inline script into all HTML files
+          # Use perl for injection (handles special chars correctly)
           find . -name "*.html" -type f | while read htmlfile; do
-            sed -i "s|<head>|<head>${INLINE_SCRIPT}|" "$htmlfile" 2>/dev/null || \
-            sed -i "" "s|<head>|<head>${INLINE_SCRIPT}|" "$htmlfile" 2>/dev/null || true
+            perl -i -pe 'BEGIN{open(F,"/tmp/interceptor.txt");$s=<F>;chomp $s;close F} s/<head>/<head>$s/' "$htmlfile" 2>/dev/null || true
           done
           
           # Count modified files
-          MODIFIED=$(grep -c 'commerce-testing.*fetch' commerce/testing/index.html 2>/dev/null || echo "0")
-          echo "Interceptor injection check: $MODIFIED matches in index.html"
+          MODIFIED=$(grep -l 'commerce-testing.*fetch' commerce/testing/*.html 2>/dev/null | wc -l || echo "0")
+          echo "Interceptor injection check: $MODIFIED files modified"
           
           # Debug: show first lines of a sample file
-          echo "Sample HTML head (first 500 chars):"
-          head -c 500 commerce/testing/index.html 2>/dev/null || head -c 500 commerce/testing/guide/index.html 2>/dev/null || echo "Could not read sample file"
+          echo "Sample HTML head (first 600 chars):"
+          head -c 600 commerce/testing/index.html 2>/dev/null || head -c 600 commerce/testing/guide/index.html 2>/dev/null || echo "Could not read sample file"
 
           # Always create at least a minimal index.html
           echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Commerce Testing - Preview</title><meta http-equiv="refresh" content="0; url=commerce/testing/"><link rel="canonical" href="commerce/testing/"></head><body><p>Redirecting to <a href="commerce/testing/">Commerce Testing documentation</a>...</p></body></html>' > index.html
