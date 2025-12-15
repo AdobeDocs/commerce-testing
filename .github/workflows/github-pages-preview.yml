@@ -209,8 +209,13 @@ jobs:
           # Solution: Inject INLINE interceptor script (must run before any other scripts)
           echo "Adding INLINE fetch interceptor for GitHub Pages compatibility..."
           
-          # Create interceptor file (handles both relative paths and full URLs)
-          echo '<script>!function(){var B="/commerce-testing",H=location.origin,F=window.fetch;window.fetch=function(u,o){if("string"==typeof u){if(u.startsWith("/")&&!u.startsWith(B))u=B+u;else if(u.startsWith(H)&&!u.includes(B))u=u.replace(H,H+B)}return F.call(this,u,o)};var X=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){if("string"==typeof u){if(u.startsWith("/")&&!u.startsWith(B))u=B+u;else if(u.startsWith(H)&&!u.includes(B))u=u.replace(H,H+B)}return X.apply(this,arguments)}}();</script>' > /tmp/interceptor.txt
+          # Create interceptor file that handles:
+          # 1. String URLs in fetch()
+          # 2. Request objects in fetch()
+          # 3. URL objects in fetch()
+          # 4. XMLHttpRequest
+          # Note: Using printf to avoid echo interpretation issues
+          printf '%s' '<script>!function(){var B="/commerce-testing",H=location.origin;function fix(u){if(!u)return u;var s=typeof u==="string"?u:u.toString();if(s.startsWith("/")&&!s.startsWith(B))return B+s;if(s.startsWith(H)&&!s.includes(B))return s.replace(H,H+B);return null}var F=window.fetch;window.fetch=function(u,o){var n;if(typeof u==="string"){n=fix(u);if(n)u=n}else if(u instanceof Request){n=fix(u.url);if(n)u=new Request(n,u)}return F.call(this,u,o)};var X=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var n=fix(u);if(n)u=n;return X.apply(this,[m,u].concat([].slice.call(arguments,2)))}}();</script>' > /tmp/interceptor.txt
           echo "Interceptor content:"
           cat /tmp/interceptor.txt
           
