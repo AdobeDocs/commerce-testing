@@ -206,16 +206,26 @@ jobs:
 
           # Fix absolute paths for GitHub Pages
           # GitHub Pages serves at /commerce-testing/ but JS requests go to domain root
-          # Solution: Inject a fetch interceptor script to rewrite URLs
+          # Solution: Create an interceptor JS file and inject script tag into HTML
           echo "Adding fetch interceptor for GitHub Pages compatibility..."
           
-          INTERCEPTOR_SCRIPT='<script>(function(){var BASE="/commerce-testing";var origFetch=window.fetch;window.fetch=function(url,opts){if(typeof url==="string"&&url.startsWith("/")&&!url.startsWith(BASE)){url=BASE+url}return origFetch.call(this,url,opts)};var origXHROpen=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(method,url){if(typeof url==="string"&&url.startsWith("/")&&!url.startsWith(BASE)){url=BASE+url}return origXHROpen.apply(this,arguments)}})();</script>'
+          # Create the interceptor JavaScript file using printf (avoids heredoc YAML issues)
+          mkdir -p _gh_pages
+          printf '%s\n' '(function(){' 'var BASE="/commerce-testing";' 'var oF=window.fetch;window.fetch=function(u,o){if(typeof u==="string"&&u.startsWith("/")&&!u.startsWith(BASE)){u=BASE+u}return oF.call(this,u,o)};' 'var oX=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){if(typeof u==="string"&&u.startsWith("/")&&!u.startsWith(BASE)){u=BASE+u}return oX.apply(this,arguments)};' 'console.log("GH Pages interceptor loaded");' '})();' > _gh_pages/interceptor.js
+          echo "Created _gh_pages/interceptor.js"
+          cat _gh_pages/interceptor.js
           
-          find . -name "*.html" -type f | while read htmlfile; do
-            # Add interceptor script right after <head>
-            sed -i "s|<head>|<head>${INTERCEPTOR_SCRIPT}|" "$htmlfile" 2>/dev/null || true
-          done
-          echo "Fetch interceptor added to all HTML files"
+          # Inject script tag into all HTML files
+          SCRIPT_TAG='<script src="/commerce-testing/_gh_pages/interceptor.js"></script>'
+          find . -name "*.html" -type f -print0 | xargs -0 -I {} sh -c 'sed -i "s|<head>|<head>'"$SCRIPT_TAG"'|g" "{}" 2>/dev/null || sed -i "" "s|<head>|<head>'"$SCRIPT_TAG"'|g" "{}" 2>/dev/null || true'
+          
+          # Count modified files
+          MODIFIED=$(grep -rl "_gh_pages/interceptor.js" . --include="*.html" 2>/dev/null | wc -l || echo "0")
+          echo "Injected interceptor script tag into $MODIFIED HTML files"
+          
+          # Debug: show first lines of a sample file
+          echo "Sample HTML head:"
+          head -3 commerce/testing/index.html 2>/dev/null || head -3 commerce/testing/guide/index.html 2>/dev/null || echo "Could not read sample file"
 
           # Always create at least a minimal index.html
           echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Commerce Testing - Preview</title><meta http-equiv="refresh" content="0; url=commerce/testing/"><link rel="canonical" href="commerce/testing/"></head><body><p>Redirecting to <a href="commerce/testing/">Commerce Testing documentation</a>...</p></body></html>' > index.html
