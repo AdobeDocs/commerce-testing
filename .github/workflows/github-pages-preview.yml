@@ -28,6 +28,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      PATH_PREFIX: ${{ github.event.repository.name }}
     steps:
       - name: Checkout content repo
         uses: actions/checkout@v4
@@ -159,9 +161,9 @@ jobs:
           
           # Rewrite config paths for side-nav filtering
           if [ -f "localhost+3000/commerce/testing/config" ]; then
-            perl -i -pe 's|href="/commerce/testing/|href="/commerce-testing/commerce/testing/|g' localhost+3000/commerce/testing/config
-            perl -i -pe 's|href="/functional-testing-framework/|href="/commerce-testing/commerce/testing/functional-testing-framework/|g' localhost+3000/commerce/testing/config
-            perl -i -pe 's|href="/guide/|href="/commerce-testing/commerce/testing/guide/|g' localhost+3000/commerce/testing/config
+            perl -i -pe "s|href=\"/commerce/testing/|href=\"/${PATH_PREFIX}/commerce/testing/|g" localhost+3000/commerce/testing/config
+            perl -i -pe "s|href=\"/functional-testing-framework/|href=\"/${PATH_PREFIX}/commerce/testing/functional-testing-framework/|g" localhost+3000/commerce/testing/config
+            perl -i -pe "s|href=\"/guide/|href=\"/${PATH_PREFIX}/commerce/testing/guide/|g" localhost+3000/commerce/testing/config
             echo "✓ Config paths rewritten"
           fi
 
@@ -192,8 +194,8 @@ jobs:
         run: |
           cd _site
           
-          # Minify the interceptor script for injection
-          INTERCEPTOR=$(cat ../content/.github/scripts/gh-pages-interceptor.js | tr '\n' ' ' | sed 's/  */ /g')
+          # Minify the interceptor script and replace placeholder with actual path prefix
+          INTERCEPTOR=$(cat ../content/.github/scripts/gh-pages-interceptor.js | sed "s/__PATH_PREFIX__/$PATH_PREFIX/g" | tr '\n' ' ' | sed 's/  */ /g')
           
           # Create script tag
           echo "<script>${INTERCEPTOR}</script>" > /tmp/interceptor.txt
@@ -203,7 +205,7 @@ jobs:
             perl -i -pe 'BEGIN{open(F,"/tmp/interceptor.txt");$s=<F>;chomp $s;close F} s/<head>/<head>$s/' "$htmlfile" 2>/dev/null || true
           done
           
-          MODIFIED=$(grep -l 'commerce-testing' commerce/testing/*.html 2>/dev/null | wc -l | tr -d ' ')
+          MODIFIED=$(grep -l "$PATH_PREFIX" commerce/testing/*.html 2>/dev/null | wc -l | tr -d ' ')
           echo "✓ Interceptor injected into $MODIFIED files"
 
       - name: Create root redirect

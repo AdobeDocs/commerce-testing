@@ -1,6 +1,6 @@
 /* GitHub Pages Path Interceptor for AEM Edge Delivery - Fixes path issues when hosting on GitHub Pages */
 (function() {
-  var BASE = "/commerce-testing";
+  var BASE = "/__PATH_PREFIX__";
   var ORIGIN = location.origin;
 
   /* URL Normalization - Remove /index.html suffix */
