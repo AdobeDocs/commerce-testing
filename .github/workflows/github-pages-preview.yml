@@ -8,8 +8,6 @@ on:
         type: string
         required: false
         default: ""
-  # For testing: runs on push to any branch containing 'preview' or 'gh-pages'
-  # Remove this trigger after testing is complete
   push:
     branches:
       - "**/preview**"
@@ -17,14 +15,11 @@ on:
       - "preview-**"
       - "gh-pages-**"
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: pages
   cancel-in-progress: false
@@ -59,83 +54,62 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd content && npm install && cd ..
-          cd adp-devsite && npm install && cd ..
-          cd devsite-runtime-connector && npm install
+          cd content && npm install
+          cd ../adp-devsite && npm install
+          cd ../devsite-runtime-connector && npm install
 
-      - name: Start servers and generate static site
+      - name: Start development servers
         run: |
-          set -x  # Enable debug output
           ROOT_DIR=$(pwd)
-
+          
           # Start content server (port 3003)
-          echo "Starting content server..."
-          (cd "$ROOT_DIR/content" && npm run dev 2>&1 | tee "$ROOT_DIR/content-server.log") &
-          CONTENT_PID=$!
-
+          (cd "$ROOT_DIR/content" && npm run dev > "$ROOT_DIR/content-server.log" 2>&1) &
+          echo $! > /tmp/content.pid
+          
           # Start adp-devsite (port 3000)
-          echo "Starting adp-devsite..."
-          (cd "$ROOT_DIR/adp-devsite" && npm run dev 2>&1 | tee "$ROOT_DIR/devsite-server.log") &
-          DEVSITE_PID=$!
+          (cd "$ROOT_DIR/adp-devsite" && npm run dev > "$ROOT_DIR/devsite-server.log" 2>&1) &
+          echo $! > /tmp/devsite.pid
+          
+          # Start runtime connector (port 3001)
+          (cd "$ROOT_DIR/devsite-runtime-connector" && npm run dev > "$ROOT_DIR/connector-server.log" 2>&1) &
+          echo $! > /tmp/connector.pid
+          
+          echo "Servers starting in background..."
 
-          # Start runtime connector
-          echo "Starting runtime connector..."
-          (cd "$ROOT_DIR/devsite-runtime-connector" && npm run dev 2>&1 | tee "$ROOT_DIR/connector-server.log") &
-          CONNECTOR_PID=$!
-
-          # Wait for servers to be ready
-          echo "Waiting for servers to start..."
-          sleep 20
-
-          # Debug: Show server logs
-          echo "=== Content server log ==="
-          cat "$ROOT_DIR/content-server.log" | tail -50 || true
-          echo "=== Devsite server log ==="
-          cat "$ROOT_DIR/devsite-server.log" | tail -50 || true
-          echo "=== Connector server log ==="
-          cat "$ROOT_DIR/connector-server.log" | tail -50 || true
-
-          # Check if servers are running
-          SERVERS_READY=false
+      - name: Wait for servers to be ready
+        run: |
+          echo "Waiting for servers..."
           for port in 3000 3003; do
-            echo "Checking port $port..."
-            for i in {1..30}; do
+            for i in {1..60}; do
               if curl -s "http://localhost:$port" > /dev/null 2>&1; then
-                echo "Server on port $port is ready"
+                echo "✓ Port $port is ready"
                 break
               fi
-              echo "Waiting for port $port... (attempt $i)"
-              sleep 2
+              if [ $i -eq 60 ]; then
+                echo "✗ Port $port timeout"
+                exit 1
+              fi
+              sleep 1
             done
-            # Verify the port is actually responding
-            if curl -s "http://localhost:$port" > /dev/null 2>&1; then
-              SERVERS_READY=true
-            else
-              echo "WARNING: Port $port is not responding!"
-            fi
           done
+          
+          # Verify site is accessible
+          curl -sf "http://localhost:3000/commerce/testing/" > /dev/null && echo "✓ Site is accessible"
 
-          # Test if we can actually reach the site
-          echo "Testing site access..."
-          curl -v "http://localhost:3000/commerce/testing/" 2>&1 | head -50 || true
-
-          # Create output directory
+      - name: Generate static site with wget
+        run: |
+          ROOT_DIR=$(pwd)
           mkdir -p "$ROOT_DIR/_site"
-          cd "$ROOT_DIR/_site"
-
-          # Generate list of all page URLs from markdown files
+          
+          # Generate URL list from markdown files
           cd "$ROOT_DIR/content"
           find src/pages -name "*.md" | sed 's|src/pages/||' | sed 's|\.md$||' | sed 's|/index$|/|' | while read path; do
             echo "http://localhost:3000/commerce/testing/$path"
           done > "$ROOT_DIR/urls.txt"
-
-          echo "Generated $(wc -l < "$ROOT_DIR/urls.txt") URLs to crawl"
-          cat "$ROOT_DIR/urls.txt"
-
+          
+          echo "Crawling $(wc -l < "$ROOT_DIR/urls.txt" | tr -d ' ') pages..."
+          
           cd "$ROOT_DIR/_site"
-
-          # Use wget to crawl and generate static site
-          echo "Starting wget crawl..."
           wget \
             --input-file="$ROOT_DIR/urls.txt" \
             --page-requisites \
@@ -147,121 +121,120 @@ jobs:
             --wait=0.1 \
             --tries=3 \
             --timeout=30 \
-            --verbose \
-            2>&1 | tee "$ROOT_DIR/wget.log" || true
-
-          echo "=== wget log tail ==="
-          tail -100 "$ROOT_DIR/wget.log"
-
-          # Copy all hlx_statics from adp-devsite source directly
-          # This ensures all dynamically loaded blocks/components are available
-          echo "Copying hlx_statics from adp-devsite source..."
-          mkdir -p localhost+3000/hlx_statics
-          cp -r "$ROOT_DIR/adp-devsite/hlx_statics/"* localhost+3000/hlx_statics/ 2>/dev/null || true
+            --quiet \
+            2>&1 || true
           
-          echo "hlx_statics files copied:"
-          find localhost+3000/hlx_statics -type f 2>/dev/null | wc -l
-          echo "files"
+          echo "✓ wget crawl complete"
 
-          # Fetch API endpoints needed for dynamic content
-          echo "Fetching API endpoints..."
+      - name: Copy static assets
+        run: |
+          cd _site
+          
+          # Copy hlx_statics from adp-devsite source
+          mkdir -p localhost+3000/hlx_statics
+          cp -r ../adp-devsite/hlx_statics/* localhost+3000/hlx_statics/
+          echo "✓ Copied $(find localhost+3000/hlx_statics -type f | wc -l | tr -d ' ') static files"
+
+      - name: Fetch API endpoints
+        run: |
+          cd _site
           mkdir -p localhost+3000/commerce/testing
           mkdir -p localhost+3000/franklin_assets
           
-          # Config endpoint (for side navigation/TOC)
-          # IMPORTANT: Fetch the RENDERED HTML from the local server, not the raw markdown
-          # The side-nav.js parses this HTML to build the navigation tree
-          curl -s "http://localhost:3000/commerce/testing/config" -o localhost+3000/commerce/testing/config || true
-          echo "Config HTML fetched from local server"
+          # Config (for side navigation)
+          curl -sf "http://localhost:3000/commerce/testing/config" -o localhost+3000/commerce/testing/config && echo "✓ config"
           
-          # Rewrite paths in config to include /commerce-testing prefix
-          # This is needed for side-nav filtering to work correctly on GitHub Pages
+          # Footer
+          curl -sf "http://localhost:3000/franklin_assets/footer.plain.html" -o localhost+3000/franklin_assets/footer.plain.html && echo "✓ footer"
+          
+          # Product index map
+          curl -sf "http://localhost:3000/franklin_assets/product-index-map.json" -o localhost+3000/franklin_assets/product-index-map.json && echo "✓ product-index-map"
+          
+          # Site-wide banner
+          curl -sf "http://localhost:3000/commerce/testing/site-wide-banner.json" -o localhost+3000/commerce/testing/site-wide-banner.json || echo "○ site-wide-banner (optional)"
+
+      - name: Rewrite paths for GitHub Pages
+        run: |
+          cd _site
+          
+          # Rewrite config paths for side-nav filtering
           if [ -f "localhost+3000/commerce/testing/config" ]; then
             perl -i -pe 's|href="/commerce/testing/|href="/commerce-testing/commerce/testing/|g' localhost+3000/commerce/testing/config
             perl -i -pe 's|href="/functional-testing-framework/|href="/commerce-testing/commerce/testing/functional-testing-framework/|g' localhost+3000/commerce/testing/config
             perl -i -pe 's|href="/guide/|href="/commerce-testing/commerce/testing/guide/|g' localhost+3000/commerce/testing/config
-            echo "Config paths rewritten for GitHub Pages"
+            echo "✓ Config paths rewritten"
           fi
-          
-          # Footer HTML
-          curl -s "http://localhost:3000/franklin_assets/footer.plain.html" -o localhost+3000/franklin_assets/footer.plain.html || true
-          echo "Footer HTML saved"
-          
-          # Product index map
-          curl -s "http://localhost:3000/franklin_assets/product-index-map.json" -o localhost+3000/franklin_assets/product-index-map.json || true
-          echo "Product index map saved"
-          
-          # Site-wide banner config
-          curl -s "http://localhost:3000/commerce/testing/site-wide-banner.json" -o localhost+3000/commerce/testing/site-wide-banner.json || true
-          echo "Site-wide banner config saved"
 
-          # Debug: List what was downloaded
-          echo "=== Downloaded files ==="
-          find . -type f | head -50
-          echo "Total files: $(find . -type f | wc -l)"
-
-          # Organize the output structure
-          # Note: --restrict-file-names=windows converts : to + in directory names
+      - name: Organize output structure
+        run: |
+          cd _site
+          
+          # Move content from localhost+3000 to root
           if [ -d "localhost+3000" ]; then
-            echo "Found localhost+3000 directory, organizing..."
             mv localhost+3000/* . 2>/dev/null || true
             rm -rf localhost+3000
-          elif [ -d "localhost:3000" ]; then
-            echo "Found localhost:3000 directory, organizing..."
-            mv localhost:3000/* . 2>/dev/null || true
-            rm -rf localhost:3000
-          else
-            echo "WARNING: No localhost directory found!"
-            ls -la
+            echo "✓ Output structure organized"
           fi
 
-          # Fix absolute paths for GitHub Pages
-          # GitHub Pages serves at /commerce-testing/ but JS requests go to domain root
-          # Solution: Inject INLINE interceptor script (must run before any other scripts)
-          echo "Adding INLINE fetch interceptor for GitHub Pages compatibility..."
+      - name: Inject GitHub Pages interceptor
+        run: |
+          cd _site
           
-          # Create interceptor file that handles:
-          # 1. URL normalization - Remove /index.html suffix from location.href (fixes side-nav selection)
-          # 2. fetch() - String URLs, Request objects, URL objects
-          # 3. XMLHttpRequest
-          # 4. Dynamically created DOM elements (img src, use href, link href, script src)
-          # 5. Remove 'no-sidenav' class ONLY on documentation pages (template="documentation")
-          # 6. Filter TOC items to only show items for the current section (Guide vs MFTF)
-          # Uses MutationObserver to fix elements as they are added to the DOM
-          printf '%s' '<script>!function(){var B="/commerce-testing",O=location.origin;if(location.pathname.endsWith("/index.html")){history.replaceState(null,"",location.pathname.replace(/\/index\.html$/,"/")+location.search+location.hash)}function fix(u){if(!u||typeof u!=="string")return null;if(u.startsWith(O)&&!u.includes(B)){var p=u.substring(O.length);if(p.startsWith("/hlx_statics")||p.startsWith("/franklin_assets")||p.startsWith("/commerce"))return O+B+p}if(u.startsWith("/")&&!u.startsWith(B)&&(u.startsWith("/hlx_statics")||u.startsWith("/franklin_assets")||u.startsWith("/commerce")))return B+u;return null}var F=window.fetch;window.fetch=function(u,o){var n;if(typeof u==="string"){n=fix(u);if(n)u=n}else if(u instanceof Request){n=fix(u.url);if(n)u=new Request(n,u)}return F.call(this,u,o)};var X=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var n=fix(u);if(n)u=n;return X.apply(this,[m,u].concat([].slice.call(arguments,2)))};function fixEl(el){if(!el||!el.getAttribute)return;["src","href","xlink:href"].forEach(function(a){var v=el.getAttribute(a);var n=fix(v);if(n)el.setAttribute(a,n)});if(el.querySelectorAll){el.querySelectorAll("[src],[href]").forEach(fixEl)}}new MutationObserver(function(m){m.forEach(function(r){r.addedNodes.forEach(function(n){if(n.nodeType===1)fixEl(n)})})}).observe(document.documentElement,{childList:true,subtree:true});document.addEventListener("DOMContentLoaded",function(){fixEl(document.body)});function fixSideNav(){var m=document.querySelector("main");var t=document.querySelector("meta[name=template]");if(m&&m.classList.contains("no-sidenav")&&t&&t.content==="documentation"){m.classList.remove("no-sidenav")}}function filterToc(){var nav=document.querySelector("#navigation-links");if(!nav)return;var cur=location.pathname.replace(/\/$/,"");var best=null,bestLen=0;nav.querySelectorAll("a").forEach(function(a){var fp=a.getAttribute("fullPath");if(fp)return;var hp=new URL(a.href).pathname.replace(/\/$/,"");if(cur===hp){best=a;bestLen=999}else if(cur.startsWith(hp+"/")&&hp.length>bestLen){best=a;bestLen=hp.length}});if(!best)return;var topPath=new URL(best.href).pathname;var toc=document.querySelector(".side-nav-subpages-section");if(!toc)return;toc.querySelectorAll(":scope > ul li").forEach(function(li){var link=li.querySelector(":scope > a");if(!link){li.classList.add("hidden");return}var lp=new URL(link.href,O).pathname;if(!lp.startsWith(topPath))li.classList.add("hidden")})}new MutationObserver(function(m){m.forEach(function(r){if(r.target.tagName==="MAIN"&&r.attributeName==="class")fixSideNav()})}).observe(document.documentElement,{attributes:true,subtree:true,attributeFilter:["class"]});document.addEventListener("DOMContentLoaded",fixSideNav);setTimeout(fixSideNav,500);setTimeout(fixSideNav,1500);setTimeout(filterToc,1000);setTimeout(filterToc,2000);setTimeout(filterToc,3000)}();</script>' > /tmp/interceptor.txt
-          echo "Interceptor content:"
-          cat /tmp/interceptor.txt
+          # Minify the interceptor script for injection
+          INTERCEPTOR=$(cat ../content/.github/scripts/gh-pages-interceptor.js | tr '\n' ' ' | sed 's/  */ /g')
           
-          # Use perl for injection (handles special chars correctly)
+          # Create script tag
+          echo "<script>${INTERCEPTOR}</script>" > /tmp/interceptor.txt
+          
+          # Inject into all HTML files
           find . -name "*.html" -type f | while read htmlfile; do
             perl -i -pe 'BEGIN{open(F,"/tmp/interceptor.txt");$s=<F>;chomp $s;close F} s/<head>/<head>$s/' "$htmlfile" 2>/dev/null || true
           done
           
-          # Count modified files
-          MODIFIED=$(grep -l 'commerce-testing.*fetch' commerce/testing/*.html 2>/dev/null | wc -l || echo "0")
-          echo "Interceptor injection check: $MODIFIED files modified"
+          MODIFIED=$(grep -l 'commerce-testing' commerce/testing/*.html 2>/dev/null | wc -l | tr -d ' ')
+          echo "✓ Interceptor injected into $MODIFIED files"
+
+      - name: Create root redirect
+        run: |
+          cd _site
+          cat > index.html << 'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <title>Commerce Testing - Preview</title>
+            <meta http-equiv="refresh" content="0; url=commerce/testing/">
+            <link rel="canonical" href="commerce/testing/">
+          </head>
+          <body>
+            <p>Redirecting to <a href="commerce/testing/">Commerce Testing documentation</a>...</p>
+          </body>
+          </html>
+          EOF
+          echo "✓ Root redirect created"
+
+      - name: Stop servers
+        if: always()
+        run: |
+          for pidfile in /tmp/content.pid /tmp/devsite.pid /tmp/connector.pid; do
+            if [ -f "$pidfile" ]; then
+              kill $(cat "$pidfile") 2>/dev/null || true
+            fi
+          done
+
+      - name: Verify build output
+        run: |
+          cd _site
+          echo "=== Build Summary ==="
+          echo "Total files: $(find . -type f | wc -l | tr -d ' ')"
+          echo "HTML files: $(find . -name '*.html' | wc -l | tr -d ' ')"
           
-          # Debug: show first lines of a sample file
-          echo "Sample HTML head (first 600 chars):"
-          head -c 600 commerce/testing/index.html 2>/dev/null || head -c 600 commerce/testing/guide/index.html 2>/dev/null || echo "Could not read sample file"
-
-          # Always create at least a minimal index.html
-          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Commerce Testing - Preview</title><meta http-equiv="refresh" content="0; url=commerce/testing/"><link rel="canonical" href="commerce/testing/"></head><body><p>Redirecting to <a href="commerce/testing/">Commerce Testing documentation</a>...</p></body></html>' > index.html
-
-          # If no commerce directory exists, create a fallback page
           if [ ! -d "commerce" ]; then
-            echo "WARNING: No content was generated. Creating fallback page."
-            mkdir -p commerce/testing
-            echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Commerce Testing - Build Failed</title><style>body{font-family:system-ui;max-width:800px;margin:50px auto;padding:20px}</style></head><body><h1>Preview Build Issue</h1><p>The static site generation encountered an issue. The development servers may not have started correctly.</p><p>Please check the <a href="https://github.com/AdobeDocs/commerce-testing/actions">GitHub Actions logs</a> for details.</p></body></html>' > commerce/testing/index.html
+            echo "ERROR: No content generated!"
+            exit 1
           fi
-
-          # Stop servers
-          kill $CONTENT_PID $DEVSITE_PID $CONNECTOR_PID 2>/dev/null || true
-
-          echo "=== Final _site contents ==="
-          find . -type f | wc -l
-          echo "files in _site"
-          ls -la
+          
+          echo "✓ Build verification passed"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -284,4 +257,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
