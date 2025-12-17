@@ -37,6 +37,17 @@ jobs:
           ref: ${{ inputs.branch || github.ref }}
           path: content
 
+      - name: Read site config
+        id: config
+        run: |
+          SITE_PATH=$(node -p "require('./content/package.json').config.sitePath")
+          # Strip leading slash if present, then extract first path segment
+          SITE_PREFIX=$(echo "$SITE_PATH" | sed 's|^/||' | cut -d'/' -f1)
+          echo "SITE_PATH=$SITE_PATH" >> $GITHUB_ENV
+          echo "SITE_PREFIX=$SITE_PREFIX" >> $GITHUB_ENV
+          echo "site_path=$SITE_PATH" >> $GITHUB_OUTPUT
+          echo "Site path: $SITE_PATH (prefix: $SITE_PREFIX)"
+
       - name: Clone adp-devsite
         uses: actions/checkout@v4
         with:
@@ -96,7 +107,7 @@ jobs:
           done
           
           # Verify site is accessible
-          curl -sf "http://localhost:3000/commerce/testing/" > /dev/null && echo "✓ Site is accessible"
+          curl -sf "http://localhost:3000/${SITE_PATH}/" > /dev/null && echo "✓ Site is accessible"
 
       - name: Generate static site with wget
         run: |
@@ -106,7 +117,7 @@ jobs:
           # Generate URL list from markdown files
           cd "$ROOT_DIR/content"
           find src/pages -name "*.md" | sed 's|src/pages/||' | sed 's|\.md$||' | sed 's|/index$|/|' | while read path; do
-            echo "http://localhost:3000/commerce/testing/$path"
+            echo "http://localhost:3000/${SITE_PATH}/$path"
           done > "$ROOT_DIR/urls.txt"
           
           echo "Crawling $(wc -l < "$ROOT_DIR/urls.txt" | tr -d ' ') pages..."
@@ -140,11 +151,11 @@ jobs:
       - name: Fetch API endpoints
         run: |
           cd _site
-          mkdir -p localhost+3000/commerce/testing
+          mkdir -p "localhost+3000/${SITE_PATH}"
           mkdir -p localhost+3000/franklin_assets
           
           # Config (for side navigation)
-          curl -sf "http://localhost:3000/commerce/testing/config" -o localhost+3000/commerce/testing/config && echo "✓ config"
+          curl -sf "http://localhost:3000/${SITE_PATH}/config" -o "localhost+3000/${SITE_PATH}/config" && echo "✓ config"
           
           # Footer
           curl -sf "http://localhost:3000/franklin_assets/footer.plain.html" -o localhost+3000/franklin_assets/footer.plain.html && echo "✓ footer"
@@ -153,17 +164,17 @@ jobs:
           curl -sf "http://localhost:3000/franklin_assets/product-index-map.json" -o localhost+3000/franklin_assets/product-index-map.json && echo "✓ product-index-map"
           
           # Site-wide banner
-          curl -sf "http://localhost:3000/commerce/testing/site-wide-banner.json" -o localhost+3000/commerce/testing/site-wide-banner.json || echo "○ site-wide-banner (optional)"
+          curl -sf "http://localhost:3000/${SITE_PATH}/site-wide-banner.json" -o "localhost+3000/${SITE_PATH}/site-wide-banner.json" || echo "○ site-wide-banner (optional)"
 
       - name: Rewrite paths for GitHub Pages
         run: |
           cd _site
           
           # Rewrite config paths for side-nav filtering
-          if [ -f "localhost+3000/commerce/testing/config" ]; then
-            perl -i -pe "s|href=\"/commerce/testing/|href=\"/${PATH_PREFIX}/commerce/testing/|g" localhost+3000/commerce/testing/config
-            perl -i -pe "s|href=\"/functional-testing-framework/|href=\"/${PATH_PREFIX}/commerce/testing/functional-testing-framework/|g" localhost+3000/commerce/testing/config
-            perl -i -pe "s|href=\"/guide/|href=\"/${PATH_PREFIX}/commerce/testing/guide/|g" localhost+3000/commerce/testing/config
+          if [ -f "localhost+3000/${SITE_PATH}/config" ]; then
+            perl -i -pe "s|href=\"/${SITE_PATH}/|href=\"/${PATH_PREFIX}/${SITE_PATH}/|g" "localhost+3000/${SITE_PATH}/config"
+            perl -i -pe "s|href=\"/functional-testing-framework/|href=\"/${PATH_PREFIX}/${SITE_PATH}/functional-testing-framework/|g" "localhost+3000/${SITE_PATH}/config"
+            perl -i -pe "s|href=\"/guide/|href=\"/${PATH_PREFIX}/${SITE_PATH}/guide/|g" "localhost+3000/${SITE_PATH}/config"
             echo "✓ Config paths rewritten"
           fi
 
@@ -184,9 +195,9 @@ jobs:
           
           # The superhero.js expects <picture><img></picture> but we have plain <img>
           # Wrap superhero images in <picture> elements so the background works
-          if [ -f "commerce/testing/index.html" ]; then
+          if [ -f "${SITE_PATH}/index.html" ]; then
             # Find <img> tags in superhero blocks and wrap them in <picture>
-            perl -i -0pe 's|(<div class="superhero">.*?<div>\s*)<img ([^>]+)>(.*?</div>\s*</div>)|$1<picture><img $2></picture>$3|gs' commerce/testing/index.html
+            perl -i -0pe 's|(<div class="superhero">.*?<div>\s*)<img ([^>]+)>(.*?</div>\s*</div>)|$1<picture><img $2></picture>$3|gs' "${SITE_PATH}/index.html"
             echo "✓ Superhero images wrapped in <picture>"
           fi
 
@@ -194,8 +205,8 @@ jobs:
         run: |
           cd _site
           
-          # Minify the interceptor script and replace placeholder with actual path prefix
-          INTERCEPTOR=$(cat ../content/.github/scripts/gh-pages-interceptor.js | sed "s/__PATH_PREFIX__/$PATH_PREFIX/g" | tr '\n' ' ' | sed 's/  */ /g')
+          # Minify the interceptor script and replace placeholders with actual values
+          INTERCEPTOR=$(cat ../content/.github/scripts/gh-pages-interceptor.js | sed "s/__PATH_PREFIX__/$PATH_PREFIX/g" | sed "s/__SITE_PREFIX__/$SITE_PREFIX/g" | tr '\n' ' ' | sed 's/  */ /g')
           
           # Create script tag
           echo "<script>${INTERCEPTOR}</script>" > /tmp/interceptor.txt
@@ -205,23 +216,23 @@ jobs:
             perl -i -pe 'BEGIN{open(F,"/tmp/interceptor.txt");$s=<F>;chomp $s;close F} s/<head>/<head>$s/' "$htmlfile" 2>/dev/null || true
           done
           
-          MODIFIED=$(grep -l "$PATH_PREFIX" commerce/testing/*.html 2>/dev/null | wc -l | tr -d ' ')
+          MODIFIED=$(grep -l "$PATH_PREFIX" "${SITE_PATH}"/*.html 2>/dev/null | wc -l | tr -d ' ')
           echo "✓ Interceptor injected into $MODIFIED files"
 
       - name: Create root redirect
         run: |
           cd _site
-          cat > index.html << 'EOF'
+          cat > index.html << EOF
           <!DOCTYPE html>
           <html>
           <head>
             <meta charset="utf-8">
-            <title>Commerce Testing - Preview</title>
-            <meta http-equiv="refresh" content="0; url=commerce/testing/">
-            <link rel="canonical" href="commerce/testing/">
+            <title>Preview</title>
+            <meta http-equiv="refresh" content="0; url=${SITE_PATH}/">
+            <link rel="canonical" href="${SITE_PATH}/">
           </head>
           <body>
-            <p>Redirecting to <a href="commerce/testing/">Commerce Testing documentation</a>...</p>
+            <p>Redirecting to <a href="${SITE_PATH}/">documentation</a>...</p>
           </body>
           </html>
           EOF
@@ -243,7 +254,7 @@ jobs:
           echo "Total files: $(find . -type f | wc -l | tr -d ' ')"
           echo "HTML files: $(find . -name '*.html' | wc -l | tr -d ' ')"
           
-          if [ ! -d "commerce" ]; then
+          if [ ! -d "${SITE_PATH}" ]; then
             echo "ERROR: No content generated!"
             exit 1
           fi

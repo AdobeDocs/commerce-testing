@@ -1,6 +1,7 @@
 /* GitHub Pages Path Interceptor for AEM Edge Delivery - Fixes path issues when hosting on GitHub Pages */
 (function() {
   var BASE = "/__PATH_PREFIX__";
+  var SITE_PREFIX = "/__SITE_PREFIX__";
   var ORIGIN = location.origin;
 
   /* URL Normalization - Remove /index.html suffix */
@@ -22,7 +23,7 @@
       if (
         path.startsWith("/hlx_statics") ||
         path.startsWith("/franklin_assets") ||
-        path.startsWith("/commerce")
+        path.startsWith(SITE_PREFIX)
       ) {
         return ORIGIN + BASE + path;
       }
@@ -34,7 +35,7 @@
       !url.startsWith(BASE) &&
       (url.startsWith("/hlx_statics") ||
         url.startsWith("/franklin_assets") ||
-        url.startsWith("/commerce"))
+        url.startsWith(SITE_PREFIX))
     ) {
       return BASE + url;
     }

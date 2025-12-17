@@ -6,6 +6,9 @@
     "type": "git",
     "url": "https://github.com/AdobeDocs/commerce-testing"
   },
+  "config": {
+    "sitePath": "commerce/testing"
+  },
   "scripts": {
     "dev": "node ./dev.mjs",
     "lint": "npx --yes github:AdobeDocs/adp-devsite-utils runLint -v",
