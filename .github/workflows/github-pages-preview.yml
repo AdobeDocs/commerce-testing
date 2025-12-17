@@ -171,10 +171,19 @@ jobs:
           cd _site
           
           # Rewrite config paths for side-nav filtering
-          if [ -f "localhost+3000/${SITE_PATH}/config" ]; then
-            perl -i -pe "s|href=\"/${SITE_PATH}/|href=\"/${PATH_PREFIX}/${SITE_PATH}/|g" "localhost+3000/${SITE_PATH}/config"
-            perl -i -pe "s|href=\"/functional-testing-framework/|href=\"/${PATH_PREFIX}/${SITE_PATH}/functional-testing-framework/|g" "localhost+3000/${SITE_PATH}/config"
-            perl -i -pe "s|href=\"/guide/|href=\"/${PATH_PREFIX}/${SITE_PATH}/guide/|g" "localhost+3000/${SITE_PATH}/config"
+          CONFIG_FILE="localhost+3000/${SITE_PATH}/config"
+          if [ -f "$CONFIG_FILE" ]; then
+            # Rewrite the main site path
+            perl -i -pe "s|href=\"/${SITE_PATH}/|href=\"/${PATH_PREFIX}/${SITE_PATH}/|g" "$CONFIG_FILE"
+            
+            # Extract unique top-level nav paths from config.md pages section
+            # Looks for patterns like [Label](/path/...) and extracts the first directory segment
+            grep -oE '\]\(/[^/)]+/' ../content/src/pages/config.md | \
+              sed 's/](//' | \
+              sort -u | while read nav_path; do
+                perl -i -pe "s|href=\"${nav_path}|href=\"/${PATH_PREFIX}/${SITE_PATH}${nav_path}|g" "$CONFIG_FILE"
+              done
+            
             echo "✓ Config paths rewritten"
           fi
 
