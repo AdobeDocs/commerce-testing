@@ -176,6 +176,18 @@ jobs:
             echo "✓ Output structure organized"
           fi
 
+      - name: Fix superhero block images
+        run: |
+          cd _site
+          
+          # The superhero.js expects <picture><img></picture> but we have plain <img>
+          # Wrap superhero images in <picture> elements so the background works
+          if [ -f "commerce/testing/index.html" ]; then
+            # Find <img> tags in superhero blocks and wrap them in <picture>
+            perl -i -0pe 's|(<div class="superhero">.*?<div>\s*)<img ([^>]+)>(.*?</div>\s*</div>)|$1<picture><img $2></picture>$3|gs' commerce/testing/index.html
+            echo "✓ Superhero images wrapped in <picture>"
+          fi
+
       - name: Inject GitHub Pages interceptor
         run: |
           cd _site
