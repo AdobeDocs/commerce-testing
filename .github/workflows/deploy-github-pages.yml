@@ -1,7 +1,6 @@
 ---
 name: Deploy GitHub Pages preview
 on:
-  push:
   workflow_dispatch:
     inputs:
       branch:
