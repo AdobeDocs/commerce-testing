@@ -4,6 +4,7 @@
 .history
 .idea
 .editorconfig
+.cursor
 
 # npm
 node_modules
