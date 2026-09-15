@@ -111,7 +111,7 @@ class ProductStockTest extends \PHPUnit\Framework\TestCase
 
 -  If the test method does not use `#[DataProvider]` or `#[TestWith]`, the `dataset` fixture is not injected, and fixtures that do not reference `$dataset.*$` are unaffected.
 -  Referencing a key that does not exist in the current dataset (for example, `$dataset.unknownKey$`) throws an error listing the available keys.
--  Unnamed DataProvider or TestWith parameters can be referenced by their numeric index, for example `$dataset.0$`.
+-  Unnamed `DataProvider` or `TestWith` parameters can be referenced by their numeric index, for example `$dataset.0$`.
 
 ### Specifying the number of instances of data fixture to generate
 
