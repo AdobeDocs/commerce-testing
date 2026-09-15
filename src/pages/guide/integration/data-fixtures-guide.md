@@ -305,6 +305,35 @@ public function testCatalogRule(): void
 
 You can reference auto-generated values using `$alias.property$` syntax without overriding them.
 
+### Avoid duplicating tests that only differ by fixture data
+
+If multiple test methods share the same fixture stack and assertions, and only differ in the values passed to a fixture, use `#[DataProvider]` or `#[TestWith]` with the `dataset` alias instead of duplicating the test method per variation.
+
+```php
+// Bad - duplicated test methods, one per configuration
+#[DataFixture(ProductFixture::class, ['price' => 10], 'product')]
+public function testProductWithPriceTen(): void
+{
+}
+
+#[DataFixture(ProductFixture::class, ['price' => 20], 'product')]
+public function testProductWithPriceTwenty(): void
+{
+}
+
+// Good - a single parameterized test
+#[
+    DataFixture(ProductFixture::class, ['price' => '$dataset.price$'], 'product'),
+    TestWith(['price' => 10]),
+    TestWith(['price' => 20]),
+]
+public function testProduct(int $price): void
+{
+}
+```
+
+See [Supply DataProvider or TestWith data to a fixture](attributes/data-fixture.md#supply-dataprovider-or-testwith-data-to-a-fixture) for details.
+
 ### Understand isolation behavior
 
 <InlineAlert variant="info" slots="text" />
