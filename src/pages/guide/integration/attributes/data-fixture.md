@@ -83,6 +83,36 @@ class QuoteTest extends \PHPUnit\Framework\TestCase
 }
 ```
 
+### Supply DataProvider or TestWith data to a fixture
+
+When a test method uses PHPUnit's `#[DataProvider]` or `#[TestWith]` attribute, the Integration Testing Framework automatically exposes the current dataset row as a fixture with the reserved alias `dataset`. You can reference its values with the same `$dataset.key$` syntax described above, without declaring a `DataFixture(...)` for it.
+
+This lets you collapse test methods that are only differentiated by fixture configuration into a single parameterized test.
+
+```php?start_inline=1
+class ProductStockTest extends \PHPUnit\Framework\TestCase
+{
+    #[
+        DataFixture(
+            ProductFixture::class,
+            ['extension_attributes' => ['stock_item' => ['is_in_stock' => '$dataset.in_stock$']]],
+            'product'
+        ),
+        TestWith(['in_stock' => true], 'in_stock'),
+        TestWith(['in_stock' => false], 'out_of_stock'),
+    ]
+    public function testProductStockStatus(bool $in_stock): void
+    {
+        $product = DataFixtureStorageManager::getStorage()->get('product');
+        $this->assertEquals($in_stock, $product->getExtensionAttributes()->getStockItem()->getIsInStock());
+    }
+}
+```
+
+-  If the test method does not use `#[DataProvider]` or `#[TestWith]`, the `dataset` fixture is not injected, and fixtures that do not reference `$dataset.*$` are unaffected.
+-  Referencing a key that does not exist in the current dataset (for example, `$dataset.unknownKey$`) throws an error listing the available keys.
+-  Unnamed `DataProvider` or `TestWith` parameters can be referenced by their numeric index, for example `$dataset.0$`.
+
 ### Specifying the number of instances of data fixture to generate
 
 <InlineAlert variant="info" slots="text" />
