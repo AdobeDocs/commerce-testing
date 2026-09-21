@@ -120,6 +120,36 @@ Leave all the settings that do not start with `db-` and `amqp-` at their default
 You can include additional setup options—available to the `setup:install` command—in the test configuration file. A
 complete list of options is available in the [Installation Guide](https://experienceleague.adobe.com/en/docs/commerce-operations/installation-guide/advanced).
 
+#### Run the integration tests against a specific cache backend
+
+By default, the integration tests install with the file-based cache backend. To run the suite against a specific cache
+backend instead, add the `cache-backend` option to `install-config-mysql.php`, along with any connection options for
+that backend:
+
+```php
+return [
+    // ...
+    // 'cache-backend' accepts: redis, valkey, symfony_redis, symfony_valkey, zend_l2, symfony_l2
+    'cache-backend' => 'symfony_valkey',
+    'cache-backend-valkey-server' => '127.0.0.1',
+    'cache-backend-valkey-port' => '6379',
+    'cache-backend-valkey-db' => '0',
+];
+```
+
+| Value | Description |
+| --- | --- |
+| `redis` | Legacy Zend-based Redis backend |
+| `valkey` | Legacy Zend-based Valkey backend |
+| `symfony_redis` | Symfony Cache backend with Redis |
+| `symfony_valkey` | Symfony Cache backend with Valkey |
+| `zend_l2` | Legacy Zend-based two-level (L1/L2) cache |
+| `symfony_l2` | Symfony Cache two-level (L1/L2) cache |
+
+`redis` and `symfony_redis` use the matching `cache-backend-redis-*` options (`cache-backend-redis-server`,
+`cache-backend-redis-port`, `cache-backend-redis-db`, and so on) instead of the `cache-backend-valkey-*` options shown
+above. All these options default to a local instance at `127.0.0.1:6379`, database `0`, if omitted.
+
 If your project requires custom entries in the `core_config_data` table, such as the introduction of new third-party services
 that affect your application on a basic level or configuration for logic that would prevent access if not configured
 properly, Commerce provides a file template for this purpose.
