@@ -11,7 +11,7 @@ When your test design requires you to register fixture components and unregister
 
 ## Format
 
-```php?start_inline=1
+```php
 #[
    ComponentsDir(string $path)
 ]
@@ -34,7 +34,7 @@ When your test design requires you to register fixture components and unregister
 
 The following example demonstrates the `ComponentsDir` attribute in different scopes.
 
-```php?start_inline=1
+```php
 namespace Magento\Foo;
 
 #[
@@ -62,7 +62,7 @@ class BarTest extends \PHPUnit\Framework\TestCase
 
 Each path declared in an attribute must contain a registration file in the specified directory or its subdirectories. For example, the `MagentoFooTest_MyModule` component at `ComponentsDir('Magento/Foo/_files/code/Magento')` can be registered in `Magento/Foo/_files/code/Magento/MyModule/registration.php`:
 
-```php?start_inline=1
+```php
 
 use Magento\Framework\Component\ComponentRegistrar;
 

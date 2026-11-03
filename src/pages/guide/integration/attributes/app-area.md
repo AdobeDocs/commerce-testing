@@ -11,7 +11,7 @@ Configure a test environment in scope of the particular [application area][] wit
 
 ## Format
 
-```php?start_inline=1
+```php
 #[
     AppArea(string $area)
 ]
@@ -45,7 +45,7 @@ Test method attributes override test class attributes.
 
 Example:
 
-```php?start_inline=1
+```php
 #[
     AppArea('adminhtml')
 ]
@@ -81,7 +81,7 @@ The application is reinitialized in the corresponding scope each time you specif
 
 Example:
 
-```php?start_inline=1
+```php
 namespace \Vendor\Module;
 
 class ClassToTest extends \PHPUnit\Framework\TestCase

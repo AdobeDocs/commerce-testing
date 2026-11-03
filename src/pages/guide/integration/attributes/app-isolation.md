@@ -18,7 +18,7 @@ Test execution order can vary depending on a PHPUnit version.
 
 ## Format
 
-```php?start_inline=1
+```php
 #[
     AppIsolation(bool $state = true)
 ]
@@ -46,7 +46,7 @@ To enable the application isolation for a test method, use the `AppIsolation` at
 
 Example:
 
-```php?start_inline=1
+```php
 #[
     AppIsolation(true)
 ]

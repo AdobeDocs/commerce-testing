@@ -13,7 +13,7 @@ It enables you to register all the components at a specified directory recursive
 
 ## Format
 
-```php?start_inline=1
+```php
 /**
 * @magentoComponentsDir <dir_path>
 */
@@ -35,7 +35,7 @@ If the parent test case also declares a `@magentoComponentsDir`, both annotation
 
 The following example demonstrates `@magentoComponentsDir` annotation in different scopes.
 
-```php?start_inline=1
+```php
 namespace Magento\Foo;
 
 /**
@@ -65,7 +65,7 @@ class BarTest extends \PHPUnit\Framework\TestCase
 Each path declared in annotation must contain a registration file in the specified directory or its subdirectories.
 For example, the `MagentoFooTest_MyModule` component at `@magentoComponentsDir Magento/Foo/_files/code/Magento` can be registered in `Magento/Foo/_files/code/Magento/MyModule/registration.php`:
 
-```php?start_inline=1
+```php
 
 use Magento\Framework\Component\ComponentRegistrar;
 

@@ -16,7 +16,7 @@ Use data fixtures to prepare a database for tests. The Integration Testing Frame
 
 `@magentoDataFixture` takes an argument that points to the data fixture as a filename or local method.
 
-```php?start_inline=1
+```php
 /**
  * @magentoDataFixture <script_filename>|<method_name>
  */

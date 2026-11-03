@@ -11,7 +11,7 @@ The data fixture before transaction attribute is an extension of [Data Fixture a
 
 ## Format
 
-```php?start_inline=1
+```php
 #[
     DataFixtureBeforeTransaction(string $type, array $data = [], string $count = 1, string $scope = 'default', ?string $as = null)
 ]
@@ -34,7 +34,7 @@ The data fixture before transaction attribute is an extension of [Data Fixture a
 
 In the following example, the fixtures supplied to the `DataFixtureBeforeTransaction` attribute are applied before the transaction, whereas fixtures supplied to the `DataFixture` attribute are applied within the transaction.
 
-```php?start_inline=1
+```php
 class CategoryTest extends TestCase
 {
     #[

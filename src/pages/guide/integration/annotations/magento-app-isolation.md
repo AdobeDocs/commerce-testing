@@ -21,7 +21,7 @@ Test execution order can vary depending on a PHPUnit version.
 
 Application isolation annotation:
 
-```php?start_inline=1
+```php
 /**
  * @magentoAppIsolation enabled|disabled
  */
@@ -44,7 +44,7 @@ To enable the application isolation for a test, use the `@magentoAppIsolation` a
 
 Example:
 
-```php?start_inline=1
+```php
 /**
  * @magentoAppIsolation enabled
  */

@@ -20,7 +20,7 @@ When the `@magentoDbIsolation` is enabled, the ITF:
 
 Database isolation annotation:
 
-```php?start_inline=1
+```php
 /**
  * @magentoDbIsolation enabled|disabled
  */
@@ -36,7 +36,7 @@ To apply a database rollback after the test case, create a separate test case wi
 
 Example:
 
-```php?start_inline=1
+```php
 /**
  * @magentoDbIsolation enabled
  */
@@ -79,7 +79,7 @@ class Some\EntityTest extends \PHPUnit\Framework\TestCase
 
 To isolate changes made to database by a single test, enable the `@magentoDbIsolation` for the test.
 
-```php?start_inline=1
+```php
 /**
 * @magentoDbIsolation enabled
 */

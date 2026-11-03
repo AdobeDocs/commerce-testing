@@ -12,7 +12,7 @@ To set configuration values for individual tests and revert them after the test 
 
 ## Format
 
-```php?start_inline=1
+```php
 #[
    Config(string $path, mixed $value, string $scopeType = 'default', string? $scopeValue = null)
 ]

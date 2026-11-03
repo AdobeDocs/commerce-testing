@@ -12,7 +12,7 @@ Enable or disable a [cache type][] using the `Cache` attribute.
 
 ## Format
 
-```php?start_inline=1
+```php
 #[
    Cache(string $type, bool $status)
 ]
