@@ -12,7 +12,7 @@ Configure a test environment in scope of the particular [application area][] wit
 
 ## Format
 
-```php?start_inline=1
+```php
 /**
  * @magentoAppArea <area code>
  */
@@ -34,7 +34,7 @@ Test annotations override test case annotations.
 
 Example:
 
-```php?start_inline=1
+```php
 /**
  * @magentoAppArea adminhtml
  */
@@ -70,7 +70,7 @@ Commerce is reinitialized in the corresponding scope each time you specify a dif
 
 Example:
 
-```php?start_inline=1
+```php
 namespace \Vendor\Module;
 
 class ClassToTest extends \PHPUnit\Framework\TestCase

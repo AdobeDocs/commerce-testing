@@ -13,7 +13,7 @@ Enable or disable a [cache type][] using the `@magentoCache` annotation.
 
 ## Format
 
-```php?start_inline=1
+```php
 /**
  * @magentoCache [<type>|all] [enabled|disabled]
  * @magentoCache [<type>|all] [enabled|disabled]

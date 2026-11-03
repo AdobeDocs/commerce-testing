@@ -13,7 +13,7 @@ Sets the indexer dimension mode for the test run.
 
 ## Format
 
-```php?start_inline=1
+```php
 #[
     IndexerDimensionMode(string $indexer, string $dimension)
 ]
@@ -44,7 +44,7 @@ It completely overrides the attribute specified for the test class.
 
 ## Example
 
-```php?start_inline=1
+```php
 #[
    DbIsolation(false),
    IndexerDimensionMode('catalog_product_price', 'website_and_customer_group')

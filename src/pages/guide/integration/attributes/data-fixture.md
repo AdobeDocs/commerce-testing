@@ -16,7 +16,7 @@ To set up a date fixture, use the `DataFixture` attribute.
 
 ## Format
 
-```php?start_inline=1
+```php
 #[
     DataFixture(string $type, array $data = [], ?string $as = null, ?string $scope = null, int $count = 1)
 ]
@@ -43,7 +43,7 @@ A test can retrieve data that was returned by a Data Fixture using `Magento\Test
 
 The following example shows how to retrieve data that was returned by the fixtures:
 
-```php?start_inline=1
+```php
 class ProductsList extends \PHPUnit\Framework\TestCase
 {
     #[
@@ -70,7 +70,7 @@ It is possible to supply data as a variable from one fixture to another using th
 
 The following example shows how a fixture can use the data of another fixture:
 
-```php?start_inline=1
+```php
 class QuoteTest extends \PHPUnit\Framework\TestCase
 {
     #[
@@ -90,7 +90,7 @@ class QuoteTest extends \PHPUnit\Framework\TestCase
 Sometimes, we need to generate several instances of a data fixture with exactly the same configuration.
 For such cases, we can use the `count` parameter and set its value to the desired number of instances.
 
-```php?start_inline=1
+```php
 class ProductsList extends \PHPUnit\Framework\TestCase
 {
    #[
@@ -114,7 +114,7 @@ class ProductsList extends \PHPUnit\Framework\TestCase
 
 Or in case where we need to specify an alias:
 
-```php?start_inline=1
+```php
 class ProductsList extends \PHPUnit\Framework\TestCase
 {
    #[
@@ -140,7 +140,7 @@ If you need to instruct the system to execute a data fixture in the scope of a s
 
 In the following example, we create a new store with the `store2` identifier and a product. Then, we create a guest cart under the `store2` scope and add a created product to it.
 
-```php?start_inline=1
+```php
 class QuoteTest extends \PHPUnit\Framework\TestCase
 {
     #[
@@ -192,7 +192,7 @@ In order to generate multiple fixtures of the same type without having to manual
 
 In the following example, a unique `sku` is automatically generated for the first fixture (for example, `simple-product61c10b2e86f991`) and the second fixture (for example, `simple-product61c10b2e86f992`). The sequence is random and therefore unpredictable.
 
-```php?start_inline=1
+```php
 class ProductsListTest extends \PHPUnit\Framework\TestCase
 {
      #[
@@ -219,7 +219,7 @@ You must include the following in your documentation block:
 
 Example 1:
 
-```php?start_inline=1
+```php
 /* 
 *    Target Rule fixture creates a rule with conditions provided as an array.
 *
@@ -246,7 +246,7 @@ Example 1:
 Example 2:
 If the fixture can be used in different ways, provide a short description of each use case.
 
- ```php?start_inline=1
+ ```php
 /* 
 *    Target Rule fixture creates a rule with conditions provided as an array.
 *
@@ -304,7 +304,7 @@ logic beyond the "create product" API capabilities, such logic should be impleme
 
 Example 1:
 
-```php?start_inline=1
+```php
 class QuoteTest extends \PHPUnit\Framework\TestCase
 {
 
@@ -323,7 +323,7 @@ class QuoteTest extends \PHPUnit\Framework\TestCase
 
 Example 2:
 
-```php?start_inline=1
+```php
 class PriceTest extends \PHPUnit\Framework\TestCase
 {
     #[

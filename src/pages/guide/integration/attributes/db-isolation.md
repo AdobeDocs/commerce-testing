@@ -16,7 +16,7 @@ When the `DbIsolation` attribute is enabled, the ITF:
 
 ## Format
 
-```php?start_inline=1
+```php
 #[
     DbIsolation(bool $state = true)
 ]
@@ -37,7 +37,7 @@ To apply a database rollback after the test class, create a separate test class 
 
 Example:
 
-```php?start_inline=1
+```php
 #[
     DbIsolation(true)
 ]
@@ -80,7 +80,7 @@ class Some\EntityTest extends \PHPUnit\Framework\TestCase
 
 To isolate changes made to the database by a single test, enable the `DbIsolation` attribute for the test method.
 
-```php?start_inline=1
+```php
 #[
     DbIsolation(true)
 ]
