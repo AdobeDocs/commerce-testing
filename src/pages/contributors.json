@@ -495,37 +495,42 @@
     {
       "page": "/guide/integration/annotations/magento-app-area",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "12/3/2025"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/annotations/magento-app-isolation",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
+        "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "9/11/2023"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/annotations/magento-cache",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/600190?v=4"
       ],
-      "lastUpdated": "12/3/2025"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/annotations/magento-components-dir",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "12/3/2025"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/annotations/magento-config-fixture",
@@ -539,18 +544,20 @@
     {
       "page": "/guide/integration/annotations/magento-data-fixture",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "12/4/2025"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/annotations/magento-db-isolation",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "9/11/2023"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/annotations/magento-depends",
@@ -573,81 +580,90 @@
     {
       "page": "/guide/integration/attributes/app-area",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/34573954?v=4"
       ],
-      "lastUpdated": "12/3/2025"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/attributes/app-isolation",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "9/11/2023"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/attributes/cache",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "12/3/2025"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/attributes/components-dir",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "12/3/2025"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/attributes/config-fixture",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "12/3/2025"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/attributes/data-fixture",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/8163466?v=4",
         "https://avatars.githubusercontent.com/u/11199531?v=4"
       ],
-      "lastUpdated": "12/3/2025"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/attributes/data-fixture-before-transaction",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/12731225?v=4",
         "https://avatars.githubusercontent.com/u/14320591?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4",
         "https://avatars.githubusercontent.com/u/11199531?v=4"
       ],
-      "lastUpdated": "12/3/2025"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/attributes/db-isolation",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "9/11/2023"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/attributes/indexer-dimension-mode",
       "avatars": [
+        "https://avatars.githubusercontent.com/u/120194874?v=4",
         "https://avatars.githubusercontent.com/u/13662379?v=4"
       ],
-      "lastUpdated": "9/11/2023"
+      "lastUpdated": "11/3/2026"
     },
     {
       "page": "/guide/integration/data-fixtures-guide",
