@@ -1,0 +1,18 @@
+---
+title: What's new
+description: This section contains the changes made in the last 60 days. We exclude
+  all minor updates, such as copy editing, from this list.
+updated: Thu Nov 5 09:56:57 2026
+entries:
+- description: Added documentation for configuring integration tests to run against
+    specific cache backends, including Redis, Valkey, Symfony Cache, and two-level
+    cache options. See [Run the integration tests against a specific cache backend](https://developer.adobe.com/commerce/testing/guide/integration/#run-the-integration-tests-against-a-specific-cache-backend).
+  versions: ''
+  type: technical
+  date: '2026-09-30'
+  link: https://github.com/AdobeDocs/commerce-testing/pull/190
+  merge_commit: 4d14e9e4446881e6d91526f0513894bbda07b6d0
+  contributor: djadobe16
+  labels:
+  - internal
+  - technical
