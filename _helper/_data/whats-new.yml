@@ -2,7 +2,7 @@
 title: What's new
 description: This section contains the changes made in the last 60 days. Minor updates,
   such as copy editing, are excluded from this list.
-updated: Fri Nov 20 15:29:44 2026
+updated: Fri Nov 27 15:29:46 2026
 entries:
 - description: Added documentation for configuring integration tests to run against
     specific cache backends, including Redis, Valkey, Symfony Cache, and two-level
